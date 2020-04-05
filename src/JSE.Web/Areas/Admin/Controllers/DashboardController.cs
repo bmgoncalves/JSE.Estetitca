@@ -2,9 +2,9 @@
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
-
     [Area("Admin")]
-    public class HomeController : Controller
+    [Route("Admin")]
+    public class DashboardController : Controller
     {
         // GET: Home
         public ActionResult Index()
@@ -19,7 +19,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             //return RedirectToAction("Index", "Contato", new { area = "Atendimento" });
             return RedirectToAction("Index", "Contato", new { area = "Admin" });
             //return View();
-            
+
         }
 
         //[Route("Home/About")]
@@ -30,8 +30,5 @@ namespace JSE.Web.Areas.Admin.Controllers
             //return RedirectToAction("Index", "Servico");
 
         }
-
-
-
     }
 }

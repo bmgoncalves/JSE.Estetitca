@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin")]
     public class ServicoController : Controller
     {
         private readonly JSEContext _context;
@@ -40,7 +41,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Servico/Create
-        [Route("Admin/Servico/AddOrEdit/{id?}")]
+        //[Route("Admin/Servico/AddOrEdit/{id?}")]
         public IActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)
@@ -55,8 +56,6 @@ namespace JSE.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Admin/Servico/AddOrEdit/{id?}")]
-
         public async Task<IActionResult> AddOrEdit([Bind("Id,NomeServico,Descricao,Duracao")] Servico servico)
         {
             if (ModelState.IsValid)
