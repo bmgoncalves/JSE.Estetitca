@@ -1,0 +1,39 @@
+﻿@model JSE.Web.Models.Servico
+
+@{
+    ViewData["Title"] = "Cadastro serviços";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Cadastro Serviço</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomeServico" class="control-label"></label>
+                <input asp-for="NomeServico" class="form-control" />
+                <span asp-validation-for="NomeServico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <textarea asp-for="Descricao" class="form-control"></textarea>
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duracao" class="control-label"></label>
+                <input asp-for="Duracao" class="form-control" />
+                <span asp-validation-for="Duracao" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="submit" value="Salvar" class="btn btn-success btn-block" />
+            </div>
+            <div class="form-group col-md-6">
+                <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-secondary btn-block">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+

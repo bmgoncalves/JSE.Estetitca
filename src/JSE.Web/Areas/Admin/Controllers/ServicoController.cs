@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
 using JSE.Web.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
@@ -21,16 +19,35 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Servico
-        public async Task<IActionResult> Index()
+        public ViewResult Index(int pageNumber = 1, int pageSize = 5)
         {
-            return View(await _context.Servicos.ToListAsync());
+
+            int excludeRecords = (pageNumber * pageSize) - pageSize;
+            var servicos = _context.Servicos.OrderBy(s => s.Id)
+                .Skip(excludeRecords)
+                .Take(pageSize);
+
+
+            var result = new PagedResult<Servico>
+            {
+                Data = servicos.AsNoTracking().ToList(),
+                TotalItems = _context.Servicos.Count(),
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
+
+            return View(result);
         }
 
-
         // GET: Admin/Servico/Create
-        public IActionResult Create()
+        [Route("Admin/Servico/AddOrEdit/{id?}")]
+        public IActionResult AddOrEdit(int id = 0)
         {
-            return View();
+            if (id == 0)
+            {
+                return View(new Servico());
+            }
+            return View(_context.Servicos.Find(id));
         }
 
         // POST: Admin/Servico/Create
@@ -38,17 +55,25 @@ namespace JSE.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeServico")] Servico servico)
+        [Route("Admin/Servico/AddOrEdit/{id?}")]
+
+        public async Task<IActionResult> AddOrEdit([Bind("Id,NomeServico,Descricao,Duracao")] Servico servico)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(servico);
+                if (servico.Id == 0)
+                {
+                    _context.Add(servico);
+                }
+                else
+                {
+                    _context.Update(servico);
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(servico);
         }
-
 
         // GET: Admin/Servico/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -67,7 +92,6 @@ namespace JSE.Web.Areas.Admin.Controllers
 
             return View(servico);
         }
-
-        
+       
     }
 }

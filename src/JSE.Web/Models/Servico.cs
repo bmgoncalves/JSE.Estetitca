@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Models
 {
@@ -16,5 +12,18 @@ namespace JSE.Web.Models
         [MaxLength(50)]
         [Required(ErrorMessage ="Campo obrigatório")]
         public string NomeServico { get; set; }
+
+        [DisplayName("Descrição")]
+        [MaxLength(200)]
+        [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Campo obrigatório")]
+        public string Descricao { get; set; }
+
+        [DisplayName("Tempo Duração")]
+        [MaxLength(8)]        
+        [Required(ErrorMessage = "Campo obrigatório")]
+        public string Duracao { get; set; }
+
+
     }
 }

@@ -29,7 +29,7 @@ namespace JSE.Web.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Descricao = table.Column<string>(nullable: false),
+                    Descricao = table.Column<string>(maxLength: 2000, nullable: false),
                     Autor = table.Column<string>(maxLength: 50, nullable: true),
                     DataCriacao = table.Column<DateTime>(nullable: false)
                 },
@@ -72,7 +72,9 @@ namespace JSE.Web.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeServico = table.Column<string>(maxLength: 50, nullable: false)
+                    NomeServico = table.Column<string>(maxLength: 50, nullable: false),
+                    Descricao = table.Column<string>(maxLength: 200, nullable: false),
+                    Duracao = table.Column<string>(maxLength: 8, nullable: false)
                 },
                 constraints: table =>
                 {

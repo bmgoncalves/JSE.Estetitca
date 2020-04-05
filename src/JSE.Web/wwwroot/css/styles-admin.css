@@ -1031,3 +1031,22 @@ p.back-link {
   margin-bottom: 20px;
   font-size: 12px;
   text-transform: uppercase; }
+.btn-success {
+    background: #BC2A87;
+    border-color: #BC2A87;
+}
+
+    .btn-success:hover {
+        background: #e354af;
+        border-color: #BC2A87;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color:#fff;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+}

@@ -1,36 +1,54 @@
-﻿@model IEnumerable<JSE.Web.Models.Servico>
+﻿@model cloudscribe.Pagination.Models.PagedResult<JSE.Web.Models.Servico>
 
 @{
     ViewData["Title"] = "Index";
+    ViewData["Controller"] = "Servico";
+    ViewData["Action"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Serviços cadastrados</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddOrEdit" class="btn btn-success"><i class="far fa-plus-square"></i>  &nbsp; Cadastrar</a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NomeServico)
+                @Html.DisplayName("Servico")
+            </th>
+            @*<th>
+                @Html.DisplayName("Descrição")
+            </th>*@
+            <th>
+                @Html.DisplayName("Duração")
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeServico)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeServico)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duracao)
+                </td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger ml-1" onclick="return confirm('Deseja excluir este Serviço?')"><i class="fa fa-trash-alt fa-lg"></i>Excluir</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+
+
