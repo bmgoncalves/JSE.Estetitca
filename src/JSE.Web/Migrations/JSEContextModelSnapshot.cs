@@ -29,7 +29,13 @@ namespace JSE.Web.Migrations
                     b.Property<bool>("ContatoWhatsapp")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(70)")
+                        .HasMaxLength(70);
+
                     b.Property<string>("Mensagem")
+                        .IsRequired()
                         .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
 
@@ -39,6 +45,7 @@ namespace JSE.Web.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Telefone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 

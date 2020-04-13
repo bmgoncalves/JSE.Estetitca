@@ -16,9 +16,18 @@ namespace JSE.Web.Models
         public string Nome { get; set; }
 
         [MaxLength(2000)]
+        [DataType(DataType.MultilineText)]
+        [Required]
         public string Mensagem { get; set; }
 
-        [MaxLength(15)]
+        [MaxLength(70)]
+        [DisplayName("E-mail")]
+        [Required]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail em formato inválido.")]
+        public string Email { get; set; }
+
+        [MaxLength(15)]        
+        [Required]
         public string Telefone { get; set; }
 
         [DisplayName("Entrar em contato via Whatsapp")]

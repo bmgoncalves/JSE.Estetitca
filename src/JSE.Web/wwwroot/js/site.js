@@ -1,4 +1,8 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" />
+$(document).ready(function () {
+    $("#btnContato").click(function () {
+        $("#myAlert").alert('close');
+    });
+});
 
-// Write your JavaScript code.
+

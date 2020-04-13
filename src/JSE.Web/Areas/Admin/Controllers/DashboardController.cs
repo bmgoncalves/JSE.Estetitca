@@ -3,7 +3,7 @@
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin")]
+    [Route("Admin/Dashboard/Index")]
     public class DashboardController : Controller
     {
         // GET: Home
@@ -12,23 +12,16 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View();
         }
 
-
         //[Route("Home/About")]
         public ActionResult Contato()
         {
             //return RedirectToAction("Index", "Contato", new { area = "Atendimento" });
             return RedirectToAction("Index", "Contato", new { area = "Admin" });
-            //return View();
-
         }
-
-        //[Route("Home/About")]
+        
         public ActionResult Servico()
         {
             return RedirectToAction("Index", "Servico", new { area = "Admin" });
-
-            //return RedirectToAction("Index", "Servico");
-
         }
     }
 }

@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1">
     <title>Jay Soares | Estética de Resultado</title>
     <link rel="icon" href="favicon.png" type="image/png">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
     <link href='//fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-    
-
 </head>
 
 <body>
+    <partial name="_StatusMessages" />
 
     @RenderBody()
 
@@ -28,7 +27,7 @@
             <section class="page_section Contato" id="Contato">
                 <div class="Contato_section">
                     <h2 class="text-contato">Contato</h2>
-                    <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
+                    <h6 class="text-contato">Em caso de dúvidas ou mais informações entre em contato conosco</h6>
 
                 </div>
                 <div class="row">
@@ -57,31 +56,25 @@
                         </ul>
                     </div>
                     <div class="col-lg-8 wow fadeInLeft delay-06s">
-                        <div class="form">
-                            <input class="input-text" type="text" name="" value="Nome *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-                            <input class="input-text" type="text" name="" value="E-mail *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-                            <textarea class="input-text text-area" cols="0" rows="0" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">Mensagem *</textarea>
-                            <input class="input-btn" type="submit" value="Enviar">
-                        </div>
+                        <partial name="~/Views/Shared/_Footer.cshtml" />
                     </div>
                 </div>
             </section>
         </div>
         <div class="container">
-            <div class="footer_bottom"><span><a>Copyright © reserved</a>. </span> </div>
+            <div class="footer_bottom"><span><a>Todos os Direitos © reservados</a>. </span> </div>
             <!-- <div class="footer_bottom"><span>Copyright © reserved,    JayTemplate by <a href="http://webthemez.com">WebThemez.com</a>. </span> </div> -->
         </div>
     </footer>
-
-    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
-    <script type="text/javascript" src="js/jquery.nav.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="js/jquery.isotope.js"></script>
-    <script src="js/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/wow.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>
+    <script src="~/js/jquery-1.11.1.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery-scrolltofixed.js"></script>
+    <script src="~/js/jquery.nav.js"></script>
+    <script src="~/js/jquery.easing.1.3.js"></script>
+    <script src="~/js/jquery.isotope.js"></script>
+    <script src="~/js/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="~/js/wow.js"></script>
+    @*<script src="~/js/custom.js"></script>*@
 
 
 </body>

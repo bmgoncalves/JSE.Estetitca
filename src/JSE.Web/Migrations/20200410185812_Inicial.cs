@@ -14,8 +14,9 @@ namespace JSE.Web.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
-                    Mensagem = table.Column<string>(maxLength: 2000, nullable: true),
-                    Telefone = table.Column<string>(maxLength: 15, nullable: true),
+                    Mensagem = table.Column<string>(maxLength: 2000, nullable: false),
+                    Email = table.Column<string>(maxLength: 70, nullable: false),
+                    Telefone = table.Column<string>(maxLength: 15, nullable: false),
                     ContatoWhatsapp = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
