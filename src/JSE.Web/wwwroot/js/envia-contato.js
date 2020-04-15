@@ -3,9 +3,6 @@
 btnEnviar.addEventListener("click", function () {
     event.preventDefault();
     var form = document.querySelector("#contatoForm");
-
-    console.log(form.valid());
-
     var e = event;
     target = e.target;
     var nome = document.querySelector("#nome").value;

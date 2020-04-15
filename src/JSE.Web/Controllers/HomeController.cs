@@ -45,32 +45,25 @@ namespace JSE.Web.Controllers
         [HttpPost]
         public IActionResult RegistraContato(Contato contato)
         {
-            
-            if (contato !=null)
+
+            if (contato != null)
             {
-                if (ModelState.IsValid)
+                try
                 {
-                    try
-                    {
-                        _context.Contatos.Add(contato);
-                        _context.SaveChanges();
+                    _context.Contatos.Add(contato);
+                    _context.SaveChanges();
 
-                        TempData["alertType"] = "alert-success";
-                        TempData["Message"] = "Obrigado, em breve entraremos em contato! :)";
+                    TempData["alertType"] = "alert-success";
+                    TempData["Message"] = "Obrigado, em breve entraremos em contato! :)";
 
-                        return Json("OK");
-                    }
-                    catch (Exception ex)
-                    {
-                        TempData["alertType"] = "alert-success";
-                        TempData["Message"] = ex.Message;
-
-                        return Json(ex.Message);
-                    }
+                    return Json("OK");
                 }
-                else
+                catch (Exception ex)
                 {
-                    return Json("NOK");     
+                    TempData["alertType"] = "alert-success";
+                    TempData["Message"] = ex.Message;
+
+                    return Json(ex.Message);
                 }
             }
             else
