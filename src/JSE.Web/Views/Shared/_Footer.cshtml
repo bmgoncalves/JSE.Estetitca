@@ -1,41 +1,43 @@
 ﻿@model JSE.Web.Models.Contato
 
 
-
 <div class="form">
 
-    <partial name="_StatusMessages" />
+    <div id="alertDiv">
+
+    </div>
 
     <div class="row">
         <div class="col-md-12">
-            @*<form asp-controller="Home" asp-action="RegistraContato">*@
-            <form>
+
+            <form asp-action="RegistraContato" id="contatoForm">
+                <div class="alertDiv invisivel"> </div>
+
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="col-lg-8 wow fadeInLeft delay-06s">
-                    <input asp-for="Nome" class="input-text" type="text" name="" value="Nome *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
+                    <input id="nome" asp-for="Nome" class="input-text" type="text" name="" value="Nome *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
                     <span asp-validation-for="Nome" class="text-danger"></span>
 
-
-                    <input asp-for="Email" class="input-text" type="text" name="" value="E-mail *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
+                    <input id="email" asp-for="Email" class="input-text" type="text" name="" value="E-mail *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
                     <span asp-validation-for="Email" class="text-danger"></span>
 
-
-                    <input asp-for="Telefone" class="input-text" type="text" id="txttelefone" name="txttelefone" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" value="Telefone *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;" accept="">
+                    <input id="telefone" asp-for="Telefone" class="input-text" type="text" name="txttelefone" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" value="Telefone *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;" accept="">
                     <span asp-validation-for="Telefone" class="text-danger"></span>
 
-                    <input asp-for="ContatoWhatsapp" class="custom-control-input" type="checkbox" checked id="gridCheck1">
+                    <input id="contatoWhatsapp" asp-for="ContatoWhatsapp" class="custom-control-input" type="checkbox" checked>
                     <label style="color:white" class="form-check-label" for="gridCheck1">Aceito Contato via Whatsapp </label>
 
-                    <textarea asp-for="Mensagem" class="input-text text-area placeholder" cols="0" rows="0" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">Mensagem *</textarea>
+                    <textarea id="mensagem" asp-for="Mensagem" class="input-text text-area placeholder" cols="0" rows="0" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">Mensagem *</textarea>
                     <span asp-validation-for="Mensagem" class="text-danger"></span>
 
                     <div class="form-group">
-                        @*<a id="btnContato" href="#" class="input-btn saveasync"
-                            data-controller="Home"
-                            data-action="RegistraContato"
-                            onclick="ExbibeAlerta()">Enviar</a>*@
 
-                        <input id="btnContato" onclick="" class="input-btn saveasync" type="submit" value="Enviar">
+                        <input id="btnContato"
+                               data-controller="Home"
+                               data-action="RegistraContato"
+                               data-body-message="Registrar contato"
+                               class="input-btn saveasync" type="submit" value="Enviar">
+
                     </div>
                 </div>
             </form>
@@ -45,4 +47,4 @@
 
 </div>
 
-<script src="~/js/site.js"></script>
+<script src="~/js/envia-contato.js"></script>

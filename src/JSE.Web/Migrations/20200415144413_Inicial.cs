@@ -17,7 +17,8 @@ namespace JSE.Web.Migrations
                     Mensagem = table.Column<string>(maxLength: 2000, nullable: false),
                     Email = table.Column<string>(maxLength: 70, nullable: false),
                     Telefone = table.Column<string>(maxLength: 15, nullable: false),
-                    ContatoWhatsapp = table.Column<bool>(nullable: false)
+                    ContatoWhatsapp = table.Column<bool>(nullable: false),
+                    DataHora = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

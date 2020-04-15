@@ -32,5 +32,11 @@ namespace JSE.Web.Models
 
         [DisplayName("Entrar em contato via Whatsapp")]
         public bool ContatoWhatsapp { get; set; }
+
+        [Required]
+        public DateTime DataHora { get; set; } = DateTime.Now;
+
+        public bool Pendente { get; set; } = true;
+
     }
 }

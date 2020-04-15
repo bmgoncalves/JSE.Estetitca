@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    [Migration("20200410185812_Inicial")]
-    partial class Inicial
+    [Migration("20200415145408_ContatoPedente")]
+    partial class ContatoPedente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,9 @@ namespace JSE.Web.Migrations
                     b.Property<bool>("ContatoWhatsapp")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("DataHora")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(70)")
@@ -45,6 +48,9 @@ namespace JSE.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<bool>("Pendente")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Telefone")
                         .IsRequired()

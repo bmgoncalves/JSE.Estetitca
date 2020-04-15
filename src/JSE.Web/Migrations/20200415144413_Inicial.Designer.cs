@@ -4,14 +4,16 @@ using JSE.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    partial class JSEContextModelSnapshot : ModelSnapshot
+    [Migration("20200415144413_Inicial")]
+    partial class Inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,9 +48,6 @@ namespace JSE.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
-
-                    b.Property<bool>("Pendente")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Telefone")
                         .IsRequired()

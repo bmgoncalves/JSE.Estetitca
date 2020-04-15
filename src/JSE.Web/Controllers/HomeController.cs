@@ -1,6 +1,7 @@
 ﻿using JSE.Web.Data;
 using JSE.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
@@ -41,30 +42,41 @@ namespace JSE.Web.Controllers
         /// </summary>
         /// <param name="contato"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult RegistraContato(Contato contato)
         {
+            
+            if (contato !=null)
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        _context.Contatos.Add(contato);
+                        _context.SaveChanges();
 
-            return PartialView("_Footer", null);
+                        TempData["alertType"] = "alert-success";
+                        TempData["Message"] = "Obrigado, em breve entraremos em contato! :)";
 
-            //if (contato != null)
-            //{
-            //    try
-            //    {
-            //        _context.Contatos.Add(contato);
-            //        _context.SaveChanges();
-            //        return PartialView("_Footer",null);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        return PartialView(ex.Message);
-            //    }
-            //}
-            //else
-            //{
-            //    return PartialView();
-            //}
+                        return Json("OK");
+                    }
+                    catch (Exception ex)
+                    {
+                        TempData["alertType"] = "alert-success";
+                        TempData["Message"] = ex.Message;
 
+                        return Json(ex.Message);
+                    }
+                }
+                else
+                {
+                    return Json("NOK");     
+                }
+            }
+            else
+            {
+                return Json("Contato inválido, verifique as informações preenchidas");
+            }
         }
-
     }
 }
