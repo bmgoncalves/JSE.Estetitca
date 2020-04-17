@@ -1,10 +1,11 @@
 ﻿using JSE.Web.Data;
 using JSE.Web.Models;
+using JSE.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace JSE.Web.Controllers
 {
@@ -18,12 +19,16 @@ namespace JSE.Web.Controllers
         {
             _logger = logger;
             _context = contexto;
-
         }
 
         public IActionResult Index()
         {
-            return View();
+            IndexViewModel idx = new IndexViewModel()
+            {
+                Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault()
+            };
+
+            return View(idx);
         }
 
         public IActionResult Privacy()
@@ -43,19 +48,16 @@ namespace JSE.Web.Controllers
         /// <param name="contato"></param>
         /// <returns></returns>
         [HttpPost]
+
+        //public async Task<IActionResult> AddOrEdit([Bind("Id,NomeServico,Descricao,Duracao")] Servico servico)
         public IActionResult RegistraContato(Contato contato)
         {
-
             if (contato != null)
             {
                 try
                 {
                     _context.Contatos.Add(contato);
                     _context.SaveChanges();
-
-                    TempData["alertType"] = "alert-success";
-                    TempData["Message"] = "Obrigado, em breve entraremos em contato! :)";
-
                     return Json("OK");
                 }
                 catch (Exception ex)
@@ -71,5 +73,13 @@ namespace JSE.Web.Controllers
                 return Json("Contato inválido, verifique as informações preenchidas");
             }
         }
+
+
+        public IActionResult Estabelecimento()
+        {
+            var estabelecimento = _context.Estabelecimentos.Where(e => e.Ativo == true);
+            return View(estabelecimento);
+        }
+
     }
 }

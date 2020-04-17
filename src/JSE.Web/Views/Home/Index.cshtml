@@ -1,5 +1,7 @@
-﻿@{
+﻿@model JSE.Web.ViewModel.IndexViewModel
+@{
     ViewData["Title"] = "Home";
+    string email = Model.Estabel.Email;
 }
 
 <div class="text-center">
@@ -101,7 +103,6 @@
         </div>
     </section>
     <!--sobreNos-->
-
     <!--Service-->
     <section id="service">
         <div class="container">
@@ -145,7 +146,6 @@
             </div>
         </div>
     </section>
-    <!--Service-->
     <!-- Portfolio -->
     <section id="Portfolio" class="content">
 
@@ -375,6 +375,115 @@
         </div>
     </section>
 
-
-
 </div>
+
+<div>
+    <footer class="footer_wrapper" id="Contato">
+        <div class="container">
+            <section class="page_section Contato" id="Contato">
+                <div class="Contato_section">
+                    <h2 class="text-contato">Contato</h2>
+                    <h6 class="text-contato">Em caso de dúvidas ou mais informações entre em contato conosco</h6>
+
+                </div>
+
+                
+                <div class="row">
+                    @*Info Estabelecimento*@
+                    <div>
+                        <div class="col-lg-4 wow fadeInLeft">
+                            <div class="Contato_info">
+                                <div class="detail">
+                                    <h4 class="text-contato">@Html.DisplayFor(model => model.Estabel.NomeFantasia)</h4>
+                                    <p class="text-contato">Endereço: @Html.DisplayFor(model => model.Estabel.Endereco)</p>
+                                    <p class="text-contato">Bairro: @Html.DisplayFor(model => model.Estabel.Bairro)</p>
+                                    <p class="text-contato">Cidade: @Html.DisplayFor(model => model.Estabel.Cidade) - @Html.DisplayFor(model => model.Estabel.UF) </p>
+                                    <p class="text-contato">Complemento: @Html.DisplayFor(model => model.Estabel.Complemento) </p>
+                                    <p class="text-contato">Cep: @Html.DisplayFor(model => model.Estabel.CEP)</p>
+                                    <p class="text-contato">CNPJ: @Html.DisplayFor(model => model.Estabel.CNPJ)</p>
+
+                                </div>
+                                <div class="detail">
+                                    <h4 class="text-contato">Telefone / Whatsapp</h4>
+                                    <p class="text-contato"> @Html.DisplayFor(model => model.Estabel.TelefoneCelular)</p>
+                                </div>
+                                <div class="detail">
+                                    <h4 class="text-contato">E-mail</h4>
+                                    <p class="text-contato"> <a class="text-contato" href="mailto:@email">@email</a></p>
+                                </div>
+                            </div>
+
+                            <ul class="social_links">
+                                <li class="facebook animated bounceIn wow delay-03s"><a href="@Html.DisplayFor(model => model.Estabel.UrlFacebook)"><i class="fa fa-facebook"></i></a></li>
+                                <li class="facebook animated bounceIn wow delay-04s"><a href="@Html.DisplayFor(model => model.Estabel.UrlInstagram)"><i class="fa fa-instagram"></i></a></li>
+                                <li class="pinterest animated bounceIn wow delay-04s"><a href="@Html.DisplayFor(model => model.Estabel.UrlInstagram)"><i class="fa fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 wow fadeInLeft delay-06s">
+                        <div class="form">
+
+                            <div id="alertDiv">
+
+                            </div>
+
+                            <div class="row">
+                                @*Info Contato*@
+                                <div class="col-md-12">
+
+                                    <form asp-action="RegistraContato" id="contatoForm" method="post">
+
+                                        <div id="alertaDiv" class="alert alert-dismissible invisivel" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <div>
+                                                <ul id="textoAlerta">
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="col-lg-8 wow fadeInLeft delay-06s">
+                                            <input id="nome" asp-for="Contato.Nome" class="input-text input-contato" type="text" placeholder="Nome *">
+
+                                            <input id="email" asp-for="Contato.Email" class="input-text input-contato" type="text" name="" placeholder="E-mail *">
+                                            <span asp-validation-for="Contato.Email" class="text-danger"></span>
+
+                                            <input id="telefone" asp-for="Contato.Telefone" class="input-text input-contato" type="text" name="txttelefone" placeholder="Telefone *">
+                                            <span asp-validation-for="Contato.Telefone" class="text-danger"></span>
+
+                                            <input id="contatoWhatsapp" asp-for="Contato.ContatoWhatsapp" class="custom-control-input" type="checkbox" checked>
+                                            <label style="color:white" class="form-check-label" for="gridCheck1">Aceito Contato via Whatsapp </label>
+
+                                            <textarea id="mensagem" asp-for="Contato.Mensagem" class="input-text  text-area input-contato" cols="0" rows="0" placeholder="Digite sua mensagem *"></textarea>
+                                            <span asp-validation-for="Contato.Mensagem" class="text-danger"></span>
+
+                                            <div class="form-group">
+
+                                                <input id="btnContato"
+                                                       data-controller="Home"
+                                                       data-action="RegistraContato"
+                                                       data-body-message="Registrar contato"
+                                                       class="btn input-btn btn-block saveasync" type="submit" value="Enviar">
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        
+
+        <div class="container">
+            <div class="footer_bottom"><span>Todos os Direitos © reservados - <a href="https://www.linkedin.com/in/bmendesgonca/" target="_blank" title="Linkedin">Desenvolvido por Bruno M. Gonçalves</a> </span> </div>
+            <!-- <div class="footer_bottom"><span>Copyright © reserved,    JayTemplate by <a href="http://webthemez.com">WebThemez.com</a>. </span> </div> -->
+        </div>
+    </footer>
+</div>
+<script src="~/js/envia-contato.js"></script>
+

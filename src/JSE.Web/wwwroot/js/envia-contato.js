@@ -1,7 +1,20 @@
 ﻿var btnEnviar = document.querySelector("#btnContato");
+var alertaErro = "alert-danger";
+var alertWarning = "alert-warning";
+var alertSuccess = "alert-success";
+
 
 btnEnviar.addEventListener("click", function () {
     event.preventDefault();
+
+    var retorno = validateForm();
+    var mensagens = [];
+
+    if (!retorno) {
+        return;
+    }
+
+
     var form = document.querySelector("#contatoForm");
     var e = event;
     target = e.target;
@@ -12,16 +25,17 @@ btnEnviar.addEventListener("click", function () {
     var mensagem = document.querySelector("#mensagem").value;
 
     var contato = {
-        Id: "",
+        Id: "0",
         Nome: nome,
+        Mensagem: mensagem,
         Email: email,
         Telefone: telefone,
         ContatoWhatsapp: contatoWhatsapp,
-        Mensagem: mensagem
+        DataHora: Date.now(),
+        Pendente: true
     }
 
     var url = "/" + $(target).data('controller') + "/" + $(target).data('action');
-    var mensagem;
 
     $.ajax({
         type: "post",
@@ -32,49 +46,107 @@ btnEnviar.addEventListener("click", function () {
         success: function (data) {
 
             if (data == "OK") {
-                ExibeAlerta("alert-success", mensagem);
-                form.reset();                
+                mensagens.push("Obrigado, em breve entraremos em contato :)");
+                ExibeAlerta(alertSuccess, mensagens);
+                form.reset();
+            }
+            else if (data == "ErroModelo") {
+                mensagens.push("Por favor, verifique se todos os campos do formulário foram preenchidos corretamente.");
+
+                ExibeAlerta(alertaErro, mensagens);
             }
             else {
-                ExibeAlerta("alert-danger", mensagem);
+                mensagens.push("Houve um erro no registro do seu contato, por favor, tente novamente mais tarde");
+                ExibeAlerta(alertaErro, mensagens);
             }
         },
         error: function (xhr) {
-            ExibeAlerta("alert-danger", mensagem);
+            ExibeAlerta(alertaErro, "");
         }
     });
 });
 
 
+function ExibeAlerta(tipo, mensagens) {
 
-function ExibeAlerta(tipo, mensagem) {
+    var ul = document.querySelector("#textoAlerta");
+    //ul.textContent = "";
 
-    var bodyDiv = $('.alertDiv');
-
-    bodyDiv.empty();
-
-    if (tipo == "alert-danger") {
-        bodyDiv.append(`<div id="alert-box" class="alert alert-danger  alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="message-alert">
-            <strong>Erro! </strong> Houve um erro no registro do seu contato, por favor, tente novamente mais tarde. 
-            </div>
-            </div>`);
-
-    }
-    else {
-        bodyDiv.append(`<div id="alert-box" class="alert alert-success  alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="message-alert">
-            <strong>Obrigado, </strong>em breve entraremos em contato :) 
-            </div>
-            </div>`);
-    }
+    //ul.innerHTML = ""; //limpar a lista de mensagens
 
 
-    bodyDiv.removeClass("invisivel");
+    mensagens.forEach(function (erro) {
+        var li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
+
+    var alertBox = document.querySelector('#alertaDiv');
+    alertBox.classList.add("invisivel");
+    alertBox.classList.remove("invisivel");
+    alertBox.classList.add(tipo);
+
     setTimeout(function () {
-        bodyDiv.addClass("invisivel");
-    }, 4000);
+        alertBox.classList.add("invisivel");
+        ul.innerHTML = "";
+    }, 5000);
+
+
 
 }
+
+//function ExibeAlerta(tipo, mensagem) {
+
+//    var alertBox = document.querySelector('#alertaDiv');
+//    var textoAlerta = document.querySelector('#textoAlerta');
+//    alertBox.classList.add("invisivel");
+
+//    alertBox.classList.remove("invisivel");
+//    alertBox.classList.add(tipo);
+//    textoAlerta.textContent = mensagem;
+
+//    setTimeout(function () {
+//        alertBox.classList.add("invisivel");
+//    }, 4000);
+
+//}
+
+function validateForm() {
+    var Nome = document.getElementById('nome').value;
+    var Email = document.getElementById('email').value;
+    var Telefone = document.getElementById('telefone').value;
+    var Mensagem = document.getElementById('mensagem').value;
+    var padraoEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+    var padraoTel = /\+\d{2}\s\(\d{2}\)\s\d{4,5}-?\d{4}/g;
+
+    var errors = [];
+    if (Nome == "") {
+        errors.push("Por favor, informe o nome.");
+    }
+
+    if (Email == "" || !padraoEmail.test(Email)) {
+        errors.push("Por favor, informe um e-mail válido.");
+    }
+
+    //if (Telefone == "" || !padraoTel.test(Telefone)) {
+    //    errors.push("Por favor, informe Telefone válido. Ex. ()");
+    //}
+
+    //if (Telefone == "" || !isNaN(Telefone)) {
+    if (Telefone == "") {
+        errors.push("Por favor, informe Telefone válido. Ex. (11)9-1234-5678");
+    }
+
+    if (Mensagem == "") {
+        errors.push("Por favor, informe a mensagem que deseja nos enviar");
+    }
+
+    if (errors.length) {
+        ExibeAlerta(alertaErro, errors);
+        return false;
+    }
+    else {
+        return true;
+    }
+
+};

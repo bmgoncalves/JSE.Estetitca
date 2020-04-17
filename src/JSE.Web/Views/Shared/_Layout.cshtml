@@ -17,55 +17,12 @@
 </head>
 
 <body>
-    <partial name="_StatusMessages" />
+    <partial name="_StatusMessages" class="invisivel" />
 
     @RenderBody()
 
     <!--Footer-->
-    <footer class="footer_wrapper" id="Contato">
-        <div class="container">
-            <section class="page_section Contato" id="Contato">
-                <div class="Contato_section">
-                    <h2 class="text-contato">Contato</h2>
-                    <h6 class="text-contato">Em caso de dúvidas ou mais informações entre em contato conosco</h6>
-
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 wow fadeInLeft">
-                        <div class="Contato_info">
-                            <div class="detail">
-                                <h4 class="text-contato">Jay Soares Estética de Resultado</h4>
-                                <p class="text-contato">Endereço: Alameda Yayá, 9999</p>
-                                <p class="text-contato">Bairro: Vila Galvão</p>
-                                <p class="text-contato">Cidade: Guarulhos - SP</p>
-                                <p class="text-contato">Cep: 99999-999</p>
-                            </div>
-                            <div class="detail">
-                                <h4 class="text-contato">Telefone / Whatsapp</h4>
-                                <p class="text-contato"> 55 11 9-8065-5952</p>
-                            </div>
-                            <div class="detail">
-                                <h4 class="text-contato">E-mail</h4>
-                                <p class="text-contato">faleconosco@jaysoaresestetica.com.br</p>
-                            </div>
-                        </div>
-
-                        <ul class="social_links">
-                            <li class="facebook animated bounceIn wow delay-03s"><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
-                            <li class="pinterest animated bounceIn wow delay-04s"><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-8 wow fadeInLeft delay-06s">
-                        <partial name="~/Views/Shared/_Footer.cshtml" />
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div class="container">
-            <div class="footer_bottom"><span><a>Todos os Direitos © reservados</a>. </span> </div>
-            <!-- <div class="footer_bottom"><span>Copyright © reserved,    JayTemplate by <a href="http://webthemez.com">WebThemez.com</a>. </span> </div> -->
-        </div>
-    </footer>
+    
     <script src="~/js/jquery-1.11.1.min.js"></script>
     <script src="~/js/bootstrap.js"></script>
     <script src="~/js/jquery-scrolltofixed.js"></script>
