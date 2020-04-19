@@ -3,7 +3,7 @@
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin/Dashboard/Index")]
+    //[Route("Admin/Dashboard/Index")]
     public class DashboardController : Controller
     {
         // GET: Home

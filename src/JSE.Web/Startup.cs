@@ -65,6 +65,7 @@ namespace JSE.Web
                 endpoints.MapControllerRoute(
                   name: "areas",
                   pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+                                                      
                 );
             });
 

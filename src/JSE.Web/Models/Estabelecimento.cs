@@ -42,11 +42,11 @@ namespace JSE.Web.Models
         public string Pais { get; set; }
 
         [DisplayName("Tel. Comercial")]
-        [MaxLength(15)]
+        [MaxLength(18)]
         public string TelefoneComercial { get; set; }
 
         [DisplayName("Tel. Cel. / Whatsapp")]
-        [MaxLength(15)]
+        [MaxLength(18)]
         [Required(ErrorMessage = "Campo obrigatório")]
         public string TelefoneCelular { get; set; }
 
@@ -56,11 +56,19 @@ namespace JSE.Web.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         public string Email { get; set; }
 
-        [DisplayName("Nome Fantasia")]
+        [DisplayName("CPNJ")]
         [MaxLength(50)]
         [Required(ErrorMessage = "Campo obrigatório")]
-        [RegularExpression(@"/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/", ErrorMessage = "CNPJ Inválido.")]
+        //[RegularExpression(@"/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/", ErrorMessage = "CNPJ Inválido.")]
         public string CNPJ { get; set; }
+
+        [DisplayName("Inscrição Estadual")]
+        [MaxLength(50)]
+        public string InscricaoEstadual { get; set; }
+
+        [DisplayName("Inscrição Municipal")]
+        [MaxLength(50)]
+        public string InscricaoMunicipal { get; set; }
 
         [DisplayName("Perfil Instagram")]
         [MaxLength(200)]
@@ -75,5 +83,20 @@ namespace JSE.Web.Models
         public string UrlYoutube { get; set; }
 
         public bool Ativo { get; set; }
+
+        [MaxLength(25)]
+        [DisplayName("Titulo Empresa (Slogan)")]
+        public string TituloSobreNos { get; set; }
+
+
+        [MaxLength(25)]
+        [DisplayName("SubTitulo Empresa")]
+        public string SubTituloSobreNos { get; set; }
+
+        [MaxLength(3500)]
+        [DataType(DataType.MultilineText)]
+        [DisplayName("Descrição sobre Empresa")]
+        public string DescricaoSobreNos { get; set; }
+
     }
 }

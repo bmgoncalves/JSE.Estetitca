@@ -7,13 +7,17 @@
     <link href="~/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/css/datepicker3.css" rel="stylesheet">
     <link href="~/css/styles-admin.css" rel="stylesheet">
-    <link rel="icon" href="favicon.png" type="image/png">    
+    <link rel="icon" href="~/img/favicon.png" type="image/png">
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 </head>
 
 <body>
+
+    <div class="banana"></div>
+
+
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -33,7 +37,6 @@
                             <li>
                                 <div class="dropdown-messages-box">
                                     <a href="profile.html" class="pull-left">
-                                        @*<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">*@
                                     </a>
                                     <div class="message-body">
                                         <small class="pull-right">3 mins ago</small>
@@ -46,7 +49,6 @@
                             <li>
                                 <div class="dropdown-messages-box">
                                     <a href="profile.html" class="pull-left">
-                                        @*<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">*@
                                     </a>
                                     <div class="message-body">
                                         <small class="pull-right">1 hour ago</small>
@@ -120,7 +122,7 @@
             </div>
         </form>
         <ul class="nav menu">
-            <li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+            <li class="active"><a href="~/admin/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
             <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
             <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
             <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
@@ -148,11 +150,12 @@
                     <em class="fa fa-navicon">&nbsp;</em> Cadastros <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
                 <ul class="children collapse" id="sub-item-2">
-                    <li>                    
-                        <a class="" href="servico">
-                            <span class="fa fa-arrow-right">&nbsp;</span>
+                    <li>
+                        <a class="" href="~/admin/estabelecimento">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Estabelecimento
                         </a>
                     </li>
+
                     <li>
                         <a class="" href="produto">
                             <span class="fa fa-arrow-right">&nbsp;</span> Produtos
@@ -179,20 +182,11 @@
             </ol>
         </div><!--/.row-->
 
-
         @RenderBody()
 
-
-
-
-
-
-
     </div>	<!--/.main-->
-
-
-
-    <script src="~/js/jquery-1.11.1.min.js"></script>
+    @*<script src="~/js/jquery-1.11.1.min.js"></script>*@
+    <script src="~/js/jquery.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/chart.min.js"></script>
     <script src="~/js/chart-data.js"></script>
@@ -201,17 +195,18 @@
     <script src="~/js/bootstrap-datepicker.js"></script>
     <script src="~/js/custom-admin.js"></script>
     <script src="https://kit.fontawesome.com/68b1a75dc4.js" crossorigin="anonymous"></script>
-    <script>
-        window.onload = function () {
-            var chart1 = document.getElementById("line-chart").getContext("2d");
-            window.myLine = new Chart(chart1).Line(lineChartData, {
-                responsive: true,
-                scaleLineColor: "rgba(0,0,0,.2)",
-                scaleGridLineColor: "rgba(0,0,0,.05)",
-                scaleFontColor: "#c5c7cc"
-            });
-        };
-    </script>
+    <script src="~/js/delete.js"></script>
+    @*<script>
+            window.onload = function () {
+                var chart1 = document.getElementById("line-chart").getContext("2d");
+                window.myLine = new Chart(chart1).Line(lineChartData, {
+                    responsive: true,
+                    scaleLineColor: "rgba(0,0,0,.2)",
+                    scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleFontColor: "#c5c7cc"
+                });
+            };
+        </script>*@
 
 
 </body>

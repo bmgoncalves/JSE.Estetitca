@@ -1,0 +1,100 @@
+﻿@model IEnumerable<JSE.Web.Models.Estabelecimento>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "Estabelecimento";
+    ViewData["Action"] = "Index";
+    ViewData["Area"] = "Admin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+
+<h2>Estabelecimentos</h2>
+
+<p>
+    <a class="btn btn-primary" href="~/admin/estabelecimento/AddOrEdit">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeFantasia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CEP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CNPJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var alerta = "Confirma a exclusão do Estabelecimento: " + item.NomeFantasia;
+
+            <tr id="row_@item.Id">
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeFantasia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CEP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CNPJ)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="far fa-edit"></i>Editar</a> |
+
+                    @*<a href="#" class="delete"
+                        data-id="@item.Id"
+                        data-controller="Estabelecimento"
+                        data-action="Delete"
+                        data-area="Admin"
+                        data-body-message="@alerta"
+                        onclick="confirmdelete(@item.Id)"><i class="fa fa-trash-alt fa-lg"></i>Excluir</a>*@
+
+                    <a href="~/admin/estabelecimento/Delete/@item.Id"><i class="far fa-trash-alt"></i>Excluir</a>
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<input type="hidden" id="hiddenItemId" />
