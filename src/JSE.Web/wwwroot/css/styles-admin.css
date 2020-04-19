@@ -1050,3 +1050,36 @@ p.back-link {
 .btn-secondary:hover {
     color: #fff;
 }
+
+/* Esconde o input */
+input[type='file'] {
+    display: none
+}
+
+/* Aparência que terá o seletor de arquivo */
+.lbl-upload {
+    background-color: #6c757d;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    padding: 6px 20px
+}
+
+.lbl-upload {
+    background-color: #6c757d;
+    border-radius: 5px;
+    color: #fff;
+    margin: 10px;
+    padding: 6px 20px
+}
+
+    .lbl-upload:hover {
+        background-color: #6c757d
+    }
+
+.img-upload {
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 48%;
+}

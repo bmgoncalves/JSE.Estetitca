@@ -84,12 +84,12 @@ namespace JSE.Web.Models
 
         public bool Ativo { get; set; }
 
-        [MaxLength(25)]
+        [MaxLength(40)]
         [DisplayName("Titulo Empresa (Slogan)")]
         public string TituloSobreNos { get; set; }
 
 
-        [MaxLength(25)]
+        [MaxLength(40)]
         [DisplayName("SubTitulo Empresa")]
         public string SubTituloSobreNos { get; set; }
 

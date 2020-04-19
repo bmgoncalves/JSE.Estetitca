@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    [Migration("20200418175746_atualizaEstabel2")]
-    partial class atualizaEstabel2
+    [Migration("20200419192330_depoimentoAprovado1")]
+    partial class depoimentoAprovado1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,9 +69,8 @@ namespace JSE.Web.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Autor")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                    b.Property<bool>("Aprovado")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
@@ -80,6 +79,19 @@ namespace JSE.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("NomeCliente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("TelefoneCelular")
+                        .HasColumnType("nvarchar(18)")
+                        .HasMaxLength(18);
 
                     b.HasKey("Id");
 
@@ -153,8 +165,8 @@ namespace JSE.Web.Migrations
                         .HasMaxLength(30);
 
                     b.Property<string>("SubTituloSobreNos")
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
 
                     b.Property<string>("TelefoneCelular")
                         .IsRequired()
@@ -166,8 +178,8 @@ namespace JSE.Web.Migrations
                         .HasMaxLength(18);
 
                     b.Property<string>("TituloSobreNos")
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
 
                     b.Property<string>("UF")
                         .IsRequired()

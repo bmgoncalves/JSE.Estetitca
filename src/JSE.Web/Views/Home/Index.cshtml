@@ -4,6 +4,7 @@
     string email = Model.Estabel.Email;
 }
 
+
 <div class="text-center">
     <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -75,25 +76,14 @@
             <!-- Title -->
             <div class="section-title">
                 <h2>Sobre Nós</h2>
-                <h6>A persone who loves Nature and It's creations</h6>
+                <h4>@Model.Estabel.TituloSobreNos</h4>
 
                 <div class="inner_section">
                     <div class="row">
                         <div class="col-md-6"> <img class="img-responsive" src="img/about1.png"> </div>
                         <div class="col-md-6">
-                            <h3>Trending Styles</h3>
-                            <p>Lorem ipsum dolor sit amet, quo meis voluptaria, erant bonorum albucius et per, ei placerat eu, te eos porro veniam. An everti maiorum detracto mea. Eu eos dicam voluptaria, erant bonorum albucius et per, ei sapientem accommodare est. Saepe dolorum constituam ei vel. Te sit malorum ceteros repudiandae, ne tritani adipisci vis.</p>
-
-                            <p>
-                                Lorem ipsum dolor sit amet, voluptaria, erant bonorum albucius et per, ei meis audire placerat eu, te eos porro veniam. An everti maiorum detracto mea. Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum gravida tortor orci ipsum gravida tortor.
-                            </p>
-
-                            <ul class="about-us-list">
-                                <li class="points">Consectetur Morbi sagittis, sem quisci ipsum gravida tortor</li>
-                                <li class="points">Sagittis, sem quis lacinia faucibus, orci ipsum gravida </li>
-                                <li class="points">Ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci</li>
-                            </ul><!-- /.about-us-list -->
-
+                            <h3>@Model.Estabel.SubTituloSobreNos</h3>
+                            <p>@Model.Estabel.DescricaoSobreNos</p>
                         </div>
                     </div>
                 </div>
@@ -371,6 +361,11 @@
                         </div>
                     </div>
                 </section>
+
+                <div class="text-center">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>
+                    <partial name="_DepoimentoUsuario" />
+                </div>
             </section>
         </div>
     </section>
@@ -387,7 +382,7 @@
 
                 </div>
 
-                
+
                 <div class="row">
                     @*Info Estabelecimento*@
                     <div>

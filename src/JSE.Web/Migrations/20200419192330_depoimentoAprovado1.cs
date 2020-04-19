@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JSE.Web.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class depoimentoAprovado1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,8 @@ namespace JSE.Web.Migrations
                     Email = table.Column<string>(maxLength: 70, nullable: false),
                     Telefone = table.Column<string>(maxLength: 15, nullable: false),
                     ContatoWhatsapp = table.Column<bool>(nullable: false),
-                    DataHora = table.Column<DateTime>(nullable: false)
+                    DataHora = table.Column<DateTime>(nullable: false),
+                    Pendente = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,8 +33,11 @@ namespace JSE.Web.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descricao = table.Column<string>(maxLength: 2000, nullable: false),
-                    Autor = table.Column<string>(maxLength: 50, nullable: true),
-                    DataCriacao = table.Column<DateTime>(nullable: false)
+                    NomeCliente = table.Column<string>(maxLength: 50, nullable: false),
+                    TelefoneCelular = table.Column<string>(maxLength: 18, nullable: true),
+                    Email = table.Column<string>(maxLength: 50, nullable: true),
+                    DataCriacao = table.Column<DateTime>(nullable: false),
+                    Aprovado = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,14 +58,19 @@ namespace JSE.Web.Migrations
                     CEP = table.Column<string>(maxLength: 11, nullable: false),
                     UF = table.Column<string>(maxLength: 2, nullable: false),
                     Pais = table.Column<string>(maxLength: 30, nullable: false),
-                    TelefoneComercial = table.Column<string>(maxLength: 15, nullable: true),
-                    TelefoneCelular = table.Column<string>(maxLength: 15, nullable: false),
+                    TelefoneComercial = table.Column<string>(maxLength: 18, nullable: true),
+                    TelefoneCelular = table.Column<string>(maxLength: 18, nullable: false),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     CNPJ = table.Column<string>(maxLength: 50, nullable: false),
+                    InscricaoEstadual = table.Column<string>(maxLength: 50, nullable: true),
+                    InscricaoMunicipal = table.Column<string>(maxLength: 50, nullable: true),
                     UrlInstagram = table.Column<string>(maxLength: 200, nullable: true),
                     UrlFacebook = table.Column<string>(maxLength: 200, nullable: true),
                     UrlYoutube = table.Column<string>(maxLength: 200, nullable: true),
-                    Ativo = table.Column<bool>(nullable: false)
+                    Ativo = table.Column<bool>(nullable: false),
+                    TituloSobreNos = table.Column<string>(maxLength: 40, nullable: true),
+                    SubTituloSobreNos = table.Column<string>(maxLength: 40, nullable: true),
+                    DescricaoSobreNos = table.Column<string>(maxLength: 3500, nullable: true)
                 },
                 constraints: table =>
                 {

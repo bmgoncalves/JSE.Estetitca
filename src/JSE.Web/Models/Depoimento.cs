@@ -20,11 +20,28 @@ namespace JSE.Web.Models
         public string Descricao { get; set; }
 
         [MaxLength(50)]
-        public string Autor { get; set; }        
+        [DisplayName("Cliente")]
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        public string NomeCliente { get; set; }
+
+        [DisplayName("Tel. Cel. / Whatsapp")]
+        [MaxLength(18)]
+        public string TelefoneCelular { get; set; }
+
+        [DisplayName("E-mail")]
+        [MaxLength(50)]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail em formato inválido.")]
+        public string Email { get; set; }
+
+        [DisplayName("Imagem (Opcional)")]
+        [MaxLength(250)]
+        [DataType(DataType.ImageUrl)]
+        public string Imagem { get; set; }
 
         [DisplayName("Data")]
-        [Required(ErrorMessage ="Campo obrigatório")]
-        public DateTime DataCriacao { get; set; }
-        
+        [Required(ErrorMessage = "Campo obrigatório")]
+        public DateTime DataCriacao { get; set; } = DateTime.Now;
+        public bool Aprovado { get; set; } = false;
+
     }
 }
