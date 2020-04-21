@@ -70,10 +70,6 @@ btnEnviar.addEventListener("click", function () {
 function ExibeAlerta(tipo, mensagens) {
 
     var ul = document.querySelector("#textoAlerta");
-    //ul.textContent = "";
-
-    //ul.innerHTML = ""; //limpar a lista de mensagens
-
 
     mensagens.forEach(function (erro) {
         var li = document.createElement("li");

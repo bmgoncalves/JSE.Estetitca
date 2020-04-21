@@ -10,5 +10,7 @@ namespace JSE.Web.ViewModel
     {
         public Estabelecimento  Estabel { get; set; }
         public Contato Contato { get; set; }
+
+        public Depoimento Depoimento { get; set; }
     }
 }

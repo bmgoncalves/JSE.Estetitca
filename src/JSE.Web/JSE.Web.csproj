@@ -8,6 +8,8 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Files\Download\" />
+    <Folder Include="Files\Upload\Depoimentos\" />
   </ItemGroup>
 
   <ItemGroup>
