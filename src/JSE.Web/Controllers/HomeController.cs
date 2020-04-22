@@ -88,7 +88,7 @@ namespace JSE.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
+        public async Task<IActionResult> DepoimentoAntigoFuncionando(Depoimento depoimento, IEnumerable<IFormFile> files)
         {
 
             if (ModelState.IsValid)
@@ -123,58 +123,56 @@ namespace JSE.Web.Controllers
             }
         }
 
-
-
-
         [HttpPost]
-        public async Task<IActionResult> Depoimento2(List<IFormFile> files, Depoimento d)
+        public async Task<IActionResult> Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
         {
-            long size = files.Sum(f => f.Length);
-            var filePaths = new List<string>();
-            string nomeArquivo = "";
-            string nomeArquivoNovo = "";
 
-            string diretorio = $"{_env.ContentRootPath}\\Files\\Upload\\Depoimentos\\";
-
-            try
+            if (ModelState.IsValid)
             {
-                foreach (var formFile in files)
+                var uploads = Path.Combine(_env.WebRootPath, "images\\uploads\\depoimentos\\");
+                var usuario = depoimento.NomeCliente;
+                var nomeArquivo = "";
+
+                try
                 {
-                    if (formFile.Length > 0)
+                    _context.Depoimentos.Add(depoimento);
+                    _context.SaveChanges();
+
+                    foreach (var file in files)
                     {
-                        nomeArquivo = Path.GetRandomFileName();
-                        nomeArquivoNovo = Path.ChangeExtension(nomeArquivo, ".png");
-
-                        while (System.IO.File.Exists(diretorio + nomeArquivoNovo))
+                        if (file != null && file.Length > 0)
                         {
-                            nomeArquivo = Path.GetRandomFileName();
-                            nomeArquivoNovo = Path.ChangeExtension(nomeArquivo, ".png");
-                        }
-
-                        using (var stream = new FileStream(diretorio + nomeArquivoNovo, FileMode.Create))
-                        {
-                            await formFile.CopyToAsync(stream);
-                            d.Imagem = Path.Combine(diretorio, nomeArquivoNovo);
-                            filePaths.Add(diretorio + nomeArquivoNovo);
+                            var fileName = Guid.NewGuid().ToString().Replace("-", "") +
+                                            Path.GetExtension(file.FileName);
+                            using (var s = new FileStream(Path.Combine(uploads, fileName),
+                                                                        FileMode.Create))
+                            {
+                                await file.CopyToAsync(s);
+                                nomeArquivo = fileName;
+                            }
                         }
                     }
+                    return Json(new { status = "success", message = "Depoimento enviado com sucesso" });
                 }
-
-                _context.Depoimentos.Add(d);
-                _context.SaveChanges();
-                return Ok(new { count = files.Count, size, filePaths });
-            }
-            catch (Exception ex)
-            {
-                filePaths.Add("Erro: " + ex.Message);
-                if (System.IO.File.Exists(diretorio + nomeArquivoNovo))
+                catch (Exception ex)
                 {
-                    System.IO.File.Delete(diretorio + nomeArquivoNovo);
+                    return Json(new { status = "error", message = ex.Message });
                 }
-
-                return Ok(new { count = files.Count, size, filePaths });
+                
+            }
+            else
+            {
+                var list = new List<string>();
+                foreach (var modelStateVal in ViewData.ModelState.Values)
+                {
+                    list.AddRange(modelStateVal.Errors.Select(error => error.ErrorMessage));
+                }
+                return Json(new { status = "error", errors = list });
             }
         }
+
+
+
 
     }
 }

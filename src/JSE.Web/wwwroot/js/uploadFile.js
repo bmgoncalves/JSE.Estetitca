@@ -16,7 +16,13 @@ $(function () {
     $("#uploadBtn").click(function (evt) {
         evt.preventDefault();
 
+        var retorno = validateForm();
         var mensagens = [];
+
+        if (!retorno) {
+            return;
+        }
+
 
         var fileupload = $("#inputFiles").get(0);
         var files = fileupload.files;
@@ -95,26 +101,27 @@ function ExibeAlerta(tipo, mensagens) {
         alertBox.classList.add("invisivel");
         ul.innerHTML = "";
 
-        //when hidden
-        $modal.on('hidden.bs.modal', function (e) {
-            return this.render(); //DOM destroyer
-        });
-        $modal.modal('hide'); //start hiding
+        if (tipo == "alert-success") {
+            //when hidden
+            $modal.on('hidden.bs.modal', function (e) {
+                return this.render(); //DOM destroyer
+            });
+            $modal.modal('hide'); //start hiding
+        }
+        else {
+            alertBox.classList.remove(tipo);
+        }
 
-    }, 5000);
-
-
-
+    }, 3500);
 }
 
 
-//input.addEventListener('change', function () {
-//    filename.textcontent = this.value;
-//});
+input.addEventListener('change', function () {
+    filename.textcontent = this.value;
+    readURL(input);
+});
 
-
-
-
+//Atualiza miniatura imagem no modal
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -132,3 +139,41 @@ function readURL(input) {
 
     }
 }
+
+
+function validateForm() {
+
+    var NomeCliente = document.getElementById('NomeCliente').value,
+        Telefone = document.getElementById('TelefoneCelular').value,
+        Email = document.getElementById('Email').value,
+        Mensagem = document.getElementById('Descricao').value;
+
+    var padraoEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+
+    var errors = [];
+    if (NomeCliente == "") {
+        errors.push("Por favor, informe o nome.");
+    }
+
+    if (Email == "" || !padraoEmail.test(Email)) {
+        errors.push("Por favor, informe um e-mail válido.");
+    }
+
+    //if (Telefone == "" || !isNaN(Telefone)) {
+    if (Telefone == "") {
+        errors.push("Por favor, informe Telefone válido. Ex. (11)9-1234-5678");
+    }
+
+    if (Mensagem == "") {
+        errors.push("Por favor, informe a mensagem que deseja nos enviar");
+    }
+
+    if (errors.length) {
+        ExibeAlerta(alertaErro, errors);
+        return false;
+    }
+    else {
+        return true;
+    }
+
+};
