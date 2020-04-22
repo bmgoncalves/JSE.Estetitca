@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin")]
     public class ServicoController : Controller
     {
         private readonly JSEContext _context;

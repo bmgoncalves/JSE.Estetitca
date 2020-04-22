@@ -24,6 +24,9 @@ namespace JSE.Web.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         public string Duracao { get; set; }
 
-
+        [DisplayName("Imagem")]
+        [MaxLength(300)]
+        [Required(ErrorMessage = "Campo obrigatório")]
+        public string Imagem { get; set; }
     }
 }

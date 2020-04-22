@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Cadastro serviços";
-    Layout = "~/Views/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Cadastro Serviço</h2>
@@ -19,13 +19,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="Descricao" class="control-label"></label>
-                <textarea asp-for="Descricao" class="form-control"></textarea>
+                <textarea asp-for="Descricao" class="form-control" rows="8"></textarea>
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Duracao" class="control-label"></label>
                 <input asp-for="Duracao" class="form-control" />
                 <span asp-validation-for="Duracao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Imagem" class="control-label"></label>
+                <input asp-for="Imagem" class="form-control" />
+                <span asp-validation-for="Imagem" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <input asp-area="Admin" asp-controller="Home" asp-action="Index" type="submit" value="Salvar" class="btn btn-success btn-block" />
