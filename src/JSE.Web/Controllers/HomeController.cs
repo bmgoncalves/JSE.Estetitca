@@ -56,8 +56,6 @@ namespace JSE.Web.Controllers
         /// <param name="contato"></param>
         /// <returns></returns>
         [HttpPost]
-
-        //public async Task<IActionResult> AddOrEdit([Bind("Id,NomeServico,Descricao,Duracao")] Servico servico)
         public IActionResult RegistraContato(Contato contato)
         {
             if (contato != null)
@@ -90,36 +88,92 @@ namespace JSE.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Depoimento(List<IFormFile> files, Depoimento d)
+        public async Task<IActionResult> Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var uploads = Path.Combine(_env.WebRootPath, "images");
+                var usuario = depoimento.NomeCliente;
+                var nomeArquivo = "";
+                foreach (var file in files)
+                {
+                    if (file != null && file.Length > 0)
+                    {
+                        var fileName = Guid.NewGuid().ToString().Replace("-", "") +
+                                        Path.GetExtension(file.FileName);
+                        using (var s = new FileStream(Path.Combine(uploads, fileName),
+                                                                    FileMode.Create))
+                        {
+                            await file.CopyToAsync(s);
+                            nomeArquivo = fileName;
+                        }
+                    }
+                }
+                return Json(new { status = "success", message = "Depoimento enviado com sucesso" });
+            }
+            else
+            {
+                var list = new List<string>();
+                foreach (var modelStateVal in ViewData.ModelState.Values)
+                {
+                    list.AddRange(modelStateVal.Errors.Select(error => error.ErrorMessage));
+                }
+                return Json(new { status = "error", errors = list });
+            }
+        }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Depoimento2(List<IFormFile> files, Depoimento d)
         {
             long size = files.Sum(f => f.Length);
             var filePaths = new List<string>();
+            string nomeArquivo = "";
+            string nomeArquivoNovo = "";
 
             string diretorio = $"{_env.ContentRootPath}\\Files\\Upload\\Depoimentos\\";
 
-            foreach (var formFile in files)
+            try
             {
-                if (formFile.Length > 0)
+                foreach (var formFile in files)
                 {
-                    string nomeArquivo = Path.GetRandomFileName();
-                    string nomeArquivoNovo = Path.ChangeExtension(nomeArquivo, ".png");
-
-                    while (System.IO.File.Exists(diretorio + nomeArquivoNovo))
+                    if (formFile.Length > 0)
                     {
                         nomeArquivo = Path.GetRandomFileName();
                         nomeArquivoNovo = Path.ChangeExtension(nomeArquivo, ".png");
-                    }
 
-                    //Caminho completo da imagem
-                    filePaths.Add(diretorio + nomeArquivoNovo);
+                        while (System.IO.File.Exists(diretorio + nomeArquivoNovo))
+                        {
+                            nomeArquivo = Path.GetRandomFileName();
+                            nomeArquivoNovo = Path.ChangeExtension(nomeArquivo, ".png");
+                        }
 
-                    using (var stream = new FileStream(diretorio + nomeArquivoNovo, FileMode.Create))
-                    {
-                        await formFile.CopyToAsync(stream);
+                        using (var stream = new FileStream(diretorio + nomeArquivoNovo, FileMode.Create))
+                        {
+                            await formFile.CopyToAsync(stream);
+                            d.Imagem = Path.Combine(diretorio, nomeArquivoNovo);
+                            filePaths.Add(diretorio + nomeArquivoNovo);
+                        }
                     }
                 }
+
+                _context.Depoimentos.Add(d);
+                _context.SaveChanges();
+                return Ok(new { count = files.Count, size, filePaths });
             }
-            return Ok(new { count = files.Count, size, filePaths });
+            catch (Exception ex)
+            {
+                filePaths.Add("Erro: " + ex.Message);
+                if (System.IO.File.Exists(diretorio + nomeArquivoNovo))
+                {
+                    System.IO.File.Delete(diretorio + nomeArquivoNovo);
+                }
+
+                return Ok(new { count = files.Count, size, filePaths });
+            }
         }
 
     }

@@ -12,14 +12,7 @@
             </div>
             <div class="modal-body mx-3">
 
-                <div id="alertaDiv" class="alert alert-dismissible invisivel" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <div>
-                        <ul id="textoAlerta"></ul>
-                    </div>
-                </div>
-
-                <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Depoimento" id="formUpload">
+                <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Depoimento">
 
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="md-form mb-5">
@@ -49,10 +42,8 @@
                     <div>
                         <div>
                             <label class="lbl-upload" for="input-file">Adicionar foto </label>
-                            @*<input class="input-file" id="input-file" type="file" value="" onformchange="readURL(this);" accept="image/*" />*@
-                            @*<input class="input-file" id="input-files" type="file" name="files" />*@
-                            <input class="input-file" id="inputFiles" type="file" name="files" />
-
+                            <input class="input-file" id="input-file" type="file" value="" onformchange="readURL(this);" accept="image/*" />
+                            @*<input class="input-file" id="input-file" type="file" name="files" />*@
 
                             <span id="file-name"></span>
                             <img class="img-upload" id="blah" src="~/img/80x80.png" alt="Sua imagem" />
@@ -61,7 +52,7 @@
 
                     <div class="md-form">
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-primary btn-block" id="uploadBtn">Enviar</button>
+                            <button class="btn btn-primary btn-block">Enviar</button>
                         </div>
                     </div>
 
@@ -72,3 +63,4 @@
     </div>
 </div>
 
+<script src="~/js/uploadFile.js"></script>

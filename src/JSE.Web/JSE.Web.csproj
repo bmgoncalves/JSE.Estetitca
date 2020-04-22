@@ -10,6 +10,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Files\Download\" />
     <Folder Include="Files\Upload\Depoimentos\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>

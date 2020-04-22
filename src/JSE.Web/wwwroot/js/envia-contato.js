@@ -86,9 +86,6 @@ function ExibeAlerta(tipo, mensagens) {
         alertBox.classList.add("invisivel");
         ul.innerHTML = "";
     }, 5000);
-
-
-
 }
 
 //function ExibeAlerta(tipo, mensagem) {
