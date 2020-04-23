@@ -1,9 +1,13 @@
 ﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
 using JSE.Web.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 namespace JSE.Web.Areas.Admin.Controllers
@@ -55,22 +59,33 @@ namespace JSE.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("Id,NomeServico,Descricao,Duracao")] Servico servico)
+        [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
+        public async Task<IActionResult> AddOrEdit(IFormFile file, [Bind("Id,NomeServico,Descricao,Duracao,Imagem")] Servico s)
         {
+            
+            var arquivo = file;
+
             if (ModelState.IsValid)
             {
-                if (servico.Id == 0)
+                try
                 {
-                    _context.Add(servico);
+                    if (s.Id == 0)
+                        _context.Add(s);
+                    else
+                        _context.Update(s);
+
+                    await _context.SaveChangesAsync();
+                    return Redirect("~/Admin/Servico");
+
                 }
-                else
+                catch (DataException) 
                 {
-                    _context.Update(servico);
+                    return RedirectToAction("~/Admin/Servico/AddOrEdit", new { Servico = s, saveChangesError = true });
                 }
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
             }
-            return View(servico);
+            return Redirect("~/Admin/Servico/AddOrEdit");
+
         }
 
         // GET: Admin/Servico/Delete/5

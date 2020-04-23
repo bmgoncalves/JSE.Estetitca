@@ -28,6 +28,7 @@ namespace JSE.Web.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<Servico>().Ignore(s => s.File); //Ignorar propriedade
         }
 
 
