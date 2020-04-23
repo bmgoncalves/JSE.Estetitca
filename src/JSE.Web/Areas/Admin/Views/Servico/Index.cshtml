@@ -67,7 +67,7 @@
 
             if (this.value.length > 0) {
                 tdNomeServico = servico.querySelector(".nomeServico");
-                nomeServico = tdNomeServico.innerHtml;
+                nomeServico = tdNomeServico.textContent;
                 var expressao = new RegExp(this.value, "i");
 
                 if (!expressao.test(nomeServico)) {
