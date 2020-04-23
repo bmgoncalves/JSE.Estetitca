@@ -27,7 +27,7 @@ using JSE.Web.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"61afdd18e2a399eec3324a6310ac0e9f069ac2c2", @"/Views/Shared/_DepoimentoUsuario.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d45929e2c4e77230fbf62ddee21c84f8ac82f50d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"342cbc31f0b5e2caedfc8fa06048e851c89205de", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__DepoimentoUsuario : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<JSE.Web.Models.Depoimento>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("text-danger"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

@@ -16,19 +16,21 @@ namespace JSE.Web.Models
         public string NomeServico { get; set; }
 
         [DisplayName("Descrição")]
-        [MaxLength(200)]
+        [MaxLength(2500)]
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Campo obrigatório")]
         public string Descricao { get; set; }
 
-        [DisplayName("Tempo Duração")]
+        [DisplayName("Tempo Duração (Opcional)")]
         [MaxLength(8)]        
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Duracao { get; set; }
 
         [DisplayName("Imagem")]
-        [MaxLength(300)]        
+        [MaxLength(400)]        
         public string Imagem { get; set; }
-     
+
+        [DisplayName("Exibir Pagina inicial")]
+        public bool ExibeIndex { get; set; } = false;
+
     }
 }

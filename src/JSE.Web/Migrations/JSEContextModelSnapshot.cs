@@ -214,17 +214,19 @@ namespace JSE.Web.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(2500)")
+                        .HasMaxLength(2500);
 
                     b.Property<string>("Duracao")
-                        .IsRequired()
                         .HasColumnType("nvarchar(8)")
                         .HasMaxLength(8);
 
+                    b.Property<bool>("ExibeIndex")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Imagem")
-                        .HasColumnType("nvarchar(300)")
-                        .HasMaxLength(300);
+                        .HasColumnType("nvarchar(400)")
+                        .HasMaxLength(400);
 
                     b.Property<string>("NomeServico")
                         .IsRequired()

@@ -29,14 +29,14 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Servico
-        public ViewResult Index(int pageNumber = 1, int pageSize = 5)
+        [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
+        public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
 
             int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var servicos = _context.Servicos.OrderBy(s => s.Id)
+            var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.Id)
                 .Skip(excludeRecords)
                 .Take(pageSize);
-
 
             var result = new PagedResult<Servico>
             {
@@ -66,7 +66,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
-        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, [Bind("Id,NomeServico,Descricao,Duracao,Imagem")] Servico servico)
+        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, [Bind("Id,NomeServico,Descricao,Duracao,Imagem,ExibeIndex")] Servico servico)
         {
             if (ModelState.IsValid)
             {
@@ -74,6 +74,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                 var uploadPath = Path.Combine(_env.WebRootPath, "images\\uploads\\servicos\\");
                 var fileName = Util.GenerateCoupon(10, rand);
                 var nomeArquivo = "";
+                bool atualizaImagem = false;
 
                 try
                 {
@@ -84,18 +85,25 @@ namespace JSE.Web.Areas.Admin.Controllers
                         {
                             fileName += Path.GetExtension(file.FileName);
 
-                            //fileName = Guid.NewGuid().ToString().Replace("-", "") +
-                            //                Path.GetExtension(file.FileName);
                             using (var s = new FileStream(Path.Combine(uploadPath, fileName),
                                                                         FileMode.Create))
                             {
                                 await file.CopyToAsync(s);
                                 nomeArquivo = fileName;
+                                atualizaImagem = true;
                             }
                         }
                     }
 
-                    servico.Imagem = uploadPath + fileName;
+                    if (atualizaImagem)
+                    {
+                        if (System.IO.File.Exists(servico.Imagem))
+                        {
+                            System.IO.File.Delete(servico.Imagem);
+                        }
+
+                        servico.Imagem = uploadPath + fileName;
+                    }
 
                     if (servico.Id == 0)
                     {
@@ -103,11 +111,6 @@ namespace JSE.Web.Areas.Admin.Controllers
                     }
                     else
                     {
-                        //var fotoAntiga = _context.Servicos.Find(servico.Id).Imagem;
-                        //if (System.IO.File.Exists(fotoAntiga))
-                        //{
-                        //    System.IO.File.Delete(fotoAntiga);
-                        //}
                         _context.Update(servico);
                     }
 

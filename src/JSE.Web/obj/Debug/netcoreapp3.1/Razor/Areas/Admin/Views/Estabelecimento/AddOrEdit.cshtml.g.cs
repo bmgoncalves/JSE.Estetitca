@@ -27,7 +27,7 @@ using JSE.Web.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b2c058b7c66a6fe89ddb3bb7c0bfab9a3fb62535", @"/Areas/Admin/Views/Estabelecimento/AddOrEdit.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d45929e2c4e77230fbf62ddee21c84f8ac82f50d", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8933707006942fc8515e419d9137f90813bd6f02", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Estabelecimento_AddOrEdit : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<JSE.Web.Models.Estabelecimento>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("text-danger"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

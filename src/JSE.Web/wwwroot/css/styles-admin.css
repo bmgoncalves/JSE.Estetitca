@@ -1083,3 +1083,39 @@ input[type='file'] {
     max-height: 80px;
     border-radius: 48%;
 }
+
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: #BC2A87;
+    border-color: #BC2A87;
+}
+
+.pagination > li > span {
+    color: #BC2A87;
+}
+
+a {
+    color: #BC2A87;
+    text-decoration: none;
+}
+
+.text-primary {
+    color: #BC2A87;
+}
+
+
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+    background-color: #BC2A87;
+    border-color: #BC2A87;
+}
+
+.invisivel {
+    display: none;
+}

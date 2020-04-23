@@ -8,10 +8,20 @@
 }
 
 <h2>Serviços cadastrados</h2>
-
+<hr />
 <p>
     <a class="btn btn-primary" href="~/admin/servico/AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
 </p>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="inputPesquisa" class="control-label">Pesquisar</label>
+            <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
+        </div>
+    </div>
+</div>
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -19,24 +29,22 @@
                 @Html.DisplayName("Servico")
             </th>
             <th>
-                @Html.DisplayName("Duração")
+                @Html.DisplayName("Pagina inicial")
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Data)
         {
-            <tr>
-                <td>
+            <tr class="servico">
+                <td class="nomeServico">
                     @Html.DisplayFor(modelItem => item.NomeServico)
-                </td>                
+                </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Duracao)
+                    @Html.DisplayFor(modelItem => item.ExibeIndex)
                 </td>
                 <td>
                     <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
-                    @*<a asp-action="Delete" asp-route-id="@item.Id" class="text-danger ml-1" onclick="return confirm('Deseja excluir este Serviço?')"><i class="fa fa-trash-alt fa-lg"></i>Excluir</a>*@
                     <a href="~/admin/servico/Delete/@item.Id"><i class="far fa-trash-alt"></i>Excluir</a>
 
                 </td>
@@ -45,6 +53,37 @@
     </tbody>
 </table>
 
-<partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+<div>
+    <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+</div>
+
+<script>
+    var campoFiltro = document.querySelector("#inputPesquisa");
+
+    campoFiltro.addEventListener("input", function () {
+        var servicos = document.querySelectorAll(".servico");
+        for (var i = 0; i < servicos.length; i++) {
+            var servico = servicos[i];
+
+            if (this.value.length > 0) {
+                tdNomeServico = servico.querySelector(".nomeServico");
+                nomeServico = tdNomeServico.innerHtml;
+                var expressao = new RegExp(this.value, "i");
+
+                if (!expressao.test(nomeServico)) {
+                    servico.classList.add("invisivel");
+                }
+                else {
+                    servico.classList.remove("invisivel");
+                }
+            }
+            else {
+                servico.classList.remove("invisivel");
+            }
+
+        }
+    });
+</script>
+
 
 
