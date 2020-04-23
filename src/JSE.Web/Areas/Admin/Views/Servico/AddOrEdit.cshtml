@@ -1,16 +1,18 @@
 ﻿@model JSE.Web.Models.Servico
 
 @{
-    ViewData["Title"] = "Cadastro serviços";
+    ViewData["Title"] = "AddOrEdit";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Cadastro Serviço</h2>
+<h2>Cadastrar</h2>
 
+<h4>Servico</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
-        <form enctype="multipart/form-data"  asp-action="AddOrEdit">
+        <form enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="NomeServico" class="control-label"></label>
@@ -29,26 +31,32 @@
             </div>
 
             <div class="form-group">
-                @*<input type="file" name="someFile" accept="image/*" />*@
-
                 <label class="lbl-upload" for="inputFiles">Adicionar foto </label>
                 <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
-                <span id="fileName"></span>
+                <span id="file-name"></span>
             </div>
 
-            <div class="form-group col-md-6">
-                <input type="submit" value="Salvar" class="btn btn-success btn-block" />
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Salvar" class="btn btn-primary btn-block btn-lg" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a href="~/admin/Servico" class="btn btn-secondary btn-block btn-lg">Voltar</a>
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-secondary btn-block">Voltar</a>
-            </div>
+
         </form>
     </div>
 </div>
 
+
 <script>
-    $('#inputFiles').addEventListener('change', function () {
-        $('#fileName').textcontent = this.value;
-        //filename.textcontent = this.value;
+
+    var input = document.querySelector("#inputFiles");
+    var filename = document.querySelector("#file-name");
+
+    input.addEventListener('change', function () {
+        filename.textcontent = this.value;
     });
 </script>
+

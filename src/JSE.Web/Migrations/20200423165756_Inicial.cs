@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JSE.Web.Migrations
 {
-    public partial class depoimentoAprovado1 : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,6 +36,7 @@ namespace JSE.Web.Migrations
                     NomeCliente = table.Column<string>(maxLength: 50, nullable: false),
                     TelefoneCelular = table.Column<string>(maxLength: 18, nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: true),
+                    Imagem = table.Column<string>(maxLength: 250, nullable: true),
                     DataCriacao = table.Column<DateTime>(nullable: false),
                     Aprovado = table.Column<bool>(nullable: false)
                 },
@@ -85,7 +86,8 @@ namespace JSE.Web.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeServico = table.Column<string>(maxLength: 50, nullable: false),
                     Descricao = table.Column<string>(maxLength: 200, nullable: false),
-                    Duracao = table.Column<string>(maxLength: 8, nullable: false)
+                    Duracao = table.Column<string>(maxLength: 8, nullable: false),
+                    Imagem = table.Column<string>(maxLength: 300, nullable: true)
                 },
                 constraints: table =>
                 {

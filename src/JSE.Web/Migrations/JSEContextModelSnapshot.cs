@@ -223,7 +223,6 @@ namespace JSE.Web.Migrations
                         .HasMaxLength(8);
 
                     b.Property<string>("Imagem")
-                        .IsRequired()
                         .HasColumnType("nvarchar(300)")
                         .HasMaxLength(300);
 

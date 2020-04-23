@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><span>JSE - </span>Administração</a>
+                <a class="navbar-brand" href="~/Admin/Dashboard"><span>JSE - </span>Administração</a>
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -116,17 +116,14 @@
             <div class="clear"></div>
         </div>
         <div class="divider"></div>
-        <form role="search">
+        @*<form role="search">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search">
             </div>
-        </form>
+        </form>*@
         <ul class="nav menu">
-            <li class="active"><a href="~/admin/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-            <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-            <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-            <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-            <li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
+            <li class="active"><a href="~/admin/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Inicio</a></li>
+
             <li class="parent ">
                 <a data-toggle="collapse" href="#sub-item-1">
                     <em class="fa fa-navicon">&nbsp;</em> Clientes <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
@@ -172,7 +169,13 @@
 
                 </ul>
             </li>
-            <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+
+            <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
+            <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
+            <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
+            <li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
+
+            <li><a href="~/Admin/Login"><em class="fa fa-power-off">&nbsp;</em> Sair</a></li>
         </ul>
 
 

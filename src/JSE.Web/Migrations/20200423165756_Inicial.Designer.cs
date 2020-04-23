@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    [Migration("20200421232403_imagemDepoimento")]
-    partial class imagemDepoimento
+    [Migration("20200423165756_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -223,6 +223,10 @@ namespace JSE.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(8)")
                         .HasMaxLength(8);
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("nvarchar(300)")
+                        .HasMaxLength(300);
 
                     b.Property<string>("NomeServico")
                         .IsRequired()

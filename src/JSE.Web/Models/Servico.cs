@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -26,8 +27,8 @@ namespace JSE.Web.Models
         public string Duracao { get; set; }
 
         [DisplayName("Imagem")]
-        [MaxLength(300)]
-        [Required(ErrorMessage = "Campo obrigatório")]
+        [MaxLength(300)]        
         public string Imagem { get; set; }
+     
     }
 }
