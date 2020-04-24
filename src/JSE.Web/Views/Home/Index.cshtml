@@ -4,375 +4,367 @@
     string email = Model.Estabel.Email;
 }
 
+    <link href="~/css/popper.css" rel="stylesheet" />
 
-    <div class="text-center">
-        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel" data-slide-to="1"></li>
-                <li data-target="#carousel" data-slide-to="2"></li>
-            </ol>
-            <!-- Carousel items -->
-            <div class="carousel-inner">
-                <div class="active item">
-                    <div class="caption zoomIn wow animated">
-                        <h2>Jay Soares<br /><strong>Estética de Resultado</strong></h2>
-                    </div>
+<div class="text-center">
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">
+                <div class="caption zoomIn wow animated">
+                    <h2>Jay Soares<br /><strong>Estética de Resultado</strong></h2>
+                </div>
 
-                    <img class="" src="img/slide1.jpg" alt="">
-                </div>
-                <div class="item">
-                    <div class="caption zoomIn wow animated">
-                        <h2>LIMPEZA DE PELE<br /><strong>Renove sua pele e autoestima</strong></h2>
-                    </div>
-                    <img class="" src="img/slide2.jpg" alt="">
-                </div>
-                <div class="item">
-                    <div class="caption zoomIn wow animated">
-                        <h2>Massagem MODELADORA<br /><strong>resultados incriveis</strong></h2>
-                    </div>
-                    <img class="" src="img/slide3.jpg" alt="">
-                </div>
+                <img class="" src="img/slide1.jpg" alt="">
             </div>
-            <!-- Carousel nav -->
-            <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
-            <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+            <div class="item">
+                <div class="caption zoomIn wow animated">
+                    <h2>LIMPEZA DE PELE<br /><strong>Renove sua pele e autoestima</strong></h2>
+                </div>
+                <img class="" src="img/slide2.jpg" alt="">
+            </div>
+            <div class="item">
+                <div class="caption zoomIn wow animated">
+                    <h2>Massagem MODELADORA<br /><strong>resultados incriveis</strong></h2>
+                </div>
+                <img class="" src="img/slide3.jpg" alt="">
+            </div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+    </div>
+
+    <!--Header_section-->
+    <header id="header_wrapper">
+        <div class="container">
+            <div class="header_box">
+                <!--<div class="logo"><a href="#">Resume</a></div>-->
+                <nav class="navbar navbar-inverse" role="navigation">
+
+                    <a class="navbar-brand" href="#">
+                        <img src="img/logo-brand.png" width="160" height="100" class="align-top" alt="">
+                    </a>
+
+                    <div class="navbar-header">
+                        <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    </div>
+                    <div id="main-nav" class="collapse navbar-collapse navStyle">
+                        <ul class="nav navbar-nav" id="mainNav">
+                            <li class="active"><a href="#carousel" class="scroll-link">Home</a></li>
+                            <li><a href="#sobreNos" class="scroll-link">Sobre nós</a></li>
+                            <li><a href="#service" class="scroll-link">Serviços</a></li>
+                            <li><a href="#Portfolio" class="scroll-link">Portifólio</a></li>
+                            <li><a href="#experience" class="scroll-link">Depoimentos</a></li>
+                            <li><a href="#Contato" class="scroll-link">Contato</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="sobreNos" class="content">
+
+        <!-- Container -->
+        <div class="container portfolio_title">
+
+            <!-- Title -->
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <h4>@Model.Estabel.TituloSobreNos</h4>
+
+                <div class="inner_section">
+                    <div class="row">
+                        <div class="col-md-6"> <img class="img-responsive" src="img/about1.png"> </div>
+                        <div class="col-md-6">
+                            <h3>@Model.Estabel.SubTituloSobreNos</h3>
+                            <p>@Model.Estabel.DescricaoSobreNos</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--/Title -->
+        </div>
+    </section>
+    <!--sobreNos-->
+    <!--Service-->
+
+
+
+    <section id="service">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
+            <div class="service_wrapper">
+                <div class="row">
+                    @foreach (var servico in Model.Servicos)
+                    {
+                        <div class="col-md-3">
+                            <div class="service_icon delay-03s animated wow  zoomIn"> <span><img class="img-upload" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="Sua imagem" /></span> </div>
+                            <div class="service_block">
+                                <h3 class="animated fadeInUp wow">@servico.NomeServico</h3>
+                                @*<p class="animated fadeInDown wow">@servico.Descricao </p>*@
+                                
+                                <div class="service_icon delay-03s animated wow zoomIn" > 
+                                    <span><i class="fa fa-search-plus bs-tooltip-top" data-toggle="popover" data-placement="right" title="@servico.NomeServico" data-content="@servico.Descricao"></i></span> 
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="row pull-left">
+                    <a class="btn btn-index animated fadeInDown wow" href="#"><i class="fa fa-search-plus"></i>Mais serviços</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="Portfolio" class="content">
+
+        <!-- Container -->
+        <div class="container portfolio_title">
+
+            <!-- Title -->
+            <div class="section-title">
+                <h2>Portifólio</h2>
+                <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
+
+            </div>
+            <!--/Title -->
+
+        </div>
+        <!-- Container -->
+
+        <div class="portfolio-top"></div>
+
+        <!-- Portfolio Filters -->
+        <div class="portfolio">
+
+            <div id="filters" class="sixteen columns">
+                <ul class="clearfix">
+                    <li>
+                        <a id="all" href="#" data-filter="*" class="active">
+                            <h5>All</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="#" data-filter=".nature">
+                            <h5>Hair Style</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="#" data-filter=".wildlife">
+                            <h5>Beauty</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="#" data-filter=".citylife">
+                            <h5>Make Over</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="#" data-filter=".animals">
+                            <h5>Nature SPA</h5>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--/Portfolio Filters -->
+            <!-- Portfolio Wrapper -->
+            <div class="isotope fadeInLeft animated wow grid" style="position: relative; overflow: hidden; height: 480px;" id="portfolio_wrapper">
+                <!-- Portfolio Item -->
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   animals isotope-item effect-oscar">
+
+                    <div class="portfolio_img">
+                        <img src="img/portfolio_pic1.jpg" alt="Portfolio 1">
+                    </div>
+                    <figcaption>
+                        <div>
+                            <a href="img/portfolio_pic1.jpg" class="fancybox">
+                                <h2>Warm <span>Oscar</span></h2>
+                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                <!--/Portfolio Item -->
+                <!-- Portfolio Item-->
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife isotope-item effect-oscar">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic2.jpg" alt="Portfolio 1"> </div>
+                    <figcaption>
+                        <div>
+                            <a href="img/portfolio_pic2.jpg" class="fancybox">
+                                <h2>Warm <span>Oscar</span></h2>
+                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                <!--/Portfolio Item -->
+                <!-- Portfolio Item -->
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife  isotope-item effect-oscar">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic3.jpg" alt="Portfolio 1"> </div>
+                    <figcaption>
+                        <div>
+                            <a href="img/portfolio_pic3.jpg" class="fancybox">
+                                <h2>Warm <span>Oscar</span></h2>
+                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                <!--/Portfolio Item-->
+                <!-- Portfolio Item-->
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  citylife  nature web isotope-item effect-oscar">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic4.jpg" alt="Portfolio 1"> </div>
+                    <figcaption>
+                        <div>
+                            <a href="img/portfolio_pic4.jpg" class="fancybox">
+                                <h2>Warm <span>Oscar</span></h2>
+                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                <!-- Portfolio Item -->
+                <!-- Portfolio Item -->
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife isotope-item effect-oscar">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic5.jpg" alt="Portfolio 1"> </div>
+                    <figcaption>
+                        <div>
+                            <a href="img/portfolio_pic5.jpg" class="fancybox">
+                                <h2>Warm <span>Oscar</span></h2>
+                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                <!--/Portfolio Item -->
+                <!-- Portfolio Item -->
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  web isotope-item effect-oscar">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic6.jpg" alt="Portfolio 1"> </div>
+                    <figcaption>
+                        <div>
+                            <a href="img/portfolio_pic6.jpg" class="fancybox">
+                                <h2>Warm <span>Oscar</span></h2>
+                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                <!--/Portfolio Item -->
+                <!-- Portfolio Item  -->
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife web isotope-item effect-oscar">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic7.jpg" alt="Portfolio 1"> </div>
+                    <figcaption>
+                        <div>
+                            <a href="img/portfolio_pic7.jpg" class="fancybox">
+                                <h2>Warm <span>Oscar</span></h2>
+                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                <!--/Portfolio Item -->
+                <!-- Portfolio Item -->
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   citylife isotope-item effect-oscar">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic8.jpg" alt="Portfolio 1"> </div>
+                    <figcaption>
+                        <div>
+                            <a href="img/portfolio_pic8.jpg" class="fancybox">
+                                <h2>Warm <span>Oscar</span></h2>
+                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                <!--/Portfolio Item -->
+
+            </div>
+            <!--/Portfolio Wrapper -->
+
+        </div>
+        <!--/Portfolio Filters -->
+
+        <div class="portfolio_btm"></div>
+
+
+        <div id="project_container">
+            <div class="clear"></div>
+            <div id="project_data"></div>
         </div>
 
-        <!--Header_section-->
-        <header id="header_wrapper">
-            <div class="container">
-                <div class="header_box">
-                    <!--<div class="logo"><a href="#">Resume</a></div>-->
-                    <nav class="navbar navbar-inverse" role="navigation">
 
-                        <a class="navbar-brand" href="#">
-                            <img src="img/logo-brand.png" width="170" height="120" class="align-top" alt="">
-                        </a>
+    </section>
+    <!--/Portfolio -->
 
-                        <div class="navbar-header">
-                            <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                        </div>
-                        <div id="main-nav" class="collapse navbar-collapse navStyle">
-                            <ul class="nav navbar-nav" id="mainNav">
-                                <li class="active"><a href="#carousel" class="scroll-link">Home</a></li>
-                                <li><a href="#sobreNos" class="scroll-link">Sobre nós</a></li>
-                                <li><a href="#service" class="scroll-link">Serviços</a></li>
-                                <li><a href="#Portfolio" class="scroll-link">Portifólio</a></li>
-                                <li><a href="#experience" class="scroll-link">Depoimentos</a></li>
-                                <li><a href="#Contato" class="scroll-link">Contato</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-
-        <section id="sobreNos" class="content">
-
-            <!-- Container -->
-            <div class="container portfolio_title">
-
-                <!-- Title -->
+    <section id="experience">
+        <div class="container">
+            <section id="news" class="white-bg padding-top-bottom">
                 <div class="section-title">
-                    <h2>Sobre Nós</h2>
-                    <h4>@Model.Estabel.TituloSobreNos</h4>
-
-                    <div class="inner_section">
-                        <div class="row">
-                            <div class="col-md-6"> <img class="img-responsive" src="img/about1.png"> </div>
-                            <div class="col-md-6">
-                                <h3>@Model.Estabel.SubTituloSobreNos</h3>
-                                <p>@Model.Estabel.DescricaoSobreNos</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!--/Title -->
-            </div>
-        </section>
-        <!--sobreNos-->
-        <!--Service-->
-        <section id="service">
-            <div class="container">
-                <h2>Nossos Serviços</h2>
-                <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
-                <div class="service_wrapper">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="service_icon delay-03s animated wow  zoomIn"> <span><i class="fa fa-tree"></i></span> </div>
-                            <div class="service_block">
-
-                                <h3 class="animated fadeInUp wow">Photography</h3>
-                                <p class="animated fadeInDown wow">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="service_icon icon2  delay-03s animated wow zoomIn"> <span><i class="fa fa-crosshairs"></i></span> </div>
-                            <div class="service_block">
-                                <h3 class="animated fadeInUp wow">Editing Skills</h3>
-                                <p class="animated fadeInDown wow">Lorem Ipsum is simply dummy text of the printing and typesetting industry.  </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="service_icon icon3  delay-03s animated wow zoomIn"> <span><i class="fa fa-building-o "></i></span> </div>
-                            <div class="service_block">
-
-                                <h3 class="animated fadeInUp wow">Lighting</h3>
-                                <p class="animated fadeInDown wow">Lorem Ipsum is simply dummy text of the printing and typesetting industry.  </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="service_icon icon3  delay-03s animated wow zoomIn"> <span><i class="fa fa-twitter"></i></span> </div>
-                            <div class="service_block">
-
-                                <h3 class="animated fadeInUp wow">Dimensions</h3>
-                                <p class="animated fadeInDown wow">Lorem Ipsum is simply dummy text of the printing and typesetting industry.  </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <!-- Portfolio -->
-        <section id="Portfolio" class="content">
-
-            <!-- Container -->
-            <div class="container portfolio_title">
-
-                <!-- Title -->
-                <div class="section-title">
-                    <h2>Portifólio</h2>
+                    <h2>Depoimentos </h2>
                     <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
 
                 </div>
-                <!--/Title -->
-
-            </div>
-            <!-- Container -->
-
-            <div class="portfolio-top"></div>
-
-            <!-- Portfolio Filters -->
-            <div class="portfolio">
-
-                <div id="filters" class="sixteen columns">
-                    <ul class="clearfix">
-                        <li>
-                            <a id="all" href="#" data-filter="*" class="active">
-                                <h5>All</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="#" data-filter=".nature">
-                                <h5>Hair Style</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="#" data-filter=".wildlife">
-                                <h5>Beauty</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="#" data-filter=".citylife">
-                                <h5>Make Over</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="#" data-filter=".animals">
-                                <h5>Nature SPA</h5>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/Portfolio Filters -->
-                <!-- Portfolio Wrapper -->
-                <div class="isotope fadeInLeft animated wow grid" style="position: relative; overflow: hidden; height: 480px;" id="portfolio_wrapper">
-                    <!-- Portfolio Item -->
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   animals isotope-item effect-oscar">
-
-                        <div class="portfolio_img">
-                            <img src="img/portfolio_pic1.jpg" alt="Portfolio 1">
-                        </div>
-                        <figcaption>
-                            <div>
-                                <a href="img/portfolio_pic1.jpg" class="fancybox">
-                                    <h2>Warm <span>Oscar</span></h2>
-                                    <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
-                                </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <!--/Portfolio Item -->
-                    <!-- Portfolio Item-->
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife isotope-item effect-oscar">
-                        <div class="portfolio_img"> <img src="img/portfolio_pic2.jpg" alt="Portfolio 1"> </div>
-                        <figcaption>
-                            <div>
-                                <a href="img/portfolio_pic2.jpg" class="fancybox">
-                                    <h2>Warm <span>Oscar</span></h2>
-                                    <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
-                                </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <!--/Portfolio Item -->
-                    <!-- Portfolio Item -->
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife  isotope-item effect-oscar">
-                        <div class="portfolio_img"> <img src="img/portfolio_pic3.jpg" alt="Portfolio 1"> </div>
-                        <figcaption>
-                            <div>
-                                <a href="img/portfolio_pic3.jpg" class="fancybox">
-                                    <h2>Warm <span>Oscar</span></h2>
-                                    <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
-                                </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <!--/Portfolio Item-->
-                    <!-- Portfolio Item-->
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  citylife  nature web isotope-item effect-oscar">
-                        <div class="portfolio_img"> <img src="img/portfolio_pic4.jpg" alt="Portfolio 1"> </div>
-                        <figcaption>
-                            <div>
-                                <a href="img/portfolio_pic4.jpg" class="fancybox">
-                                    <h2>Warm <span>Oscar</span></h2>
-                                    <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
-                                </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <!-- Portfolio Item -->
-                    <!-- Portfolio Item -->
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife isotope-item effect-oscar">
-                        <div class="portfolio_img"> <img src="img/portfolio_pic5.jpg" alt="Portfolio 1"> </div>
-                        <figcaption>
-                            <div>
-                                <a href="img/portfolio_pic5.jpg" class="fancybox">
-                                    <h2>Warm <span>Oscar</span></h2>
-                                    <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
-                                </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <!--/Portfolio Item -->
-                    <!-- Portfolio Item -->
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  web isotope-item effect-oscar">
-                        <div class="portfolio_img"> <img src="img/portfolio_pic6.jpg" alt="Portfolio 1"> </div>
-                        <figcaption>
-                            <div>
-                                <a href="img/portfolio_pic6.jpg" class="fancybox">
-                                    <h2>Warm <span>Oscar</span></h2>
-                                    <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
-                                </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <!--/Portfolio Item -->
-                    <!-- Portfolio Item  -->
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife web isotope-item effect-oscar">
-                        <div class="portfolio_img"> <img src="img/portfolio_pic7.jpg" alt="Portfolio 1"> </div>
-                        <figcaption>
-                            <div>
-                                <a href="img/portfolio_pic7.jpg" class="fancybox">
-                                    <h2>Warm <span>Oscar</span></h2>
-                                    <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
-                                </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <!--/Portfolio Item -->
-                    <!-- Portfolio Item -->
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   citylife isotope-item effect-oscar">
-                        <div class="portfolio_img"> <img src="img/portfolio_pic8.jpg" alt="Portfolio 1"> </div>
-                        <figcaption>
-                            <div>
-                                <a href="img/portfolio_pic8.jpg" class="fancybox">
-                                    <h2>Warm <span>Oscar</span></h2>
-                                    <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
-                                </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <!--/Portfolio Item -->
-
-                </div>
-                <!--/Portfolio Wrapper -->
-
-            </div>
-            <!--/Portfolio Filters -->
-
-            <div class="portfolio_btm"></div>
-
-
-            <div id="project_container">
-                <div class="clear"></div>
-                <div id="project_data"></div>
-            </div>
-
-
-        </section>
-        <!--/Portfolio -->
-
-        <section id="experience">
-            <div class="container">
-                <section id="news" class="white-bg padding-top-bottom">
-                    <div class="section-title">
-                        <h2>Depoimentos </h2>
-                        <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
-
-                    </div>
-                    <section id="carousel">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
-                                    <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
-                                        <!-- Carousel indicators -->
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
-                                            <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
-                                            <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
-                                        </ol>
-                                        <!-- Carousel items -->
-                                        <div class="carousel-inner">
-                                            <div class="active item">
-                                                <blockquote>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                                                </blockquote>
-                                                <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
-                                            </div>
-                                            <div class="item">
-                                                <blockquote>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                                                </blockquote>
-                                                <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
-                                            </div>
-                                            <div class="item">
-                                                <blockquote>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                                                </blockquote>
-                                                <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
-                                            </div>
+                <section id="carousel">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
+                                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+                                    <!-- Carousel indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+                                        <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
+                                    </ol>
+                                    <!-- Carousel items -->
+                                    <div class="carousel-inner">
+                                        <div class="active item">
+                                            <blockquote>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                            </blockquote>
+                                            <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
+                                        </div>
+                                        <div class="item">
+                                            <blockquote>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                            </blockquote>
+                                            <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+                                        </div>
+                                        <div class="item">
+                                            <blockquote>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                            </blockquote>
+                                            <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-
-                    <div class="text-center">
-                        <a href="#" class="btn btn-primary" onclick="initImage()" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>
-
-                        <partial name="_DepoimentoUsuario" model="Model.Depoimento" />
                     </div>
                 </section>
-            </div>
-        </section>
 
-    </div>
+                <div class="text-center">
+                    <a href="#" class="btn btn-primary" onclick="initImage()" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>
+
+                    <partial name="_DepoimentoUsuario" model="Model.Depoimentos" />
+                </div>
+            </section>
+        </div>
+    </section>
+
+</div>
 
 <div>
     <footer class="footer_wrapper" id="Contato">
@@ -481,3 +473,14 @@
 </div>
 <script src="~/js/envia-contato.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+            placement: 'top',
+            trigger: 'hover'
+        });
+    });
+</script>

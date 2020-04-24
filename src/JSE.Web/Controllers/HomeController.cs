@@ -33,7 +33,8 @@ namespace JSE.Web.Controllers
         {
             IndexViewModel idx = new IndexViewModel()
             {
-                Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault()
+                Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault(),
+                Servicos = _context.Servicos.Where(s => s.ExibeIndex == true).OrderBy(s => s.NomeServico).Take(4).ToList()
             };
 
             return View(idx);
@@ -87,41 +88,6 @@ namespace JSE.Web.Controllers
             return View(estabelecimento);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> DepoimentoAntigoFuncionando(Depoimento depoimento, IEnumerable<IFormFile> files)
-        {
-
-            if (ModelState.IsValid)
-            {
-                var uploads = Path.Combine(_env.WebRootPath, "images");
-                var usuario = depoimento.NomeCliente;
-                var nomeArquivo = "";
-                foreach (var file in files)
-                {
-                    if (file != null && file.Length > 0)
-                    {
-                        var fileName = Guid.NewGuid().ToString().Replace("-", "") +
-                                        Path.GetExtension(file.FileName);
-                        using (var s = new FileStream(Path.Combine(uploads, fileName),
-                                                                    FileMode.Create))
-                        {
-                            await file.CopyToAsync(s);
-                            nomeArquivo = fileName;
-                        }
-                    }
-                }
-                return Json(new { status = "success", message = "Depoimento enviado com sucesso" });
-            }
-            else
-            {
-                var list = new List<string>();
-                foreach (var modelStateVal in ViewData.ModelState.Values)
-                {
-                    list.AddRange(modelStateVal.Errors.Select(error => error.ErrorMessage));
-                }
-                return Json(new { status = "error", errors = list });
-            }
-        }
 
         [HttpPost]
         public async Task<IActionResult> Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)

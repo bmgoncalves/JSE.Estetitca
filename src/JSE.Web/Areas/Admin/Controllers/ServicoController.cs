@@ -66,7 +66,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
-        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, [Bind("Id,NomeServico,Descricao,Duracao,Imagem,ExibeIndex")] Servico servico)
+        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, [Bind("Id,NomeServico,Descricao,Duracao,Imagem,NomeArquivo,ExibeIndex")] Servico servico)
         {
             if (ModelState.IsValid)
             {
@@ -103,6 +103,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                         }
 
                         servico.Imagem = uploadPath + fileName;
+                        servico.NomeArquivo = fileName;
                     }
 
                     if (servico.Id == 0)

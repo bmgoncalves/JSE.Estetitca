@@ -7,6 +7,7 @@ namespace JSE.Web.Areas.Admin.Controllers
     public class DashboardController : Controller
     {
         // GET: Home
+        [Route("{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")]
         public ActionResult Index()
         {
             return View();

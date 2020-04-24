@@ -29,6 +29,10 @@ namespace JSE.Web.Models
         [MaxLength(400)]        
         public string Imagem { get; set; }
 
+        [DisplayName("Nome Arquivo")]
+        [MaxLength(50)]
+        public string NomeArquivo { get; set; }
+
         [DisplayName("Exibir Pagina inicial")]
         public bool ExibeIndex { get; set; } = false;
 
