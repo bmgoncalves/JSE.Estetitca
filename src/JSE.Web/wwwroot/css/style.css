@@ -643,7 +643,6 @@ div#main-nav {
     display: block;
     height: 95px;
     width: 95px;
-    /* border: 1px solid #FFFFFF; */
     border-radius: 50%;
     padding: 6px 0 0;
     background-color: #A92178;
@@ -675,6 +674,38 @@ color:#fff;
     color: #FFC0E8;
     margin: 0 0 35px 0;
 }
+
+
+/*---------------------------------*/
+
+.service_icon2 {
+    width: 90px;
+    height: 85px;
+    margin: 0px auto 25px;
+}
+
+
+
+    .service_icon2 span {
+        /*background: transparent;
+        display: block;
+        height: 95px;
+        width: 95px;
+        border-radius: 50%;
+        padding: 6px 0 0;
+        background-color: #A92178;*/
+    }
+
+    .service_icon2 i {
+        color: #FEE16F;
+        font-size: 35px;
+        margin-top: 0;
+        position: relative;
+        top: 18px;
+        z-index: 20;
+        display: block;
+        text-align: center;
+    }
 
 
 
@@ -2636,4 +2667,24 @@ input[type='file'] {
         background: #fff;
         color: #222;
     }
+
+
+
+.title {
+    background-color: white;
+    padding: 30px 40px 30px 20px;
+    background: rgba(256, 256, 256, 0.5);
+    display: inline-block;
+    font-family: Orbitron;
+}
+
+@media screen and (min-width: 576px) {
+    .title h1 {
+        font-size: 4rem;
+    }
+
+    .title p {
+        font-size: 2rem;
+    }
+}
 

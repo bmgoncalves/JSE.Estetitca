@@ -6,10 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1">
     <title>Jay Soares | Estética de Resultado</title>
-    <link rel="icon" href="~/img/favicon.png" type="image/png">
+    <link href="~/img/favicon.png" type="image/png" rel="icon">
     <link href="~/css/bootstrap.css" rel="stylesheet" />
-    <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-    @*<link href="~/css/styles-admin.css" rel="stylesheet">*@
+    <link href="~/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" rel="stylesheet" />
     <link href="~/css/style.css" rel="stylesheet" />
 
     <link href="~/css/font-awesome.css" rel="stylesheet" />
@@ -20,10 +19,76 @@
 </head>
 
 <body>
-    <partial name="_StatusMessages" class="invisivel" />
 
-    @RenderBody()
+    <div class="text-center">
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+            </ol>
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="active item">
+                    <div class="caption zoomIn wow animated">
+                        <h2>Jay Soares<br /><strong>Estética de Resultado</strong></h2>
+                    </div>
 
+                    <img class="" src="~/img/slide1.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="caption zoomIn wow animated">
+                        <h2>LIMPEZA DE PELE<br /><strong>Renove sua pele e autoestima</strong></h2>
+                    </div>
+                    <img class="" src="~/img/slide2.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="caption zoomIn wow animated">
+                        <h2>Massagem MODELADORA<br /><strong>resultados incriveis</strong></h2>
+                    </div>
+                    <img class="" src="~/img/slide3.jpg" alt="">
+                </div>
+            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+        </div>
+
+        <!--Header_section-->
+        <header id="header_wrapper">
+            <div class="container">
+                <div class="header_box">
+                    <nav class="navbar navbar-inverse" role="navigation">
+
+                        <a class="navbar-brand" href="#">
+                            <img src="~/img/logo-brand.png" width="160" height="100" class="align-top" alt="">
+                        </a>
+
+                        <div class="navbar-header">
+                            <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        </div>
+                        <div id="main-nav" class="collapse navbar-collapse navStyle">
+                            <ul class="nav navbar-nav" id="mainNav">
+                                <li class="active"><a href="~/Home" class="scroll-link">Home</a></li>
+                                <li><a href="#sobreNos" class="scroll-link">Sobre nós</a></li>
+                                <li><a href="#service" class="scroll-link">Serviços</a></li>
+                                <li><a href="#Portfolio" class="scroll-link">Galeria</a></li>
+                                <li><a href="#experience" class="scroll-link">Depoimentos</a></li>
+                                <li><a href="#Contato" class="scroll-link">Contato</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        @RenderBody()
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/jquery-1.11.1.min.js"></script>
     <script src="~/js/bootstrap.js"></script>
@@ -34,7 +99,7 @@
     <script src="~/js/fancybox/jquery.fancybox.pack.js"></script>
     <script src="~/js/wow.js"></script>
     <script src="~/js/uploadFile.js"></script>
-    <script src="~/js/custom.js"></script>  
+    <script src="~/js/custom.js"></script>
 
 </body>
 

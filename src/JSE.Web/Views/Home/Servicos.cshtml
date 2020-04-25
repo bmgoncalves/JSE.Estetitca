@@ -1,0 +1,90 @@
+﻿@*@model JSE.Web.Models.IEnumerable<Servico>*@
+@{
+    ViewData["Title"] = "Servicos";
+}
+
+
+<div class="text-center">
+    <!--sobreNos-->
+
+    <section id="sobreNos" class="content">
+
+        <!-- Container -->
+        <div class="container portfolio_title">
+
+            <!-- Title -->
+            <div class="section-title">
+                <h2>Titulos</h2>
+                <h4>Subtitulo</h4>
+
+                <div class="inner_section">
+                    <div class="row">
+                        <div class="col-md-6"> <img class="img-responsive"> </div>
+                        <div class="col-md-6">
+                            <h3>TESTE H3</h3>
+                            <p>teste descritivo</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            @*<section id="service">
+                <div class="container">
+                    <h2>Nossos Serviços</h2>
+                    <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
+                    <div class="service_wrapper">
+                        <div class="row">
+                            @foreach (var servico in Model)
+                            {
+                                string descricao;
+                                if (servico.Descricao.Length > 300)
+                                {
+                                    descricao = servico.Descricao.Substring(0, 300) + "...";
+                                }
+                                else
+                                {
+                                    descricao = servico.Descricao;
+                                }
+
+                                <div class="col-md-3">
+                                    <div class="service_icon delay-03s animated wow  zoomIn"> <span><img class="img-upload" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="Sua imagem" /></span> </div>
+                                    <div class="service_block">
+                                        <h3 class="animated fadeInUp wow">@servico.NomeServico</h3>
+
+                                        <div class="service_icon2 delay-03s animated wow zoomIn">
+                                            <span><i class="fa fa-search-plus" data-toggle="popover" data-placement="bottom" data-content="@descricao"></i></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row pull-left">
+                            <a class="btn btn-index animated fadeInDown wow" href="~/Home/Servicos"><i class="fa fa-search-plus"></i>&nbsp;Mais serviços</a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>*@
+
+
+
+
+
+
+            <!--/Title -->
+        </div>
+    </section>
+
+</div>
+<div>
+    <footer class="footer_wrapper" >
+        <div class="container">
+            <div class="footer_bottom"><span>Todos os Direitos © reservados - <a href="https://www.linkedin.com/in/bmendesgonca/" target="_blank" title="Linkedin">Desenvolvido por Bruno M. Gonçalves</a> </span> </div>
+        </div>
+    </footer>
+</div>
+

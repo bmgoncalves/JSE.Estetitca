@@ -1,7 +1,6 @@
 ﻿var input = document.getElementById('inputFiles'),
     filename = document.getElementById('file-name'),
     imgUpload = document.getElementById('blah'),
-    imgPadrao = imgUpload.baseURI + "img/80x80.png",
     inputNomeCliente = document.getElementById('NomeCliente'),
     inputTelefone = document.getElementById('TelefoneCelular'),
     inputEmail = document.getElementById('Email'),
@@ -128,7 +127,7 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#blah')
-                .attr('src', imgPadrao); //Limpar memoria com imagem padrao
+                .attr('src', imgUpload.baseURI + "img/80x80.png"); //Limpar memoria com imagem padrao
 
 
             $('#blah')

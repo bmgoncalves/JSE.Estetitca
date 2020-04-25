@@ -81,13 +81,11 @@ namespace JSE.Web.Controllers
             }
         }
 
-
         public IActionResult Estabelecimento()
         {
             var estabelecimento = _context.Estabelecimentos.Where(e => e.Ativo == true);
             return View(estabelecimento);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
@@ -135,6 +133,12 @@ namespace JSE.Web.Controllers
                 }
                 return Json(new { status = "error", errors = list });
             }
+        }
+
+        public async Task<IActionResult> Servicos()
+        {
+            //var lista = new List<Servico>();
+            return View();
         }
 
     }
