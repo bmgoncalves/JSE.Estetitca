@@ -135,10 +135,11 @@ namespace JSE.Web.Controllers
             }
         }
 
-        public async Task<IActionResult> Servicos()
+        public IActionResult Servicos()
         {
+            var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.Id).ToList();
             //var lista = new List<Servico>();
-            return View();
+            return View(servicos);
         }
 
     }

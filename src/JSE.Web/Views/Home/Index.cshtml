@@ -4,12 +4,8 @@
     string email = Model.Estabel.Email;
 }
 
-<link href="~/css/popper.css" rel="stylesheet" />
-
-
 <div class="text-center">
     <!--sobreNos-->
-
     <section id="sobreNos" class="content">
 
         <!-- Container -->
@@ -34,14 +30,25 @@
             <!--/Title -->
         </div>
     </section>
-    <!--sobreNos-->
     <!--Service-->
-
     <section id="service">
         <div class="container">
             <h2>Nossos Serviços</h2>
-            <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
+            <h6>Veja abaixo alguns de nossos serviços</h6>
             <div class="service_wrapper">
+
+                <div class="row">
+                    @foreach (var servico in Model.Servicos)
+                    {
+                        <div class="col-md-3">
+                            <div class="service_icon delay-03s animated wow  zoomIn"> <span><img class="img-upload" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="Sua imagem" /></span> </div>
+                            <div class="service_block">
+                                <h3 class="animated fadeInUp wow">@servico.NomeServico</h3>
+                            </div>
+                        </div>
+                    }
+                </div>
+
                 <div class="row">
                     @foreach (var servico in Model.Servicos)
                     {
@@ -54,25 +61,16 @@
                         {
                             descricao = servico.Descricao;
                         }
-
                         <div class="col-md-3">
-                            <div class="service_icon delay-03s animated wow  zoomIn"> <span><img class="img-upload" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="Sua imagem" /></span> </div>
-                            <div class="service_block">
-                                <h3 class="animated fadeInUp wow">@servico.NomeServico</h3>
-
-                                <div class="service_icon2 delay-03s animated wow zoomIn">
-                                    <span><i class="fa fa-search-plus" data-toggle="popover" data-placement="bottom" data-content="@descricao"></i></span>
-
-                                </div>
+                            <div class="service_icon2 delay-03s animated wow zoomIn">
+                                <span><i class="fa fa-search-plus" data-toggle="popover" data-placement="bottom" data-content="@descricao"></i></span>
                             </div>
                         </div>
                     }
                 </div>
-
                 <div class="row pull-left">
-                    <a class="btn btn-index animated fadeInDown wow" href="~/Home/Servicos"><i class="fa fa-search-plus"></i>&nbsp;Mais serviços</a>
+                    <a class="btn btn-index animated fadeInDown wow" href="~/Home/Servicos"><i class="fa fa-search-plus"></i>&nbsp;Saiba mais</a>
                 </div>
-
             </div>
         </div>
     </section>
@@ -306,7 +304,6 @@
 
                 <div class="text-center">
                     <a href="#" class="btn btn-primary" onclick="initImage()" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>
-
                     <partial name="_DepoimentoUsuario" model="Model.Depoimentos" />
                 </div>
             </section>
@@ -420,14 +417,16 @@
         </div>
     </footer>
 </div>
-<script src="~/js/envia-contato.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="~/js/envia-contato.js"></script>
 
 <script>
     $(document).ready(function () {
         $('[data-toggle="popover"]').popover({
-            placement: 'top',
+            placement: 'bottom',
             trigger: 'hover'
         });
     });
-</script>
+</script>   
