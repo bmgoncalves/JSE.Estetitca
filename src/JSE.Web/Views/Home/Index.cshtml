@@ -263,48 +263,87 @@
                     <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
 
                 </div>
-                <section id="carousel">
+
+                @*<section id="carousel">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
                                 <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
-                                    <!-- Carousel indicators -->
                                     <ol class="carousel-indicators">
-                                        <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
-                                        <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
-                                        <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
+                                        @for (int i = 0; i < Model.Depoimentos.Count(); i++)
+                                        {
+                                            if (i == 1)
+                                            {
+                                                <li data-target="#fade-quote-carousel" data-slide-to="@i" class="active"></li>
+                                            }
+                                            else
+                                            {
+                                                <li data-target="#fade-quote-carousel" data-slide-to="@i"></li>
+                                            }
+                                        }
+
                                     </ol>
-                                    <!-- Carousel items -->
-                                    <div class="carousel-inner">
-                                        <div class="active item">
-                                            <blockquote>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                                            </blockquote>
-                                            <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
+                                    @foreach (var dep in Model.Depoimentos)
+                                    {
+                                        <div class="carousel-inner">
+
+                                            <div class="active item">
+                                                <blockquote>
+                                                    <p>@dep.Descricao</p>
+                                                </blockquote>
+                                                <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"><img src="@dep.Imagem" alt="imagem perfil" /></div>
+                                            </div>
                                         </div>
-                                        <div class="item">
-                                            <blockquote>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                                            </blockquote>
-                                            <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
-                                        </div>
-                                        <div class="item">
-                                            <blockquote>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                                            </blockquote>
-                                            <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>*@
+
+
+                <section id="carousel">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
+                                    <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+                                            <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <div class="active item">
+                                                <blockquote>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur aue molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                                </blockquote>
+                                                <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
+                                            </div>
+                                            <div class="item">
+                                                <blockquote>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur aue molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+
+                                                </blockquote>
+                                                <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+                                            </div>
+                                            <div class="item">
+                                                <blockquote>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur aue molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                                </blockquote>
+                                                <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
                 <div class="text-center">
                     <a href="#" class="btn btn-primary" onclick="initImage()" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>
-                    <partial name="_DepoimentoUsuario" model="Model.Depoimentos" />
+                    <partial name="_DepoimentoUsuario" model="new Depoimento { }" />
                 </div>
             </section>
         </div>
@@ -329,22 +368,22 @@
                         <div class="col-lg-4 wow fadeInLeft">
                             <div class="Contato_info">
                                 <div class="detail">
-                                    <h4 class="text-contato">@Html.DisplayFor(model => model.Estabel.NomeFantasia)</h4>
-                                    <p class="text-contato">Endereço: @Html.DisplayFor(model => model.Estabel.Endereco)</p>
-                                    <p class="text-contato">Bairro: @Html.DisplayFor(model => model.Estabel.Bairro)</p>
-                                    <p class="text-contato">Cidade: @Html.DisplayFor(model => model.Estabel.Cidade) - @Html.DisplayFor(model => model.Estabel.UF) </p>
-                                    <p class="text-contato">Complemento: @Html.DisplayFor(model => model.Estabel.Complemento) </p>
-                                    <p class="text-contato">Cep: @Html.DisplayFor(model => model.Estabel.CEP)</p>
-                                    <p class="text-contato">CNPJ: @Html.DisplayFor(model => model.Estabel.CNPJ)</p>
+                                    <h4 class="text-contato-align">@Html.DisplayFor(model => model.Estabel.NomeFantasia)</h4>
+                                    <p class="text-contato-align">Endereço: @Html.DisplayFor(model => model.Estabel.Endereco)</p>
+                                    <p class="text-contato-align">Bairro: @Html.DisplayFor(model => model.Estabel.Bairro)</p>
+                                    <p class="text-contato-align">Cidade: @Html.DisplayFor(model => model.Estabel.Cidade) - @Html.DisplayFor(model => model.Estabel.UF) </p>
+                                    <p class="text-contato-align">Complemento: @Html.DisplayFor(model => model.Estabel.Complemento) </p>
+                                    <p class="text-contato-align">Cep: @Html.DisplayFor(model => model.Estabel.CEP)</p>
+                                    <p class="text-contato-align">CNPJ: @Html.DisplayFor(model => model.Estabel.CNPJ)</p>
 
                                 </div>
                                 <div class="detail">
-                                    <h4 class="text-contato">Telefone / Whatsapp</h4>
-                                    <p class="text-contato"> @Html.DisplayFor(model => model.Estabel.TelefoneCelular)</p>
+                                    <h4 class="text-contato-align">Telefone / Whatsapp</h4>
+                                    <p class="text-contato-align"> @Html.DisplayFor(model => model.Estabel.TelefoneCelular)</p>
                                 </div>
                                 <div class="detail">
-                                    <h4 class="text-contato">E-mail</h4>
-                                    <p class="text-contato"> <a class="text-contato" href="mailto:@email">@email</a></p>
+                                    <h4 class="text-contato-align">E-mail</h4>
+                                    <p class="text-contato-align"> <a class="text-contato-align" href="mailto:@email">@email</a></p>
                                 </div>
                             </div>
 

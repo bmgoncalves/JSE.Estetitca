@@ -1,55 +1,84 @@
 ﻿@model IEnumerable<JSE.Web.Models.Servico>
+@using JSE.Web.Extensions;
+
 @{
     ViewData["Title"] = "Servicos";
-    var itensPorLinha = 4;
-    var linha = 1;
-
-    int excludeRecords = (linha * Model.Count()) - Model.Count();
-
-    //var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.Id)
-    //    .Skip(excludeRecords)
-    //    .Take(pageSize);
-
-
 }
 
-<div class="text-center">
-    <!--sobreNos-->
-    <section id="sobreNos" class="content">
-        <div class="container portfolio_title">
-            <div class="section-title">
-                <br />
-                <h2>Serviços</h2>
-                <h4></h4>
+    <div class="text-center">
+        <!--sobreNos-->
+        <section id="sobreNos" class="content">
+            <div class="container portfolio_title">
+                <div class="section-title">
+                    <br />
+                    <h2>Serviços</h2>
+                    <h4></h4>
+                </div>
+
+                @foreach (var row in Model.ToArray().Split(4))
+                {
+                    <div class="card-group">
+                        @foreach (var servico in row)
+                        {
+                            string descricao;
+
+                            if (servico.Descricao.Length > 150)
+                            {
+                                descricao = servico.Descricao.Substring(0, 150);
+                            }
+                            else
+                            {
+                                descricao = servico.Descricao;
+                            }
+
+                            descricao += "...";
+
+                            <div class="card">
+                                <img class="card-img-top img-fluid img-responsive" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="@servico.NomeServico">
+                                <div class="card-body">
+                                    <h3 class="card-title">@servico.NomeServico</h3>
+                                    <p class="card-text">@descricao</p>
+                                </div>
+                                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                                    <a href="#" class="btn btn-primary"
+                                       data-titulo="@servico.NomeServico"
+                                       data-action="@servico.NomeServico"
+                                       data-toggle="modal"
+                                       data-target="#leiameModal"
+                                       data-body-message="@servico.Descricao" onclick="btnLeiaMais(this)">Leia mais</a>                                    
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                }
+
             </div>
 
-            @foreach (var servico in Model)
-            {
-                for (int i = 0; i < itensPorLinha; i++)
-                {
+        </section>
 
-                }
-                <div class="card-group">
-                    <div class="card">
-                        <img class="card-img" src="~/img/80x80.png" alt="Bologna">
-
-                        <div class="card-body">
-                            <h3 class="card-title">@servico.NomeServico</h3>
-                            <p class="card-text">@servico.Descricao</p>
-                            <a href="#" class="btn btn-primary">Leia mais</a>
-                        </div>
-                        <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
-                            <hr />
-                        </div>
+        <div class="modal fade" id="leiameModal" tabindex="-1" role="dialog" aria-labelledby="leiameModalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="leiameModalTitle" style="font-weight:bold">Modal title</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 id="modalTextBody" style="text-align:left"></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
-            }
-
+            </div>
         </div>
 
-    </section>
 
-</div>
+
+    </div>
 <div>
     <footer class="footer_wrapper">
         <div class="container">
@@ -63,5 +92,15 @@
     for (var i = 0; i < items.length; ++i) {
         items[i].classList.remove("Active");
     }
+
+    function btnLeiaMais(componente) {
+        var tituloModal = document.querySelector("#leiameModalTitle");
+        //var messageModal = document.querySelector(".modal-body");
+        var messageModal = document.querySelector("#modalTextBody");
+
+        tituloModal.innerHTML = componente.getAttribute("data-titulo");
+        messageModal.innerHTML = componente.getAttribute("data-body-message");
+    }
+
 </script>
 
