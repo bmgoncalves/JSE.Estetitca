@@ -35,7 +35,7 @@ namespace JSE.Web.Controllers
             {
                 Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault(),
                 Servicos = _context.Servicos.Where(s => s.ExibeIndex == true).OrderBy(s => s.NomeServico).Take(4).ToList(),
-                Depoimentos = _context.Depoimentos.Where(d => d.Aprovado == false).OrderBy(d => d.DataCriacao).ThenBy(d => d.NomeCliente).Take(10).ToList()
+                Depoimentos = _context.Depoimentos.Where(d => d.Aprovado == false).OrderBy(d => d.DataCriacao).ThenBy(d => d.NomeCliente).Take(200).ToList()
             };
 
             return View(idx);

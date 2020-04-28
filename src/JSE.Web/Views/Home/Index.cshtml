@@ -2,6 +2,9 @@
 @{
     ViewData["Title"] = "Home";
     string email = Model.Estabel.Email;
+    var items = Model.Depoimentos.Take(6);
+    var iterations = 0;
+
 }
 
 <div class="text-center">
@@ -260,50 +263,54 @@
             <section id="news" class="white-bg padding-top-bottom">
                 <div class="section-title">
                     <h2>Depoimentos </h2>
-                    <h6>Lorem ipsum dolor sit amet, consectetur Morbi sagittis, sem quisci ipsum</h6>
-
+                    @*<h6>Essas são algumas experiencias </h6>*@
                 </div>
 
-                @*<section id="carousel">
+                <section id="carousel">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
-                                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+                                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="500">
+
                                     <ol class="carousel-indicators">
-                                        @for (int i = 0; i < Model.Depoimentos.Count(); i++)
-                                        {
-                                            if (i == 1)
-                                            {
-                                                <li data-target="#fade-quote-carousel" data-slide-to="@i" class="active"></li>
-                                            }
-                                            else
-                                            {
-                                                <li data-target="#fade-quote-carousel" data-slide-to="@i"></li>
-                                            }
-                                        }
-
+                                        <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+                                        <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
+                                        <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+                                        <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
+                                        <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
                                     </ol>
-                                    @foreach (var dep in Model.Depoimentos)
-                                    {
-                                        <div class="carousel-inner">
 
-                                            <div class="active item">
+                                    <div class="carousel-inner">
+                                        @while (items.Count() > 0)
+                                        {
+                                            var active = iterations == 0 ? "active" : "";
+
+                                            <div class="@active item">
                                                 <blockquote>
-                                                    <p>@dep.Descricao</p>
+                                                    <p></p>
                                                 </blockquote>
-                                                <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"><img src="@dep.Imagem" alt="imagem perfil" /></div>
+                                                <div class="profile-circle" style="background-color: rgba(0,0,0,.2);">
+                                                    <img src="~/img/80x80.png" />
+                                                </div>
                                             </div>
-                                        </div>
-                                    }
+
+                                            iterations++;
+                                            items = Model.Depoimentos.Skip(6 * iterations).Take(6);
+                                        }
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>*@
+                </section>
 
 
-                <section id="carousel">
+
+
+                @*<section id="carousel">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
@@ -317,20 +324,20 @@
                                         <div class="carousel-inner">
                                             <div class="active item">
                                                 <blockquote>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur aue molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                                    <p></p>
                                                 </blockquote>
                                                 <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
                                             </div>
                                             <div class="item">
                                                 <blockquote>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur aue molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                                    <p></p>
 
                                                 </blockquote>
                                                 <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
                                             </div>
                                             <div class="item">
                                                 <blockquote>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur aue molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                                    <p></p>
                                                 </blockquote>
                                                 <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
                                             </div>
@@ -339,7 +346,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section>*@
 
                 <div class="text-center">
                     <a href="#" class="btn btn-primary" onclick="initImage()" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>
@@ -458,7 +465,6 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
 <script src="~/js/envia-contato.js"></script>
 
 <script>
