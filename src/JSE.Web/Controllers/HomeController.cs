@@ -101,7 +101,6 @@ namespace JSE.Web.Controllers
                 try
                 {
                     _context.Depoimentos.Add(depoimento);
-                    _context.SaveChanges();
 
                     foreach (var file in files)
                     {
@@ -117,6 +116,12 @@ namespace JSE.Web.Controllers
                             }
                         }
                     }
+
+                    depoimento.Imagem = uploads + nomeArquivo;
+                    depoimento.NomeArquivo = nomeArquivo;
+
+                    _context.SaveChanges();
+
                     return Json(new { status = "success", message = "Depoimento enviado com sucesso" });
                 }
                 catch (Exception ex)
