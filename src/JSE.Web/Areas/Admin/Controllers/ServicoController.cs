@@ -30,7 +30,7 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         // GET: Admin/Servico
         [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
-        public ViewResult Index(int pageNumber = 1, int pageSize = 30)
+        public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
 
             int excludeRecords = (pageNumber * pageSize) - pageSize;

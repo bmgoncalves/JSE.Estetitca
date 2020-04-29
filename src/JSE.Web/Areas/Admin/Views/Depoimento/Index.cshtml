@@ -1,0 +1,57 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<JSE.Web.Models.Depoimento>
+
+
+@{
+    ViewData["Title"] = "Depoimentos";
+    ViewData["Controller"] = "Admin";
+    ViewData["Action"] = "Depoimento";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Depoimentos Pendentes</h2>
+<hr />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Cliente")
+            </th>
+            <th style="width:600px">
+                @Html.DisplayName("Depoimento")
+            </th>
+            <th style="width:100px">
+                @Html.DisplayName("Data Criação")
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            var descricao = "";
+
+            if (item.Descricao.Length > 100)
+                descricao = item.Descricao.Substring(1, 100) + "...";
+            else
+                descricao = item.Descricao;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCriacao)
+                </td>
+                <td>
+                    <a href="~/admin/depoimento/Aprovar/@item.Id"><i class="fas fa-check-circle"></i> Aprovar</a> &nbsp;|&nbsp;
+                    <a href="~/admin/depoimento/Delete/@item.Id"><i class="far fa-trash-alt"></i> Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+</div>

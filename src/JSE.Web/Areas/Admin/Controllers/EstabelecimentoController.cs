@@ -21,8 +21,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Admin/Estabelecimento
-        //[Route("{area:exists}/{controller=Estabelecimento}/{action=Index}/{id?}")]
         public IActionResult Index()
         {
             return View(_context.Estabelecimentos.ToList());
