@@ -1,8 +1,10 @@
 ﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
 using JSE.Web.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,9 +15,13 @@ namespace JSE.Web.Areas.Admin.Controllers
     {
         private readonly JSEContext _context;
 
-        public DepoimentoController(JSEContext context)
+        private readonly IWebHostEnvironment _env;
+
+        public DepoimentoController(JSEContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
+
         }
 
         // GET: Admin/Servico
@@ -60,7 +66,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
-        public async Task<IActionResult> Aprovar(int id, [Bind("Id,Descricao,NomeCliente,TelefoneCelular,Email,Imagem,DataCriacao,Aprovado")] Depoimento depoimento)
+        public async Task<IActionResult> Aprovar(int id, [Bind("Id,Descricao,NomeCliente,TelefoneCelular,Email,Imagem,DataCriacao,Aprovado,NomeArquivo")] Depoimento depoimento)
         {
             if (id != depoimento.Id)
             {
@@ -103,23 +109,22 @@ namespace JSE.Web.Areas.Admin.Controllers
         public IActionResult Delete(int? id)
         {
             var depoimento = _context.Depoimentos.Find(id);
+            var arquivo = Path.Combine(_env.WebRootPath, "images\\uploads\\Depoimentos\\" + depoimento.NomeArquivo);
             if (depoimento != null)
             {
                 _context.Depoimentos.Remove(depoimento);
                 _context.SaveChanges();
 
-                //if (System.IO.File.Exists(imagem))
-                //{
-                //    System.IO.File.Delete(imagem);
-                //}
-
+                if (System.IO.File.Exists(arquivo))
+                {
+                    System.IO.File.Delete(arquivo);
+                }
 
                 return Redirect("~/Admin/Depoimento");
 
             }
             return RedirectToAction("Index");
         }
-
 
         private bool DepoimentoExists(int id)
         {

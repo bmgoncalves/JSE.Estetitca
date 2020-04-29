@@ -1,4 +1,5 @@
 ﻿using JSE.Web.Data;
+using JSE.Web.Extensions;
 using JSE.Web.Models;
 using JSE.Web.ViewModel;
 using Microsoft.AspNetCore.Hosting;
@@ -93,10 +94,10 @@ namespace JSE.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                Random rand = new Random();
+                var fileName = Util.GenerateCoupon(10, rand);
                 var uploads = Path.Combine(_env.WebRootPath, "images\\uploads\\depoimentos\\");
                 var usuario = depoimento.NomeCliente;
-                var nomeArquivo = "";
-
                 try
                 {
                     _context.Depoimentos.Add(depoimento);
@@ -105,19 +106,19 @@ namespace JSE.Web.Controllers
                     {
                         if (file != null && file.Length > 0)
                         {
-                            var fileName = Guid.NewGuid().ToString().Replace("-", "") +
-                                            Path.GetExtension(file.FileName);
+                            fileName += Path.GetExtension(file.FileName);
+
+                            //var fileName = Guid.NewGuid().ToString().Replace("-", "") +
+                            //                Path.GetExtension(file.FileName);
                             using (var s = new FileStream(Path.Combine(uploads, fileName),
                                                                         FileMode.Create))
                             {
                                 await file.CopyToAsync(s);
-                                nomeArquivo = fileName;
+                                depoimento.Imagem = uploads + fileName;
+                                depoimento.NomeArquivo = fileName;
                             }
                         }
                     }
-
-                    depoimento.Imagem = uploads + nomeArquivo;
-                    depoimento.NomeArquivo = nomeArquivo;
 
                     _context.SaveChanges();
 

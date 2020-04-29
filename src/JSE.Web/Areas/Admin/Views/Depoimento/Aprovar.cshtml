@@ -3,55 +3,97 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var imagem = "user-avatar.jpg";
+
+    if (!string.IsNullOrEmpty(Model.NomeArquivo))
+    {
+        imagem = Model.NomeArquivo;
+    }
+
 }
 
 <h2>Depoimento</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Aprovar">
-            <div class="card" style="width:400px">
-                <img class="card-img-top" src="~/images/uploads/Depoimentos/@Model.NomeArquivo" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h4 class="card-title">@Model.NomeCliente</h4>
+        <div class="form-group">
+            <div class="card">
+
+                <img class="card-img-top img-fluid img-responsive" src="~/images/uploads/Depoimentos/@imagem" alt="Card image">
+                <div class="card-body" style="width:800px">
+                    <h3 class="card-title"><b>Cliente: </b> @Model.NomeCliente</h3>
                     <p class="card-text">@Model.Descricao</p>
+
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">@Model.DataCriacao</small>
-                    <small class="text-muted">Telefone: @Model.TelefoneCelular</small>
-                    <small class="text-muted">E-mail: @Model.Email</small>
+                <div class="card-subtitle text-muted">
+                    <div>
+                        <b>Data: </b>@Model.DataCriacao.Date.ToShortDateString()
+                        <b>Hora: </b>@Model.DataCriacao.ToShortTimeString()
+                    </div>
+                    <div><b>Telefone: </b>@Model.TelefoneCelular</div>
+                    <div><b>E-mail: </b>@Model.Email</div>
+
                 </div>
             </div>
+        </div>
 
+        <form asp-action="Aprovar">
+            <div class="hidden">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="NomeCliente" class="control-label"></label>
+                    <input asp-for="NomeCliente" class="form-control" readonly />
+                    <span asp-validation-for="NomeCliente" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="width:600px">
+                    <label asp-for="Descricao" class="control-label"></label>
+                    <textarea asp-for="Descricao" class="form-control" rows="8" cols="60" readonly></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
 
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="NomeCliente" class="control-label"></label>
-                <input asp-for="NomeCliente" class="form-control" readonly />
-                <span asp-validation-for="NomeCliente" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="width:600px">
-                <label asp-for="Descricao" class="control-label"></label>
-                <textarea asp-for="Descricao" class="form-control" rows="8" cols="60" readonly></textarea>
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="TelefoneCelular" class="control-label"></label>
+                    <input asp-for="TelefoneCelular" class="form-control" readonly />
+                    <span asp-validation-for="TelefoneCelular" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" readonly />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataCriacao" class="control-label"></label>
+                    <input asp-for="DataCriacao" class="form-control" readonly />
+                    <span asp-validation-for="DataCriacao" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="TelefoneCelular" class="control-label"></label>
-                <input asp-for="TelefoneCelular" class="form-control" readonly />
-                <span asp-validation-for="TelefoneCelular" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Imagem" class="control-label"></label>
+                    <input asp-for="Imagem" class="form-control" readonly />
+                    <span asp-validation-for="Imagem" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NomeArquivo" class="control-label"></label>
+                    <input asp-for="NomeArquivo" class="form-control" readonly />
+                    <span asp-validation-for="NomeArquivo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NomeArquivo" class="control-label"></label>
+                    <input asp-for="NomeArquivo" class="form-control" readonly />
+                    <span asp-validation-for="NomeArquivo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Aprovado" id="chkAprovado" />
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" readonly />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataCriacao" class="control-label"></label>
-                <input asp-for="DataCriacao" class="form-control" readonly />
-                <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>*@
 
             <div class="form-group">
                 <div class="row">
@@ -64,19 +106,14 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Aprovado" id="chkAprovado" hidden />
-                    </label>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 
-<script>
-    function aprova(resultado) {
-        document.querySelector("#chkAprovado").checked = resultado;
-    }
-</script>
+        </form>
+      
+    </div>
+    </div>
+
+    <script>
+        function aprova(resultado) {
+            document.querySelector("#chkAprovado").checked = resultado;
+        }
+    </script>

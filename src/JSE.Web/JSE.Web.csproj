@@ -9,7 +9,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Files\Download\" />
     <Folder Include="Files\Upload\Depoimentos\" />
-    <Folder Include="wwwroot\images\uploads\Depoimentos\" />
     <Folder Include="wwwroot\images\uploads\Servicos\" />
   </ItemGroup>
 
