@@ -1,10 +1,6 @@
-﻿using Microsoft.CodeAnalysis.Operations;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Models
 {
@@ -37,6 +33,8 @@ namespace JSE.Web.Models
         [MaxLength(250)]
         [DataType(DataType.ImageUrl)]
         public string Imagem { get; set; }
+
+        public string NomeArquivo { get; set; }
 
         [DisplayName("Data")]
         [Required(ErrorMessage = "Campo obrigatório")]

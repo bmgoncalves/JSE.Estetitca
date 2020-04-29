@@ -39,8 +39,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(result);
         }
 
-
-        // GET: Admin/Depoimento/Edit/5
         public async Task<IActionResult> Aprovar(int? id)
         {
             if (id == null)
@@ -61,6 +59,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
         public async Task<IActionResult> Aprovar(int id, [Bind("Id,Descricao,NomeCliente,TelefoneCelular,Email,Imagem,DataCriacao,Aprovado")] Depoimento depoimento)
         {
             if (id != depoimento.Id)
@@ -72,8 +71,17 @@ namespace JSE.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(depoimento);
-                    await _context.SaveChangesAsync();
+                    if (depoimento.Aprovado)
+                    {
+                        _context.Update(depoimento);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        Delete(depoimento.Id);
+                    }
+                    return Redirect("~/Admin/Depoimento");
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -86,27 +94,30 @@ namespace JSE.Web.Areas.Admin.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
             }
             return View(depoimento);
         }
 
         // GET: Admin/Depoimento/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
-            if (id == null)
+            var depoimento = _context.Depoimentos.Find(id);
+            if (depoimento != null)
             {
-                return NotFound();
-            }
+                _context.Depoimentos.Remove(depoimento);
+                _context.SaveChanges();
 
-            var depoimento = await _context.Depoimentos
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (depoimento == null)
-            {
-                return NotFound();
-            }
+                //if (System.IO.File.Exists(imagem))
+                //{
+                //    System.IO.File.Delete(imagem);
+                //}
 
-            return View(depoimento);
+
+                return Redirect("~/Admin/Depoimento");
+
+            }
+            return RedirectToAction("Index");
         }
 
 

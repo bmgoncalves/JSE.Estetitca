@@ -86,6 +86,9 @@ namespace JSE.Web.Migrations
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
+                    b.Property<string>("NomeArquivo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NomeCliente")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")

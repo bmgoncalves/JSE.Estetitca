@@ -1,0 +1,68 @@
+﻿@model JSE.Web.Models.Depoimento
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Depoimento</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Aprovar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NomeCliente" class="control-label"></label>
+                <input asp-for="NomeCliente" class="form-control" readonly />
+                <span asp-validation-for="NomeCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="width:600px">
+                <label asp-for="Descricao" class="control-label"></label>
+                <textarea asp-for="Descricao" class="form-control" rows="8" cols="60" readonly></textarea>
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TelefoneCelular" class="control-label"></label>
+                <input asp-for="TelefoneCelular" class="form-control" readonly />
+                <span asp-validation-for="TelefoneCelular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" readonly />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCriacao" class="control-label"></label>
+                <input asp-for="DataCriacao" class="form-control" readonly />
+                <span asp-validation-for="DataCriacao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Aprovar" onclick="aprova(true)" class="btn btn-primary btn-block" />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" value="Reprovar" onclick="aprova(false)" class="btn btn-secondary btn-block" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Aprovado" id="chkAprovado" hidden/>
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function aprova(resultado) {
+        document.querySelector("#chkAprovado").checked = resultado;
+    }
+</script>
