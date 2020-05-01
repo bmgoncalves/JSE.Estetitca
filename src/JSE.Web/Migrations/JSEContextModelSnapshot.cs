@@ -215,6 +215,9 @@ namespace JSE.Web.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoriaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("nvarchar(2500)")
@@ -240,9 +243,41 @@ namespace JSE.Web.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int?>("ServicoCategoriaCategoriaId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("ServicoCategoriaCategoriaId");
+
                     b.ToTable("Servicos");
+                });
+
+            modelBuilder.Entity("JSE.Web.Models.ServicoCategoria", b =>
+                {
+                    b.Property<int>("CategoriaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Categoria")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("CategoriaId");
+
+                    b.ToTable("ServicoCategorias");
+                });
+
+            modelBuilder.Entity("JSE.Web.Models.Servico", b =>
+                {
+                    b.HasOne("JSE.Web.Models.ServicoCategoria", null)
+                        .WithMany("Servicos")
+                        .HasForeignKey("ServicoCategoriaCategoriaId");
                 });
 #pragma warning restore 612, 618
         }

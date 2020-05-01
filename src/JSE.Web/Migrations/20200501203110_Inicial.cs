@@ -37,6 +37,7 @@ namespace JSE.Web.Migrations
                     TelefoneCelular = table.Column<string>(maxLength: 18, nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: true),
                     Imagem = table.Column<string>(maxLength: 250, nullable: true),
+                    NomeArquivo = table.Column<string>(nullable: true),
                     DataCriacao = table.Column<DateTime>(nullable: false),
                     Aprovado = table.Column<bool>(nullable: false)
                 },
@@ -79,20 +80,49 @@ namespace JSE.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ServicoCategorias",
+                columns: table => new
+                {
+                    CategoriaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Categoria = table.Column<string>(maxLength: 50, nullable: false),
+                    Ativo = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServicoCategorias", x => x.CategoriaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Servicos",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeServico = table.Column<string>(maxLength: 50, nullable: false),
-                    Descricao = table.Column<string>(maxLength: 200, nullable: false),
-                    Duracao = table.Column<string>(maxLength: 8, nullable: false),
-                    Imagem = table.Column<string>(maxLength: 300, nullable: true)
+                    CategoriaId = table.Column<int>(nullable: false),
+                    Descricao = table.Column<string>(maxLength: 2500, nullable: false),
+                    Duracao = table.Column<string>(maxLength: 8, nullable: true),
+                    Imagem = table.Column<string>(maxLength: 400, nullable: true),
+                    NomeArquivo = table.Column<string>(maxLength: 50, nullable: true),
+                    ExibeIndex = table.Column<bool>(nullable: false),
+                    ServicoCategoriaCategoriaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Servicos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Servicos_ServicoCategorias_ServicoCategoriaCategoriaId",
+                        column: x => x.ServicoCategoriaCategoriaId,
+                        principalTable: "ServicoCategorias",
+                        principalColumn: "CategoriaId",
+                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Servicos_ServicoCategoriaCategoriaId",
+                table: "Servicos",
+                column: "ServicoCategoriaCategoriaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -108,6 +138,9 @@ namespace JSE.Web.Migrations
 
             migrationBuilder.DropTable(
                 name: "Servicos");
+
+            migrationBuilder.DropTable(
+                name: "ServicoCategorias");
         }
     }
 }

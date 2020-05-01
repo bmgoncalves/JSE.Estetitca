@@ -2730,6 +2730,8 @@ input[type='file'] {
 .img-upload {
     max-width: 80px;
     max-height: 80px;
+    min-width: 80px;
+    min-height: 80px;
     border-radius: 48%;
 }
 

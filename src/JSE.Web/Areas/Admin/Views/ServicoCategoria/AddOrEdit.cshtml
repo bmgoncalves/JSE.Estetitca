@@ -1,0 +1,38 @@
+﻿@model JSE.Web.Models.ServicoCategoria
+
+@{
+    ViewData["Title"] = "Cadastro de Categoria";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Cadastrar</h2>
+
+<h4>Categoria do Serviço</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-area="Admin" asp-controller="ServicoCategoria" asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Categoria" class="control-label"></label>
+                <input asp-for="Categoria" class="form-control" />
+                <span asp-validation-for="Categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Ativo" /> @Html.DisplayNameFor(model => model.Ativo)
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Salvar" class="btn btn-primary btn-block btn-lg" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a href="~/admin/ServicoCategoria" class="btn btn-secondary btn-block btn-lg">Voltar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

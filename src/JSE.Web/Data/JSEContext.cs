@@ -24,11 +24,18 @@ namespace JSE.Web.Data
         public DbSet<Depoimento> Depoimentos { get; set; }
         public DbSet<Estabelecimento> Estabelecimentos { get; set; }
         public DbSet<Servico> Servicos { get; set; }
+        public DbSet<ServicoCategoria> ServicoCategorias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             //modelBuilder.Entity<Servico>().Ignore(s => s.File); //Ignorar propriedade
+
+            //modelBuilder.Entity<Servico>().HasOne(s => s.id)
+            //    .HasOne(p => p.CategoriaId)
+            //    .WithMany(b => b.Id)
+            //    .HasForeignKey(p => p.BlogId)
+            //    .HasConstraintName("ForeignKey_Post_Blog");
         }
 
 

@@ -1,0 +1,50 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<JSE.Web.Models.ServicoCategoria>
+
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "Admin";
+    ViewData["Action"] = "ServicoCategoria";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Categorias cadastradas</h2>
+<hr />
+<p>
+    <a class="btn btn-primary" href="~/admin/ServicoCategoria/AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
+</p>                                         
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Categoria")
+            </th>
+            <th>
+                @Html.DisplayName("Ativo")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@item.CategoriaId"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
+                    <a href="~/admin/servicocategoria/Delete/@item.CategoriaId"><i class="far fa-trash-alt"></i>Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+</div>

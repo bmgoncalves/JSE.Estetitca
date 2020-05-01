@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JSE.Web.Models
 {
@@ -14,6 +13,11 @@ namespace JSE.Web.Models
         [MaxLength(50)]
         [Required(ErrorMessage ="Campo obrigatório")]
         public string NomeServico { get; set; }
+
+        [ForeignKey("CategoriaId")]
+        [DisplayName("Categoria")]
+        [Required(ErrorMessage = "Campo obrigatório")]
+        public int CategoriaId { get; set; }
 
         [DisplayName("Descrição")]
         [MaxLength(2500)]
