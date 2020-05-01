@@ -271,34 +271,56 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
-                                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="500">
+                                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3500">
 
                                     <ol class="carousel-indicators">
-                                        <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
-                                        <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
-                                        <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
-                                        <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
-                                        <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
-                                        <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
+                                        @for (int i = 0; i < items.Count(); i++)
+                                        {
+                                            if (i == 0)
+                                            {
+                                                <li data-target="#fade-quote-carousel" data-slide-to="@i" class="active"></li>
+                                            }
+                                            else
+                                            {
+                                                <li data-target="#fade-quote-carousel" data-slide-to="@i"></li>
+                                            }
+                                        }
                                     </ol>
 
                                     <div class="carousel-inner">
                                         @while (items.Count() > 0)
                                         {
-                                            var active = iterations == 0 ? "active" : "";
 
-                                            <div class="@active item">
-                                                <blockquote>
-                                                    <p></p>
-                                                </blockquote>
-                                                <div class="profile-circle" style="background-color: rgba(0,0,0,.2);">
-                                                    <img src="~/img/80x80.png" />
+                                            foreach (var item in items)
+                                            {
+                                                var active = iterations == 0 ? "active" : "";
+                                                var imagem = "";
+
+                                                if (item.NomeArquivo == "" || !System.IO.File.Exists(item.Imagem))
+                                                {
+                                                    imagem = "user-avatar.jpg";
+                                                }
+                                                else
+                                                {
+                                                    imagem = item.NomeArquivo;
+                                                }
+
+                                                <div class="@active item">
+                                                    <blockquote>
+                                                        <p>@item.Descricao</p>
+                                                    </blockquote>
+                                                    <div class="profile-circle">
+                                                        <img class="img-upload" src="~/images/uploads/Depoimentos/@imagem" />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            iterations++;
-                                            items = Model.Depoimentos.Skip(6 * iterations).Take(6);
+                                                iterations++;
+                                                items = Model.Depoimentos.Skip(6 * iterations).Take(6);
+                                            }
+
+
                                         }
+                                      
                                     </div>
 
                                 </div>
@@ -306,47 +328,6 @@
                         </div>
                     </div>
                 </section>
-
-
-
-
-                @*<section id="carousel">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
-                                    <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
-                                            <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
-                                            <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner">
-                                            <div class="active item">
-                                                <blockquote>
-                                                    <p></p>
-                                                </blockquote>
-                                                <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
-                                            </div>
-                                            <div class="item">
-                                                <blockquote>
-                                                    <p></p>
-
-                                                </blockquote>
-                                                <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
-                                            </div>
-                                            <div class="item">
-                                                <blockquote>
-                                                    <p></p>
-                                                </blockquote>
-                                                <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>*@
 
                 <div class="text-center">
                     <a href="#" class="btn btn-primary" onclick="initImage()" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>
