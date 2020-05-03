@@ -7,7 +7,7 @@
 
 <h2>Cadastrar</h2>
 
-<h4>Servico</h4>
+<h4>Serviço</h4>
 <hr />
 
 <div class="row">
@@ -19,6 +19,19 @@
                 <input asp-for="NomeServico" class="form-control" />
                 <span asp-validation-for="NomeServico" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="CategoriaId" class="control-label"></label>
+                <select class="form-control" name="categoria" id="categoriaCB" asp-items="null">
+                    <option value="0">Selecione a categoria</option>
+                </select>
+                <span asp-validation-for="CategoriaId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" hidden>
+                <input asp-for="CategoriaId" id="categoriaId" class="form-control" readonly />
+            </div>
+
             <div class="form-group">
                 <label asp-for="Descricao" class="control-label"></label>
                 <textarea asp-for="Descricao" class="form-control" rows="12"></textarea>
@@ -56,14 +69,63 @@
     </div>
 </div>
 
+@section Scripts {
+    <script>
 
-<script>
+        var input = document.querySelector("#inputFiles");
+        var filename = document.querySelector("#file-name");
+        var inputCategoriaId = $("#categoriaId");
+        var valCategoriaId = "";
 
-    var input = document.querySelector("#inputFiles");
-    var filename = document.querySelector("#file-name");
+        input.addEventListener('change', function () {
+            filename.textcontent = this.value;
+        });
 
-    input.addEventListener('change', function () {
-        filename.textcontent = this.value;
-    });
-</script>
+        $(document).ready(function () {
+            valCategoriaId = inputCategoriaId.val();
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Servico/ListaCategorias",
+                data: { userId: Id },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (dados) {
+                    var html_code = '<option value = "0"> Selecione a categoria</option>';
+                    $(dados).each(function (i) {
+                        html_code += '<option value="' + dados[i].categoriaId + '">' + dados[i].categoria + '</option>';
+                    });
+
+                    $('#categoriaCB').html(html_code);
+                    setSelectBoxById();
+
+
+                },
+                error: function (response) {
+                    alert('error');
+                }
+            });
+        });
+
+
+        function setSelectBoxById() {
+            var i;
+            var ddl = document.getElementById('categoriaCB');
+
+            if (inputCategoriaId.val() == 0) {
+                console.log('return input vazio');
+                return;
+            }
+
+            for (i = 0; i < ddl.options.length; i++) {
+                if (ddl.options[i].value == valCategoriaId) {
+                    ddl.selectedIndex = valCategoriaId;
+                }
+            }
+        }
+
+        $(document).on('change', '#categoriaCB', function () {
+            inputCategoriaId.val($(this).children("option:selected").val());
+        });
+    </script>
+}
 

@@ -33,7 +33,8 @@ namespace JSE.Web.Controllers
         {
             IndexViewModel idx = new IndexViewModel()
             {
-                Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault(),
+                Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault()
+                ,
                 Servicos = _context.Servicos.Where(s => s.ExibeIndex == true).OrderBy(s => s.NomeServico).Take(4).ToList(),
                 Depoimentos = _context.Depoimentos.Where(d => d.Aprovado == true).OrderBy(d => d.DataCriacao).ThenBy(d => d.NomeCliente).Take(20).ToList()
             };

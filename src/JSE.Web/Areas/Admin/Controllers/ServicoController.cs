@@ -128,12 +128,14 @@ namespace JSE.Web.Areas.Admin.Controllers
             }
             else
             {
-                var list = new List<string>();
-                foreach (var modelStateVal in ViewData.ModelState.Values)
-                {
-                    list.AddRange(modelStateVal.Errors.Select(error => error.ErrorMessage));
-                }
-                return Json(new { status = "error", errors = list });
+                return View(servico);
+
+                //var list = new List<string>();
+                //foreach (var modelStateVal in ViewData.ModelState.Values)
+                //{
+                //    list.AddRange(modelStateVal.Errors.Select(error => error.ErrorMessage));
+                //}
+                //return Json(new { status = "error", errors = list });
             }
 
         }
@@ -159,6 +161,13 @@ namespace JSE.Web.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public IActionResult ListaCategorias()
+        {
+            var lista = _context.ServicoCategorias.Where(c => c.Ativo == true).OrderBy(c => c.Categoria).ThenBy(c => c.CategoriaId).ToList();
+            return Json(lista);
+        }
+
        
     }
 }

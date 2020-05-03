@@ -118,10 +118,10 @@
         </div>
         <div class="divider"></div>
         @*<form role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-        </form>*@
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </form>*@
         <ul class="nav menu">
             <li class="active"><a href="~/admin/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Inicio</a></li>
 
@@ -215,6 +215,10 @@
     <script src="~/js/custom-admin.js"></script>
     <script src="https://kit.fontawesome.com/68b1a75dc4.js" crossorigin="anonymous"></script>
     <script src="~/js/delete.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+
     @*<script>
             window.onload = function () {
                 var chart1 = document.getElementById("line-chart").getContext("2d");

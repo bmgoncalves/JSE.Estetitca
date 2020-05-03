@@ -17,6 +17,7 @@ namespace JSE.Web.Models
         [ForeignKey("CategoriaId")]
         [DisplayName("Categoria")]
         [Required(ErrorMessage = "Campo obrigatório")]
+        [Range(1, int.MaxValue, ErrorMessage = "Seleciona a categoria")]
         public int CategoriaId { get; set; }
 
         [DisplayName("Descrição")]
