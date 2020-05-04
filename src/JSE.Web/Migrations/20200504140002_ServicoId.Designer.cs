@@ -4,14 +4,16 @@ using JSE.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    partial class JSEContextModelSnapshot : ModelSnapshot
+    [Migration("20200504140002_ServicoId")]
+    partial class ServicoId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -206,30 +208,6 @@ namespace JSE.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Estabelecimentos");
-                });
-
-            modelBuilder.Entity("JSE.Web.Models.Galeria", b =>
-                {
-                    b.Property<int>("GaleriaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Imagem")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
-
-                    b.Property<string>("NomeArquivo")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<int>("ServicoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GaleriaId");
-
-                    b.ToTable("Galerias");
                 });
 
             modelBuilder.Entity("JSE.Web.Models.Servico", b =>

@@ -1,16 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JSE.Web.Models
 {
     public class Galeria
     {
         [Key]
-        public int Id { get; set; }
+        public int GaleriaId { get; set; }
+
+        [ForeignKey("ServicoId")]
+        [DisplayName("Serviço")]
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [Range(1, int.MaxValue, ErrorMessage = "Selecione o serviço")]
         public int ServicoId { get; set; }
 
         [MaxLength(1000)]
@@ -20,9 +23,9 @@ namespace JSE.Web.Models
         [MaxLength(200)]
         public string NomeArquivo { get; set; }
 
-        [DisplayName("Descrição")]
-        [MaxLength(2000)]
-        [DataType(DataType.MultilineText)]        
-        public string Descricao { get; set; }
+        //[DisplayName("Descrição")]
+        //[MaxLength(2000)]
+        //[DataType(DataType.MultilineText)]        
+        //public string Descricao { get; set; }
     }
 }

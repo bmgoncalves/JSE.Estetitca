@@ -1,0 +1,38 @@
+﻿@model JSE.Web.Models.Galeria
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Galeria</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ServicoId" class="control-label"></label>
+                <input asp-for="ServicoId" class="form-control" />
+                <span asp-validation-for="ServicoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imagem" class="control-label"></label>
+                <input asp-for="Imagem" class="form-control" />
+                <span asp-validation-for="Imagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeArquivo" class="control-label"></label>
+                <input asp-for="NomeArquivo" class="form-control" />
+                <span asp-validation-for="NomeArquivo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -34,7 +34,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         {
 
             int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.Id)
+            var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.ServicoId)
                 .Skip(excludeRecords)
                 .Take(pageSize);
 
@@ -106,7 +106,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                         servico.NomeArquivo = fileName;
                     }
 
-                    if (servico.Id == 0)
+                    if (servico.ServicoId == 0)
                     {
                         _context.Add(servico);
                     }

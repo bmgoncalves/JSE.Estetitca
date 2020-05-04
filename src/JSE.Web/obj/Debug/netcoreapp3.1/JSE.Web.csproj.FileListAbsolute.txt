@@ -360,3 +360,8 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\Create.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\Delete.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\Details.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\Edit.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\Index.cshtml.g.cs

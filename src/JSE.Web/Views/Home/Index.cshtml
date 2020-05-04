@@ -10,24 +10,37 @@
 <div class="text-center">
     <!--sobreNos-->
     <section id="sobreNos" class="content">
-        
+
         <!-- Container -->
         <div class="container portfolio_title">
 
             <!-- Title -->
             <div class="section-title">
+                <br />
                 <h2>Sobre Nós</h2>
                 <h4>@Model.Estabel.TituloSobreNos</h4>
 
                 <div class="inner_section">
                     <div class="row">
-                        <div class="col-md-6"> <img class="img-responsive" src="~/img/about1.png"> </div>
-                        <div class="col-md-6">
-                            <h3>@Model.Estabel.SubTituloSobreNos</h3>
-                            <p>@Model.Estabel.DescricaoSobreNos</p>
+                        <div class="col-md-12">
+                                <h3 style="text-align:center">@Model.Estabel.SubTituloSobreNos</h3>
+                                <br />
+                                <p style="text-align:left"><img class="img-responsive img-float" src="~/img/about1.png">
+                                    @Model.Estabel.DescricaoSobreNos
+                                </p>
                         </div>
                     </div>
                 </div>
+
+                @*<div class="inner_section">
+                        <div class="row">
+                            <div class="col-md-4"> <img class="img-responsive" src="~/img/about1.png"> </div>
+                            <div class="col-md-8">
+                                <h3>@Model.Estabel.SubTituloSobreNos</h3>
+                                <p>@Model.Estabel.DescricaoSobreNos</p>
+                            </div>
+                        </div>
+                    </div>*@
 
             </div>
             <!--/Title -->
@@ -141,12 +154,13 @@
                     <figcaption>
                         <div>
                             <a href="~/img/portfolio_pic1.jpg" class="fancybox">
-                                <h2>Warm <span>Oscar</span></h2>
-                                <p>Oscar is a decent man. He used to clean porches with pleasure.</p>
+                                <h2>TESTE <span>TESTE Oscar</span></h2>
+                                <p>TESTE Oscar is a decent man. He used to clean porches with pleasure.</p>
                             </a>
                         </div>
                     </figcaption>
                 </figure>
+
                 <!--/Portfolio Item -->
                 <!-- Portfolio Item-->
                 <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  wildlife isotope-item effect-oscar">
@@ -320,7 +334,7 @@
 
 
                                         }
-                                      
+
                                     </div>
 
                                 </div>
@@ -431,7 +445,7 @@
                                     </form>
 
                                 </div>
-                            </div>
+                            </div>/img/about1.png
 
                         </div>
                     </div>
@@ -460,3 +474,19 @@
         });
     });
 </script>   
+
+<script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+5511980655952", // Número do WhatsApp
+            company_logo_url:"~/img/logo-brand.png", // URL com o logo da empresa
+            greeting_message: "Olá! A primeira mensagem a ser exibida, escreva aqui.", // Texto principal
+            call_to_action: "Uma mensagem convidando para enviar um whatsapp.", // Chamada para ação
+            position: "right", // Posição do widget na página 'right' ou 'left'
+        };
+        var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>

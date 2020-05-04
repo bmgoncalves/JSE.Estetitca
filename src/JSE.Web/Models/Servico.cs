@@ -8,7 +8,7 @@ namespace JSE.Web.Models
     public class Servico
     {
         [Key]
-        public int Id { get; set; }
+        public int ServicoId { get; set; }
         [DisplayName("Serviço")]
         [MaxLength(50)]
         [Required(ErrorMessage ="Campo obrigatório")]

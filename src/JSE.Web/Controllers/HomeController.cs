@@ -144,7 +144,7 @@ namespace JSE.Web.Controllers
 
         public IActionResult Servicos()
         {
-            var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.Id).ToList();
+            var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.ServicoId).ToList();
             //var lista = new List<Servico>();
             return View(servicos);
         }

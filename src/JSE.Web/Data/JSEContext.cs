@@ -25,6 +25,8 @@ namespace JSE.Web.Data
         public DbSet<Estabelecimento> Estabelecimentos { get; set; }
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<ServicoCategoria> ServicoCategorias { get; set; }
+        public DbSet<Galeria> Galerias { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
