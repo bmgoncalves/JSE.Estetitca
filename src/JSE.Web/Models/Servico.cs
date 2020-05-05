@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -40,6 +41,8 @@ namespace JSE.Web.Models
 
         [DisplayName("Exibir Pagina inicial")]
         public bool ExibeIndex { get; set; } = false;
+        public List<Galeria> Galerias { get; set; }
+
 
     }
 }

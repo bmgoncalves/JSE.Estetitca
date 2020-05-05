@@ -4,14 +4,16 @@ using JSE.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    partial class JSEContextModelSnapshot : ModelSnapshot
+    [Migration("20200505175141_GaleriaXServico")]
+    partial class GaleriaXServico
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

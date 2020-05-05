@@ -90,6 +90,14 @@ input.form-control {
   height: 60px;
   padding-top: 18px; }
 
+/*@media (min-width: 360px) {
+    .navbar-brand > .logo-img {
+        width: 110px;
+        height: 50px;
+        margin-top: -20px;
+    }
+}*/
+
 .navbar-header .navbar-brand span {
   color: #BC2A87; }
 

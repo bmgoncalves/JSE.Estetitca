@@ -16,16 +16,17 @@ namespace JSE.Web.Models
         [Range(1, int.MaxValue, ErrorMessage = "Selecione o serviço")]
         public int ServicoId { get; set; }
 
+        [MaxLength(50)]
+        [DisplayName("Cliente")]
+        public string NomeCliente { get; set; }
+
         [MaxLength(1000)]
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Imagem { get; set; }
 
         [MaxLength(200)]
         public string NomeArquivo { get; set; }
 
-        //[DisplayName("Descrição")]
-        //[MaxLength(2000)]
-        //[DataType(DataType.MultilineText)]        
-        //public string Descricao { get; set; }
+        [DisplayName("Data")]
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
     }
 }

@@ -77,10 +77,6 @@
         var inputCategoriaId = $("#categoriaId");
         var valCategoriaId = "";
 
-        input.addEventListener('change', function () {
-            filename.textcontent = this.value;
-        });
-
         $(document).ready(function () {
             valCategoriaId = inputCategoriaId.val();
             $.ajax({
@@ -106,13 +102,16 @@
             });
         });
 
+        input.addEventListener('change', function () {
+            filename.textcontent = this.value;
+        });
+
 
         function setSelectBoxById() {
             var i;
             var ddl = document.getElementById('categoriaCB');
 
             if (inputCategoriaId.val() == 0) {
-                console.log('return input vazio');
                 return;
             }
 

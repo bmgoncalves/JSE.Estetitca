@@ -4,14 +4,16 @@ using JSE.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    partial class JSEContextModelSnapshot : ModelSnapshot
+    [Migration("20200505163340_GaleriaImagemRequired")]
+    partial class GaleriaImagemRequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,8 +237,6 @@ namespace JSE.Web.Migrations
 
                     b.HasKey("GaleriaId");
 
-                    b.HasIndex("ServicoId");
-
                     b.ToTable("Galerias");
                 });
 
@@ -303,15 +303,6 @@ namespace JSE.Web.Migrations
                     b.HasKey("CategoriaId");
 
                     b.ToTable("ServicoCategorias");
-                });
-
-            modelBuilder.Entity("JSE.Web.Models.Galeria", b =>
-                {
-                    b.HasOne("JSE.Web.Models.Servico", null)
-                        .WithMany("Galerias")
-                        .HasForeignKey("ServicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("JSE.Web.Models.Servico", b =>

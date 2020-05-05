@@ -1,48 +1,93 @@
-﻿@model IEnumerable<JSE.Web.Models.Galeria>
+﻿@model cloudscribe.Pagination.Models.PagedResult<JSE.Web.Areas.Admin.ViewModel.GaleriaViewModel>
 
 @{
     ViewData["Title"] = "Index";
+    ViewData["Controler"] = "Admin";
+    ViewData["Action"] = "Galeria";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Galerias (Antes / Depois)</h2>
+<hr />
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" href="~/admin/galeria/AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
 </p>
-<table class="table">
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="inputPesquisa" class="control-label">Pesquisar</label>
+            <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ServicoId)
+                @Html.DisplayName("Cliente")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Imagem)
+                @Html.DisplayName("Servico")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NomeArquivo)
+                @Html.DisplayName("Data")
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model.Data)
+        {
+
+        <tr class="galeria">
             <td>
-                @Html.DisplayFor(modelItem => item.ServicoId)
+                @Html.DisplayFor(modelItem => item.NomeCliente)
+            </td>
+            <td class="nomeServico">
+                @Html.DisplayFor(modelItem => item.NomeServico)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Imagem)
+                @Html.DisplayFor(modelItem => item.DataCadastro)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NomeArquivo)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.GaleriaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.GaleriaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.GaleriaId">Delete</a>
+                <a asp-action="AddOrEdit" asp-route-id="@item.GaleriaId"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
+                <a href="~/admin/galeria/Delete/@item.GaleriaId"><i class="far fa-trash-alt"></i>Excluir</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
+
+<div>
+    <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+</div>
+
+@section Scripts{
+    <script>
+        var campoFiltro = document.getElementById("inputPesquisa");
+        campoFiltro.addEventListener("input", function () {
+            var servicos = document.querySelectorAll(".galeria");
+            for (var i = 0; i < servicos.length; i++) {
+                var servico = servicos[i];
+                if (this.value.length > 0) {
+                    tdNomeServico = servico.querySelector(".nomeServico");
+                    nomeServico = tdNomeServico.textContent;
+                    var expressao = new RegExp(this.value, "i");
+
+                    if (!expressao.test(nomeServico)) {
+                        servico.classList.add("invisivel");
+                    }
+                    else {
+                        servico.classList.remove("invisivel");
+                    }
+                } else {
+                    servico.classList.remove("invisivel");
+                }
+            }
+        });
+
+    </script>
+}

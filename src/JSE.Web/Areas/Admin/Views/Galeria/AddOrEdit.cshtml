@@ -5,34 +5,116 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Cadastrar</h2>
 
 <h4>Galeria</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddOrEdit">
+        <form enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="ServicoId" class="control-label"></label>
-                <input asp-for="ServicoId" class="form-control" />
+                <select class="form-control" name="servico" id="servicoCB" asp-items="null">
+                    <option value="-1">Selecione o serviço</option>
+                </select>
                 <span asp-validation-for="ServicoId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Imagem" class="control-label"></label>
-                <input asp-for="Imagem" class="form-control" />
-                <span asp-validation-for="Imagem" class="text-danger"></span>
+                <input asp-for="ServicoId" id="servicoId" class="form-control" readonly />
             </div>
             <div class="form-group">
-                <label asp-for="NomeArquivo" class="control-label"></label>
-                <input asp-for="NomeArquivo" class="form-control" />
-                <span asp-validation-for="NomeArquivo" class="text-danger"></span>
+                <label asp-for="NomeCliente" class="control-label"></label>
+                <input asp-for="NomeCliente" class="form-control" />
+                <span asp-validation-for="NomeCliente" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <label class="lbl-upload" for="inputFiles">Adicionar foto </label>
+                <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
+                <span id="file-name"></span>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Salvar" class="btn btn-primary btn-block btn-lg" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a href="~/admin/Galeria" class="btn btn-secondary btn-block btn-lg">Voltar</a>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
+@section Scripts {
+
+    <script src="~/js/teste.js"></script>
+
+
+    @*<script>
+
+            var input = document.querySelector("#inputFiles");
+            var filename = document.querySelector("#file-name");
+            var inputServicoId = document.querySelector("#servicoId");
+            var valServicoId = "";
+
+            input.addEventListener('change', function () {
+                filename.textcontent = this.value;
+            });
+
+            $(document).ready(function () {
+                valServicoId = inputServicoId.value;
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/Galeria/ListaServicos",
+                    data: { userId: Id },
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (dados) {
+                        var html_code = '<option value = "0"> Selecione o serviço</option>';
+                        $(dados).each(function (i) {
+                            html_code += '<option value="' + dados[i].servicoId + '">' + dados[i].nomeServico + '</option>';
+                        });
+
+                        $('#servicoCB').html(html_code);
+                        setSelectBoxById();
+                    },
+                    error: function (response) {
+                        alert('Erro ao carregar serviços');
+                    }
+                });
+            });
+
+
+            function setSelectBoxById() {
+                var i;
+                var ddl = document.getElementById('servicoCB');
+
+                if (inputServicoId.value == '0') {
+                    return;
+                }
+
+                //for (i = 0; i < ddl.options.length; i++) {
+                //    if (ddl.options[i].value == valServicoId) {
+                //        ddl.selectedIndex = valServicoId;
+                //    }
+                //}
+
+                for (i = 0; i < ddl.options.length; i++) {
+                    if (ddl.options[i].value == inputServicoId.value) {
+                        ddl.selectedIndex = inputServicoId.value;
+                    }
+                }
+            }
+
+            $(document).on('change', '#servicoCB', function () {
+                //inputServicoId.val($(this).children("option:selected").val());
+                inputServicoId.value = $(this).children("option:selected").val();
+            });
+        </script>*@
+
+}
 

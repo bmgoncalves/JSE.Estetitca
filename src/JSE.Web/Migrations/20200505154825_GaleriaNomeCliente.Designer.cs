@@ -4,14 +4,16 @@ using JSE.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    partial class JSEContextModelSnapshot : ModelSnapshot
+    [Migration("20200505154825_GaleriaNomeCliente")]
+    partial class GaleriaNomeCliente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,6 +221,7 @@ namespace JSE.Web.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Imagem")
+                        .IsRequired()
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
 
@@ -234,8 +237,6 @@ namespace JSE.Web.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("GaleriaId");
-
-                    b.HasIndex("ServicoId");
 
                     b.ToTable("Galerias");
                 });
@@ -303,15 +304,6 @@ namespace JSE.Web.Migrations
                     b.HasKey("CategoriaId");
 
                     b.ToTable("ServicoCategorias");
-                });
-
-            modelBuilder.Entity("JSE.Web.Models.Galeria", b =>
-                {
-                    b.HasOne("JSE.Web.Models.Servico", null)
-                        .WithMany("Galerias")
-                        .HasForeignKey("ServicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("JSE.Web.Models.Servico", b =>

@@ -184,3 +184,5 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\staticwebassets\JS
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.pdb
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.genruntimeconfig.cache
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\AddOrEdit.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\Index.cshtml.g.cs
