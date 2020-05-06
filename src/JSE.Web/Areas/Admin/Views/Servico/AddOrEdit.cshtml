@@ -117,7 +117,7 @@
 
             for (i = 0; i < ddl.options.length; i++) {
                 if (ddl.options[i].value == valCategoriaId) {
-                    ddl.selectedIndex = valCategoriaId;
+                    ddl.selectedIndex = ddl.options[i].index;
                 }
             }
         }

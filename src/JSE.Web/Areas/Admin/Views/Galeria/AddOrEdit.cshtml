@@ -1,7 +1,7 @@
 ﻿@model JSE.Web.Models.Galeria
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastro Galeria";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -17,12 +17,12 @@
             <div class="form-group">
                 <label asp-for="ServicoId" class="control-label"></label>
                 <select class="form-control" name="servico" id="servicoCB" asp-items="null">
-                    <option value="-1">Selecione o serviço</option>
+                    <option value="0">Selecione o serviço</option>
                 </select>
                 <span asp-validation-for="ServicoId" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <input asp-for="ServicoId" id="servicoId" class="form-control" readonly />
             </div>
             <div class="form-group">
@@ -51,70 +51,62 @@
 
 @section Scripts {
 
-    <script src="~/js/teste.js"></script>
+    <script>
+        var input = document.querySelector("#inputFiles");
+        var filename = document.querySelector("#file-name");
+        var inputServicoId = document.querySelector("#servicoId");
+        var valServicoId = "";
 
+        input.addEventListener('change', function () {
+            filename.textcontent = this.value;
+        });
 
-    @*<script>
+        $(document).ready(function () {
+            valServicoId = inputServicoId.value;
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Galeria/ListaServicos",
+                data: { userId: Id },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (dados) {
+                    var html_code = '<option value = "-1"> Selecione o serviço</option>';
+                    $(dados).each(function (i) {
+                        html_code += '<option value="' + dados[i].servicoId + '">' + dados[i].nomeServico + '</option>';
+                    });
 
-            var input = document.querySelector("#inputFiles");
-            var filename = document.querySelector("#file-name");
-            var inputServicoId = document.querySelector("#servicoId");
-            var valServicoId = "";
-
-            input.addEventListener('change', function () {
-                filename.textcontent = this.value;
-            });
-
-            $(document).ready(function () {
-                valServicoId = inputServicoId.value;
-                $.ajax({
-                    type: "GET",
-                    url: "/Admin/Galeria/ListaServicos",
-                    data: { userId: Id },
-                    contentType: "application/json;charset=utf-8",
-                    dataType: "json",
-                    success: function (dados) {
-                        var html_code = '<option value = "0"> Selecione o serviço</option>';
-                        $(dados).each(function (i) {
-                            html_code += '<option value="' + dados[i].servicoId + '">' + dados[i].nomeServico + '</option>';
-                        });
-
-                        $('#servicoCB').html(html_code);
-                        setSelectBoxById();
-                    },
-                    error: function (response) {
-                        alert('Erro ao carregar serviços');
-                    }
-                });
-            });
-
-
-            function setSelectBoxById() {
-                var i;
-                var ddl = document.getElementById('servicoCB');
-
-                if (inputServicoId.value == '0') {
-                    return;
+                    $('#servicoCB').html(html_code);
+                    setSelectBoxById();
+                },
+                error: function (response) {
+                    alert('Erro ao carregar serviços');
                 }
+            });
+        });
 
-                //for (i = 0; i < ddl.options.length; i++) {
-                //    if (ddl.options[i].value == valServicoId) {
-                //        ddl.selectedIndex = valServicoId;
-                //    }
-                //}
 
-                for (i = 0; i < ddl.options.length; i++) {
-                    if (ddl.options[i].value == inputServicoId.value) {
-                        ddl.selectedIndex = inputServicoId.value;
-                    }
-                }
+        function setSelectBoxById() {
+            var i;
+            var ddl = document.getElementById('servicoCB');
+
+            if (inputServicoId.value == '-1') {
+                return;
             }
 
-            $(document).on('change', '#servicoCB', function () {
-                //inputServicoId.val($(this).children("option:selected").val());
-                inputServicoId.value = $(this).children("option:selected").val();
-            });
-        </script>*@
+            for (i = 0; i < ddl.options.length; i++) {
+                if (ddl.options[i].value == inputServicoId.value) {
+                    ddl.selectedIndex = ddl.options[i].index;
+                }
+            }
+        }
+
+        $(document).on('change', '#servicoCB', function () {
+            //inputServicoId.val($(this).children("option:selected").val());
+            inputServicoId.value = $(this).children("option:selected").val();
+        });
+
+
+    </script>
 
 }
 

@@ -16,7 +16,7 @@ $(document).ready(function () {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (dados) {
-            var html_code = '<option value = "-1"> Selecione o serviço</option>';
+            var html_code = '<option value = "0"> Selecione o serviço</option>';
             $(dados).each(function (i) {
                 html_code += '<option value="' + dados[i].servicoId + '">' + dados[i].nomeServico + '</option>';
             });
@@ -35,13 +35,24 @@ function setSelectBoxById() {
     var i;
     var ddl = document.getElementById('servicoCB');
 
-    if (inputServicoId.value == '-1') {
+    if (inputServicoId.value == '0') {
         return;
     }
 
+    //for (i = 0; i < ddl.options.length; i++) {
+    //    if (ddl.options[i].value == valServicoId) {
+    //        ddl.options[i].selectedIndex = valServicoId;
+    //    }
+    //}
+
     for (i = 0; i < ddl.options.length; i++) {
         if (ddl.options[i].value == inputServicoId.value) {
-            ddl.selectedIndex = ddl.options[i].index;
+            //console.log(ddl.selectedOptions[i].selectedIndex);
+            ddl.options[ddl.selectedIndex].value = inputServicoId.value;
+
+            //ddl.options[ddl.selectedIndex].value = inputServicoId.value;
+            //ddl.selectedOptions[i].value = inputServicoId.value;
+            //ddl.selected = inputServicoId.value;
         }
     }
 }
