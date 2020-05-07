@@ -33,11 +33,21 @@ namespace JSE.Web.Controllers
         {
             IndexViewModel idx = new IndexViewModel()
             {
-                Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault()
-                ,
+                Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault(),
                 Servicos = _context.Servicos.Where(s => s.ExibeIndex == true).OrderBy(s => s.NomeServico).Take(4).ToList(),
-                Depoimentos = _context.Depoimentos.Where(d => d.Aprovado == true).OrderBy(d => d.DataCriacao).ThenBy(d => d.NomeCliente).Take(20).ToList()
+                Depoimentos = _context.Depoimentos.Where(d => d.Aprovado == true).OrderBy(d => d.DataCriacao).ThenBy(d => d.NomeCliente).Take(20).ToList(),
+                Galerias = _context.Galerias.OrderBy(g => g.GaleriaId).ThenBy(g => g.ServicoId).ToList(),
+                Categorias = _context.ServicoCategorias.OrderBy(c => c.CategoriaId).ToList()
             };
+
+            //Buscar o nome do serviço 
+            foreach (var g in idx.Galerias)
+            {
+                var servico = _context.Servicos.Where(s => s.ServicoId == g.ServicoId).FirstOrDefault();
+                g.NomeServico = servico.NomeServico;
+                g.NomeCategoria = _context.ServicoCategorias.Where(c => c.CategoriaId == servico.CategoriaId)
+                    .Select(c => c.Categoria).Single();
+            }
 
             return View(idx);
         }

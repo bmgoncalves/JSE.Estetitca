@@ -10,8 +10,9 @@ namespace JSE.Web.ViewModel
     {
         public Estabelecimento  Estabel { get; set; }
         public Contato Contato { get; set; }
-        public List<Depoimento> Depoimentos { get; set; }
-
-        public List<Servico> Servicos { get; set; }
+        public IList<Depoimento> Depoimentos { get; set; }
+        public IList<Servico> Servicos { get; set; }
+        public IList<Galeria> Galerias { get; set; }
+        public IList<ServicoCategoria> Categorias { get; set; }
     }
 }

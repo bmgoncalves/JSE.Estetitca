@@ -31,7 +31,8 @@ namespace JSE.Web.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<Servico>().Ignore(s => s.File); //Ignorar propriedade
+            modelBuilder.Entity<Galeria>().Ignore(g => g.NomeServico); //Ignorar propriedade
+            modelBuilder.Entity<Galeria>().Ignore(g => g.NomeCategoria); //Ignorar propriedade
 
             //modelBuilder.Entity<Servico>().HasOne(s => s.id)
             //    .HasOne(p => p.CategoriaId)
