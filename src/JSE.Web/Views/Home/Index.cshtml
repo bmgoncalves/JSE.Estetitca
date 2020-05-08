@@ -58,7 +58,7 @@
                     @foreach (var servico in Model.Servicos)
                     {
                         <div class="col-md-3">
-                            <div class="service_icon delay-03s animated wow  zoomIn"> <span><img class="img-upload" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="Sua imagem" /></span> </div>
+                            <div class="service_icon delay-03s animated wow  "> <span><img class="img-upload" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="Sua imagem" /></span> </div>
                             <div class="service_block">
                                 <h3 class="animated fadeInUp wow">@servico.NomeServico</h3>
                             </div>
@@ -79,14 +79,14 @@
                             descricao = servico.Descricao;
                         }
                         <div class="col-md-3">
-                            <div class="service_icon2 delay-03s animated wow zoomIn">
+                            <div class="service_icon2 delay-03s animated wow ">
                                 <span><i class="fa fa-search-plus" data-toggle="popover" data-placement="bottom" data-content="@descricao"></i></span>
                             </div>
                         </div>
                     }
                 </div>
                 <div class="row pull-left">
-                    <a class="btn btn-index animated fadeInDown wow" href="~/Home/Servicos"><i class="fa fa-search-plus"></i>&nbsp;Saiba mais</a>
+                    <a class="btn btn-index animated wow" href="~/Home/Servicos"><i class="fa fa-search-plus"></i>&nbsp;Saiba mais</a>
                 </div>
             </div>
         </div>
@@ -97,15 +97,10 @@
 
         <!-- Container -->
         <div class="container portfolio_title">
-
-            <!-- Title -->
             <div class="section-title">
                 <h2>GALERIA</h2>
                 <h6>As imagens abaixo são reais, veja os resultados de nossos clientes.</h6>
-
             </div>
-            <!--/Title -->
-
         </div>
         <!-- Container -->
 
@@ -129,7 +124,17 @@
                             </a>
                         </li>
                     }
+
+                    @*<li>
+                            <a href="~/Home/Galerias">
+                                <h5><i class="fa fa-search-plus"></i>&nbsp;<strong>Veja mais</strong></h5>
+                            </a>
+                        </li>*@
                 </ul>
+            </div>
+
+            <div class="row pull-left">
+                <a class="btn btn-index animated wow" href="~/Home/Galerias"><i class="fa fa-search-plus"></i>&nbsp;Saiba mais</a>
             </div>
             <!--/Portfolio Filters -->
             <!-- Portfolio Wrapper -->
@@ -138,25 +143,28 @@
 
                 @foreach (var g in Model.Galerias)
                 {
-                    <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four @g.NomeCategoria  isotope-item effect-oscar">
+                    if (@g.NomeArquivo != "")
+                    {
 
-                        <a href="~/images/uploads/Galeria/@g.NomeArquivo" class="fancybox">
-                            <div class="portfolio_img">
-                                <img src="~/images/uploads/Galeria/@g.NomeArquivo" alt="@g.NomeServico" />
-                            </div>
-                            <figcaption>
-                                <div>
+                        <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four @g.NomeCategoria  isotope-item effect-oscar">
 
-                                    <h3 class="portifolio-text">@g.NomeServico</h3>
-
+                            <a href="~/images/uploads/Galeria/@g.NomeArquivo" class="fancybox">
+                                <div class="portfolio_img">
+                                    <img src="~/images/uploads/Galeria/@g.NomeArquivo" alt="@g.NomeServico" />
                                 </div>
-                            </figcaption>
-                        </a>
-                    </figure>
+                                <figcaption>
+                                    <div>
+                                        <h3 class="portifolio-text">@g.NomeServico</h3>
+                                    </div>
+                                </figcaption>
+                            </a>
+                        </figure>
+                    }
                 }
 
 
             </div>
+
             <!--/Portfolio Wrapper -->
 
         </div>
@@ -381,7 +389,7 @@
     (function () {
         var options = {
             whatsapp: "+5511980655952", // Número do WhatsApp
-            company_logo_url: "~/img/logo-brand.png", // URL com o logo da empresa
+            //company_logo_url: "~/img/logo-brand.png", // URL com o logo da empresa
             greeting_message: "Olá! Entre em contato conosco!", // Texto principal
             call_to_action: "Oi! entre em contato conosco via Whatsapp!", // Chamada para ação
             position: "right", // Posição do widget na página 'right' ou 'left'

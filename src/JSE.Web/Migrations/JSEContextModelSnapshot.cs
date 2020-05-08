@@ -218,6 +218,9 @@ namespace JSE.Web.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Exibir")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Imagem")
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);

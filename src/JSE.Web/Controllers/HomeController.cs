@@ -139,7 +139,7 @@ namespace JSE.Web.Controllers
                 {
                     return Json(new { status = "error", message = ex.Message });
                 }
-                
+
             }
             else
             {
@@ -157,6 +157,48 @@ namespace JSE.Web.Controllers
             var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.ServicoId).ToList();
             //var lista = new List<Servico>();
             return View(servicos);
+        }
+
+        public IActionResult Galerias()
+        {
+
+            var query = from g in _context.Galerias.OrderBy(g => g.GaleriaId).ThenBy(s => s.ServicoId).ToList() // outer sequence
+                        join s in _context.Servicos //inner sequence 
+                        on g.ServicoId equals s.ServicoId // key selector 
+                        select new
+                        {
+                            g.GaleriaId,
+                            g.ServicoId,
+                            s.NomeServico,
+                            g.NomeCategoria,
+                            g.NomeCliente,
+                            g.Imagem,
+                            g.NomeArquivo,
+                            g.DataCadastro,
+                            g.Exibir,
+                        };
+
+            IList<Galeria> lista = new List<Galeria>();
+
+            foreach (var item in query)
+            {
+                var g = new Galeria()
+                {
+                    ServicoId = item.ServicoId,
+                    GaleriaId = item.GaleriaId,
+                    NomeCliente = item.NomeCliente,
+                    NomeServico = item.NomeServico,
+                    NomeCategoria = item.NomeCategoria,
+                    NomeArquivo = item.NomeArquivo,
+                    Imagem = item.Imagem,
+                    DataCadastro = item.DataCadastro,
+                    Exibir = item.Exibir
+                };
+
+                lista.Add(g);
+
+            }
+            return View(lista);
         }
 
     }

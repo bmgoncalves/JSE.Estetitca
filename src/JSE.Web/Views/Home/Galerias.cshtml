@@ -1,0 +1,103 @@
+﻿@model IEnumerable<JSE.Web.Models.Galeria>
+@using JSE.Web.Extensions;
+
+@{
+    ViewData["Title"] = "Galeria de resultados";
+}
+
+    <div class="text-center">
+        <!--sobreNos-->
+        <section id="sobreNos" class="content">
+            <div class="container portfolio_title">
+                <div class="section-title">
+                    <br />
+                    <h2>Galeria de resultados</h2>
+                    <h4></h4>
+                </div>
+
+                @foreach (var row in Model.ToArray().Split(4))
+                {
+                    <div class="card-group">
+                        @foreach (var galeria in row)
+                        {
+                            <div class="card">
+                                <img class="card-img-top img-fluid img-responsive" src="~/images/uploads/Galeria/@galeria.NomeArquivo" alt="@galeria.NomeServico">
+                                <div class="card-body">
+                                    <h3 class="card-title">@galeria.NomeServico</h3>
+                                    @*<p class="card-text">@descricao</p>*@
+                                </div>
+                                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                                    <a href="#" class="btn btn-primary"
+                                       data-titulo="@galeria.NomeServico"
+                                       data-action="@galeria.NomeServico"
+                                       data-toggle="modal"
+                                       data-target="#leiameModal"
+                                       data-body-message="." onclick="btnLeiaMais(this)"><i class="fa fa-search-plus"></i>Ampliar</a>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                }
+
+            </div>
+
+        </section>
+
+        <div class="modal fade" id="leiameModal" tabindex="-1" role="dialog" aria-labelledby="leiameModalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="https://i3.ytimg.com/vi/vr0qNXmkUJ8/maxresdefault.jpg" alt="" style="width:100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body mb-0 p-0">
+                        <img src="https://i3.ytimg.com/vi/vr0qNXmkUJ8/maxresdefault.jpg" alt="" style="width:100%">
+                    </div>
+                    <div class="modal-footer">
+                        <div><a href="https://i3.ytimg.com/vi/vr0qNXmkUJ8/maxresdefault.jpg" target="_blank">Download</a></div>
+                        <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+
+    </div>
+<div>
+    <footer class="footer_wrapper">
+        <div class="container">
+            <div class="footer_bottom"><span>Todos os Direitos © reservados - <a href="https://www.linkedin.com/in/bmendesgonca/" target="_blank" title="Linkedin">Desenvolvido por Bruno M. Gonçalves</a> </span> </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    var items = document.querySelectorAll(".liAtv");
+    for (var i = 0; i < items.length; ++i) {
+        items[i].classList.remove("Active");
+    }
+
+    function btnLeiaMais(componente) {
+        var tituloModal = document.querySelector("#leiameModalTitle");
+        //var messageModal = document.querySelector(".modal-body");
+        var messageModal = document.querySelector("#modalTextBody");
+
+        tituloModal.innerHTML = componente.getAttribute("data-titulo");
+        messageModal.innerHTML = componente.getAttribute("data-body-message");
+    }
+
+</script>
+

@@ -31,5 +31,8 @@ namespace JSE.Web.Models
 
         [DisplayName("Data")]
         public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        [DisplayName("Pagina inicial")]
+        public bool Exibir { get; set; } = false;
     }
 }

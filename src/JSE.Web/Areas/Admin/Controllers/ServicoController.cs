@@ -164,7 +164,10 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         public IActionResult ListaCategorias()
         {
-            var lista = _context.ServicoCategorias.Where(c => c.Ativo == true).OrderBy(c => c.Categoria).ThenBy(c => c.CategoriaId).ToList();
+            var lista = _context.ServicoCategorias.Where(c => c.Ativo == true)
+                .OrderBy(c => c.Categoria)
+                .ThenBy(c => c.CategoriaId)
+                .ToList();
             return Json(lista);
         }
 

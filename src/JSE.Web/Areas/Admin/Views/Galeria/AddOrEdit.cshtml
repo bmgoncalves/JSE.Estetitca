@@ -3,6 +3,18 @@
 @{
     ViewData["Title"] = "Cadastro Galeria";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    var atualiza = false;
+
+    if (Model.NomeArquivo == null || Model.NomeArquivo == "")
+    {
+        atualiza = false;
+    }
+    else
+    {
+        atualiza = true;
+    }
+
 }
 
 <h2>Cadastrar</h2>
@@ -11,7 +23,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form enctype="multipart/form-data" method="post">
+        <form enctype="multipart/form-data" method="post" onload="initImage()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
@@ -31,11 +43,28 @@
                 <span asp-validation-for="NomeCliente" class="text-danger"></span>
             </div>
 
+            <div class="form-group" hidden>
+                <input asp-for="NomeArquivo" id="nomeArquivo" class="form-control" readonly />
+                <input asp-for="Imagem" id="imagemModel" class="form-control" readonly />
+            </div>
+
+            <div class="form-group">
+                @if (atualiza)
+                {
+                    <img class="img-galeria" width="350" height="250" id="uplImg" src="~/images/uploads/Galeria/@Model.NomeArquivo" alt="@Model.NomeArquivo" />
+                }
+                else
+                {
+                    <img id="uplImg" src="~/img/photo-ico.png" />
+                }
+
+            </div>
+
             <div class="form-group">
                 <label class="lbl-upload" for="inputFiles">Adicionar foto </label>
                 <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
                 <span id="file-name"></span>
-                <p style="color:lightgray">Tamanho imagem 825 x 550</p>
+                <p style="color:lightgray">Tamanho imagem 600 x 420</p>
             </div>
 
             <div class="row">
@@ -56,11 +85,54 @@
         var input = document.querySelector("#inputFiles");
         var filename = document.querySelector("#file-name");
         var inputServicoId = document.querySelector("#servicoId");
+        var arquivo = document.querySelector("#nomeArquivo");
+        var imagemModel = document.querySelector("#imagemModel");
+
         var valServicoId = "";
 
         input.addEventListener('change', function () {
             filename.textcontent = this.value;
+            readURL(input);
         });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#uplImg')
+                        .attr('src', imgUpload.baseURI + "img/photo-ico.png"); //Limpar memoria com imagem padrao
+
+                    $('#uplImg')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function initImage() {
+            if (arquivo.value == "") {
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    $(imgUpload).empty(); // remove as imagens antigas
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+                        reader.onload = function (event) {
+                            $($.parseHTML('<img>')).attr('src', event.target.result)
+                                .appendTo(imgUpload);
+                        }
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+                //Limpar campos
+                imgUpload.currentSrc = imgUpload.baseURI + "img/photo-ico.png";
+                imgUpload.src = imgUpload.baseURI + "img/photo-ico.png";
+            }
+
+        }
 
         $(document).ready(function () {
             valServicoId = inputServicoId.value;
@@ -84,7 +156,6 @@
                 }
             });
         });
-
 
         function setSelectBoxById() {
             var i;

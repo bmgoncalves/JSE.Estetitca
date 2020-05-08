@@ -28,26 +28,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             _env = env;
         }
 
-        //public ViewResult Index2(int pageNumber = 1, int pageSize = 5)
-        //{
-        //    int excludeRecords = (pageNumber * pageSize) - pageSize;
-        //    var galerias = _context.Galerias.OrderBy(g => g.GaleriaId).ThenBy(g => g.ServicoId)
-        //        .Skip(excludeRecords)
-        //        .Take(pageSize);
-
-        //    var result = new PagedResult<Galeria>
-        //    {
-        //        Data = galerias.AsNoTracking().ToList(),
-        //        TotalItems = _context.Galerias.Count(),
-        //        PageNumber = pageNumber,
-        //        PageSize = pageSize
-        //    };
-
-        //    return View(result);
-
-        //}
-
-        public ViewResult Index(int pageNumber = 1, int pageSize = 5)
+        public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
             var galerias = _context.Galerias.OrderBy(g => g.GaleriaId).ThenBy(g => g.ServicoId)
@@ -96,7 +77,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
-        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, [Bind("GaleriaId,ServicoId,NomeCliente,Imagem,NomeArquivo,DataCadastro")] Galeria galeria)
+        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, [Bind("GaleriaId,ServicoId,NomeCliente,Imagem,NomeArquivo,DataCadastro,Exibir")] Galeria galeria)
         {
             if (ModelState.IsValid)
             {
@@ -140,12 +121,12 @@ namespace JSE.Web.Areas.Admin.Controllers
                         _context.Update(galeria);
                     }
                     _context.SaveChanges();
-                    return Redirect("~/Admin/Servico");
+                    return Redirect("~/Admin/Galeria");
 
                 }
                 catch (DataException)
                 {
-                    return RedirectToAction("~/Admin/Servico/AddOrEdit", new { Servico = galeria, saveChangesError = true });
+                    return RedirectToAction("~/Admin/Galeria/AddOrEdit", new { Servico = galeria, saveChangesError = true });
                 }
 
             }
