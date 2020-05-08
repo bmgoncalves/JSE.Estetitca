@@ -38,7 +38,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{area:exists}/{controller=Estabelecimento}/{action=Index}/{id?}")]
-        public IActionResult AddOrEdit([Bind("Id,NomeFantasia,Endereco,Bairro,Cidade,Complemento,CEP,UF,Pais,TelefoneComercial,TelefoneCelular,Email,CNPJ,UrlInstagram,UrlFacebook,UrlYoutube,Ativo,TituloSobreNos,SubTituloSobreNos,DescricaoSobreNos")] Estabelecimento estabelecimento)
+        public IActionResult AddOrEdit([Bind("Id,NomeFantasia,Endereco,Bairro,Cidade,Complemento,CEP,UF,Pais,TelefoneComercial,TelefoneCelular,Email,CNPJ,UrlInstagram,UrlFacebook,UrlYoutube,Localizacao,Ativo,TituloSobreNos,SubTituloSobreNos,DescricaoSobreNos")] Estabelecimento estabelecimento)
         {
             if (ModelState.IsValid)
             {

@@ -59,10 +59,12 @@
             <div class="container">
                 <div class="header_box">
                     <nav class="navbar navbar-inverse navbar-expand-sm" role="navigation">
-                        @*<a class="navbar-brand" alt="logo" href="~/home"></a>*@
-
                         <a href="~/home" class="navbar-brand">
-                            <img src="~/img/logo-brand.png" alt="" class="img-responsive logo-img">
+                            <picture>
+                                <source media="(max-width: 799px)" srcset="~/img/logo-brand-mini.png">
+                                <source media="(min-width: 800px)" srcset="~/img/logo-brand.png">
+                                <img src="logo.png" alt="logo">
+                            </picture>
                         </a>
 
 
@@ -99,7 +101,6 @@
     <script src="~/js/jquery.isotope.js"></script>
     <script src="~/js/fancybox/jquery.fancybox.pack.js"></script>
     <script src="~/js/wow.js"></script>
-    <script src="~/js/uploadFile.js"></script>
     <script src="~/js/custom.js"></script>
     @RenderSection("Scripts", required: false)
 

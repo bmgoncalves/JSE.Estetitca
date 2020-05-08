@@ -14,5 +14,6 @@ namespace JSE.Web.Areas.Admin.ViewModel
         public string NomeServico { get; set; }
 
         public DateTime DataCadastro { get; set; }
+        public bool Exibir { get; set; }
     }
 }

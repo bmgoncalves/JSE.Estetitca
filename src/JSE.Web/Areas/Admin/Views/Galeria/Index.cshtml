@@ -35,6 +35,9 @@
             <th>
                 @Html.DisplayName("Data")
             </th>
+            <th>
+                @Html.DisplayName("Pagina Inicial")
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -51,6 +54,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exibir)
             </td>
             <td>
                 <a asp-action="AddOrEdit" asp-route-id="@item.GaleriaId"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;

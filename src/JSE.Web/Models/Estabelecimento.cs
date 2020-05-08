@@ -75,12 +75,17 @@ namespace JSE.Web.Models
         public string UrlInstagram { get; set; }
 
         [DisplayName("Perfil Facebook")]
-        [MaxLength(200)]
+        [MaxLength(300)]
         public string UrlFacebook { get; set; }
 
         [DisplayName("Canal Youtube")]
-        [MaxLength(200)]
+        [MaxLength(300)]
         public string UrlYoutube { get; set; }
+
+        [DisplayName("Localização (GoogleMaps)")]
+        [MaxLength(1000)]
+        [Required(ErrorMessage ="Informe a localização da empresa")]
+        public string Localizacao { get; set; }
 
         public bool Ativo { get; set; }
 

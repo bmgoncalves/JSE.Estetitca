@@ -361,6 +361,4 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.pdb
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.genruntimeconfig.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csprojAssemblyReference.cache
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\Views\Home\wwwroot\tables\data1.json
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\Views\Home\wwwroot\tables\data2.json
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Galerias.cshtml.g.cs

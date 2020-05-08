@@ -46,6 +46,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                 galViewModel.ServicoId = item.ServicoId;
                 galViewModel.NomeCliente = item.NomeCliente;
                 galViewModel.DataCadastro = item.DataCadastro;
+                galViewModel.Exibir = item.Exibir;
                 galViewModel.NomeServico = _context.Servicos.Where(s => s.ServicoId == item.ServicoId).Select(s => s.NomeServico).Single();
                 listaGaleriaViewModel.Add(galViewModel);
             }

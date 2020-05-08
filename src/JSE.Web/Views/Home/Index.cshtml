@@ -32,17 +32,6 @@
                         </div>
                     </div>
                 </div>
-
-                @*<div class="inner_section">
-                        <div class="row">
-                            <div class="col-md-4"> <img class="img-responsive" src="~/img/about1.png"> </div>
-                            <div class="col-md-8">
-                                <h3>@Model.Estabel.SubTituloSobreNos</h3>
-                                <p>@Model.Estabel.DescricaoSobreNos</p>
-                            </div>
-                        </div>
-                    </div>*@
-
             </div>
             <!--/Title -->
         </div>
@@ -57,18 +46,6 @@
                 <div class="row">
                     @foreach (var servico in Model.Servicos)
                     {
-                        <div class="col-md-3">
-                            <div class="service_icon delay-03s animated wow  "> <span><img class="img-upload" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="Sua imagem" /></span> </div>
-                            <div class="service_block">
-                                <h3 class="animated fadeInUp wow">@servico.NomeServico</h3>
-                            </div>
-                        </div>
-                    }
-                </div>
-
-                <div class="row">
-                    @foreach (var servico in Model.Servicos)
-                    {
                         string descricao;
                         if (servico.Descricao.Length > 300)
                         {
@@ -78,13 +55,21 @@
                         {
                             descricao = servico.Descricao;
                         }
+
                         <div class="col-md-3">
+                            <div class="service_icon delay-03s animated wow  "> <span><img class="img-upload" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="Sua imagem" /></span> </div>
+                            <div class="service_block">
+                                <h3 class="animated fadeInUp wow">@servico.NomeServico</h3>
+                            </div>
+
                             <div class="service_icon2 delay-03s animated wow ">
                                 <span><i class="fa fa-search-plus" data-toggle="popover" data-placement="bottom" data-content="@descricao"></i></span>
                             </div>
+
                         </div>
                     }
                 </div>
+               
                 <div class="row pull-left">
                     <a class="btn btn-index animated wow" href="~/Home/Servicos"><i class="fa fa-search-plus"></i>&nbsp;Saiba mais</a>
                 </div>
@@ -125,17 +110,11 @@
                         </li>
                     }
 
-                    @*<li>
-                            <a href="~/Home/Galerias">
-                                <h5><i class="fa fa-search-plus"></i>&nbsp;<strong>Veja mais</strong></h5>
-                            </a>
-                        </li>*@
                 </ul>
+
             </div>
 
-            <div class="row pull-left">
-                <a class="btn btn-index animated wow" href="~/Home/Galerias"><i class="fa fa-search-plus"></i>&nbsp;Saiba mais</a>
-            </div>
+
             <!--/Portfolio Filters -->
             <!-- Portfolio Wrapper -->
             <div class="isotope fadeInLeft animated wow grid" style="position: relative; overflow: hidden; height: 480px;" id="portfolio_wrapper">
@@ -165,19 +144,26 @@
 
             </div>
 
+
+
             <!--/Portfolio Wrapper -->
 
         </div>
+
+
         <!--/Portfolio Filters -->
 
         <div class="portfolio_btm"></div>
-
+        <br />
+        <div class="text-center">
+            <a class="btn btn-primary" href="~/Home/Galerias"><i class="fa fa-search-plus"></i>&nbsp;Veja mais</a>
+        </div>
 
         <div id="project_container">
             <div class="clear"></div>
             <div id="project_data"></div>
-        </div>
 
+        </div>
 
     </section>
     <!--/Portfolio -->
@@ -187,7 +173,6 @@
             <section id="news" class="white-bg padding-top-bottom">
                 <div class="section-title">
                     <h2>Depoimentos </h2>
-                    @*<h6>Essas são algumas experiencias </h6>*@
                 </div>
 
                 <section id="carousel">
@@ -355,14 +340,14 @@
                                     </form>
 
                                 </div>
-                            </div>/img/about1.png
+                            </div>
 
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.216460695643!2d-46.55099028502423!3d-23.452655284737027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef5a8ceec7069%3A0x719101b9696143cb!2sJay%20Soares%20Est%C3%A9tica%20de%20Resultado!5e0!3m2!1spt-BR!2sbr!4v1588530518860!5m2!1spt-BR!2sbr" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <iframe src="@Model.Estabel.Localizacao" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </section>
         </div>
@@ -375,17 +360,16 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="~/js/envia-contato.js"></script>
+<script src="~/js/uploadFile.js"></script>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         $('[data-toggle="popover"]').popover({
             placement: 'bottom',
             trigger: 'hover'
         });
     });
-</script>
 
-<script type="text/javascript">
     (function () {
         var options = {
             whatsapp: "+5511980655952", // Número do WhatsApp
