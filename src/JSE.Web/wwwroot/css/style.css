@@ -3133,32 +3133,17 @@ input[type='file'] {
 }
 
 @media (max-width: 799px) {
-    /*.navbar {
-        flex-direction: row;
-    }*/
+    .navbar .brand-logo {
+        display: none;
+    }
 
-    /*.navbar {
-        width: 215px;
-    }*/
+    .navbar-brand > picture > img {
+        position: relative;
+        margin: -19px 0 0 0;
+    }
 
-        .navbar .brand-logo {
-            display: none;
-        }
-
-        .navbar-brand > img {
-            height: 100%;
-            padding: 15px;
-            width: auto;
-        }
-
-        .navbar .brand-logo-mini {
-            display:inline-flex;
-
-            /*display: inline-block;*/
-        }
-
-    /*.navbar-collapse {
-        display: flex;
-        margin-top: 0.5rem;
-    }*/
+    .navbar .brand-logo-mini {
+        display: inline-flex;
+        /*display: inline-block;*/
+    }
 }

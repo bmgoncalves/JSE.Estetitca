@@ -76,8 +76,8 @@ function initImage() {
     inputTelefone.value = "";
     inputEmail.value = "";
     inputMensagem.value = "";
-    imgUpload.currentSrc = imgUpload.baseURI + "img/80x80.png";
-    imgUpload.src = imgUpload.baseURI + "img/80x80.png";
+    //imgUpload.currentSrc = imgUpload.baseURI + "/img/80x80.png";
+    //imgUpload.src = imgUpload.baseURI + "/img/80x80.png";
 }
 
 function ExibeAlerta(tipo, mensagens) {
@@ -127,7 +127,7 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#blah')
-                .attr('src', imgUpload.baseURI + "img/80x80.png"); //Limpar memoria com imagem padrao
+                .attr('src', imgUpload.baseURI + "../img/80x80.png"); //Limpar memoria com imagem padrao
 
 
             $('#blah')

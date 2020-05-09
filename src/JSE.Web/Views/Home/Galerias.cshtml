@@ -17,25 +17,25 @@
 
             @foreach (var row in Model.ToArray().Split(4))
             {
-                <div class="card-group">
-                    @foreach (var galeria in row)
+        <div class="card-group">
+            @foreach (var galeria in row)
                     {
-                        <div class="card">
-                            <img class="card-img-top img-fluid img-responsive" id="imgGaleria" src="~/images/uploads/Galeria/@galeria.NomeArquivo" alt="@galeria.NomeServico">
-                            <div class="card-body">
-                                <h3 class="card-title">@galeria.NomeServico</h3>
-                            </div>
-                            <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
-                                <a href="#" class="btn btn-primary"
-                                   data-action="@galeria.NomeServico"
-                                   data-toggle="modal"
-                                   data-target="#leiameModal"
-                                   data-body-message="/images/uploads/Galeria/@galeria.NomeArquivo" onclick="btnAmpliar(this)"><i class="fa fa-search-plus"></i> Ampliar</a>
-                            </div>
-                        </div>
+            <div class="card">
+                <img class="card-img-top img-fluid img-responsive" id="imgGaleria" src="~/images/uploads/Galeria/@galeria.NomeArquivo" alt="@galeria.NomeServico">
+                <div class="card-body">
+                    <h3 class="card-title">@galeria.NomeServico</h3>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <a href="#" class="btn btn-primary"
+                       data-action="@galeria.NomeServico"
+                       data-toggle="modal"
+                       data-target="#leiameModal"
+                       data-body-message="../images/uploads/Galeria/@galeria.NomeArquivo" onclick="btnAmpliar(this)"><i class="fa fa-search-plus"></i> Ampliar</a>
+                </div>
+            </div>
 
                     }
-                </div>
+        </div>
             }
 
         </div>
@@ -65,13 +65,11 @@
     </footer>
 </div>
 
-@section Scripts{
-    <script>
-        function btnAmpliar(componente) {
-            var imagem = componente.getAttribute("data-body-message");
-            var imagemModal = document.getElementById("imgModal");
-            imagemModal.src = "";
-            imagemModal.src = imagem;
-        }
-    </script>
-}
+<script>
+    function btnAmpliar(componente) {
+        var imagem = componente.getAttribute("data-body-message");
+        var imagemModal = document.getElementById("imgModal");
+        imagemModal.src = "";
+        imagemModal.src = imagem;
+    }
+</script>
