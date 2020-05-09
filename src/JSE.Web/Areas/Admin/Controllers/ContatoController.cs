@@ -1,7 +1,12 @@
-﻿using JSE.Web.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using JSE.Web.Data;
+using JSE.Web.Models;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
@@ -16,21 +21,43 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contato
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //return View(await _context.Contatos.ToListAsync());
+            return View(await _context.Contatos.ToListAsync());
+        }
+
+        // GET: Admin/Contato/Create
+        public IActionResult Create()
+        {
             return View();
         }
 
-        // GET: Admin/Contato/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // POST: Admin/Contato/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ContatoId,Nome,Mensagem,Email,Telefone,ContatoWhatsapp,DataHora,Pendente")] Contato contato)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(contato);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(contato);
+        }
+
+        // GET: Admin/Contato/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var contato = await _context.Contatos.FirstOrDefaultAsync(m => m.Id == id);
+            var contato = await _context.Contatos
+                .FirstOrDefaultAsync(m => m.ContatoId == id);
             if (contato == null)
             {
                 return NotFound();
@@ -39,6 +66,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(contato);
         }
 
-
+        
     }
 }

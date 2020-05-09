@@ -10,7 +10,7 @@ namespace JSE.Web.Models
     public class Contato
     {
         [Key]
-        public int Id { get; set; }
+        public int ContatoId { get; set; }
         [Required(ErrorMessage ="Campo obrigatório")]
         [MaxLength(50)]
         public string Nome { get; set; }

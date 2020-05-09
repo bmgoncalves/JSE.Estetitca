@@ -1,8 +1,4 @@
-﻿
-    <h2>CONTATO CHEGOU NA VIEW INDEX</h2>
-
-
-@*@model IEnumerable<JSE.Web.Models.Contato>
+﻿@model IEnumerable<JSE.Web.Models.Contato>
 
 @{
     ViewData["Title"] = "Index";
@@ -24,10 +20,19 @@
                 @Html.DisplayNameFor(model => model.Mensagem)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Telefone)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ContatoWhatsapp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pendente)
             </th>
             <th></th>
         </tr>
@@ -42,16 +47,26 @@
                 @Html.DisplayFor(modelItem => item.Mensagem)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Telefone)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ContatoWhatsapp)
             </td>
             <td>
-                <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @Html.DisplayFor(modelItem => item.DataHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pendente)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ContatoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ContatoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContatoId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
-</table>*@
+</table>
