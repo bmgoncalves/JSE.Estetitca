@@ -74,11 +74,20 @@
                         <div id="main-nav" class="collapse navbar-collapse navStyle">
                             <ul class="nav navbar-nav" id="mainNav">
                                 <li id="liAtvHome" class="liAtv active"><a href="~/Home" class="scroll-link">Home</a></li>
-                                <li id="liAtvSobreNos" class="liAtv"><a href="#sobreNos" class="scroll-link">Sobre nós</a></li>
                                 <li id="liAtvServico" class="liAtv"><a href="#service" class="scroll-link">Serviços</a></li>
                                 <li id="liAtvPortifolio" class="liAtv"><a href="#Portfolio" class="scroll-link">Galeria</a></li>
                                 <li id="liAtvExperience" class="liAtv"><a href="#experience" class="scroll-link">Depoimentos</a></li>
                                 <li id="liAtvContato" class="liAtv"><a href="#Contato" class="scroll-link">Contato</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">A empresa</span> <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#sobreNos"><strong>Sobre nós</strong></a></li>
+                                        <li><a href="#nossoEspaco"><strong>Nosso espaço</strong></a></li>
+                                        <li class="dropdown ">
+                                        </li>
+
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -99,8 +108,8 @@
     <script src="~/js/fancybox/jquery.fancybox.pack.js"></script>
     <script src="~/js/wow.js"></script>
     <script src="~/js/custom.js"></script>
-
     @RenderSection("Scripts", required: false)
+
 
 </body>
 

@@ -92,9 +92,6 @@ namespace JSE.Web.Controllers
                 }
                 catch (Exception ex)
                 {
-                    TempData["alertType"] = "alert-success";
-                    TempData["Message"] = ex.Message;
-
                     return Json(ex.Message);
                 }
             }

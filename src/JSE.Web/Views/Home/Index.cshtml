@@ -69,7 +69,7 @@
                         </div>
                     }
                 </div>
-               
+
                 <div class="row pull-left">
                     <a class="btn btn-index animated wow" href="~/Home/Servicos"><i class="fa fa-search-plus"></i>&nbsp;Saiba mais</a>
                 </div>
@@ -284,11 +284,16 @@
                                 </div>
                             </div>
 
-                            <ul class="social_links">
-                                <li class="facebook animated bounceIn wow delay-03s"><a href="@Html.DisplayFor(model => model.Estabel.UrlFacebook)"><i class="fa fa-facebook"></i></a></li>
-                                <li class="facebook animated bounceIn wow delay-04s"><a href="@Html.DisplayFor(model => model.Estabel.UrlInstagram)"><i class="fa fa-instagram"></i></a></li>
-                                <li class="pinterest animated bounceIn wow delay-04s"><a href="@Html.DisplayFor(model => model.Estabel.UrlInstagram)"><i class="fa fa-youtube"></i></a></li>
-                            </ul>
+                            <div>
+                                <hr />
+                                <p class="text-contato-align">Nossas midias sociais</p>
+                                <ul class="social_links">
+                                    <li class="facebook animated bounceIn wow delay-03s"><a href="@Model.Estabel.UrlFacebook" target="_blank"><i class="fa fa-facebook fa-lg"></i></a></li>
+                                    <li class="pinterest animated bounceIn wow delay-04s"><a href="@Model.Estabel.UrlInstagram" target="_blank"><i class="fa fa-instagram fa-lg"></i></a></li>
+                                    <li class="pinterest animated bounceIn wow delay-04s"><a href="@Model.Estabel.UrlYoutube" target="_blank"><i class="fa fa-youtube fa-lg "></i></a></li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-lg-8 wow fadeInLeft delay-06s">
@@ -325,11 +330,10 @@
                                             <input id="contatoWhatsapp" asp-for="Contato.ContatoWhatsapp" class="custom-control-input" type="checkbox" checked>
                                             <label style="color:white" class="form-check-label" for="gridCheck1">Aceito Contato via Whatsapp </label>
 
-                                            <textarea id="mensagem" asp-for="Contato.Mensagem" class="input-text  text-area input-contato" cols="0" rows="0" placeholder="Digite sua mensagem *"></textarea>
+                                            <textarea id="mensagem" asp-for="Contato.Mensagem" class="input-text  text-area input-contato" cols="0" rows="5" placeholder="Digite sua mensagem *"></textarea>
                                             <span asp-validation-for="Contato.Mensagem" class="text-danger"></span>
 
                                             <div class="form-group">
-
                                                 <input id="btnContato"
                                                        data-controller="Home"
                                                        data-action="RegistraContato"
@@ -358,6 +362,7 @@
     </footer>
 </div>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="~/js/envia-contato.js"></script>
 <script src="~/js/uploadFile.js"></script>
@@ -384,3 +389,5 @@
         var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
     })();
 </script>
+
+

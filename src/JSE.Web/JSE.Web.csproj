@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +12,7 @@
     <Folder Include="Files\Download\" />
     <Folder Include="Files\Upload\Depoimentos\" />
     <Folder Include="wwwroot\images\uploads\Galeria\" />
+    <Folder Include="wwwroot\images\uploads\Estabelecimento\" />
     <Folder Include="wwwroot\images\uploads\Servicos\" />
   </ItemGroup>
 

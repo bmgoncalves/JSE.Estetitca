@@ -1,4 +1,4 @@
-﻿var btnEnviar = document.querySelector("#btnContato");
+﻿var btnEnviar = document.getElementById("btnContato");
 var alertaErro = "alert-danger";
 var alertWarning = "alert-warning";
 var alertSuccess = "alert-success";
@@ -7,22 +7,21 @@ var alertSuccess = "alert-success";
 btnEnviar.addEventListener("click", function () {
     event.preventDefault();
 
-    var retorno = validateForm();
+    var retorno = validaForm();
     var mensagens = [];
 
     if (!retorno) {
         return;
     }
 
-
-    var form = document.querySelector("#contatoForm");
+    var form = document.getElementById("contatoForm");
     var e = event;
     target = e.target;
-    var nome = document.querySelector("#nome").value;
-    var email = document.querySelector("#email").value;
-    var telefone = document.querySelector("#telefone").value;
-    var contatoWhatsapp = document.querySelector("#contatoWhatsapp").value;
-    var mensagem = document.querySelector("#mensagem").value;
+    var nome = document.getElementById("nome").value;
+    var email = document.getElementById("email").value;
+    var telefone = document.getElementById("telefone").value;
+    var contatoWhatsapp = document.getElementById("contatoWhatsapp").value;
+    var mensagem = document.getElementById("mensagem").value;
 
     var contato = {
         Id: "0",
@@ -47,37 +46,38 @@ btnEnviar.addEventListener("click", function () {
 
             if (data == "OK") {
                 mensagens.push("Obrigado, em breve entraremos em contato :)");
-                ExibeAlerta(alertSuccess, mensagens);
+                ExibeAlertaContato(alertSuccess, mensagens);
                 form.reset();
             }
             else if (data == "ErroModelo") {
                 mensagens.push("Por favor, verifique se todos os campos do formulário foram preenchidos corretamente.");
 
-                ExibeAlerta(alertaErro, mensagens);
+                ExibeAlertaContato(alertaErro, mensagens);
             }
             else {
                 mensagens.push("Houve um erro no registro do seu contato, por favor, tente novamente mais tarde");
-                ExibeAlerta(alertaErro, mensagens);
+                ExibeAlertaContato(alertaErro, mensagens);
             }
         },
         error: function (xhr) {
-            ExibeAlerta(alertaErro, "");
+            ExibeAlertaContato(alertaErro, "");
         }
     });
 });
 
 
-function ExibeAlerta(tipo, mensagens) {
+function ExibeAlertaContato(tipo, mensagens) {
 
-    var ul = document.querySelector("#textoAlerta");
+    var ul = document.getElementById("textoAlerta");
 
     mensagens.forEach(function (erro) {
+        console.log(erro);
         var li = document.createElement("li");
         li.textContent = erro;
         ul.appendChild(li);
     });
 
-    var alertBox = document.querySelector('#alertaDiv');
+    var alertBox = document.getElementById('alertaDiv');
     alertBox.classList.add("invisivel");
     alertBox.classList.remove("invisivel");
     alertBox.classList.add(tipo);
@@ -88,29 +88,14 @@ function ExibeAlerta(tipo, mensagens) {
     }, 5000);
 }
 
-//function ExibeAlerta(tipo, mensagem) {
-
-//    var alertBox = document.querySelector('#alertaDiv');
-//    var textoAlerta = document.querySelector('#textoAlerta');
-//    alertBox.classList.add("invisivel");
-
-//    alertBox.classList.remove("invisivel");
-//    alertBox.classList.add(tipo);
-//    textoAlerta.textContent = mensagem;
-
-//    setTimeout(function () {
-//        alertBox.classList.add("invisivel");
-//    }, 4000);
-
-//}
-
-function validateForm() {
+function validaForm() {
     var Nome = document.getElementById('nome').value;
     var Email = document.getElementById('email').value;
     var Telefone = document.getElementById('telefone').value;
     var Mensagem = document.getElementById('mensagem').value;
     var padraoEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
     var padraoTel = /\+\d{2}\s\(\d{2}\)\s\d{4,5}-?\d{4}/g;
+
 
     var errors = [];
     if (Nome == "") {
@@ -135,7 +120,7 @@ function validateForm() {
     }
 
     if (errors.length) {
-        ExibeAlerta(alertaErro, errors);
+        ExibeAlertaContato(alertaErro, errors);
         return false;
     }
     else {
