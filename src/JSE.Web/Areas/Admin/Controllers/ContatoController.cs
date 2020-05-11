@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
 using JSE.Web.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
@@ -21,15 +18,36 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contato
-        public async Task<IActionResult> Index()
+        [Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
+        public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
-            return View(await _context.Contatos.ToListAsync());
+            int excludeRecords = (pageNumber * pageSize) - pageSize;
+            var contatos = _context.Contatos.Where(c => c.Pendente == true)
+                                            .OrderBy(c => c.Nome)
+                                            .ThenBy(c => c.ContatoId)
+                                            .ThenBy(c => c.DataHora)
+                                            .Skip(excludeRecords)
+                                            .Take(pageSize);
+
+            var result = new PagedResult<Contato>
+            {
+                Data = contatos.AsNoTracking().ToList(),
+                TotalItems = _context.Contatos.Count(),
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
+
+            return View(result);
         }
 
         // GET: Admin/Contato/Create
-        public IActionResult Create()
+        public IActionResult AddOrEdit(int id = 0)
         {
-            return View();
+            if (id == 0)
+            {
+                return View(new Contato());
+            }
+            return View(_context.Contatos.Find(id));
         }
 
         // POST: Admin/Contato/Create
@@ -37,35 +55,37 @@ namespace JSE.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ContatoId,Nome,Mensagem,Email,Telefone,ContatoWhatsapp,DataHora,Pendente")] Contato contato)
+        [Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
+        public IActionResult AddOrEdit([Bind("ContatoId,Nome,Mensagem,Email,DDD,Telefone,ContatoWhatsapp,DataHora,Pendente")] Contato contato)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(contato);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (contato.ContatoId == 0)
+                {
+                    _context.Add(contato);
+                }
+                else
+                {
+                    _context.Update(contato);
+                }
+
+                _context.SaveChanges();
+                return Redirect("~/Admin/Contato");
             }
             return View(contato);
         }
 
         // GET: Admin/Contato/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
-            if (id == null)
+            var contato = _context.Contatos.Find(id);
+            if (contato != null)
             {
-                return NotFound();
+                _context.Contatos.Remove(contato);
+                _context.SaveChanges();
+                return Redirect("~/Admin/Contato");
             }
-
-            var contato = await _context.Contatos
-                .FirstOrDefaultAsync(m => m.ContatoId == id);
-            if (contato == null)
-            {
-                return NotFound();
-            }
-
-            return View(contato);
+            return RedirectToAction("Index");
         }
-
-        
     }
 }

@@ -26,8 +26,12 @@ namespace JSE.Web.Models
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail em formato inválido.")]
         public string Email { get; set; }
 
+        [MaxLength(2)]
+        [Required(ErrorMessage = "Informe o DDD")]
+        public string DDD { get; set; }
+
         [MaxLength(15)]        
-        [Required]
+        [Required(ErrorMessage = "Informe o telefone")]
         public string Telefone { get; set; }
 
         [DisplayName("Entrar em contato via Whatsapp")]

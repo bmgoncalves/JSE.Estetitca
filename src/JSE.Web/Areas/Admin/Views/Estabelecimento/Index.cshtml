@@ -80,19 +80,7 @@
 
                 <td>
                     <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="far fa-edit"></i>Editar</a> |
-
-                    @*<a href="#" class="delete"
-                        data-id="@item.Id"
-                        data-controller="Estabelecimento"
-                        data-action="Delete"
-                        data-area="Admin"
-                        data-body-message="@alerta"
-                        onclick="confirmdelete(@item.Id)"><i class="fa fa-trash-alt fa-lg"></i>Excluir</a>*@
-
                     <a href="~/admin/estabelecimento/Delete/@item.Id"><i class="far fa-trash-alt"></i>Excluir</a>
-
-
-
                 </td>
             </tr>
         }

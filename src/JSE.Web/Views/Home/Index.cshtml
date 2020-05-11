@@ -324,8 +324,17 @@
                                             <input id="email" asp-for="Contato.Email" class="input-text input-contato" type="text" name="" placeholder="E-mail *">
                                             <span asp-validation-for="Contato.Email" class="text-danger"></span>
 
-                                            <input id="telefone" asp-for="Contato.Telefone" class="input-text input-contato" type="text" name="txttelefone" placeholder="Telefone *">
-                                            <span asp-validation-for="Contato.Telefone" class="text-danger"></span>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <input id="ddd" asp-for="Contato.DDD" class="input-text input-contato" type="text" name="txttelefone" placeholder="Telefone *" value="11">
+                                                    <span asp-validation-for="Contato.DDD" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="col-lg-9">
+                                                    <input id="telefone" asp-for="Contato.Telefone" class="input-text input-contato" type="text" name="txttelefone" placeholder="Telefone *">
+                                                    <span asp-validation-for="Contato.Telefone" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
                                             <input id="contatoWhatsapp" asp-for="Contato.ContatoWhatsapp" class="custom-control-input" type="checkbox" checked>
                                             <label style="color:white" class="form-check-label" for="gridCheck1">Aceito Contato via Whatsapp </label>

@@ -91,6 +91,7 @@ function ExibeAlertaContato(tipo, mensagens) {
 function validaForm() {
     var Nome = document.getElementById('nome').value;
     var Email = document.getElementById('email').value;
+    var DDD = document.getElementById('DDD').value;
     var Telefone = document.getElementById('telefone').value;
     var Mensagem = document.getElementById('mensagem').value;
     var padraoEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
@@ -109,6 +110,10 @@ function validaForm() {
     //if (Telefone == "" || !padraoTel.test(Telefone)) {
     //    errors.push("Por favor, informe Telefone válido. Ex. ()");
     //}
+
+    if (DDD == "") {
+        errors.push("Por favor, informe o DDD");
+    }
 
     //if (Telefone == "" || !isNaN(Telefone)) {
     if (Telefone == "") {

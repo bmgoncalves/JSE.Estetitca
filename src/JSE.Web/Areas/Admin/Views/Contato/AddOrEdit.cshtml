@@ -1,0 +1,129 @@
+﻿@model JSE.Web.Models.Contato
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var data = Model.DataHora.ToShortDateString();
+    var telefone = "55" + Model.DDD + Model.Telefone;
+
+    var whatsapp = "";
+
+    if (Model.ContatoWhatsapp)
+        whatsapp = "Sim";
+    else
+        whatsapp = "Não";
+}
+
+<h2>Contato cliente</h2>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div hidden>
+                <input asp-for="ContatoId" class="form-control" readonly />
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label><br />
+                        @Html.DisplayFor(modelItem => Model.Nome)
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="DDD" class="control-label"></label><br />
+                        @Html.DisplayFor(modelItem => Model.DDD)
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Telefone" class="control-label"></label><br />
+                        @Html.DisplayFor(modelItem => Model.Telefone)
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="DataHora" class="control-label"></label><br />
+                        @data
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label><br />
+                        @Html.DisplayFor(modelItem => Model.Email)
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label asp-for="ContatoWhatsapp" class="control-label"></label><br />
+                            @whatsapp
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Mensagem" class="control-label"></label><br />
+                        @Html.DisplayFor(modelItem => Model.Mensagem)
+                    </div>
+                </div>
+            </div>
+
+            <div hidden>
+                <label>
+                    <input asp-for="Pendente" readonly id="pendente" />
+                </label>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <input type="submit" value="Finalizar" onclick="finalizaContato()" class="btn btn-primary btn-block btn-lg" />
+                </div>
+                <div class="form-group col-md-4">
+                    <a href="~/admin/contato" class="btn btn-secondary btn-block btn-lg">Voltar</a>
+                </div>
+
+                <div class="form-group col-md-4">
+
+                    <a href="https://wa.me/@telefone?text=Olá!%20Me%20chamo%20Jaiane%20Soares,%20estou%20retornando%20o%20contato%20feito%20no%20nosso%20site,%20(Jay%20Soares%20Estética%20de%20Resultado)%20" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+                        <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+                    </a>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script>
+
+        function finalizaContato() {
+            //event.preventDefault();
+            var inputPendente = document.getElementById("pendente");
+            inputPendente.checked = false;
+        }
+
+    </script>
+
+}
+
