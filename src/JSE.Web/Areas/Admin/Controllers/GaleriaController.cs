@@ -67,6 +67,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         // GET: Admin/Galeria/Create
         public IActionResult AddOrEdit(int id = 0)
         {
+            ViewBag.Servicos = _context.Servicos.OrderBy(s => s.NomeServico).ToList();
             if (id == 0)
             {
                 return View(new Galeria());
@@ -82,6 +83,8 @@ namespace JSE.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.Servicos = _context.Servicos.OrderBy(s => s.NomeServico).ToList();
+
                 Random rand = new Random();
                 var uploadPath = Path.Combine(_env.WebRootPath, "images\\uploads\\galeria\\");
                 var fileName = Util.GenerateCoupon(10, rand);

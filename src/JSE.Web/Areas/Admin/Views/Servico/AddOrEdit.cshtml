@@ -22,9 +22,17 @@
 
             <div class="form-group">
                 <label asp-for="CategoriaId" class="control-label"></label>
-                <select class="form-control" name="categoria" id="categoriaCB" asp-items="null">
-                    <option value="0">Selecione a categoria</option>
-                </select>
+
+                @Html.DropDownListFor(s => s.CategoriaId, ((IEnumerable<JSE.Web.Models.ServicoCategoria>)ViewBag.Categorias)
+                                    .Select(option => new SelectListItem
+                                    {
+
+                                        Text = option.Categoria,
+                                        Value = option.CategoriaId.ToString(),
+                                        Selected = (ViewBag.Categorias != null)
+                                    }), "Selecione...", new { @class = "form-control", @required = "required" })
+
+
                 <span asp-validation-for="CategoriaId" class="text-danger"></span>
             </div>
 
@@ -74,57 +82,55 @@
 
         var input = document.querySelector("#inputFiles");
         var filename = document.querySelector("#file-name");
-        var inputCategoriaId = $("#categoriaId");
-        var valCategoriaId = "";
+        //var inputCategoriaId = $("#categoriaId");
+        //var valCategoriaId = "";
 
-        $(document).ready(function () {
-            valCategoriaId = inputCategoriaId.val();
-            $.ajax({
-                type: "GET",
-                url: "/Admin/Servico/ListaCategorias",
-                data: { userId: Id },
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
-                success: function (dados) {
-                    var html_code = '<option value = "0"> Selecione a categoria</option>';
-                    $(dados).each(function (i) {
-                        html_code += '<option value="' + dados[i].categoriaId + '">' + dados[i].categoria + '</option>';
-                    });
+        //$(document).ready(function () {
+        //    valCategoriaId = inputCategoriaId.val();
+        //    $.ajax({
+        //        type: "GET",
+        //        url: "/Admin/Servico/ListaCategorias",
+        //        data: { userId: Id },
+        //        contentType: "application/json;charset=utf-8",
+        //        dataType: "json",
+        //        success: function (dados) {
+        //            var html_code = '<option value = "0"> Selecione a categoria</option>';
+        //            $(dados).each(function (i) {
+        //                html_code += '<option value="' + dados[i].categoriaId + '">' + dados[i].categoria + '</option>';
+        //            });
 
-                    $('#categoriaCB').html(html_code);
-                    setSelectBoxById();
-
-
-                },
-                error: function (response) {
-                    alert('error');
-                }
-            });
-        });
+        //            $('#categoriaCB').html(html_code);
+        //            setSelectBoxById();
+        //        },
+        //        error: function (response) {
+        //            alert('error');
+        //        }
+        //    });
+        //});
 
         input.addEventListener('change', function () {
             filename.textcontent = this.value;
         });
 
 
-        function setSelectBoxById() {
-            var i;
-            var ddl = document.getElementById('categoriaCB');
+        //function setSelectBoxById() {
+        //    var i;
+        //    var ddl = document.getElementById('categoriaCB');
 
-            if (inputCategoriaId.val() == 0) {
-                return;
-            }
+        //    if (inputCategoriaId.val() == 0) {
+        //        return;
+        //    }
 
-            for (i = 0; i < ddl.options.length; i++) {
-                if (ddl.options[i].value == valCategoriaId) {
-                    ddl.selectedIndex = ddl.options[i].index;
-                }
-            }
-        }
+        //    for (i = 0; i < ddl.options.length; i++) {
+        //        if (ddl.options[i].value == valCategoriaId) {
+        //            ddl.selectedIndex = ddl.options[i].index;
+        //        }
+        //    }
+        //}
 
-        $(document).on('change', '#categoriaCB', function () {
-            inputCategoriaId.val($(this).children("option:selected").val());
-        });
+        //$(document).on('change', '#categoriaCB', function () {
+        //    inputCategoriaId.val($(this).children("option:selected").val());
+        //});
     </script>
 }
 

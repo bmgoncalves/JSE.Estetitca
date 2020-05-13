@@ -53,6 +53,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         //[Route("Admin/Servico/AddOrEdit/{id?}")]
         public IActionResult AddOrEdit(int id = 0)
         {
+            ViewBag.Categorias = _context.ServicoCategorias.Where(c => c.Ativo == true).OrderBy(c => c.Categoria).ToList();
             if (id == 0)
             {
                 return View(new Servico());
@@ -75,6 +76,8 @@ namespace JSE.Web.Areas.Admin.Controllers
                 var fileName = Util.GenerateCoupon(10, rand);
                 var nomeArquivo = "";
                 bool atualizaImagem = false;
+
+                ViewBag.Categorias = _context.ServicoCategorias.Where(c => c.Ativo == true).OrderBy(c => c.Categoria).ToList();
 
                 try
                 {
