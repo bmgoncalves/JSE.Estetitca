@@ -2,6 +2,7 @@
 using JSE.Web.Extensions;
 using JSE.Web.Models;
 using JSE.Web.ViewModel;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace JSE.Web.Controllers
 {
@@ -31,6 +33,7 @@ namespace JSE.Web.Controllers
 
         public IActionResult Index()
         {
+
             IndexViewModel idx = new IndexViewModel()
             {
                 Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault(),
@@ -60,18 +63,23 @@ namespace JSE.Web.Controllers
                                                             .Single();
             }
 
+            idx.Estabel.FotosEspaco = FotosEstabel();
+
             return View(idx);
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            return View(new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                Path = exceptionHandlerPathFeature.Path,
+                ErrorMessage = exceptionHandlerPathFeature.Error.Message
+            });
+            //return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         /// <summary>
@@ -207,6 +215,26 @@ namespace JSE.Web.Controllers
 
             }
             return View(lista);
+        }
+
+        public IList<string> FotosEstabel()
+        {
+            var pasta = Path.Combine(_env.WebRootPath, "images\\uploads\\Estabelecimento\\");
+            var link = "/images/uploads/Estabelecimento/";
+
+            List<string> fotos = new List<string>();
+            //Marca o diretório a ser listado
+            DirectoryInfo diretorio = new DirectoryInfo(pasta);
+            //Executa função GetFile(Lista os arquivos desejados de acordo com o parametro)
+            FileInfo[] Arquivos = diretorio.GetFiles("*.*");
+
+            //Começamos a listar os arquivos
+            foreach (FileInfo fileinfo in Arquivos)
+            {
+                fotos.Add(link + fileinfo.Name);
+            }
+
+            return fotos;
         }
 
     }

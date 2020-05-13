@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace JSE.Web.Models
@@ -102,6 +104,8 @@ namespace JSE.Web.Models
         [DataType(DataType.MultilineText)]
         [DisplayName("Descrição sobre Empresa")]
         public string DescricaoSobreNos { get; set; }
+
+        public IList<string> FotosEspaco { get; set; }
 
     }
 }

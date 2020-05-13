@@ -147,7 +147,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.AssemblyIn
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.TagHelpers.input.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.TagHelpers.output.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.RazorCoreGenerate.cache
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Contato\Details.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Contato\Index.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Index.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Depoimento\Aprovar.cshtml.g.cs
@@ -163,7 +162,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Home\Servicos.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\_DepoimentoUsuario.cshtml.g.cs
@@ -186,3 +184,4 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.genruntime
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\AddOrEdit.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\Index.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Home\Galerias.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Contato\AddOrEdit.cshtml.g.cs

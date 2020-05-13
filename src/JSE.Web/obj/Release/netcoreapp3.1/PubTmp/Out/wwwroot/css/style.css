@@ -3132,7 +3132,7 @@ input[type='file'] {
     display: none;
 }
 
-@media (max-width: 799px) {
+@media (max-width: 699px) {
     .navbar .brand-logo {
         display: none;
     }
@@ -3143,7 +3143,12 @@ input[type='file'] {
     }
 
     .navbar .brand-logo-mini {
-        display: inline-flex;
+        display:normal;
         /*display: inline-block;*/
     }
+}
+
+.modal.and.carousel {
+    position: fixed;
+    // Needed because the carousel overrides the position property
 }

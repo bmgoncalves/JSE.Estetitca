@@ -33,6 +33,7 @@ namespace JSE.Web.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Galeria>().Ignore(g => g.NomeServico); //Ignorar propriedade
             modelBuilder.Entity<Galeria>().Ignore(g => g.NomeCategoria); //Ignorar propriedade
+            modelBuilder.Entity<Estabelecimento>().Ignore(e => e.FotosEspaco);
 
             //modelBuilder.Entity<Servico>().HasOne(s => s.id)
             //    .HasOne(p => p.CategoriaId)

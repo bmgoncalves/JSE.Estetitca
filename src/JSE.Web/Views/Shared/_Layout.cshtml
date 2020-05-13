@@ -61,8 +61,8 @@
                     <nav class="navbar navbar-inverse navbar-expand-sm" role="navigation">
                         <a href="~/home" class="navbar-brand">
                             <picture>
-                                <source media="(max-width: 799px)" srcset="~/img/logo-brand-mini.png">
-                                <source media="(min-width: 800px)" srcset="~/img/logo-brand.png">
+                                <source media="(max-width: 899px)" srcset="~/img/logo-brand-mini.png">
+                                <source media="(min-width: 900px)" srcset="~/img/logo-brand.png">
                                 <img src="logo.png" alt="logo">
                             </picture>
                         </a>
@@ -77,16 +77,8 @@
                                 <li id="liAtvServico" class="liAtv"><a href="#service" class="scroll-link">Serviços</a></li>
                                 <li id="liAtvPortifolio" class="liAtv"><a href="#Portfolio" class="scroll-link">Galeria</a></li>
                                 <li id="liAtvExperience" class="liAtv"><a href="#experience" class="scroll-link">Depoimentos</a></li>
+                                <li id="liAtvContato" class="liAtv"><a href="#sobreNos" class="scroll-link">Empresa</a></li>
                                 <li id="liAtvContato" class="liAtv"><a href="#Contato" class="scroll-link">Contato</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">A empresa</span> <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#sobreNos"><strong>Sobre nós</strong></a></li>
-                                        <li><a href="#nossoEspaco"><strong>Nosso espaço</strong></a></li>
-                                        <li class="dropdown ">
-                                        </li>
-                                    </ul>
-                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -95,6 +87,10 @@
         </header>
 
         @RenderBody()
+
+ 
+
+
 
     </div>
 
@@ -107,8 +103,30 @@
     <script src="~/js/fancybox/jquery.fancybox.pack.js"></script>
     <script src="~/js/wow.js"></script>
     <script src="~/js/custom.js"></script>
+
+    <script>
+
+        (function () {
+            var options = {
+                whatsapp: "+5511980655952", // Número do WhatsApp
+                //company_logo_url: "~/img/logo-brand.png", // URL com o logo da empresa
+                greeting_message: "Olá! Entre em contato conosco!", // Texto principal
+                call_to_action: "Oi! entre em contato conosco via Whatsapp!", // Chamada para ação
+                position: "right", // Posição do widget na página 'right' ou 'left'
+            };
+            var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+
+    </script>
+
+
     @RenderSection("Scripts", required: false)
 
+
+  
 
 </body>
 
