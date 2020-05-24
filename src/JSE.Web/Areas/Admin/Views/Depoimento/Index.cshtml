@@ -1,5 +1,4 @@
-﻿@model cloudscribe.Pagination.Models.PagedResult<JSE.Web.Models.Depoimento>
-
+﻿@model cloudscribe.Pagination.Models.PagedResult<Depoimento>
 
 @{
     ViewData["Title"] = "Depoimentos";
@@ -46,7 +45,7 @@
                 </td>
                 <td>
                     <a href="~/admin/depoimento/Aprovar/@item.Id"><i class="fas fa-search"></i> Analisar</a> &nbsp;|&nbsp;
-                    <a href="~/admin/depoimento/Delete/@item.Id"><i class="fas fa-ban"></i> Reprovar</a>
+                    <a href="~/admin/depoimento/Delete/@item.Id"><i class="fas fa-ban btn-excluir"></i> Reprovar</a>
                 </td>
             </tr>
         }

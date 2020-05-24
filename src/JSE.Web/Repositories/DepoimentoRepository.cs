@@ -33,6 +33,7 @@ namespace JSE.Web.Repositories
         {
             var depoimento = _context.Depoimentos.Find(id);
             _context.Depoimentos.Remove(depoimento);
+            _context.SaveChanges();
         }
 
         public bool Existe(int id)
@@ -52,7 +53,7 @@ namespace JSE.Web.Repositories
 
         public List<Depoimento> ListaDepoimentosPendentes()
         {
-            throw new NotImplementedException();
+            return _context.Depoimentos.Where(d => d.Aprovado == false).ToList();
         }
 
         public IQueryable<Depoimento> GetDepoimentosPendente(int excludeRecords, int pageNumber, int pageSize)

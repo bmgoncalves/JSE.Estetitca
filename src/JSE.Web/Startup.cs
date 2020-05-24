@@ -1,4 +1,6 @@
 using JSE.Web.Data;
+using JSE.Web.Repositories;
+using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,12 +30,15 @@ namespace JSE.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+
             services.AddDbContext<JSEContext>(options => options.UseSqlServer(
             Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddScoped<IDepoimentoRepository, DepoimentoRepository>();
             services.AddControllersWithViews();
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
             services.AddCloudscribePagination();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +56,11 @@ namespace JSE.Web
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
+            //Session Configuração
+            app.UseCookiePolicy();
+            //app.UseSession();
 
             app.UseRouting();
 
@@ -64,10 +73,12 @@ namespace JSE.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
-                  name: "areas",
-                  pattern: "{area:exists}/{controller=Admin}/{action=Login}/{id?}"
+               name: "areas",
+               pattern: "{area:exists}/{controller=Admin}/{action=Login}/{id?}"
 
-                );
+             );
+
+
             });
 
         }

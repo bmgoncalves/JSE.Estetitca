@@ -2,9 +2,11 @@
 using JSE.Web.Data;
 using JSE.Web.Models;
 using JSE.Web.Repositories;
+using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,32 +16,27 @@ namespace JSE.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class DepoimentoController : Controller
     {
-        private readonly JSEContext _context;
-
         private readonly IWebHostEnvironment _env;
-        private readonly DepoimentoRepository _depoimentoRepository;
+        private readonly IDepoimentoRepository _depoimentoRepository;
 
-        public DepoimentoController(JSEContext context, IWebHostEnvironment env, DepoimentoRepository depoimentoRepository)
+        public DepoimentoController(IWebHostEnvironment env, IDepoimentoRepository depoimentoRepository)
         {
-            _context = context;
+            //_context = context;
             _env = env;
             _depoimentoRepository = depoimentoRepository;
-
         }
 
-        // GET: Admin/Servico
+
         [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 15)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var depoimentos = _context.Depoimentos.Where(d => d.Aprovado == false).OrderBy(d => d.DataCriacao).ThenBy(d => d.NomeCliente)
-                .Skip(excludeRecords)
-                .Take(pageSize);
+            var depoimentos = _depoimentoRepository.GetDepoimentosPendente(excludeRecords, pageNumber, pageSize);
 
             var result = new PagedResult<Depoimento>
             {
                 Data = depoimentos.AsNoTracking().ToList(),
-                TotalItems = _context.Servicos.Count(),
+                TotalItems = _depoimentoRepository.ListaDepoimentosPendentes().Count(),
                 PageNumber = pageNumber,
                 PageSize = pageSize
             };
@@ -47,7 +44,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(result);
         }
 
-        public IActionResult Aprovar(int id=0)
+        public IActionResult Aprovar(int id = 0)
         {
             return View(_depoimentoRepository.GetDepoimento(id));
         }
@@ -59,14 +56,18 @@ namespace JSE.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _depoimentoRepository.AprovarDepoimento(depoimento);
-                return RedirectToAction(nameof(Index));
+                return Redirect("~/Admin/Depoimento");
+                //return RedirectToAction(nameof(Index), "Contato", new { area = "Admin" });
             }
+
             return View(depoimento);
         }
 
-        public IActionResult Delete(int? id)
+        [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
+        public IActionResult Delete(int id)
         {
-            var depoimento = _context.Depoimentos.Find(id);
+            var depoimento = _depoimentoRepository.GetDepoimento(id);
+
             var arquivo = Path.Combine(_env.WebRootPath, "images\\uploads\\Depoimentos\\" + depoimento.NomeArquivo);
             if (depoimento != null)
             {
@@ -76,7 +77,8 @@ namespace JSE.Web.Areas.Admin.Controllers
                     System.IO.File.Delete(arquivo);
                 }
             }
-            return RedirectToAction(nameof(Index));
+            return Redirect("~/Admin/Depoimento");
+
 
         }
 
