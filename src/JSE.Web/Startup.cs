@@ -34,6 +34,7 @@ namespace JSE.Web
             services.AddDbContext<JSEContext>(options => options.UseSqlServer(
             Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IDepoimentoRepository, DepoimentoRepository>();
             services.AddControllersWithViews();
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);

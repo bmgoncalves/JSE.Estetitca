@@ -2,6 +2,7 @@
 using JSE.Web.Data;
 using JSE.Web.Extensions;
 using JSE.Web.Models;
+using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,12 +21,14 @@ namespace JSE.Web.Areas.Admin.Controllers
     {
         private readonly JSEContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly IServicoRepository _servicoRepository;
 
-        public ServicoController(JSEContext context, IWebHostEnvironment env)
+        public ServicoController(JSEContext context, IWebHostEnvironment env, IServicoRepository servicoRepository)
         {
             _context = context;
             _env = env;
-            
+            _servicoRepository = servicoRepository;
+
         }
 
         // GET: Admin/Servico
@@ -61,9 +64,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(_context.Servicos.Find(id));
         }
 
-        // POST: Admin/Servico/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
