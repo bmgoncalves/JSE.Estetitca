@@ -6,7 +6,6 @@ using JSE.Web.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +16,7 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
     public class GaleriaController : Controller
     {
         private readonly JSEContext _context;
@@ -64,7 +64,6 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         }
 
-        // GET: Admin/Galeria/Create
         public IActionResult AddOrEdit(int id = 0)
         {
             ViewBag.Servicos = _context.Servicos.OrderBy(s => s.NomeServico).ToList();
@@ -78,8 +77,7 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
-        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, [Bind("GaleriaId,ServicoId,NomeCliente,Imagem,NomeArquivo,DataCadastro,Exibir")] Galeria galeria)
+        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, Galeria galeria)
         {
             if (ModelState.IsValid)
             {

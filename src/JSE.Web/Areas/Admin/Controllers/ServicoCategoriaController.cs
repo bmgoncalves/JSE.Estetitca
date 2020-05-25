@@ -1,6 +1,7 @@
 ﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
 using JSE.Web.Models;
+using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -9,28 +10,26 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}/{id?}")]
     public class ServicoCategoriaController : Controller
     {
-        private readonly JSEContext _context;
+        private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
 
-        public ServicoCategoriaController(JSEContext context)
+        public ServicoCategoriaController(IServicoCategoriaRepository servicoCategoriaRepository)
         {
-            _context = context;
+            _servicoCategoriaRepository = servicoCategoriaRepository;
         }
 
         // GET: Admin/ServicoCategoria
-        [Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}/{id?}")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var categorias = _context.ServicoCategorias.OrderBy(c => c.Categoria).ThenBy(c => c.CategoriaId)
-                .Skip(excludeRecords)
-                .Take(pageSize);
+            IQueryable<ServicoCategoria> categorias = _servicoCategoriaRepository.ObterTodosServicoCategoriasPaginados(excludeRecords,pageNumber,pageSize);
 
             var result = new PagedResult<ServicoCategoria>
             {
                 Data = categorias.AsNoTracking().ToList(),
-                TotalItems = _context.ServicoCategorias.Count(),
+                TotalItems = _servicoCategoriaRepository.ObterTodasServicoCategorias().Count(),
                 PageNumber = pageNumber,
                 PageSize = pageSize
             };
@@ -38,48 +37,43 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(result);
         }
 
-        [Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}/{id?}")]
         public IActionResult AddOrEdit(int id=0)
         {
             if (id == 0)
             {
                 return View(new ServicoCategoria());
             }
-            return View(_context.ServicoCategorias.Find(id));
+            return View(_servicoCategoriaRepository.ObterServicoCategoria(id));
         }
 
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}/{id?}")]
-        public async Task<IActionResult> AddOrEdit([FromForm] ServicoCategoria servicoCategoria)
+        public IActionResult AddOrEdit([FromForm] ServicoCategoria servicoCategoria)
         {
             if (ModelState.IsValid)
             {
                 if (servicoCategoria.CategoriaId == 0)
                 {
-                    _context.Add(servicoCategoria);
+                    _servicoCategoriaRepository.Cadastrar(servicoCategoria);
                 }
                 else
                 {
-                    _context.Update(servicoCategoria);
+                    _servicoCategoriaRepository.Atualizar(servicoCategoria);
                 }
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(servicoCategoria);
         }
 
 
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
-            var categoria = _context.ServicoCategorias.Find(id);
-
+            var categoria = _servicoCategoriaRepository.ObterServicoCategoria(id);
             //Criar regra para não permitir exclusão com serviço vinculado
             if (categoria != null)
             {
-                _context.ServicoCategorias.Remove(categoria);
-                _context.SaveChanges();
+                _servicoCategoriaRepository.Excluir(id);
                 return Redirect("~/Admin/ServicoCategoria");
             }
             return RedirectToAction("Index");

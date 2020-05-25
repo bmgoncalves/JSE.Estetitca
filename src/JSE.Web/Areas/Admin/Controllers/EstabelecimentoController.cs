@@ -6,6 +6,7 @@ using System.Linq;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("{area:exists}/{controller=Estabelecimento}/{action=Index}/{id?}")]
     public class EstabelecimentoController : Controller
     {
         private readonly JSEContext _context;
@@ -20,8 +21,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(_context.Estabelecimentos.ToList());
         }
 
-        [Route("{area:exists}/{controller=Estabelecimento}/{action=Index}/{id?}")]
-        // GET: Admin/Estabelecimento/Create
         public IActionResult AddOrEdit(int id=0)
         {
             if (id == 0)
@@ -30,15 +29,10 @@ namespace JSE.Web.Areas.Admin.Controllers
             }
             return View(_context.Estabelecimentos.Find(id));
         }
-
-
-        // POST: Admin/Estabelecimento/AddOrEdit
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("{area:exists}/{controller=Estabelecimento}/{action=Index}/{id?}")]
-        public IActionResult AddOrEdit([Bind("Id,NomeFantasia,Endereco,Bairro,Cidade,Complemento,CEP,UF,Pais,TelefoneComercial,TelefoneCelular,Email,CNPJ,UrlInstagram,UrlFacebook,UrlYoutube,Localizacao,Ativo,TituloSobreNos,SubTituloSobreNos,DescricaoSobreNos")] Estabelecimento estabelecimento)
+        public IActionResult AddOrEdit([FromForm]Estabelecimento estabelecimento)
         {
             if (ModelState.IsValid)
             {

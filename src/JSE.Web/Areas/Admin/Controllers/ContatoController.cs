@@ -8,6 +8,7 @@ using System.Linq;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
     public class ContatoController : Controller
     {
         private readonly JSEContext _context;
@@ -17,8 +18,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Admin/Contato
-        [Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
@@ -50,13 +49,9 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(_context.Contatos.Find(id));
         }
 
-        // POST: Admin/Contato/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
-        public IActionResult AddOrEdit([Bind("ContatoId,Nome,Mensagem,Email,DDD,Telefone,ContatoWhatsapp,DataHora,Pendente")] Contato contato)
+        public IActionResult AddOrEdit([FromForm] Contato contato)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +70,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(contato);
         }
 
-        // GET: Admin/Contato/Delete/5
         public IActionResult Delete(int? id)
         {
             var contato = _context.Contatos.Find(id);

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
     public class DepoimentoController : Controller
     {
         private readonly IWebHostEnvironment _env;
@@ -27,7 +28,6 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
 
-        [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 15)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
@@ -50,7 +50,6 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
         public IActionResult Aprovar(int id, [FromForm] Depoimento depoimento)
         {
             if (ModelState.IsValid)
@@ -63,7 +62,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(depoimento);
         }
 
-        [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
         public IActionResult Delete(int id)
         {
             var depoimento = _depoimentoRepository.GetDepoimento(id);

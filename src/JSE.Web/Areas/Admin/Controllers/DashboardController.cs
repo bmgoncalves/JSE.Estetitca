@@ -4,11 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Route("Admin/Dashboard/Index")]
+    [Route("{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")]
     public class DashboardController : Controller
     {
         // GET: Home
-        [Route("{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")]
         public ActionResult Index()
         {
             return View();
