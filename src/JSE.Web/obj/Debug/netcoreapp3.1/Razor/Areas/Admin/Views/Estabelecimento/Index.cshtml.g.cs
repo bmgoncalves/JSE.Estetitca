@@ -26,8 +26,22 @@ using JSE.Web.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\Projetos\JSEEstetica\src\JSE.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using X.PagedList.Mvc.Core;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\Projetos\JSEEstetica\src\JSE.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"08c60e392000827ac9f3fe52e0dc46350af061eb", @"/Areas/Admin/Views/Estabelecimento/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8933707006942fc8515e419d9137f90813bd6f02", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a7d2d58c1713f4e4e42d94562edccc4bc5ca2ec1", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Estabelecimento_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<JSE.Web.Models.Estabelecimento>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -73,7 +87,7 @@ using JSE.Web.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n<h2>Estabelecimentos</h2>\r\n<hr />\r\n<p>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "08c60e392000827ac9f3fe52e0dc46350af061eb4838", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "08c60e392000827ac9f3fe52e0dc46350af061eb5195", async() => {
                 WriteLiteral("<i class=\"far fa-plus-square\"></i> &nbsp; Cadastrar");
             }
             );
@@ -239,7 +253,7 @@ WriteAttributeValue("", 1511, item.Id, 1511, 8, false);
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                </td>\r\n\r\n                <td>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "08c60e392000827ac9f3fe52e0dc46350af061eb12238", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "08c60e392000827ac9f3fe52e0dc46350af061eb12595", async() => {
                 WriteLiteral("<i class=\"far fa-edit\"></i>Editar");
             }
             );
@@ -270,7 +284,7 @@ WriteAttributeValue("", 1511, item.Id, 1511, 8, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(" |\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "08c60e392000827ac9f3fe52e0dc46350af061eb14451", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "08c60e392000827ac9f3fe52e0dc46350af061eb14808", async() => {
                 WriteLiteral("<i class=\"far fa-trash-alt\"></i>Excluir");
             }
             );

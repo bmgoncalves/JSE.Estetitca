@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using JSE.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
@@ -24,5 +25,19 @@ namespace JSE.Web.Areas.Admin.Controllers
         {
             return RedirectToAction("Index", "Servico", new { area = "Admin" });
         }
+
+
+        [HttpPost]
+        public ActionResult Login(Usuario usuario)
+        {
+            return RedirectToAction("Index", "Servico", new { area = "Admin" });
+        }
+
+        [HttpPost]
+        public ActionResult RecuperarSenha(string email)
+        {
+            return RedirectToAction("Index", "Servico", new { area = "Admin" });
+        }
+
     }
 }

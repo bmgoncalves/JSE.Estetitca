@@ -11,7 +11,7 @@ namespace JSE.Web.Repositories
         private readonly JSEContext _context;
         public ServicoRepository(JSEContext context)
         {
-            _context = context;                
+            _context = context;
         }
         public void Atualizar(Servico servico)
         {
@@ -42,9 +42,16 @@ namespace JSE.Web.Repositories
             return _context.Servicos.Where(s => s.NomeServico.Contains(nome)).ToList();
         }
 
-        public IEnumerable<Servico> ObterTodasServicos()
+        public List<Servico> ObterTodosServicos()
         {
             return _context.Servicos.ToList();
+        }
+
+        public IQueryable<Servico> ObterTodosServicosPaginados(int excludeRecords, int pageNumber, int pageSize)
+        {
+            var servicos = _context.Servicos.Skip(excludeRecords).Take(pageSize);
+
+            return servicos;
         }
     }
 }

@@ -35,8 +35,16 @@ namespace JSE.Web
             Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IServicoRepository, ServicoRepository>();
+            services.AddScoped<IServicoCategoriaRepository, ServicoCategoriaRepository>();
             services.AddScoped<IDepoimentoRepository, DepoimentoRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddControllersWithViews();
+            //Sessao Configuracao
+            services.AddMemoryCache(); //guardar dados da sessao em memoria
+            services.AddSession(options =>
+            {
+            });
+
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
             services.AddCloudscribePagination();
 
@@ -61,7 +69,7 @@ namespace JSE.Web
             app.UseStaticFiles();
             //Session Configuração
             app.UseCookiePolicy();
-            //app.UseSession();
+            app.UseSession();
 
             app.UseRouting();
 
@@ -75,7 +83,7 @@ namespace JSE.Web
 
                 endpoints.MapControllerRoute(
                name: "areas",
-               pattern: "{area:exists}/{controller=Admin}/{action=Login}/{id?}"
+               pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
 
              );
 

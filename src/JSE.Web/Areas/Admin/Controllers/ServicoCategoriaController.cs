@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
 using JSE.Web.Models;
-using cloudscribe.Pagination.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
@@ -55,7 +52,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}/{id?}")]
-        public async Task<IActionResult> AddOrEdit([Bind("Id,Categoria,Ativo")] ServicoCategoria servicoCategoria)
+        public async Task<IActionResult> AddOrEdit([FromForm] ServicoCategoria servicoCategoria)
         {
             if (ModelState.IsValid)
             {

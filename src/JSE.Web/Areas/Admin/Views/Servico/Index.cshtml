@@ -1,10 +1,11 @@
-﻿@model cloudscribe.Pagination.Models.PagedResult<JSE.Web.Models.Servico>
+﻿@model cloudscribe.Pagination.Models.PagedResult<Servico>
 
 @{
     ViewData["Title"] = "Index";
     ViewData["Controller"] = "Admin";
     ViewData["Action"] = "Servico";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
 }
 
 <h2>Serviços cadastrados</h2>
@@ -20,25 +21,38 @@
             <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
         </div>
     </div>
+
+    @*<p class="alert alert-success">@ViewBag.MSG_S</p>*@
+
 </div>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayName("Servico")
-            </th>
-            <th>
-                @Html.DisplayName("Pagina inicial")
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Data)
-        {
+
+
+@if (Model.Data.Count > 0)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Servico")
+                </th>
+                <th>
+                    @Html.DisplayName("Categoria")
+                </th>
+                <th>
+                    @Html.DisplayName("Pagina inicial")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
             <tr class="servico">
                 <td class="nomeServico">
                     @Html.DisplayFor(modelItem => item.NomeServico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ExibeIndex)
@@ -49,13 +63,19 @@
 
                 </td>
             </tr>
-        }
-    </tbody>
-</table>
+            }
+        </tbody>
+    </table>
 
-<div>
-    <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
-</div>
+    <div>
+        <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+    </div>
+}
+else
+{
+    <span>Nenhum registro cadastrado!</span>
+}
+
 
 <script>
     var campoFiltro = document.querySelector("#inputPesquisa");

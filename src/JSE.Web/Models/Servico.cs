@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using JSE.Web.Extensions.Lang;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,19 +13,21 @@ namespace JSE.Web.Models
         public int ServicoId { get; set; }
         [DisplayName("Serviço")]
         [MaxLength(50)]
-        [Required(ErrorMessage ="Campo obrigatório")]
+        [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
         public string NomeServico { get; set; }
 
         [ForeignKey("CategoriaId")]
         [DisplayName("Categoria")]
-        [Required(ErrorMessage = "Campo obrigatório")]
-        [Range(1, int.MaxValue, ErrorMessage = "Seleciona a categoria")]
+        [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
+        [Range(1, int.MaxValue, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E006")]
         public int CategoriaId { get; set; }
+
+        public virtual ServicoCategoria Categoria { get; set; }
 
         [DisplayName("Descrição")]
         [MaxLength(2500)]
         [DataType(DataType.MultilineText)]
-        [Required(ErrorMessage = "Campo obrigatório")]
+        [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
         public string Descricao { get; set; }
 
         [DisplayName("Tempo Duração (Opcional)")]
@@ -41,7 +44,7 @@ namespace JSE.Web.Models
 
         [DisplayName("Exibir Pagina inicial")]
         public bool ExibeIndex { get; set; } = false;
-        public List<Galeria> Galerias { get; set; }
+        public virtual List<Galeria> Galerias { get; set; }
 
 
     }

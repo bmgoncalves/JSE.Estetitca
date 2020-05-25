@@ -1,6 +1,7 @@
 ﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
 using JSE.Web.Extensions;
+using JSE.Web.Extensions.Lang;
 using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Hosting;
@@ -12,22 +13,21 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ServicoController : Controller
     {
-        private readonly JSEContext _context;
         private readonly IWebHostEnvironment _env;
         private readonly IServicoRepository _servicoRepository;
+        private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
 
-        public ServicoController(JSEContext context, IWebHostEnvironment env, IServicoRepository servicoRepository)
+        public ServicoController(JSEContext context, IWebHostEnvironment env, IServicoRepository servicoRepository, IServicoCategoriaRepository servicoCategoriaRepository)
         {
-            _context = context;
             _env = env;
             _servicoRepository = servicoRepository;
+            _servicoCategoriaRepository = servicoCategoriaRepository;
 
         }
 
@@ -37,14 +37,12 @@ namespace JSE.Web.Areas.Admin.Controllers
         {
 
             int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.ServicoId)
-                .Skip(excludeRecords)
-                .Take(pageSize);
+            var servicos = _servicoRepository.ObterTodosServicosPaginados(excludeRecords, pageNumber, pageSize);
 
             var result = new PagedResult<Servico>
             {
                 Data = servicos.AsNoTracking().ToList(),
-                TotalItems = _context.Servicos.Count(),
+                TotalItems = _servicoRepository.ObterTodosServicos().Count(),
                 PageNumber = pageNumber,
                 PageSize = pageSize
             };
@@ -56,18 +54,19 @@ namespace JSE.Web.Areas.Admin.Controllers
         //[Route("Admin/Servico/AddOrEdit/{id?}")]
         public IActionResult AddOrEdit(int id = 0)
         {
-            ViewBag.Categorias = _context.ServicoCategorias.Where(c => c.Ativo == true).OrderBy(c => c.Categoria).ToList();
+            ViewBag.Categorias = _servicoCategoriaRepository.ObterTodasServicoCategorias();
+
             if (id == 0)
             {
                 return View(new Servico());
             }
-            return View(_context.Servicos.Find(id));
+            return View(_servicoRepository.ObterServico(id));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
-        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, [Bind("Id,NomeServico,CategoriaId,Descricao,Duracao,Imagem,NomeArquivo,ExibeIndex")] Servico servico)
+        public IActionResult AddOrEdit([FromForm] List<IFormFile> files, Servico servico)
         {
             if (ModelState.IsValid)
             {
@@ -77,8 +76,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                 var nomeArquivo = "";
                 bool atualizaImagem = false;
 
-                ViewBag.Categorias = _context.ServicoCategorias.Where(c => c.Ativo == true).OrderBy(c => c.Categoria).ToList();
-
+                ViewBag.Categorias = _servicoCategoriaRepository.ObterTodasServicoCategorias();
                 try
                 {
 
@@ -91,7 +89,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                             using (var s = new FileStream(Path.Combine(uploadPath, fileName),
                                                                         FileMode.Create))
                             {
-                                await file.CopyToAsync(s);
+                                file.CopyTo(s);
                                 nomeArquivo = fileName;
                                 atualizaImagem = true;
                             }
@@ -111,16 +109,22 @@ namespace JSE.Web.Areas.Admin.Controllers
 
                     if (servico.ServicoId == 0)
                     {
-                        _context.Add(servico);
+                        _servicoRepository.Cadastrar(servico);
                     }
                     else
                     {
-                        _context.Update(servico);
+                        _servicoRepository.Atualizar(servico);
+
                     }
 
+                    ViewData["MSG_S"] = Mensagem.MSG_S001;
 
-                    _context.SaveChanges();
+                    //TempData["MSG_S"] = Mensagem.MSG_S001;
                     return Redirect("~/Admin/Servico");
+                    //return RedirectToAction("Login", "Account");
+                    //return RedirectToAction("Index", "Contato", new { area = "Admin" });
+                    //return RedirectToAction(nameof(Index),"Servico", new { area = "Admin" });
+
 
                 }
                 catch (DataException)
@@ -132,33 +136,26 @@ namespace JSE.Web.Areas.Admin.Controllers
             else
             {
                 return View(servico);
-
-                //var list = new List<string>();
-                //foreach (var modelStateVal in ViewData.ModelState.Values)
-                //{
-                //    list.AddRange(modelStateVal.Errors.Select(error => error.ErrorMessage));
-                //}
-                //return Json(new { status = "error", errors = list });
             }
 
         }
 
         // GET: Admin/Servico/Delete/5
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
-            var servico = _context.Servicos.Find(id);
+            var servico = _servicoRepository.ObterServico(id);
+
             if (servico != null)
             {
                 var imagem = servico.Imagem;
-                                
-                _context.Servicos.Remove(servico);
-                _context.SaveChanges();
+                _servicoRepository.Excluir(id);
 
                 if (System.IO.File.Exists(imagem))
                 {
                     System.IO.File.Delete(imagem);
                 }
 
+                TempData["MSG_S"] = Mensagem.MSG_S002;
                 return Redirect("~/Admin/Servico");
 
             }
@@ -167,10 +164,7 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         public IActionResult ListaCategorias()
         {
-            var lista = _context.ServicoCategorias.Where(c => c.Ativo == true)
-                .OrderBy(c => c.Categoria)
-                .ThenBy(c => c.CategoriaId)
-                .ToList();
+            var lista = _servicoCategoriaRepository.ObterTodasServicoCategoriasAtivas();
             return Json(lista);
         }
 

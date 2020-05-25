@@ -1,0 +1,85 @@
+﻿@model IPagedList<Usuario>
+@{
+    ViewData["Title"] = "Index";
+    var pesquisa = Context.Request.Query["pesquisa"];
+}
+
+<h2>Usuários Cadastrados</h2>
+<br />
+<br />
+
+<p>
+    <a class="btn btn-primary" href="~/admin/usuario/AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
+</p>
+
+<div class="row">
+    <form asp-action="Index" method="get">
+        <div class="form-group">
+            <div class="col-md-9">
+                <label for="pesquisa"></label>
+                <input type="text" name="pesquisa" value="@pesquisa" class="form-control" placeholder="Digite o nome ou e-mail do usuário" />
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br />
+<br />
+
+<div>
+    @if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }
+</div>
+
+@if (Model.Count > 0)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().UsuarioId)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().Nome)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().Email)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().Situacao)</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+            <tr>
+                <th scope="row">@Html.DisplayFor(model => usuario.UsuarioId)</th>
+                <td>@Html.DisplayFor(model => usuario.Nome)</td>
+                <td>@Html.DisplayFor(model => usuario.Email)</td>
+                <td>@Html.DisplayFor(model => usuario.Situacao)</td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@usuario.UsuarioId"><i class="far fa-edit"></i> Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@usuario.UsuarioId" class="btn-excluir"><i class="far fa-trash-alt "></i> Excluir</a>  |
+
+                    @if (usuario.Situacao == true)
+                    {
+                        <a asp-action="AtivarDesativar" asp-route-id="@usuario.UsuarioId" class="btn-excluir"> Desativar</a>
+                    }
+                    else
+                    {
+                        <a asp-action="AtivarDesativar" asp-route-id="@usuario.UsuarioId" class="btn-excluir"> Ativar</a>
+                    }
+
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <span>Nenhum registro cadastrado</span>
+}
+
+@Html.PagedListPager((IPagedList)Model, pagina => Url.Action("Index", new { pagina, pesquisa = pesquisa }))
+
+
