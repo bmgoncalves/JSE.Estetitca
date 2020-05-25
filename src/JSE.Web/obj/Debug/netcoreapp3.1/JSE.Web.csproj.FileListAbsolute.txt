@@ -367,8 +367,9 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\X.PagedList.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\X.PagedList.Mvc.Core.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\X.PagedList.Web.Common.dll
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Usuario\Index.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Usuario\AddOrEdit.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csproj.CoreCompileInputs.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.MvcApplicationPartsAssemblyInfo.cache
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Usuario\Index.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Usuario\AddOrEdit.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Login - Copy.cshtml.g.cs

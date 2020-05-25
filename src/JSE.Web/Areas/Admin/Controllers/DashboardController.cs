@@ -1,4 +1,6 @@
-﻿using JSE.Web.Models;
+﻿using JSE.Web.Extensions.Login;
+using JSE.Web.Models;
+using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JSE.Web.Areas.Admin.Controllers
@@ -7,33 +9,66 @@ namespace JSE.Web.Areas.Admin.Controllers
     [Route("{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")]
     public class DashboardController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly LoginUsuario _loginUsuario;
+
+        public DashboardController(IUsuarioRepository usuarioRepository, LoginUsuario loginUsuario)
         {
-            return View();
+            _usuarioRepository = usuarioRepository;
+            _loginUsuario = loginUsuario;
+        }
+        public IActionResult Index()
+        {
+            Usuario usuario = _loginUsuario.GetUsuario();
+
+            if (usuario != null)
+            {
+                return View();
+            }
+            return RedirectToAction(nameof(Login));
         }
 
         //[Route("Home/About")]
-        public ActionResult Contato()
+        public IActionResult Contato()
         {
             //return RedirectToAction("Index", "Contato", new { area = "Atendimento" });
             return RedirectToAction("Index", "Contato", new { area = "Admin" });
         }
         
-        public ActionResult Servico()
+        public IActionResult Servico()
         {
             return RedirectToAction("Index", "Servico", new { area = "Admin" });
         }
 
 
-        [HttpPost]
-        public ActionResult Login(Usuario usuario)
+        public IActionResult Login()
         {
-            return RedirectToAction("Index", "Servico", new { area = "Admin" });
+            return View();
         }
 
         [HttpPost]
-        public ActionResult RecuperarSenha(string email)
+        public IActionResult Login([FromForm]Usuario usuario)
+        {
+            Usuario usuarioDB = _usuarioRepository.Login(usuario.Email, usuario.Senha);
+
+            if (usuarioDB != null)
+            {
+                _loginUsuario.Login(usuarioDB);
+                return RedirectToAction("Index","Dashboard");
+
+                //return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+            }
+            //return RedirectToAction("Index", "Servico", new { area = "Admin" });
+            return View(usuario);
+        }
+
+        public IActionResult Painel()
+        {
+            return new ContentResult() { Content = "Acesso permitido" };
+        }
+
+        [HttpPost]
+        public IActionResult RecuperarSenha(string email)
         {
             return RedirectToAction("Index", "Servico", new { area = "Admin" });
         }

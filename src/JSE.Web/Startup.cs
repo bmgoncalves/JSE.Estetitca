@@ -1,4 +1,6 @@
 using JSE.Web.Data;
+using JSE.Web.Extensions.Login;
+using JSE.Web.Extensions.SessaoUsuario;
 using JSE.Web.Repositories;
 using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Builder;
@@ -30,20 +32,37 @@ namespace JSE.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            /*
+             * Trabalhando com sessao é necessário adicionar: 
+             * services.AddHttpContextAccessor();
+             *  services.AddMemoryCache(); //guardar dados da sessao em memoria
+             *  services.AddSession(options =>{});
+             *  services.AddScoped<Sessao>(); - Classe que gerencia sessao 
+             *  services.AddScoped<LoginUsuario>(); - Classe que trabalha com login do usuario
+             */
+
+
 
             services.AddDbContext<JSEContext>(options => options.UseSqlServer(
             Configuration.GetConnectionString("DefaultConnection")));
 
+
+
+            //Sessao Configuracao
+            services.AddHttpContextAccessor();
             services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IServicoCategoriaRepository, ServicoCategoriaRepository>();
             services.AddScoped<IDepoimentoRepository, DepoimentoRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddControllersWithViews();
-            //Sessao Configuracao
+            
             services.AddMemoryCache(); //guardar dados da sessao em memoria
             services.AddSession(options =>
             {
             });
+
+            services.AddScoped<Sessao>();
+            services.AddScoped<LoginUsuario>();
 
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
             services.AddCloudscribePagination();
@@ -78,14 +97,14 @@ namespace JSE.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                name: "areas",
+                pattern: "{area:exists}/{controller=Dashboard}/{action=Login}/{id?}"
+                );
 
                 endpoints.MapControllerRoute(
-               name: "areas",
-               pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
-
-             );
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
 
 
             });
