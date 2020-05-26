@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("{area:exists}/{controller=Depoimento}/{action=Index}")]
     [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
     public class DepoimentoController : Controller
     {

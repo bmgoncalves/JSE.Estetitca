@@ -77,7 +77,8 @@
                 </td>
                 <td>
                     <a asp-action="AddOrEdit" asp-route-id="@item.ContatoId"><i class="fas fa-search"></i> Analisar</a> &nbsp; | &nbsp;
-                    <a href="~/admin/contato/Delete/@item.ContatoId"><i class="far fa-trash-alt"></i>Excluir</a>
+                    <a asp-action="Delete" asp-route-id="@item.ContatoId" class="btn-excluir"><i class="far fa-trash-alt"></i>Excluir</a>
+                    @*<a href="~/admin/contato/Delete/@item.ContatoId"><i class="far fa-trash-alt"></i>Excluir</a>*@
                 </td>
             </tr>
         }

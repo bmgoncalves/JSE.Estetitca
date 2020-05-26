@@ -13,7 +13,7 @@
 <h2>Estabelecimentos</h2>
 <hr />
 <p>
-    <a class="btn btn-primary" href="~/admin/estabelecimento/AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
+    <a class="btn btn-primary" asp-action="AddOrEdit" ><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
 </p>
 
 <table class="table">
@@ -80,7 +80,7 @@
 
                 <td>
                     <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="far fa-edit"></i>Editar</a> |
-                    <a href="~/admin/estabelecimento/Delete/@item.Id"><i class="far fa-trash-alt"></i>Excluir</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn-excluir"><i class="far fa-trash-alt"></i>Excluir</a>
                 </td>
             </tr>
         }

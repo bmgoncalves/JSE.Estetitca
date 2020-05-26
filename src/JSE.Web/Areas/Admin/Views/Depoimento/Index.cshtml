@@ -44,8 +44,10 @@
                     @Html.DisplayFor(modelItem => item.DataCriacao)
                 </td>
                 <td>
-                    <a href="~/admin/depoimento/Aprovar/@item.Id"><i class="fas fa-search"></i> Analisar</a> &nbsp;|&nbsp;
-                    <a href="~/admin/depoimento/Delete/@item.Id"><i class="fas fa-ban btn-excluir"></i> Reprovar</a>
+                    <a asp-action="Aprovar" asp-route-id="@item.Id"><i class="fas fa-search"></i> Analisar</a> &nbsp;|&nbsp;
+                    @*<a href="~/admin/depoimento/Aprovar/@item.Id"><i class="fas fa-search"></i> Analisar</a> &nbsp;|&nbsp;*@
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn-excluir" ><i class="fas fa-ban btn-excluir"></i> Reprovar</a>
+                    @*<a href="~/admin/depoimento/Delete/@item.Id"><i class="fas fa-ban btn-excluir"></i> Reprovar</a>*@
                 </td>
             </tr>
         }

@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 
 namespace JSE.Web.Controllers
 {
+    //[Route("{controller=Home}/{action=Index}")]
+    //[Route("{controller=Home}/{action=Index}/{id?}")]
     public class HomeController : Controller
     {
         public JSEContext _context { get; set; }

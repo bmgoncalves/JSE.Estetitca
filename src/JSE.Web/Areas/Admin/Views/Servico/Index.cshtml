@@ -11,7 +11,7 @@
 <h2>Serviços cadastrados</h2>
 <hr />
 <p>
-    <a class="btn btn-primary" href="~/admin/servico/AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
+    <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
 </p>
 
 <div class="row">
@@ -59,7 +59,8 @@
                 </td>
                 <td>
                     <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
-                    <a href="~/admin/servico/Delete/@item.ServicoId"><i class="far fa-trash-alt"></i>Excluir</a>
+                    <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt"></i>Excluir</a>
+                    @*<a href="~/admin/servico/Delete/@item.ServicoId"><i class="far fa-trash-alt"></i>Excluir</a>*@
 
                 </td>
             </tr>

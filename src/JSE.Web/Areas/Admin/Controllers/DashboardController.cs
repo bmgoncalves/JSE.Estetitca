@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("{area:exists}/{controller=Dashboard}/{action=Index}")]
     [Route("{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")]
+
     public class DashboardController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
@@ -17,27 +19,34 @@ namespace JSE.Web.Areas.Admin.Controllers
             _usuarioRepository = usuarioRepository;
             _loginUsuario = loginUsuario;
         }
+
         public IActionResult Index()
         {
             Usuario usuario = _loginUsuario.GetUsuario();
+            string teste = "b";
 
-            if (usuario != null)
+            if (teste == "b")
             {
                 return View();
+
             }
+
+            //if (usuario != null)
+            //{
+            //    return View();
+            //}
             return RedirectToAction(nameof(Login));
         }
 
         //[Route("Home/About")]
         public IActionResult Contato()
         {
-            //return RedirectToAction("Index", "Contato", new { area = "Atendimento" });
-            return RedirectToAction("Index", "Contato", new { area = "Admin" });
+            return RedirectToAction(nameof(Index), "Contato", new { area = "Admin" });
         }
         
         public IActionResult Servico()
         {
-            return RedirectToAction("Index", "Servico", new { area = "Admin" });
+            return RedirectToAction(nameof(Index), "Servico", new { area = "Admin" });
         }
 
 
@@ -54,11 +63,8 @@ namespace JSE.Web.Areas.Admin.Controllers
             if (usuarioDB != null)
             {
                 _loginUsuario.Login(usuarioDB);
-                return RedirectToAction("Index","Dashboard");
-
-                //return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                return RedirectToAction(nameof(Index));
             }
-            //return RedirectToAction("Index", "Servico", new { area = "Admin" });
             return View(usuario);
         }
 
@@ -70,7 +76,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult RecuperarSenha(string email)
         {
-            return RedirectToAction("Index", "Servico", new { area = "Admin" });
+            return RedirectToAction(nameof(Index), "Servico", new { area = "Admin" });
         }
 
     }
