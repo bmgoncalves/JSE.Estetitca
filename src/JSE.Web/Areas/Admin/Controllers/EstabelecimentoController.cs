@@ -12,6 +12,7 @@ namespace JSE.Web.Areas.Admin.Controllers
     public class EstabelecimentoController : Controller
     {
         private readonly JSEContext _context;
+        //TODO - Criar repositorio do estabelecimento
 
         public EstabelecimentoController(JSEContext context)
         {

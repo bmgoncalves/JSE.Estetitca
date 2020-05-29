@@ -21,6 +21,7 @@ namespace JSE.Web.Areas.Admin.Controllers
     //[Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
     public class GaleriaController : Controller
     {
+        //TODO - Criar repositorio de Galeria
         private readonly JSEContext _context;
         private readonly IWebHostEnvironment _env;
 

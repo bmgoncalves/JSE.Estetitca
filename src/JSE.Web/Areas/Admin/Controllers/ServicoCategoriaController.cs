@@ -12,9 +12,8 @@ namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
-
-    //[Route("{area:exists}/{controller=ServicoCategori}/{action=Index}")]
-    //[Route("{area:exists}/{controller=ServicoCategori}/{action=Index}/{id?}")]
+    //[Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}")]
+    //[Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}/{id?}")]
     public class ServicoCategoriaController : Controller
     {
         private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
