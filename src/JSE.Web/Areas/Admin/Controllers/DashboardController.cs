@@ -20,15 +20,16 @@ namespace JSE.Web.Areas.Admin.Controllers
             _loginUsuario = loginUsuario;
         }
 
-        [UsuarioAutorizacaoAttribute]
+        [UsuarioAutorizacao]
         public IActionResult Index()
         {
-            Usuario usuario = _loginUsuario.GetUsuario();
-            if (usuario != null)
-            {
-                return View();
-            }
-            return RedirectToAction(nameof(Login));
+            return View();
+            //Usuario usuario = _loginUsuario.GetUsuario();
+            //if (usuario != null)
+            //{
+            //    return View();
+            //}
+            //return RedirectToAction(nameof(Login));
         }
 
         //[Route("Home/About")]
@@ -72,6 +73,15 @@ namespace JSE.Web.Areas.Admin.Controllers
         {
             return RedirectToAction(nameof(Index), "Servico", new { area = "Admin" });
         }
+
+
+        [UsuarioAutorizacao]
+        public IActionResult Logout()
+        {
+            _loginUsuario.Logout();
+            return RedirectToAction(nameof(Login));
+        }
+
 
     }
 }

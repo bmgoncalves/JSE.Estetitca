@@ -1,5 +1,6 @@
 ﻿using JSE.Web.Extensions.Login;
 using JSE.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,9 @@ namespace JSE.Web.Extensions.Filtro
             _loginUsuario = (LoginUsuario)context.HttpContext.RequestServices.GetService(typeof(LoginUsuario));
 
             Usuario usuario = _loginUsuario.GetUsuario();
-            if (usuario != null)
+            if (usuario == null)
             {
-
+                context.Result = new RedirectToActionResult("Login", "Dashboard", null);
             }
         }
     }
