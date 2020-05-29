@@ -1,4 +1,5 @@
 ﻿using JSE.Web.Data;
+using JSE.Web.Extensions.Filtro;
 using JSE.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(estabelecimento);
         }
 
+        [ValidateHttpReferer]
         public IActionResult Delete(int? id)
         {
             var estabel = _context.Estabelecimentos.Find(id);

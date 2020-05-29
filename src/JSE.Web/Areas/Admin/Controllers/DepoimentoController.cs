@@ -1,5 +1,6 @@
 ﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
+using JSE.Web.Extensions.Filtro;
 using JSE.Web.Models;
 using JSE.Web.Repositories;
 using JSE.Web.Repositories.Intefarces;
@@ -45,6 +46,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(result);
         }
 
+
         public IActionResult Aprovar(int id = 0)
         {
             return View(_depoimentoRepository.GetDepoimento(id));
@@ -63,6 +65,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(depoimento);
         }
 
+        [ValidateHttpReferer]
         public IActionResult Delete(int id)
         {
             var depoimento = _depoimentoRepository.GetDepoimento(id);

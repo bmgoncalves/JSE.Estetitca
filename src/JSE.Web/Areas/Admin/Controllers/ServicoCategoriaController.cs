@@ -1,5 +1,6 @@
 ﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
+using JSE.Web.Extensions.Filtro;
 using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
+
     //[Route("{area:exists}/{controller=ServicoCategori}/{action=Index}")]
     //[Route("{area:exists}/{controller=ServicoCategori}/{action=Index}/{id?}")]
     public class ServicoCategoriaController : Controller
@@ -68,6 +71,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
 
+        [ValidateHttpReferer]
         public IActionResult Delete(int id)
         {
             var categoria = _servicoCategoriaRepository.ObterServicoCategoria(id);

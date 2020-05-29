@@ -1,4 +1,5 @@
-﻿using JSE.Web.Extensions.Lang;
+﻿using JSE.Web.Extensions.Filtro;
+using JSE.Web.Extensions.Lang;
 using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
@@ -56,12 +57,14 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
 
+        [ValidateHttpReferer]
         public IActionResult Delete(int id)
         {
             _usuarioRepository.Excluir(id);
             return Redirect("~/Admin/Usuario");
         }
 
+        [ValidateHttpReferer]
         public IActionResult AtivarDesativar(int id)
         {
             _usuarioRepository.AtivarDesativar(id);

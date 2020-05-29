@@ -2,6 +2,7 @@
 using JSE.Web.Areas.Admin.ViewModel;
 using JSE.Web.Data;
 using JSE.Web.Extensions;
+using JSE.Web.Extensions.Filtro;
 using JSE.Web.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -140,6 +141,7 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         }
 
+        [ValidateHttpReferer]
         public IActionResult Delete(int? id)
         {
             var galeria = _context.Galerias.Find(id);

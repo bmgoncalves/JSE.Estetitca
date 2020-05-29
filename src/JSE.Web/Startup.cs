@@ -1,5 +1,6 @@
 using JSE.Web.Data;
 using JSE.Web.Extensions.Login;
+using JSE.Web.Extensions.Middleware;
 using JSE.Web.Extensions.SessaoUsuario;
 using JSE.Web.Repositories;
 using JSE.Web.Repositories.Intefarces;
@@ -84,6 +85,8 @@ namespace JSE.Web
             app.UseStaticFiles();
             //Session Configuração
             app.UseSession();
+            //Middleware para validar token nos metodos POST
+            app.UseMiddleware<ValidateAntiForgeryTokenMiddleware>();
             app.UseCookiePolicy();
 
             app.UseRouting();
@@ -92,18 +95,16 @@ namespace JSE.Web
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
-                
-
-                endpoints.MapControllerRoute(
-               name: "areas",
-               pattern: "{area:exists}/{controller=Dashboard}/{action=Login}/{id?}"
-               );
-
+               
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
+
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+               );
 
 
             });

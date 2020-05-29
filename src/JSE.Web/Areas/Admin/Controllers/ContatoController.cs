@@ -1,5 +1,6 @@
 ﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
+using JSE.Web.Extensions.Filtro;
 using JSE.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -71,6 +72,8 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(contato);
         }
 
+
+        [ValidateHttpReferer]
         public IActionResult Delete(int? id)
         {
             var contato = _context.Contatos.Find(id);

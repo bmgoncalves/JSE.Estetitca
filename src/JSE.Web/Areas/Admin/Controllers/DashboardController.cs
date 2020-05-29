@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("{area:exists}/{controller=Dashboard}/{action=Index}")]
     [Route("{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")]
     public class DashboardController : Controller
     {
@@ -20,36 +19,33 @@ namespace JSE.Web.Areas.Admin.Controllers
             _loginUsuario = loginUsuario;
         }
 
-        [UsuarioAutorizacao]
+        [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
         public IActionResult Index()
         {
             return View();
-            //Usuario usuario = _loginUsuario.GetUsuario();
-            //if (usuario != null)
-            //{
-            //    return View();
-            //}
-            //return RedirectToAction(nameof(Login));
         }
 
-        //[Route("Home/About")]
+
+        [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
         public IActionResult Contato()
         {
             return RedirectToAction(nameof(Index), "Contato", new { area = "Admin" });
         }
-        
+
+        [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
         public IActionResult Servico()
         {
             return RedirectToAction(nameof(Index), "Servico", new { area = "Admin" });
         }
 
-
+                
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        //TODO - Validar token 
         public IActionResult Login([FromForm]Usuario usuario)
         {
             Usuario usuarioDB = _usuarioRepository.Login(usuario.Email, usuario.Senha);
@@ -63,12 +59,10 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(usuario);
         }
 
-        public IActionResult Painel()
-        {
-            return new ContentResult() { Content = "Acesso permitido" };
-        }
 
         [HttpPost]
+        [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
+        //TODO - Validar token 
         public IActionResult RecuperarSenha(string email)
         {
             return RedirectToAction(nameof(Index), "Servico", new { area = "Admin" });
