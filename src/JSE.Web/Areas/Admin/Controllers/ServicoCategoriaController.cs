@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("{area:exists}/{controller=ServicoCategori}/{action=Index}")]
-    [Route("{area:exists}/{controller=ServicoCategori}/{action=Index}/{id?}")]
+    //[Route("{area:exists}/{controller=ServicoCategori}/{action=Index}")]
+    //[Route("{area:exists}/{controller=ServicoCategori}/{action=Index}/{id?}")]
     public class ServicoCategoriaController : Controller
     {
         private readonly IServicoCategoriaRepository _servicoCategoriaRepository;

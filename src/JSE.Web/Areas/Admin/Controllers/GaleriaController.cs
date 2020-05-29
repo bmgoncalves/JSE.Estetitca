@@ -16,8 +16,8 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("{area:exists}/{controller=Galeria}/{action=Index}")]
-    [Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
+    //[Route("{area:exists}/{controller=Galeria}/{action=Index}")]
+    //[Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
     public class GaleriaController : Controller
     {
         private readonly JSEContext _context;
@@ -42,13 +42,15 @@ namespace JSE.Web.Areas.Admin.Controllers
 
             foreach (var item in galerias)
             {
-                GaleriaViewModel galViewModel = new GaleriaViewModel();
-                galViewModel.GaleriaId = item.GaleriaId;
-                galViewModel.ServicoId = item.ServicoId;
-                galViewModel.NomeCliente = item.NomeCliente;
-                galViewModel.DataCadastro = item.DataCadastro;
-                galViewModel.Exibir = item.Exibir;
-                galViewModel.NomeServico = _context.Servicos.Where(s => s.ServicoId == item.ServicoId).Select(s => s.NomeServico).Single();
+                GaleriaViewModel galViewModel = new GaleriaViewModel
+                {
+                    GaleriaId = item.GaleriaId,
+                    ServicoId = item.ServicoId,
+                    NomeCliente = item.NomeCliente,
+                    DataCadastro = item.DataCadastro,
+                    Exibir = item.Exibir,
+                    NomeServico = _context.Servicos.Where(s => s.ServicoId == item.ServicoId).Select(s => s.NomeServico).Single()
+                };
                 listaGaleriaViewModel.Add(galViewModel);
             }
 
@@ -96,11 +98,9 @@ namespace JSE.Web.Areas.Admin.Controllers
                         if (file != null && file.Length > 0)
                         {
                             fileName += Path.GetExtension(file.FileName);
-                            using (var s = new FileStream(Path.Combine(uploadPath, fileName), FileMode.Create))
-                            {
-                                await file.CopyToAsync(s);
-                                atualizaImagem = true;
-                            }
+                            using var s = new FileStream(Path.Combine(uploadPath, fileName), FileMode.Create);
+                            await file.CopyToAsync(s);
+                            atualizaImagem = true;
                         }
                     }
 

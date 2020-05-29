@@ -1,4 +1,5 @@
-﻿using JSE.Web.Extensions.Login;
+﻿using JSE.Web.Extensions.Filtro;
+using JSE.Web.Extensions.Login;
 using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,6 @@ namespace JSE.Web.Areas.Admin.Controllers
     [Area("Admin")]
     [Route("{area:exists}/{controller=Dashboard}/{action=Index}")]
     [Route("{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")]
-
     public class DashboardController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
@@ -20,21 +20,14 @@ namespace JSE.Web.Areas.Admin.Controllers
             _loginUsuario = loginUsuario;
         }
 
+        [UsuarioAutorizacaoAttribute]
         public IActionResult Index()
         {
             Usuario usuario = _loginUsuario.GetUsuario();
-            string teste = "b";
-
-            if (teste == "b")
+            if (usuario != null)
             {
                 return View();
-
             }
-
-            //if (usuario != null)
-            //{
-            //    return View();
-            //}
             return RedirectToAction(nameof(Login));
         }
 
@@ -65,6 +58,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                 _loginUsuario.Login(usuarioDB);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MSG_E"] = "Usuário não localizado";
             return View(usuario);
         }
 

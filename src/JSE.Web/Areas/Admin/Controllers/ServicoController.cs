@@ -17,13 +17,15 @@ using System.Linq;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Route("{area:exists}/{controller=Servico}/{action=Index}")]
+    //[Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
     public class ServicoController : Controller
     {
         private readonly IWebHostEnvironment _env;
         private readonly IServicoRepository _servicoRepository;
         private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
 
-        public ServicoController(JSEContext context, IWebHostEnvironment env, IServicoRepository servicoRepository, IServicoCategoriaRepository servicoCategoriaRepository)
+        public ServicoController(IWebHostEnvironment env, IServicoRepository servicoRepository, IServicoCategoriaRepository servicoCategoriaRepository)
         {
             _env = env;
             _servicoRepository = servicoRepository;
@@ -31,8 +33,6 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         }
 
-        // GET: Admin/Servico
-        [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
 
@@ -50,8 +50,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(result);
         }
 
-        // GET: Admin/Servico/Create
-        //[Route("Admin/Servico/AddOrEdit/{id?}")]
         public IActionResult AddOrEdit(int id = 0)
         {
             ViewBag.Categorias = _servicoCategoriaRepository.ObterTodasServicoCategorias();
@@ -65,7 +63,6 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
         public IActionResult AddOrEdit([FromForm] List<IFormFile> files, Servico servico)
         {
             if (ModelState.IsValid)
@@ -73,7 +70,6 @@ namespace JSE.Web.Areas.Admin.Controllers
                 Random rand = new Random();
                 var uploadPath = Path.Combine(_env.WebRootPath, "images\\uploads\\servicos\\");
                 var fileName = Util.GenerateCoupon(10, rand);
-                var nomeArquivo = "";
                 bool atualizaImagem = false;
 
                 ViewBag.Categorias = _servicoCategoriaRepository.ObterTodasServicoCategorias();
@@ -86,13 +82,10 @@ namespace JSE.Web.Areas.Admin.Controllers
                         {
                             fileName += Path.GetExtension(file.FileName);
 
-                            using (var s = new FileStream(Path.Combine(uploadPath, fileName),
-                                                                        FileMode.Create))
-                            {
-                                file.CopyTo(s);
-                                nomeArquivo = fileName;
-                                atualizaImagem = true;
-                            }
+                            using var s = new FileStream(Path.Combine(uploadPath, fileName),
+                                                                        FileMode.Create);
+                            file.CopyTo(s);
+                            atualizaImagem = true;
                         }
                     }
 
@@ -119,19 +112,13 @@ namespace JSE.Web.Areas.Admin.Controllers
 
                     ViewData["MSG_S"] = Mensagem.MSG_S001;
 
-                    //TempData["MSG_S"] = Mensagem.MSG_S001;
                     return Redirect("~/Admin/Servico");
-                    //return RedirectToAction("Login", "Account");
-                    //return RedirectToAction("Index", "Contato", new { area = "Admin" });
-                    //return RedirectToAction(nameof(Index),"Servico", new { area = "Admin" });
-
-
+                    //return RedirectToAction(nameof(Index));
                 }
                 catch (DataException)
                 {
-                    return RedirectToAction("~/Admin/Servico/AddOrEdit", new { Servico = servico, saveChangesError = true });
+                    return View(servico);
                 }
-
             }
             else
             {
@@ -140,7 +127,6 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         }
 
-        // GET: Admin/Servico/Delete/5
         public IActionResult Delete(int id)
         {
             var servico = _servicoRepository.ObterServico(id);
@@ -157,9 +143,10 @@ namespace JSE.Web.Areas.Admin.Controllers
 
                 TempData["MSG_S"] = Mensagem.MSG_S002;
                 return Redirect("~/Admin/Servico");
+                //return RedirectToAction(nameof(Index));
 
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
         public IActionResult ListaCategorias()

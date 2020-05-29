@@ -25,10 +25,12 @@ namespace JSE.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -41,15 +43,12 @@ namespace JSE.Web
              *  services.AddScoped<LoginUsuario>(); - Classe que trabalha com login do usuario
              */
 
-
-
             services.AddDbContext<JSEContext>(options => options.UseSqlServer(
             Configuration.GetConnectionString("DefaultConnection")));
 
 
 
             //Sessao Configuracao
-            services.AddHttpContextAccessor();
             services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IServicoCategoriaRepository, ServicoCategoriaRepository>();
             services.AddScoped<IDepoimentoRepository, DepoimentoRepository>();
@@ -57,11 +56,8 @@ namespace JSE.Web
             services.AddControllersWithViews();
             
             services.AddMemoryCache(); //guardar dados da sessao em memoria
-            services.AddSession(options =>
-            {
-            });
-
-            services.AddScoped<Sessao>();
+            services.AddSession();
+            services.AddScoped<Sessao>();      
             services.AddScoped<LoginUsuario>();
 
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
@@ -87,8 +83,8 @@ namespace JSE.Web
             app.UseDefaultFiles();
             app.UseStaticFiles();
             //Session Configuração
-            app.UseCookiePolicy();
             app.UseSession();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 

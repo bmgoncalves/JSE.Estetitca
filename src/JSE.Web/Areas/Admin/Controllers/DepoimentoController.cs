@@ -14,8 +14,8 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("{area:exists}/{controller=Depoimento}/{action=Index}")]
-    [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
+    //[Route("{area:exists}/{controller=Depoimento}/{action=Index}")]
+    //[Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
     public class DepoimentoController : Controller
     {
         private readonly IWebHostEnvironment _env;
@@ -51,7 +51,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Aprovar(int id, [FromForm] Depoimento depoimento)
+        public IActionResult Aprovar([FromForm] Depoimento depoimento)
         {
             if (ModelState.IsValid)
             {

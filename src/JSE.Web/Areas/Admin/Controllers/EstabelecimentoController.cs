@@ -6,8 +6,8 @@ using System.Linq;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("{area:exists}/{controller=Estabelecimento}/{action=Index}")]
-    [Route("{area:exists}/{controller=Estabelecimento}/{action=Index}/{id?}")]
+    //[Route("{area:exists}/{controller=Estabelecimento}/{action=Index}")]
+    //[Route("{area:exists}/{controller=Estabelecimento}/{action=Index}/{id?}")]
     public class EstabelecimentoController : Controller
     {
         private readonly JSEContext _context;

@@ -12,6 +12,10 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        @if (ViewData["MSG_E"] != null)
+        {
+            <p class="alert alert-danger">@Html.Raw(ViewData["MSG_E"])</p>
+        }
         <form asp-action="Login" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
