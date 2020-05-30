@@ -13,5 +13,6 @@ namespace JSE.Web.Repositories.Intefarces
         IQueryable<Servico> ObterTodosServicosPaginados(int excludeRecords, int pageNumber, int pageSize);
         List<Servico> ObterTodosServicos();
         List<Servico> ObterServicosPorNome(string nome);
+        string ObterNomeServico(int id);
     }
 }

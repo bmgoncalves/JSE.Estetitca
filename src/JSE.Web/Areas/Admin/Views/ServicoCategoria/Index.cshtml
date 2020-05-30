@@ -1,4 +1,4 @@
-﻿@model cloudscribe.Pagination.Models.PagedResult<JSE.Web.Models.ServicoCategoria>
+﻿@model cloudscribe.Pagination.Models.PagedResult<ServicoCategoria>
 
 
 @{
@@ -12,39 +12,70 @@
 <hr />
 <p>
     <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
-</p>                                         
+</p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayName("Categoria")
-            </th>
-            <th>
-                @Html.DisplayName("Ativo")
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Data)
-        {
+<div class="row">
+    @if (TempData["MSG_S"] != null)
+    {
+        <div class="col-md-3">
+            <div class="form-group">
+                <p class="alert alert-success">@TempData["MSG_S"]</p>
+            </div>
+        </div>
+
+    }
+    @if (TempData["MSG_E"] != null)
+    {
+        <div class="col-md-3">
+            <div class="form-group">
+                <p class="alert alert-danger">@TempData["MSG_E"]</p>
+            </div>
+        </div>
+    }
+</div>
+
+
+@if (Model.Data.Count > 0)
+{
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Categoria)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ativo)
-                </td>
-                <td>
-                    <a asp-action="AddOrEdit" asp-route-id="@item.CategoriaId"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
-                    <a asp-action="Delete" asp-route-id="@item.CategoriaId" class="btn-excluir"><i class="far fa-trash-alt"></i>Excluir</a>
-                    @*<a href="~/admin/servicocategoria/Delete/@item.CategoriaId"><i class="far fa-trash-alt"></i>Excluir</a>*@
-                </td>
+                <th>
+                    @Html.DisplayName("Categoria")
+                </th>
+                <th>
+                    @Html.DisplayName("Ativo")
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ativo)
+                    </td>
+                    <td>
+                        <a asp-action="AddOrEdit" asp-route-id="@item.CategoriaId"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
+                        <a asp-action="Delete" asp-route-id="@item.CategoriaId" class="btn-excluir"><i class="far fa-trash-alt"></i>Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    <br />
+    <span>Nenhum registro cadastrado!</span>
+}
+
 
 <div>
     <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />

@@ -20,15 +20,27 @@
             <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
         </div>
     </div>
-
-    @*@if (ViewData["MSG_S"] != null)
-    {
-        <p class="alert alert-success">@ViewData["MSG_S"]</p>
-    }*@
-
-
 </div>
 
+<div class="row">
+    @if (TempData["MSG_S"] != null)
+    {
+        <div class="col-md-3">
+            <div class="form-group">
+                <p class="alert alert-success">@TempData["MSG_S"]</p>
+            </div>
+        </div>
+
+    }
+    @if (TempData["MSG_E"] != null)
+    {
+        <div class="col-md-3">
+            <div class="form-group">
+                <p class="alert alert-danger">@TempData["MSG_E"]</p>
+            </div>
+        </div>
+    }
+</div>
 
 
 @if (Model.Data.Count > 0)
@@ -50,22 +62,22 @@
         <tbody>
             @foreach (var item in Model.Data)
             {
-            <tr class="servico">
-                <td class="nomeServico">
-                    @Html.DisplayFor(modelItem => item.NomeServico)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoriaId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExibeIndex)
-                </td>
-                <td>
-                    <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg"></i> Editar</a> &nbsp; | &nbsp;
-                    <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt"></i> Excluir</a>
+                <tr class="servico">
+                    <td class="nomeServico">
+                        @Html.DisplayFor(modelItem => item.NomeServico)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoriaId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExibeIndex)
+                    </td>
+                    <td>
+                        <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg"></i> Editar</a> &nbsp; | &nbsp;
+                        <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt"></i> Excluir</a>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -76,6 +88,7 @@
 }
 else
 {
+    <br />
     <span>Nenhum registro cadastrado!</span>
 }
 

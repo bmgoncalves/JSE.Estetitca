@@ -35,7 +35,6 @@ namespace JSE.Web.Extensions.Filtro
         public void OnActionExecuted(ActionExecutedContext context)
         {
             //Executado apos passar pelo controlador
-            throw new NotImplementedException();
         }
 
         

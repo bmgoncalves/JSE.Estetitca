@@ -1,4 +1,4 @@
-﻿@model cloudscribe.Pagination.Models.PagedResult<JSE.Web.Models.Contato>
+﻿@model cloudscribe.Pagination.Models.PagedResult<Contato>
 
 
 @{
@@ -20,102 +20,110 @@
     </div>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayName("Nome")
-            </th>
-            <th>
-                @Html.DisplayName("Mensagem")
-            </th>
-            <th>
-                @Html.DisplayName("E-mail")
-            </th>
-            <th>
-                @Html.DisplayName("Telefone")
-            </th>
-            <th>
-                @Html.DisplayName("Data/Hora")
-            </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Data)
-        {
+@if (Model.Data.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Nome")
+                </th>
+                <th>
+                    @Html.DisplayName("Mensagem")
+                </th>
+                <th>
+                    @Html.DisplayName("E-mail")
+                </th>
+                <th>
+                    @Html.DisplayName("Telefone")
+                </th>
+                <th>
+                    @Html.DisplayName("Data/Hora")
+                </th>
 
-            var mensagem = "";
-            var telefone = "(" + item.DDD + ")" + item.Telefone; 
-
-
-            if (item.Mensagem.Length > 20)
-            {
-                mensagem = item.Mensagem.Substring(1, 20) + "...";
-            }
-            else
-            {
-                mensagem = item.Mensagem;
-            }
-
-            <tr class="cliente">
-                <td class="nomeCliente">
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @mensagem
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @telefone
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataHora)
-                </td>
-                <td>
-                    <a asp-action="AddOrEdit" asp-route-id="@item.ContatoId"><i class="fas fa-search"></i> Analisar</a> &nbsp; | &nbsp;
-                    <a asp-action="Delete" asp-route-id="@item.ContatoId" class="btn-excluir"><i class="far fa-trash-alt"></i>Excluir</a>
-                    @*<a href="~/admin/contato/Delete/@item.ContatoId"><i class="far fa-trash-alt"></i>Excluir</a>*@
-                </td>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+
+                var mensagem = "";
+                var telefone = "(" + item.DDD + ")" + item.Telefone;
+
+
+                if (item.Mensagem.Length > 20)
+                {
+                    mensagem = item.Mensagem.Substring(1, 20) + "...";
+                }
+                else
+                {
+                    mensagem = item.Mensagem;
+                }
+
+                <tr class="cliente">
+                    <td class="nomeCliente">
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @mensagem
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @telefone
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataHora)
+                    </td>
+                    <td>
+                        <a asp-action="AddOrEdit" asp-route-id="@item.ContatoId"><i class="fas fa-search"></i> Analisar</a> &nbsp; | &nbsp;
+                        <a asp-action="Delete" asp-route-id="@item.ContatoId" class="btn-excluir"><i class="far fa-trash-alt"></i>Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br />
+    <span>Nenhum registro cadastrado!</span>
+}
 
 <div>
     <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
 </div>
 
 @section Scripts {
-<script>
-    var campoFiltro = document.getElementById("inputPesquisa");
+    <script>
+        var campoFiltro = document.getElementById("inputPesquisa");
 
-    campoFiltro.addEventListener("input", function () {
-        var clientes = document.querySelectorAll(".cliente");
-        for (var i = 0; i < clientes.length; i++) {
-            var cliente = clientes[i];
+        campoFiltro.addEventListener("input", function () {
+            var clientes = document.querySelectorAll(".cliente");
+            for (var i = 0; i < clientes.length; i++) {
+                var cliente = clientes[i];
 
-            if (this.value.length > 0) {
-                tdNomeCliente = cliente.querySelector(".nomeCliente");
-                nomeCliente = tdNomeCliente.textContent;
-                var expressao = new RegExp(this.value, "i");
+                if (this.value.length > 0) {
+                    tdNomeCliente = cliente.querySelector(".nomeCliente");
+                    nomeCliente = tdNomeCliente.textContent;
+                    var expressao = new RegExp(this.value, "i");
 
-                if (!expressao.test(nomeCliente)) {
-                    cliente.classList.add("invisivel");
+                    if (!expressao.test(nomeCliente)) {
+                        cliente.classList.add("invisivel");
+                    }
+                    else {
+                        cliente.classList.remove("invisivel");
+                    }
                 }
                 else {
                     cliente.classList.remove("invisivel");
                 }
-            }
-            else {
-                cliente.classList.remove("invisivel");
-            }
 
-        }
-    });
+            }
+        });
 
-</script>
+    </script>
 }

@@ -112,13 +112,12 @@ namespace JSE.Web.Areas.Admin.Controllers
 
                     }
 
-                    ViewData["MSG_S"] = Mensagem.MSG_S001;
-
-                    return Redirect("~/Admin/Servico");
-                    //return RedirectToAction(nameof(Index));
+                    TempData["MSG_S"] = Mensagem.MSG_S001;
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DataException)
+                catch (DataException ex)
                 {
+                    TempData["MSG_E"] = ex.Message;
                     return View(servico);
                 }
             }
@@ -145,11 +144,10 @@ namespace JSE.Web.Areas.Admin.Controllers
                 }
 
                 TempData["MSG_S"] = Mensagem.MSG_S002;
-                return Redirect("~/Admin/Servico");
-                //return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
 
             }
-            return View();
+            return View("Index");
         }
 
         public IActionResult ListaCategorias()

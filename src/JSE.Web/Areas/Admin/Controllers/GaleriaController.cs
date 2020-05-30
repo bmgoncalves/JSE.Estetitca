@@ -3,7 +3,9 @@ using JSE.Web.Areas.Admin.ViewModel;
 using JSE.Web.Data;
 using JSE.Web.Extensions;
 using JSE.Web.Extensions.Filtro;
+using JSE.Web.Extensions.Lang;
 using JSE.Web.Models;
+using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,28 +19,30 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Route("{area:exists}/{controller=Galeria}/{action=Index}")]
-    //[Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
+    [UsuarioAutorizacao]
+    [Route("{area:exists}/{controller=Galeria}/{action=Index}")]
+    [Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
     public class GaleriaController : Controller
     {
-        //TODO - Criar repositorio de Galeria
-        private readonly JSEContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly IGaleriaRepository _galeriaRepository;
+        private readonly IServicoRepository _servicoRepository;
 
-        public GaleriaController(JSEContext context, IWebHostEnvironment env)
+        public GaleriaController(IGaleriaRepository galeriaRepository, IServicoRepository servicoRepository, IWebHostEnvironment env)
         {
-            _context = context;
+            _servicoRepository = servicoRepository;
+            _galeriaRepository = galeriaRepository;
             _env = env;
         }
 
+        [Route("~/Admin/Galeria/Index")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
-            int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var galerias = _context.Galerias.OrderBy(g => g.GaleriaId).ThenBy(g => g.ServicoId)
-                .Skip(excludeRecords)
-                .Take(pageSize);
 
-            var totalItems = _context.Galerias.Count();
+            int excludeRecords = (pageNumber * pageSize) - pageSize;
+            var galerias = _galeriaRepository.ObterTodosGaleriasPaginados(excludeRecords, pageNumber, pageSize);
+
+            var totalItems = _galeriaRepository.ObterTodosGalerias().Count();
 
             IList<GaleriaViewModel> listaGaleriaViewModel = new List<GaleriaViewModel>();
 
@@ -51,7 +55,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                     NomeCliente = item.NomeCliente,
                     DataCadastro = item.DataCadastro,
                     Exibir = item.Exibir,
-                    NomeServico = _context.Servicos.Where(s => s.ServicoId == item.ServicoId).Select(s => s.NomeServico).Single()
+                    NomeServico = _servicoRepository.ObterNomeServico(item.ServicoId)
                 };
                 listaGaleriaViewModel.Add(galViewModel);
             }
@@ -59,7 +63,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             var result = new PagedResult<GaleriaViewModel>
             {
                 Data = listaGaleriaViewModel.OrderBy(g => g.GaleriaId).ThenBy(g => g.NomeServico).ThenBy(g => g.NomeCliente).ToList(),
-                //Data = galerias.AsNoTracking().ToList(),
                 TotalItems = totalItems,
                 PageNumber = pageNumber,
                 PageSize = pageSize
@@ -71,23 +74,20 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         public IActionResult AddOrEdit(int id = 0)
         {
-            ViewBag.Servicos = _context.Servicos.OrderBy(s => s.NomeServico).ToList();
+            ViewBag.Servicos = _servicoRepository.ObterTodosServicos();
             if (id == 0)
             {
                 return View(new Galeria());
-            }
-            var galeriateste = _context.Galerias.Find(id);
-            return View(_context.Galerias.Find(id));
+            }            
+            return View(_galeriaRepository.ObterGaleria(id));
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([FromForm] List<IFormFile> files, Galeria galeria)
+        public IActionResult AddOrEdit([FromForm] List<IFormFile> files, Galeria galeria)
         {
             if (ModelState.IsValid)
             {
-                ViewBag.Servicos = _context.Servicos.OrderBy(s => s.NomeServico).ToList();
-
+                ViewBag.Servicos = _servicoRepository.ObterTodosServicos();
                 Random rand = new Random();
                 var uploadPath = Path.Combine(_env.WebRootPath, "images\\uploads\\galeria\\");
                 var fileName = Util.GenerateCoupon(10, rand);
@@ -101,7 +101,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                         {
                             fileName += Path.GetExtension(file.FileName);
                             using var s = new FileStream(Path.Combine(uploadPath, fileName), FileMode.Create);
-                            await file.CopyToAsync(s);
+                            file.CopyTo(s);
                             atualizaImagem = true;
                         }
                     }
@@ -119,21 +119,20 @@ namespace JSE.Web.Areas.Admin.Controllers
 
                     if (galeria.ServicoId == 0)
                     {
-                        _context.Add(galeria);
+                        _galeriaRepository.Cadastrar(galeria);
                     }
                     else
                     {
-                        _context.Update(galeria);
+                        _galeriaRepository.Atualizar(galeria);
                     }
-                    _context.SaveChanges();
-                    return Redirect("~/Admin/Galeria");
-
+                    TempData["MSG_S"] = Mensagem.MSG_S001;
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DataException)
+                catch (DataException ex)
                 {
-                    return RedirectToAction("~/Admin/Galeria/AddOrEdit", new { Servico = galeria, saveChangesError = true });
+                    TempData["MSG_E"] = ex.Message;
+                    return View(galeria);
                 }
-
             }
             else
             {
@@ -143,31 +142,30 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         [ValidateHttpReferer]
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
-            var galeria = _context.Galerias.Find(id);
+            var galeria = _galeriaRepository.ObterGaleria(id);
             if (galeria != null)
             {
                 var imagem = galeria.Imagem;
-                _context.Galerias.Remove(galeria);
-                _context.SaveChanges();
+                _galeriaRepository.Excluir(id);
+                TempData["MSG_S"] = Mensagem.MSG_S002;
 
                 if (System.IO.File.Exists(imagem))
                 {
                     System.IO.File.Delete(imagem);
                 }
-                return Redirect("~/Admin/Galeria");
+                RedirectToAction(nameof(Index));
             }
-            return RedirectToAction("Index");
+            return View("Index");
+
         }
 
         public List<Servico> ListaServicos()
         {
             try
             {
-                var lista = _context.Servicos.OrderBy(s => s.ServicoId)
-                .ThenBy(s => s.NomeServico)
-                .ToList();
+                var lista = _servicoRepository.ObterTodosServicos();
                 return lista;
 
             }

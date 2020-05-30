@@ -1,6 +1,7 @@
 ﻿using cloudscribe.Pagination.Models;
 using JSE.Web.Data;
 using JSE.Web.Extensions.Filtro;
+using JSE.Web.Extensions.Lang;
 using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
@@ -12,8 +13,8 @@ namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
-    //[Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}")]
-    //[Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}/{id?}")]
+    [Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}")]
+    [Route("{area:exists}/{controller=ServicoCategoria}/{action=Index}/{id?}")]
     public class ServicoCategoriaController : Controller
     {
         private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
@@ -24,6 +25,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/ServicoCategoria
+        [Route("~/Admin/ServicoCategoria/Index")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
@@ -64,6 +66,8 @@ namespace JSE.Web.Areas.Admin.Controllers
                 {
                     _servicoCategoriaRepository.Atualizar(servicoCategoria);
                 }
+
+                TempData["MSG_S"] = Mensagem.MSG_S001;
                 return RedirectToAction(nameof(Index));
             }
             return View(servicoCategoria);
@@ -78,12 +82,14 @@ namespace JSE.Web.Areas.Admin.Controllers
             if (categoria != null)
             {
                 _servicoCategoriaRepository.Excluir(id);
-                return Redirect("~/Admin/ServicoCategoria");
+                TempData["MSG_S"] = Mensagem.MSG_S002;
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
+
         }
 
-        
+
 
     }
 }

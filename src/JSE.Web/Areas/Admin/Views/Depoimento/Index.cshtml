@@ -10,49 +10,55 @@
 <h2>Depoimentos Pendentes</h2>
 <hr />
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayName("Cliente")
-            </th>
-            <th style="width:600px">
-                @Html.DisplayName("Depoimento")
-            </th>
-            <th style="width:100px">
-                @Html.DisplayName("Data Criação")
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Data)
-        {
-            var descricao = "";
-
-            if (item.Descricao.Length > 100)
-                descricao = item.Descricao.Substring(1, 100) + "...";
-            else
-                descricao = item.Descricao;
+@if (Model.Data.Count > 0)
+{
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NomeCliente)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataCriacao)
-                </td>
-                <td>
-                    <a asp-action="Aprovar" asp-route-id="@item.Id"><i class="fas fa-search"></i> Analisar</a> &nbsp;|&nbsp;
-                    @*<a href="~/admin/depoimento/Aprovar/@item.Id"><i class="fas fa-search"></i> Analisar</a> &nbsp;|&nbsp;*@
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn-excluir" ><i class="fas fa-ban btn-excluir"></i> Reprovar</a>
-                    @*<a href="~/admin/depoimento/Delete/@item.Id"><i class="fas fa-ban btn-excluir"></i> Reprovar</a>*@
-                </td>
+                <th>
+                    @Html.DisplayName("Cliente")
+                </th>
+                <th style="width:600px">
+                    @Html.DisplayName("Depoimento")
+                </th>
+                <th style="width:100px">
+                    @Html.DisplayName("Data Criação")
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+                var descricao = "";
+
+                if (item.Descricao.Length > 100)
+                    descricao = item.Descricao.Substring(1, 100) + "...";
+                else
+                    descricao = item.Descricao;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataCriacao)
+                    </td>
+                    <td>
+                        <a asp-action="Aprovar" asp-route-id="@item.Id"><i class="fas fa-search"></i> Analisar</a> &nbsp;|&nbsp;
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-excluir"><i class="fas fa-ban btn-excluir"></i> Reprovar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br />
+    <span>Nenhum registro cadastrado!</span>
+}
 <div>
     <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
 </div>

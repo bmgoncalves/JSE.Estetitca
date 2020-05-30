@@ -50,6 +50,7 @@ namespace JSE.Web
 
 
             //Sessao Configuracao
+            services.AddScoped<IGaleriaRepository, GaleriaRepository>();
             services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IServicoCategoriaRepository, ServicoCategoriaRepository>();
             services.AddScoped<IDepoimentoRepository, DepoimentoRepository>();

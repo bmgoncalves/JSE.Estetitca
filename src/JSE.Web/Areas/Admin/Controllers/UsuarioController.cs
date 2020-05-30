@@ -8,8 +8,9 @@ using X.PagedList;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Route("{area:exists}/{controller=Usuario}/{action=Index}")]
-    //[Route("{area:exists}/{controller=Usuario}/{action=Index}/{id?}")]
+    [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
+    [Route("{area:exists}/{controller=Usuario}/{action=Index}")]
+    [Route("{area:exists}/{controller=Usuario}/{action=Index}/{id?}")]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
@@ -19,12 +20,12 @@ namespace JSE.Web.Areas.Admin.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
+        [Route("~/Admin/Usuario/Index")]
         public IActionResult Index(int? pagina, string pesquisa)
         {
             IPagedList<Usuario> usuarios = _usuarioRepository.ObterTodosUsuarios(pagina, pesquisa);
             return View(usuarios);
         }
-
 
         public IActionResult AddOrEdit(int id)
         {
@@ -49,9 +50,9 @@ namespace JSE.Web.Areas.Admin.Controllers
                 {
                     _usuarioRepository.Atualizar(usuario);
                 }
+
                 TempData["MSG_S"] = Mensagem.MSG_S001;
-                //return RedirectToAction(nameof(Index), nameof(UsuarioController));
-                return Redirect("~/Admin/Usuario");
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }
@@ -61,14 +62,16 @@ namespace JSE.Web.Areas.Admin.Controllers
         public IActionResult Delete(int id)
         {
             _usuarioRepository.Excluir(id);
-            return Redirect("~/Admin/Usuario");
+            TempData["MSG_S"] = Mensagem.MSG_S002;
+            return RedirectToAction(nameof(Index));
         }
 
         [ValidateHttpReferer]
         public IActionResult AtivarDesativar(int id)
         {
             _usuarioRepository.AtivarDesativar(id);
-            return Redirect("~/Admin/Usuario");
+            TempData["MSG_S"] = "Situacao atualizada com sucesso!";
+            return RedirectToAction(nameof(Index));
         }
 
 

@@ -1,7 +1,7 @@
 ﻿@model JSE.Web.Models.Contato
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Contato";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     var data = Model.DataHora.ToShortDateString();
     var telefone = "55" + Model.DDD + Model.Telefone;
@@ -96,7 +96,7 @@
                     <input type="submit" value="Finalizar" onclick="finalizaContato()" class="btn btn-primary btn-block btn-lg" />
                 </div>
                 <div class="form-group col-md-4">
-                    <a href="~/admin/contato" class="btn btn-secondary btn-block btn-lg">Voltar</a>
+                    <a asp-action="Index" class="btn btn-secondary btn-block btn-lg">Voltar</a>
                 </div>
 
                 <div class="form-group col-md-4">

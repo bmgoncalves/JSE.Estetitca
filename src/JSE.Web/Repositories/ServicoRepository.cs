@@ -32,6 +32,11 @@ namespace JSE.Web.Repositories
             _context.SaveChanges();
         }
 
+        public string ObterNomeServico(int id)
+        {
+            return _context.Servicos.Where(s => s.ServicoId == id).Select(s => s.NomeServico).Single();
+        }
+
         public Servico ObterServico(int id)
         {
             return _context.Servicos.Find(id);

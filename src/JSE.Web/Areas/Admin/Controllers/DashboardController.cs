@@ -20,6 +20,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
+        //[Route("~/Dashboard/Index")]
         public IActionResult Index()
         {
             return View();

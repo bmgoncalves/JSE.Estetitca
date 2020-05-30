@@ -120,79 +120,79 @@
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
             </form>*@
-    <ul class="nav menu">
-        <li class="active"><a href="~/admin/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Inicio</a></li>
+        <ul class="nav menu">
+            <li class="active"><a href="~/admin/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Inicio</a></li>
 
-        <li class="parent ">
-            <a data-toggle="collapse" href="#sub-item-1">
-                <em class="fa fa-navicon">&nbsp;</em> Clientes <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-            </a>
-            <ul class="children collapse" id="sub-item-1">
-                <li>
-                    <a class="" href="~/admin/contato">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Contato
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="~/admin/depoimento">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Depoimentos
-                    </a>
-                </li>
-            </ul>
-        </li>
+            <li class="parent ">
+                <a data-toggle="collapse" href="#sub-item-1">
+                    <em class="fa fa-navicon">&nbsp;</em> Clientes <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                </a>
+                <ul class="children collapse" id="sub-item-1">
+                    <li>
+                        <a class="" href="~/admin/contato">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Contato
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="~/admin/depoimento">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Depoimentos
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-        <li class="parent ">
-            <a data-toggle="collapse" href="#sub-item-2">
-                <em class="fa fa-navicon">&nbsp;</em> Cadastros <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-            </a>
-            <ul class="children collapse" id="sub-item-2">
-                <li>
-                    <a class="" href="~/admin/estabelecimento">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Estabelecimento
-                    </a>
-                </li>
+            <li class="parent ">
+                <a data-toggle="collapse" href="#sub-item-2">
+                    <em class="fa fa-navicon">&nbsp;</em> Cadastros <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                </a>
+                <ul class="children collapse" id="sub-item-2">
+                    <li>
+                        <a class="" asp-area="Admin" asp-controller="Estabelecimento" asp-action="Index">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Estabelecimento
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="" href="~/admin/servico">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Serviços
-                    </a>
-                </li>
+                    <li>
+                        <a class="" asp-area="Admin" asp-controller="Servico" asp-action="Index">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Serviços
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="" href="~/admin/ServicoCategoria">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Categorias (Serviço)
-                    </a>
-                </li>
+                    <li>
+                        <a class="" asp-area="Admin" asp-controller="ServicoCategoria" asp-action="Index">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Categorias (Serviço)
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="" href="~/admin/galeria">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Galeria
-                    </a>
-                </li>
+                    <li>
+                        <a class="" asp-area="Admin" asp-controller="Galeria" asp-action="Index">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Galeria
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="" href="produto">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Produtos
-                    </a>
-                </li>
+                    <li>
+                        <a class="" href="produto">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Produtos
+                        </a>
+                    </li>
 
-                <li>
-                    <a class="" href="~/admin/usuario">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Usuarios
-                    </a>
-                </li>
+                    <li>
+                        <a class="" asp-area="Admin" asp-controller="Usuario" asp-action="Index">
+                            <span class="fa fa-arrow-right">&nbsp;</span> Usuarios
+                        </a>
+                    </li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
 
-        <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-        <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-        <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-        <li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
+            <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
+            <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
+            <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
+            <li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
 
-        <li><a asp-action="Logout" asp-controller="Dashboard"><em class="fa fa-power-off">&nbsp;</em> Sair</a></li>
-        @*<li><a asp-action="" href="~/Admin/Dashboard/Login"><em class="fa fa-power-off">&nbsp;</em> Sair</a></li>*@
-    </ul>
+            <li><a asp-action="Logout" asp-controller="Dashboard"><em class="fa fa-power-off">&nbsp;</em> Sair</a></li>
+            @*<li><a asp-action="" href="~/Admin/Dashboard/Login"><em class="fa fa-power-off">&nbsp;</em> Sair</a></li>*@
+        </ul>
 
 
 

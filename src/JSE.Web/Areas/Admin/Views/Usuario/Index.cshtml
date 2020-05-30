@@ -28,10 +28,23 @@
 <br />
 <br />
 
-<div>
+<div class="row">
     @if (TempData["MSG_S"] != null)
     {
-        <p class="alert alert-success">@TempData["MSG_S"]</p>
+        <div class="col-md-3">
+            <div class="form-group">
+                <p class="alert alert-success">@TempData["MSG_S"]</p>
+            </div>
+        </div>
+
+    }
+    @if (TempData["MSG_E"] != null)
+    {
+        <div class="col-md-3">
+            <div class="form-group">
+                <p class="alert alert-danger">@TempData["MSG_E"]</p>
+            </div>
+        </div>
     }
 </div>
 

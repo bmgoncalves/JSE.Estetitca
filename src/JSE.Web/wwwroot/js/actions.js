@@ -6,7 +6,18 @@
             e.preventDefault();
         }
     });
+
+    TriggerAlertClose();
+
    // $('.dinheiro').mask('000.000.000.000.000,00', { reverse: true });
 
     //AjaxUploadImagemProduto();
 });
+
+function TriggerAlertClose() {
+    window.setTimeout(function () {
+        $(".alert").fadeTo(1000, 0).slideUp(1000, function () {
+            $(this).remove();
+        });
+    }, 5000);
+}
