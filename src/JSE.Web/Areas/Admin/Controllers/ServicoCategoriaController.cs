@@ -25,7 +25,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         // GET: Admin/ServicoCategoria
-        [Route("~/Admin/ServicoCategoria/Index")]
+        [Route("~/Admin/ServicoCategoria")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;

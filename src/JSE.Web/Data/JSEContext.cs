@@ -1,15 +1,13 @@
 ﻿using JSE.Web.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer.Infrastructure.Internal;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Linq;
 
 namespace JSE.Web.Data
 {
     public class JSEContext : DbContext
     {
-        private string _connectionString;
+        //private string _connectionString;
 
         public JSEContext()
         {
@@ -32,22 +30,13 @@ namespace JSE.Web.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Galeria>().Ignore(g => g.NomeServico); //Ignorar propriedade
-            modelBuilder.Entity<Galeria>().Ignore(g => g.NomeCategoria); //Ignorar propriedade
-            modelBuilder.Entity<Estabelecimento>().Ignore(e => e.FotosEspaco);
-
-            //modelBuilder.Entity<Servico>().HasOne(s => s.id)
-            //    .HasOne(p => p.CategoriaId)
-            //    .WithMany(b => b.Id)
-            //    .HasForeignKey(p => p.BlogId)
-            //    .HasConstraintName("ForeignKey_Post_Blog");
         }
 
 
-        public void ResourceDbContext(DbContextOptions<JSEContext> options)
-        {
-            _connectionString = ((SqlServerOptionsExtension)options.Extensions.First()).ConnectionString;
-        }
+        //public void ResourceDbContext(DbContextOptions<JSEContext> options)
+        //{
+        //    //_connectionString = ((SqlServerOptionsExtension)options.Extensions.First()).ConnectionString;
+        //}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

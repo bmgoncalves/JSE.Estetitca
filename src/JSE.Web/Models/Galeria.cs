@@ -15,8 +15,11 @@ namespace JSE.Web.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         [Range(1, int.MaxValue, ErrorMessage = "Selecione o serviço")]
         public int ServicoId { get; set; }
+
+        [NotMapped]
         public string NomeServico { get; set; }
 
+        [NotMapped]
         public string NomeCategoria { get; set; }
 
         [MaxLength(50)]

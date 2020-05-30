@@ -14,5 +14,6 @@ namespace JSE.Web.Repositories.Intefarces
         List<ServicoCategoria> ObterTodasServicoCategorias();
         List<ServicoCategoria> ObterTodasServicoCategoriasAtivas();
         List<ServicoCategoria> ObterServicoCategoriasPorNome(string nome);
+        string ObterNomeCategoria(int id);
     }
 }

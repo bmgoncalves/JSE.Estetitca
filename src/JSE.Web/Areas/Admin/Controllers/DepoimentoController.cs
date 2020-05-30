@@ -15,8 +15,9 @@ using System.Threading.Tasks;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Route("{area:exists}/{controller=Depoimento}/{action=Index}")]
-    //[Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
+    [UsuarioAutorizacao]
+    [Route("{area:exists}/{controller=Depoimento}/{action=Index}")]
+    [Route("{area:exists}/{controller=Depoimento}/{action=Index}/{id?}")]
     public class DepoimentoController : Controller
     {
         private readonly IWebHostEnvironment _env;
@@ -30,6 +31,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
 
+        [Route("~/Admin/Depoimento")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 15)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;

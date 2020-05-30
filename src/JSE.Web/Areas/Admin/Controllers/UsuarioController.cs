@@ -20,7 +20,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
-        [Route("~/Admin/Usuario/Index")]
+        [Route("~/Admin/Usuario")]
         public IActionResult Index(int? pagina, string pesquisa)
         {
             IPagedList<Usuario> usuarios = _usuarioRepository.ObterTodosUsuarios(pagina, pesquisa);

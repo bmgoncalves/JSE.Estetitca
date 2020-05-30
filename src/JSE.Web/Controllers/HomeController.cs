@@ -1,35 +1,49 @@
 ﻿using JSE.Web.Data;
 using JSE.Web.Extensions;
 using JSE.Web.Models;
+using JSE.Web.Repositories.Intefarces;
 using JSE.Web.ViewModel;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace JSE.Web.Controllers
 {
-    //[Route("{controller=Home}/{action=Index}")]
-    //[Route("{controller=Home}/{action=Index}/{id?}")]
+
+    [Route("{controller=Home}/{action=Index}")]
+    [Route("{controller=Home}/{action=Index}/{id?}")]
     public class HomeController : Controller
     {
-        public JSEContext _context { get; set; }
+
+        private readonly IEstabelecimentoRepository _estabelecimentoRepository;
+        private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
+        private readonly IDepoimentoRepository _depoimentoRepository;
+        private readonly IContatoRepository _contatoRepository;
+        private readonly IServicoRepository _servicoRepository;
+        private readonly IGaleriaRepository _galeriaRepository;
+        private readonly JSEContext _context;
+
         private readonly IWebHostEnvironment _env;
 
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, JSEContext contexto, IWebHostEnvironment env)
+        public HomeController(IWebHostEnvironment env, IEstabelecimentoRepository estabelecimentoRepository, JSEContext context,
+                              IDepoimentoRepository depoimentoRepository, IServicoCategoriaRepository servicoCategoriaRepository,
+                              IContatoRepository contatoRepository, IServicoRepository servicoRepository, IGaleriaRepository galeriaRepository)
         {
-            _logger = logger;
-            _context = contexto;
+            _estabelecimentoRepository = estabelecimentoRepository;
+            _servicoCategoriaRepository = servicoCategoriaRepository;
+            _depoimentoRepository = depoimentoRepository;
+            _contatoRepository = contatoRepository;
+            _servicoRepository = servicoRepository;
+            _galeriaRepository = galeriaRepository;
+            _context = context;
             _env = env;
         }
 
@@ -58,18 +72,16 @@ namespace JSE.Web.Controllers
             //Buscar o nome do serviço 
             foreach (var g in idx.Galerias)
             {
-                var servico = _context.Servicos.Where(s => s.ServicoId == g.ServicoId).FirstOrDefault();
+                var servico = _servicoRepository.ObterServico(g.ServicoId);
                 g.NomeServico = servico.NomeServico;
-                g.NomeCategoria = _context.ServicoCategorias.Where(c => c.CategoriaId == servico.CategoriaId)
-                                                            .Select(c => c.Categoria)
-                                                            .Single();
+                g.NomeCategoria = _servicoCategoriaRepository.ObterNomeCategoria(servico.CategoriaId);
             }
 
             idx.Estabel.FotosEspaco = FotosEstabel();
 
             return View(idx);
         }
-        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -84,11 +96,6 @@ namespace JSE.Web.Controllers
             //return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        /// <summary>
-        /// Registrar contato do cliente na pagina inicial
-        /// </summary>
-        /// <param name="contato"></param>
-        /// <returns></returns>
         [HttpPost]
         public IActionResult RegistraContato(Contato contato)
         {
@@ -113,12 +120,12 @@ namespace JSE.Web.Controllers
 
         public IActionResult Estabelecimento()
         {
-            var estabelecimento = _context.Estabelecimentos.Where(e => e.Ativo == true);
+            var estabelecimento = _estabelecimentoRepository.ObterEstabelecimento();
             return View(estabelecimento);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
+        public IActionResult Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
         {
 
             if (ModelState.IsValid)
@@ -129,7 +136,6 @@ namespace JSE.Web.Controllers
                 var usuario = depoimento.NomeCliente;
                 try
                 {
-                    _context.Depoimentos.Add(depoimento);
 
                     foreach (var file in files)
                     {
@@ -137,19 +143,14 @@ namespace JSE.Web.Controllers
                         {
                             fileName += Path.GetExtension(file.FileName);
 
-                            //var fileName = Guid.NewGuid().ToString().Replace("-", "") +
-                            //                Path.GetExtension(file.FileName);
-                            using (var s = new FileStream(Path.Combine(uploads, fileName),
-                                                                        FileMode.Create))
-                            {
-                                await file.CopyToAsync(s);
-                                depoimento.Imagem = uploads + fileName;
-                                depoimento.NomeArquivo = fileName;
-                            }
+                            using var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
+                            file.CopyTo(s);
+                            depoimento.Imagem = uploads + fileName;
+                            depoimento.NomeArquivo = fileName;
                         }
                     }
 
-                    _context.SaveChanges();
+                    _depoimentoRepository.Cadastrar(depoimento);
 
                     return Json(new { status = "success", message = "Depoimento enviado com sucesso" });
                 }
@@ -172,15 +173,14 @@ namespace JSE.Web.Controllers
 
         public IActionResult Servicos()
         {
-            var servicos = _context.Servicos.OrderBy(s => s.NomeServico).ThenBy(s => s.ServicoId).ToList();
-            //var lista = new List<Servico>();
+            var servicos = _servicoRepository.ObterTodosServicos();
             return View(servicos);
         }
 
         public IActionResult Galerias()
         {
 
-            var query = from g in _context.Galerias.OrderBy(g => g.GaleriaId).ThenBy(s => s.ServicoId).ToList() // outer sequence
+            var query = from g in _galeriaRepository.ObterTodosGalerias().OrderBy(g => g.GaleriaId).ThenBy(s => s.ServicoId).ToList() // outer sequence
                         join s in _context.Servicos //inner sequence 
                         on g.ServicoId equals s.ServicoId // key selector 
                         select new

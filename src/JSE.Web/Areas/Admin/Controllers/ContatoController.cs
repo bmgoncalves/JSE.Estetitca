@@ -2,6 +2,7 @@
 using JSE.Web.Data;
 using JSE.Web.Extensions.Filtro;
 using JSE.Web.Models;
+using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -9,35 +10,30 @@ using System.Linq;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Route("{area:exists}/{controller=Contato}/{action=Index}")]
-    //[Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
+    [UsuarioAutorizacao]
+    [Route("{area:exists}/{controller=Contato}/{action=Index}")]
+    [Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
     public class ContatoController : Controller
     {
-        private readonly JSEContext _context;
-
-        public ContatoController(JSEContext context)
+        private readonly IContatoRepository _contatoRepository;
+        public ContatoController(IContatoRepository contatoRepository)
         {
-            _context = context;
+            _contatoRepository = contatoRepository;
         }
 
+        [Route("~/Admin/Contato")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var contatos = _context.Contatos.Where(c => c.Pendente == true)
-                                            .OrderBy(c => c.Nome)
-                                            .ThenBy(c => c.ContatoId)
-                                            .ThenBy(c => c.DataHora)
-                                            .Skip(excludeRecords)
-                                            .Take(pageSize);
+            var contatos = _contatoRepository.ObterTodosContatosPaginados(excludeRecords, pageNumber, pageSize);
 
             var result = new PagedResult<Contato>
             {
                 Data = contatos.AsNoTracking().ToList(),
-                TotalItems = _context.Contatos.Count(),
+                TotalItems = _contatoRepository.ObterTodosContatosPendentes().Count(),
                 PageNumber = pageNumber,
                 PageSize = pageSize
             };
-
             return View(result);
         }
 
@@ -48,42 +44,26 @@ namespace JSE.Web.Areas.Admin.Controllers
             {
                 return View(new Contato());
             }
-            return View(_context.Contatos.Find(id));
+            return View(_contatoRepository.ObterContato(id));
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult AddOrEdit([FromForm] Contato contato)
         {
             if (ModelState.IsValid)
             {
-                if (contato.ContatoId == 0)
-                {
-                    _context.Add(contato);
-                }
-                else
-                {
-                    _context.Update(contato);
-                }
-
-                _context.SaveChanges();
-                return Redirect("~/Admin/Contato");
+                _contatoRepository.AprovarReprovar(contato);
+                return RedirectToAction(nameof(Index));
             }
             return View(contato);
         }
 
 
         [ValidateHttpReferer]
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
-            var contato = _context.Contatos.Find(id);
-            if (contato != null)
-            {
-                _context.Contatos.Remove(contato);
-                _context.SaveChanges();
-                return Redirect("~/Admin/Contato");
-            }
-            return RedirectToAction("Index");
+            _contatoRepository.Excluir(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

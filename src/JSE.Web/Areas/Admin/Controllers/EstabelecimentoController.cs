@@ -19,7 +19,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             _context = context;
         }
 
-        [Route("~/Admin/Estabelecimento/Index")]
+        [Route("~/Admin/Estabelecimento")]
         public IActionResult Index()
         {
             return View(_context.Estabelecimentos.ToList());

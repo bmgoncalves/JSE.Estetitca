@@ -66,6 +66,10 @@ namespace JSE.Web.Repositories
             return depoimentos;
         }
 
-       
+        public void Cadastrar(Depoimento depoimento)
+        {
+            _context.Depoimentos.Add(depoimento);
+            _context.SaveChanges();
+        }
     }
 }

@@ -34,6 +34,13 @@ namespace JSE.Web.Repositories
             _context.SaveChanges();
         }
 
+        public string ObterNomeCategoria(int id)
+        {
+            return _context.ServicoCategorias.Where(c => c.CategoriaId == id)
+                                             .Select(c => c.Categoria)
+                                             .Single();
+        }
+
         public ServicoCategoria ObterServicoCategoria(int id)
         {
             return _context.ServicoCategorias.Where(sc => sc.CategoriaId == id).FirstOrDefault();

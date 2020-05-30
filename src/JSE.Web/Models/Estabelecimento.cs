@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JSE.Web.Models
 {
@@ -105,6 +106,7 @@ namespace JSE.Web.Models
         [DisplayName("Descrição sobre Empresa")]
         public string DescricaoSobreNos { get; set; }
 
+        [NotMapped]
         public IList<string> FotosEspaco { get; set; }
 
     }

@@ -48,15 +48,17 @@ namespace JSE.Web
             Configuration.GetConnectionString("DefaultConnection")));
 
 
-
-            //Sessao Configuracao
+            //Injetando dependencia
+            services.AddScoped<IContatoRepository, ContatoRepository>();
             services.AddScoped<IGaleriaRepository, GaleriaRepository>();
             services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IServicoCategoriaRepository, ServicoCategoriaRepository>();
+            services.AddScoped<IEstabelecimentoRepository, EstabelecimentoRepository>();
             services.AddScoped<IDepoimentoRepository, DepoimentoRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddControllersWithViews();
-            
+
+            //Sessao Configuracao
             services.AddMemoryCache(); //guardar dados da sessao em memoria
             services.AddSession();
             services.AddScoped<Sessao>();      

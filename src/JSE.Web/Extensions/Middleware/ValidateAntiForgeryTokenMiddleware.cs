@@ -13,8 +13,8 @@ namespace JSE.Web.Extensions.Middleware
     /// </summary>
     public class ValidateAntiForgeryTokenMiddleware
     {
-        private RequestDelegate _next;
-        private IAntiforgery _antiforgery;
+        private readonly RequestDelegate _next;
+        private readonly IAntiforgery _antiforgery;
 
         public ValidateAntiForgeryTokenMiddleware(RequestDelegate next, IAntiforgery antiforgery)
         {

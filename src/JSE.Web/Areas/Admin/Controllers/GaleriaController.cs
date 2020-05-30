@@ -35,7 +35,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             _env = env;
         }
 
-        [Route("~/Admin/Galeria/Index")]
+        [Route("~/Admin/Galeria")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
 
@@ -155,10 +155,8 @@ namespace JSE.Web.Areas.Admin.Controllers
                 {
                     System.IO.File.Delete(imagem);
                 }
-                RedirectToAction(nameof(Index));
             }
-            return View("Index");
-
+            return RedirectToAction(nameof(Index));
         }
 
         public List<Servico> ListaServicos()
