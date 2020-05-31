@@ -47,7 +47,8 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         [HttpPost]
         //TODO - Validar token 
-        public IActionResult Login([FromForm]Usuario usuario)
+        //public IActionResult Login([FromForm]Usuario usuario)
+        public IActionResult Login(Usuario usuario)
         {
             Usuario usuarioDB = _usuarioRepository.Login(usuario.Email, usuario.Senha);
 

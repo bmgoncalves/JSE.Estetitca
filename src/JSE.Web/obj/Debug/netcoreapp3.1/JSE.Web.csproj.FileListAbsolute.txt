@@ -334,7 +334,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.RazorCoreGen
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Contato\AddOrEdit.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Contato\Index.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Index.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Login - Copy.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Login.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Depoimento\Aprovar.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Depoimento\Index.cshtml.g.cs
@@ -375,3 +374,4 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.pdb
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.genruntimeconfig.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csprojAssemblyReference.cache
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Login---teste.cshtml.g.cs
