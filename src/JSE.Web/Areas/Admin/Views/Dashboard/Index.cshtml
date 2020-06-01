@@ -2,420 +2,149 @@
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-
-
 }
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Dashboard</h1>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button class="btn btn-sm btn-outline-secondary">Share</button>
+            <button class="btn btn-sm btn-outline-secondary">Export</button>
+        </div>
+        <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+        </button>
     </div>
-</div><!--/.row-->
+</div>
 
-<body>
-    <div class="panel panel-container">
-        <div class="row">
-            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-                <div class="panel panel-teal panel-widget border-right">
-                    <div class="row no-padding">
-                        <em class="fa fa-xl fa-shopping-cart color-blue"></em>
-                        <div class="large">120</div>
-                        <div class="text-muted">New Orders</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-                <div class="panel panel-blue panel-widget border-right">
-                    <div class="row no-padding">
-                        <em class="fa fa-xl fa-comments color-orange"></em>
-                        <div class="large">52</div>
-                        <div class="text-muted">Comments</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-                <div class="panel panel-orange panel-widget border-right">
-                    <div class="row no-padding">
-                        <em class="fa fa-xl fa-users color-teal"></em>
-                        <div class="large">24</div>
-                        <div class="text-muted">New Users</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-                <div class="panel panel-red panel-widget ">
-                    <div class="row no-padding">
-                        <em class="fa fa-xl fa-search color-red"></em>
-                        <div class="large">25.2k</div>
-                        <div class="text-muted">Page Views</div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.row-->
-    </div>
+<canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Estatísticas do Site
-                    <ul class="pull-right panel-settings panel-button-tab-right">
-                        <li class="dropdown">
-                            <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-                                <em class="fa fa-cogs"></em>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <ul class="dropdown-settings">
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 1
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 2
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 3
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
-                </div>
-                <div class="panel-body">
-                    <div class="canvas-wrapper">
-                        <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--/.row-->
-
-    <div class="row">
-        @*<div class="col-xs-6 col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-body easypiechart-panel">
-                    <h4>New Orders</h4>
-                    <div class="easypiechart" id="easypiechart-blue" data-percent="92"><span class="percent">92%</span></div>
-                </div>
-            </div>
-        </div>*@
-        <div class="col-xs-6 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-body easypiechart-panel">
-                    <h4>Depoimentos</h4>
-                    <div class="easypiechart" id="easypiechart-orange" data-percent="65"><span class="percent">65%</span></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-6 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-body easypiechart-panel">
-                    <h4>New Users</h4>
-                    <div class="easypiechart" id="easypiechart-teal" data-percent="56"><span class="percent">56%</span></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-6 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-body easypiechart-panel">
-                    <h4>Visitas</h4>
-                    <div class="easypiechart" id="easypiechart-red" data-percent="27"><span class="percent">27%</span></div>
-                </div>
-            </div>
-        </div>
-    </div><!--/.row-->
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-default chat">
-                <div class="panel-heading">
-                    Chat
-                    <ul class="pull-right panel-settings panel-button-tab-right">
-                        <li class="dropdown">
-                            <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-                                <em class="fa fa-cogs"></em>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <ul class="dropdown-settings">
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 1
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 2
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 3
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li class="left clearfix">
-                            <span class="chat-img pull-left">
-                                @*<img src="http://placehold.it/60/30a5ff/fff" alt="User Avatar" class="img-circle" />*@
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header"><strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc.</p>
-                            </div>
-                        </li>
-                        <li class="right clearfix">
-                            <span class="chat-img pull-right">
-                                <img src="<!--http://placehold.it/60/dde0e6/5f6468-->" alt="User Avatar" class="img-circle" />
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header"><strong class="pull-left primary-font">Jane Doe</strong> <small class="text-muted">6 mins ago</small></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc.</p>
-                            </div>
-                        </li>
-                        <li class="left clearfix">
-                            <span class="chat-img pull-left">
-                                @*<img src="http://placehold.it/60/30a5ff/fff" alt="User Avatar" class="img-circle" />*@
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header"><strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="panel-footer">
-                    <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-md" placeholder="Type your message here..." /><span class="input-group-btn">
-                            <button class="btn btn-primary btn-md" id="btn-chat">Send</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    To-do List
-                    <ul class="pull-right panel-settings panel-button-tab-right">
-                        <li class="dropdown">
-                            <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-                                <em class="fa fa-cogs"></em>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <ul class="dropdown-settings">
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 1
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 2
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 3
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
-                </div>
-                <div class="panel-body">
-                    <ul class="todo-list">
-                        <li class="todo-list-item">
-                            <div class="checkbox">
-                                <input type="checkbox" id="checkbox-1" />
-                                <label for="checkbox-1">Make coffee</label>
-                            </div>
-                            <div class="pull-right action-buttons">
-                                <a href="#" class="trash">
-                                    <em class="fa fa-trash"></em>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="todo-list-item">
-                            <div class="checkbox">
-                                <input type="checkbox" id="checkbox-2" />
-                                <label for="checkbox-2">Check emails</label>
-                            </div>
-                            <div class="pull-right action-buttons">
-                                <a href="#" class="trash">
-                                    <em class="fa fa-trash"></em>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="todo-list-item">
-                            <div class="checkbox">
-                                <input type="checkbox" id="checkbox-3" />
-                                <label for="checkbox-3">Reply to Jane</label>
-                            </div>
-                            <div class="pull-right action-buttons">
-                                <a href="#" class="trash">
-                                    <em class="fa fa-trash"></em>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="todo-list-item">
-                            <div class="checkbox">
-                                <input type="checkbox" id="checkbox-4" />
-                                <label for="checkbox-4">Make more coffee</label>
-                            </div>
-                            <div class="pull-right action-buttons">
-                                <a href="#" class="trash">
-                                    <em class="fa fa-trash"></em>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="todo-list-item">
-                            <div class="checkbox">
-                                <input type="checkbox" id="checkbox-5" />
-                                <label for="checkbox-5">Work on the new design</label>
-                            </div>
-                            <div class="pull-right action-buttons">
-                                <a href="#" class="trash">
-                                    <em class="fa fa-trash"></em>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="todo-list-item">
-                            <div class="checkbox">
-                                <input type="checkbox" id="checkbox-6" />
-                                <label for="checkbox-6">Get feedback on design</label>
-                            </div>
-                            <div class="pull-right action-buttons">
-                                <a href="#" class="trash">
-                                    <em class="fa fa-trash"></em>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="panel-footer">
-                    <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-md" placeholder="Add new task" /><span class="input-group-btn">
-                            <button class="btn btn-primary btn-md" id="btn-todo">Add</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.col-->
-
-
-        <div class="col-md-6">
-            <div class="panel panel-default ">
-                <div class="panel-heading">
-                    Timeline
-                    <ul class="pull-right panel-settings panel-button-tab-right">
-                        <li class="dropdown">
-                            <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-                                <em class="fa fa-cogs"></em>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <ul class="dropdown-settings">
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 1
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 2
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <em class="fa fa-cog"></em> Settings 3
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
-                </div>
-                <div class="panel-body timeline-container">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-badge"><em class="glyphicon glyphicon-pushpin"></em></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor sit amet</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-badge primary"><em class="glyphicon glyphicon-link"></em></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor sit amet</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-badge"><em class="glyphicon glyphicon-camera"></em></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor sit amet</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-badge"><em class="glyphicon glyphicon-paperclip"></em></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor sit amet</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div><!--/.col-->
-
-    </div><!--/.row-->
-</body>
-
-
-
+<h2>Section title</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Header</th>
+                <th>Header</th>
+                <th>Header</th>
+                <th>Header</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1,001</td>
+                <td>Lorem</td>
+                <td>ipsum</td>
+                <td>dolor</td>
+                <td>sit</td>
+            </tr>
+            <tr>
+                <td>1,002</td>
+                <td>amet</td>
+                <td>consectetur</td>
+                <td>adipiscing</td>
+                <td>elit</td>
+            </tr>
+            <tr>
+                <td>1,003</td>
+                <td>Integer</td>
+                <td>nec</td>
+                <td>odio</td>
+                <td>Praesent</td>
+            </tr>
+            <tr>
+                <td>1,003</td>
+                <td>libero</td>
+                <td>Sed</td>
+                <td>cursus</td>
+                <td>ante</td>
+            </tr>
+            <tr>
+                <td>1,004</td>
+                <td>dapibus</td>
+                <td>diam</td>
+                <td>Sed</td>
+                <td>nisi</td>
+            </tr>
+            <tr>
+                <td>1,005</td>
+                <td>Nulla</td>
+                <td>quis</td>
+                <td>sem</td>
+                <td>at</td>
+            </tr>
+            <tr>
+                <td>1,006</td>
+                <td>nibh</td>
+                <td>elementum</td>
+                <td>imperdiet</td>
+                <td>Duis</td>
+            </tr>
+            <tr>
+                <td>1,007</td>
+                <td>sagittis</td>
+                <td>ipsum</td>
+                <td>Praesent</td>
+                <td>mauris</td>
+            </tr>
+            <tr>
+                <td>1,008</td>
+                <td>Fusce</td>
+                <td>nec</td>
+                <td>tellus</td>
+                <td>sed</td>
+            </tr>
+            <tr>
+                <td>1,009</td>
+                <td>augue</td>
+                <td>semper</td>
+                <td>porta</td>
+                <td>Mauris</td>
+            </tr>
+            <tr>
+                <td>1,010</td>
+                <td>massa</td>
+                <td>Vestibulum</td>
+                <td>lacinia</td>
+                <td>arcu</td>
+            </tr>
+            <tr>
+                <td>1,011</td>
+                <td>eget</td>
+                <td>nulla</td>
+                <td>Class</td>
+                <td>aptent</td>
+            </tr>
+            <tr>
+                <td>1,012</td>
+                <td>taciti</td>
+                <td>sociosqu</td>
+                <td>ad</td>
+                <td>litora</td>
+            </tr>
+            <tr>
+                <td>1,013</td>
+                <td>torquent</td>
+                <td>per</td>
+                <td>conubia</td>
+                <td>nostra</td>
+            </tr>
+            <tr>
+                <td>1,014</td>
+                <td>per</td>
+                <td>inceptos</td>
+                <td>himenaeos</td>
+                <td>Curabitur</td>
+            </tr>
+            <tr>
+                <td>1,015</td>
+                <td>sodales</td>
+                <td>ligula</td>
+                <td>in</td>
+                <td>libero</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

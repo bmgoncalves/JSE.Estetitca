@@ -11,7 +11,7 @@
 <h2>Categorias cadastradas</h2>
 <hr />
 <p>
-    <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square"></i> &nbsp; Cadastrar</a>
+    <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
 </p>
 
 <div class="row">
@@ -61,8 +61,8 @@
                         @Html.DisplayFor(modelItem => item.Ativo)
                     </td>
                     <td>
-                        <a asp-action="AddOrEdit" asp-route-id="@item.CategoriaId"><i class="fa fa-marker fa-lg"></i>Editar</a> &nbsp; | &nbsp;
-                        <a asp-action="Delete" asp-route-id="@item.CategoriaId" class="btn-excluir"><i class="far fa-trash-alt"></i>Excluir</a>
+                        <a asp-action="AddOrEdit" asp-route-id="@item.CategoriaId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i>Editar</a> &nbsp; | &nbsp;
+                        <a asp-action="Delete" asp-route-id="@item.CategoriaId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i>Excluir</a>
                     </td>
                 </tr>
             }

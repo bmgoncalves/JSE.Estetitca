@@ -1,248 +1,275 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-br" dir="ltr">
+<html lang="pt-br">
 <head>
-    <title>Jay Soares | Estética de Resultado</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/css/datepicker3.css" rel="stylesheet">
-    <link href="~/css/styles-admin.css" rel="stylesheet">
-    <link rel="icon" href="~/img/favicon.png" type="image/png">
-    <!--Custom Font-->
-    <link href="~/css/fonts-google.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Jay Soares | Estética de Resultado</title>
+    <link href="~/admin/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/admin/css/dashboard.css" rel="stylesheet" />
+    @*<link href="~/admin/css/fontawesome.min.css" rel="stylesheet" />*@
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="~/img/favicon_32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="~/img/favicon.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="~/img/favicon.ico">
+
+
+    @*<link href="dashboard.css" rel="stylesheet">*@
 </head>
 
 <body>
-
-    <div class="banana"></div>
-
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="~/Admin/Dashboard"><span>JSE - </span>Administração</a>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <em class="fa fa-envelope"></em><span class="label label-danger">15</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                    </a>
-                                    <div class="message-body">
-                                        <small class="pull-right">3 mins ago</small>
-                                        <a href="#"><strong>John Doe</strong> commented on <strong>your photo</strong>.</a>
-                                        <br /><small class="text-muted">1:24 pm - 25/03/2015</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                    </a>
-                                    <div class="message-body">
-                                        <small class="pull-right">1 hour ago</small>
-                                        <a href="#">New message from <strong>Jane Doe</strong>.</a>
-                                        <br /><small class="text-muted">12:27 pm - 25/03/2015</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="all-button">
-                                    <a href="#">
-                                        <em class="fa fa-inbox"></em> <strong>All Messages</strong>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <em class="fa fa-bell"></em><span class="label label-info">5</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-alerts">
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <em class="fa fa-envelope"></em> 1 New Message
-                                        <span class="pull-right text-muted small">3 mins ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <em class="fa fa-heart"></em> 12 New Likes
-                                        <span class="pull-right text-muted small">4 mins ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <em class="fa fa-user"></em> 5 New Followers
-                                        <span class="pull-right text-muted small">4 mins ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div><!-- /.container-fluid -->
-    </nav>
-    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-        <div class="profile-sidebar">
-            <div class="profile-userpic">
-                <img src="~/img/logo-brand.png" class="img-responsive" alt="" />
-            </div>
-            <div class="profile-usertitle">
-                <div class="profile-usertitle-name">Username</div>
-                <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <div class="divider"></div>
-        @*<form role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-            </form>*@
-        <ul class="nav menu">
-            <li class="active"><a href="~/admin/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Inicio</a></li>
-
-            <li class="parent ">
-                <a data-toggle="collapse" href="#sub-item-1">
-                    <em class="fa fa-navicon">&nbsp;</em> Clientes <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-                </a>
-                <ul class="children collapse" id="sub-item-1">
-                    <li>
-                        <a class="" href="~/admin/contato">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Contato
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="~/admin/depoimento">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Depoimentos
-                        </a>
-                    </li>
-                </ul>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">JSE | Administração</a>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Pesquisa" aria-label="Search">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Sair</a>
             </li>
-
-            <li class="parent ">
-                <a data-toggle="collapse" href="#sub-item-2">
-                    <em class="fa fa-navicon">&nbsp;</em> Cadastros <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-                </a>
-                <ul class="children collapse" id="sub-item-2">
-                    <li>
-                        <a class="" asp-area="Admin" asp-controller="Estabelecimento" asp-action="Index">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Estabelecimento
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="" asp-area="Admin" asp-controller="Servico" asp-action="Index">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Serviços
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="" asp-area="Admin" asp-controller="ServicoCategoria" asp-action="Index">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Categorias (Serviço)
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="" asp-area="Admin" asp-controller="Galeria" asp-action="Index">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Galeria
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="" href="produto">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Produtos
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="" asp-area="Admin" asp-controller="Usuario" asp-action="Index">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Usuarios
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-
-            <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-            <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-            <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-            <li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
-
-            <li><a asp-action="Logout" asp-controller="Dashboard"><em class="fa fa-power-off">&nbsp;</em> Sair</a></li>
-            @*<li><a asp-action="" href="~/Admin/Dashboard/Login"><em class="fa fa-power-off">&nbsp;</em> Sair</a></li>*@
         </ul>
+    </nav>
 
-
-
-    </div><!--/.sidebar-->
-
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="container-fluid">
         <div class="row">
-            <ol class="breadcrumb">
-                <li>
-                    <a href="#">
-                        <em class="fa fa-home"></em>
-                    </a>
-                </li>
-                <li class="active">Dashboard</li>
-            </ol>
-        </div><!--/.row-->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-2 collapse show d-md-flex bg-light pt-2 pl-0 min-vh-100" id="sidebar">
+                        <ul class="nav flex-column flex-nowrap overflow-hidden">
+                            <li class="nav-item">
+                                <a class="nav-link text-truncate active"  href="~/admin/dashboard">
+                                    <i class="fas fa-home"></i><span data-feather="home"></span> Inicio <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><i class="fas fa-user"></i> <span data-feather="users" class="d-none d-sm-inline"></span> Clientes</a>
+                                <div class="collapse" id="submenu1" aria-expanded="false">
+                                    <ul class="flex-column nav pl-4 item-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="~/admin/contato">
+                                                <span data-feather="phone">&nbsp;</span> Contato
+                                            </a>
+                                        </li>
 
-        @RenderBody()
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="~/admin/depoimento">
+                                                <span data-feather="file-text">&nbsp;</span> Depoimento
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
 
-    </div>	<!--/.main-->
-    @*<script src="~/js/jquery-1.11.1.min.js"></script>*@
-    <script src="~/js/jquery.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/chart.min.js"></script>
-    <script src="~/js/chart-data.js"></script>
-    <script src="~/js/easypiechart.js"></script>
-    <script src="~/js/easypiechart-data.js"></script>
-    <script src="~/js/bootstrap-datepicker.js"></script>
-    <script src="~/js/custom-admin.js"></script>
-    <script src="~/js/kit-fontawesome.js"></script>
+                            <li class="nav-item">
+                                <a class="nav-link collapsed text-truncate" href="#submenu2" data-toggle="collapse" data-target="#submenu2"><i class="fas fa-user"></i> <span data-feather="clipboard" class="d-none d-sm-inline"></span> Cadastros</a>
+                                <div class="collapse" id="submenu2" aria-expanded="false">
+                                    <ul class="flex-column nav pl-4">
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="~/admin/estabelecimento">
+                                                <span data-feather="check-circle">&nbsp;</span> Estabelecimento
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="~/admin/servico">
+                                                <span data-feather="check-circle">&nbsp;</span> Serviços
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="~/admin/servicocategoria">
+                                                <span data-feather="check-circle">&nbsp;</span> Categorias
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="~/admin/galeria">
+                                                <span data-feather="check-circle">&nbsp;</span> Galeria
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="#">
+                                                <span data-feather="check-circle">&nbsp;</span> Produtos
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed text-truncate" href="#submenu3" data-toggle="collapse" data-target="#submenu3"><i class="fas fa-user"></i> <span data-feather="shield" class="d-none d-sm-inline"></span> Segurança</a>
+                                <div class="collapse" id="submenu3" aria-expanded="false">
+                                    <ul class="flex-column nav pl-4">
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="~/admin/usuario">
+                                                <span data-feather="user">&nbsp;</span> Usuários
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed text-truncate" href="#submenu4" data-toggle="collapse" data-target="#submenu4"><span data-feather="bar-chart-2" class="d-none d-sm-inline"></span> Relatórios</a>
+                                <div class="collapse" id="submenu4" aria-expanded="false">
+                                    <ul class="flex-column nav pl-4">
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="#">
+                                                <span data-feather="file-text">&nbsp;</span> Acessos
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="#">
+                                                <span data-feather="file-text">&nbsp;</span> Contatos
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link p-b-4" href="#">
+                                                <span data-feather="file-text">&nbsp;</span> Depoimentos
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item p-b-100">
+                                <a class="nav-link text-truncate active" href="~/admin/dashboard/logout">
+                                    <i class="fas fa-home"></i><span data-feather="log-out"></span> Sair
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col pt-2">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            @*<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    <span data-feather="home"></span>
+                                    Dashboard <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file"></span>
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="shopping-cart"></span>
+                                    Products
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="users"></span>
+                                    Customers
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="bar-chart-2"></span>
+                                    Reports
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="layers"></span>
+                                    Integrations
+                                </a>
+                            </li>
+                        </ul>
+
+                       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Saved reports</span>
+                            <a class="d-flex align-items-center text-muted" href="#">
+                                <span data-feather="plus-circle"></span>
+                            </a>
+                        </h6>
+                        <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span>
+                                    Current month
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span>
+                                    Last quarter
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span>
+                                    Social engagement
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span>
+                                    Year-end sale
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>*@
+
+
+        </div>
+    </div>
+
+    <script src="~/admin/jquery/jquery-3.2.1.slim.min.js"></script>
+    @*<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>*@
+    @*<script src="../../assets/js/vendor/popper.min.js"></script>*@
+    <script src="~/admin/dist/js/bootstrap.min.js"></script>
+    @*<script src="~/admin/js/dist/feather.min.js"></script>*@
+    <script src="~/admin/js/feather.min.js"></script>
+    @*<script src="~/admin/js/fontawesome.min.js"></script>*@
+    <script>
+        feather.replace()
+    </script>
+    <script src="~/admin/chart/Chart.min.js"></script>
     <script src="~/js/delete.js"></script>
     <script src="~/js/actions.js"></script>
 
+    <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#007bff',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false,
+                }
+            }
+        });
+    </script>
+
     @RenderSection("Scripts", required: false)
 
-
-    @*<script>
-            window.onload = function () {
-                var chart1 = document.getElementById("line-chart").getContext("2d");
-                window.myLine = new Chart(chart1).Line(lineChartData, {
-                    responsive: true,
-                    scaleLineColor: "rgba(0,0,0,.2)",
-                    scaleGridLineColor: "rgba(0,0,0,.05)",
-                    scaleFontColor: "#c5c7cc"
-                });
-            };
-        </script>*@
-
-
 </body>
-
 </html>
-

@@ -14,6 +14,7 @@
     <Folder Include="wwwroot\images\uploads\Galeria\" />
     <Folder Include="wwwroot\images\uploads\Estabelecimento\" />
     <Folder Include="wwwroot\images\uploads\Servicos\" />
+    <Folder Include="wwwroot\js\charts\" />
   </ItemGroup>
 
   <ItemGroup>
