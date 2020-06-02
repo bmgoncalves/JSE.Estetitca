@@ -11,6 +11,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Files\Download\" />
     <Folder Include="Files\Upload\Depoimentos\" />
+    <Folder Include="wwwroot\admin\" />
     <Folder Include="wwwroot\images\uploads\Galeria\" />
     <Folder Include="wwwroot\images\uploads\Estabelecimento\" />
     <Folder Include="wwwroot\images\uploads\Servicos\" />

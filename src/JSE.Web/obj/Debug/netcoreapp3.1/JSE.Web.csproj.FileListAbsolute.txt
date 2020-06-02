@@ -376,3 +376,18 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.genruntimeco
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Login---teste.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\wwwroot\js\_LayoutAdmin.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin-primeira.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csprojAssemblyReference.cache
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Index - Copy.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Home\Galerias.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Home\Index.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Home\Servicos.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\Error.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\_DepoimentoUsuario.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\_Layout.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\_LayoutAdmin-primeira.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\_LayoutAdmin.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\_LayoutLogin.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\_StatusMessages.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\_ViewImports.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\_ViewStart.cshtml.g.cs

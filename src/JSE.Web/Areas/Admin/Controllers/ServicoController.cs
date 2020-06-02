@@ -18,7 +18,7 @@ using System.Linq;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
+    //[UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
     [Route("{area:exists}/{controller=Servico}/{action=Index}")]
     [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
     public class ServicoController : Controller
