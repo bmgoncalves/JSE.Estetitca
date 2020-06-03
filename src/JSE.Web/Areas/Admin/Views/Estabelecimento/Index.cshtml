@@ -10,80 +10,85 @@
 }
 
 
-<h2>Estabelecimentos</h2>
-<hr />
-<p>
-    <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
-</p>
+<div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Estabelecimentos cadastrados</h1>
+        <hr />
+    </div>
+    <p>
+        <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
+    </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeFantasia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Endereco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bairro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CEP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UF)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CNPJ)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ativo)
-            </th>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeFantasia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bairro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CEP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CNPJ)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ativo)
+                </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            var alerta = "Confirma a exclusão do Estabelecimento: " + item.NomeFantasia;
-
-            <tr id="row_@item.Id">
-                <td>
-                    @Html.DisplayFor(modelItem => item.NomeFantasia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Endereco)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Bairro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cidade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CEP)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UF)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CNPJ)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ativo)
-                </td>
-
-                <td>
-                    <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="far fa-edit" data-feather="edit-2"></i>Editar</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i>Excluir</a>
-                </td>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
-<input type="hidden" id="hiddenItemId" />
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var alerta = "Confirma a exclusão do Estabelecimento: " + item.NomeFantasia;
+
+                <tr id="row_@item.Id">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeFantasia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Endereco)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bairro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CEP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UF)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CNPJ)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ativo)
+                    </td>
+
+                    <td>
+                        <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="far fa-edit" data-feather="edit-2"></i>Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i>Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <input type="hidden" id="hiddenItemId" />
+</div>

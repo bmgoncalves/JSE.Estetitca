@@ -1,8 +1,4 @@
 ﻿using JSE.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using X.PagedList;
 
 namespace JSE.Web.Repositories.Intefarces

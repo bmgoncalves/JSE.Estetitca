@@ -16,6 +16,7 @@ using System.Linq;
 
 namespace JSE.Web.Controllers
 {
+    
 
     [Route("{controller=Home}/{action=Index}")]
     [Route("{controller=Home}/{action=Index}/{id?}")]
@@ -118,9 +119,9 @@ namespace JSE.Web.Controllers
             }
         }
 
-        public IActionResult Estabelecimento()
+        public IActionResult Estabelecimento(int id)
         {
-            var estabelecimento = _estabelecimentoRepository.ObterEstabelecimento();
+            var estabelecimento = _estabelecimentoRepository.ObterEstabelecimento(id);
             return View(estabelecimento);
         }
 

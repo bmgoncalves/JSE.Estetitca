@@ -1,6 +1,5 @@
 ﻿@model cloudscribe.Pagination.Models.PagedResult<Contato>
 
-
 @{
     ViewData["Title"] = "Contatos";
     ViewData["Controller"] = "Admin";
@@ -8,122 +7,128 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Contatos Pendentes</h2>
-<hr />
+<div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Contatos Pendentes</h1>
+        <hr />
+    </div>
 
-<div class="row">
-    <div class="col-md-3">
-        <div class="form-group">
-            <label for="inputPesquisa" class="control-label">Pesquisar</label>
-            <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do cliente" />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputPesquisa" class="control-label">Pesquisar</label>
+                <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do cliente" />
+            </div>
         </div>
     </div>
-</div>
 
 
-@if (Model.Data.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayName("Nome")
-                </th>
-                <th>
-                    @Html.DisplayName("Mensagem")
-                </th>
-                <th>
-                    @Html.DisplayName("E-mail")
-                </th>
-                <th>
-                    @Html.DisplayName("Telefone")
-                </th>
-                <th>
-                    @Html.DisplayName("Data/Hora")
-                </th>
+    @if (Model.Data.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Nome")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Mensagem")
+                    </th>
+                    <th>
+                        @Html.DisplayName("E-mail")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Telefone")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Data/Hora")
+                    </th>
 
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Data)
-            {
-
-                var mensagem = "";
-                var telefone = "(" + item.DDD + ")" + item.Telefone;
-
-
-                if (item.Mensagem.Length > 20)
-                {
-                    mensagem = item.Mensagem.Substring(1, 20) + "...";
-                }
-                else
-                {
-                    mensagem = item.Mensagem;
-                }
-
-                <tr class="cliente">
-                    <td class="nomeCliente">
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @mensagem
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @telefone
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataHora)
-                    </td>
-                    <td>
-                        <a asp-action="AddOrEdit" asp-route-id="@item.ContatoId"><i class="fas fa-search" data-feather="search"></i> Analisar</a> &nbsp; | &nbsp;
-                        <a asp-action="Delete" asp-route-id="@item.ContatoId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i>Excluir</a>
-                    </td>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <br />
-    <span>Nenhum registro cadastrado!</span>
-}
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Data)
+                {
 
-<div>
-    <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
-</div>
+                    var mensagem = "";
+                    var telefone = "(" + item.DDD + ")" + item.Telefone;
 
-@section Scripts {
-    <script>
-        var campoFiltro = document.getElementById("inputPesquisa");
 
-        campoFiltro.addEventListener("input", function () {
-            var clientes = document.querySelectorAll(".cliente");
-            for (var i = 0; i < clientes.length; i++) {
-                var cliente = clientes[i];
+                    if (item.Mensagem.Length > 20)
+                    {
+                        mensagem = item.Mensagem.Substring(1, 20) + "...";
+                    }
+                    else
+                    {
+                        mensagem = item.Mensagem;
+                    }
 
-                if (this.value.length > 0) {
-                    tdNomeCliente = cliente.querySelector(".nomeCliente");
-                    nomeCliente = tdNomeCliente.textContent;
-                    var expressao = new RegExp(this.value, "i");
+                    <tr class="cliente">
+                        <td class="nomeCliente">
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @mensagem
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @telefone
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataHora)
+                        </td>
+                        <td>
+                            <a asp-action="AddOrEdit" asp-route-id="@item.ContatoId"><i class="fas fa-search" data-feather="search"></i> Analisar</a> &nbsp; | &nbsp;
+                            <a asp-action="Delete" asp-route-id="@item.ContatoId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i>Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <br />
+        <span>Nenhum registro cadastrado!</span>
+    }
 
-                    if (!expressao.test(nomeCliente)) {
-                        cliente.classList.add("invisivel");
+    <div>
+        <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+    </div>
+
+    @section Scripts {
+        <script>
+            var campoFiltro = document.getElementById("inputPesquisa");
+
+            campoFiltro.addEventListener("input", function () {
+                var clientes = document.querySelectorAll(".cliente");
+                for (var i = 0; i < clientes.length; i++) {
+                    var cliente = clientes[i];
+
+                    if (this.value.length > 0) {
+                        tdNomeCliente = cliente.querySelector(".nomeCliente");
+                        nomeCliente = tdNomeCliente.textContent;
+                        var expressao = new RegExp(this.value, "i");
+
+                        if (!expressao.test(nomeCliente)) {
+                            cliente.classList.add("invisivel");
+                        }
+                        else {
+                            cliente.classList.remove("invisivel");
+                        }
                     }
                     else {
                         cliente.classList.remove("invisivel");
                     }
-                }
-                else {
-                    cliente.classList.remove("invisivel");
-                }
 
-            }
-        });
+                }
+            });
 
-    </script>
-}
+        </script>
+    }
+
+</div>

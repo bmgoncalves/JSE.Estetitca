@@ -1,16 +1,12 @@
 ﻿using cloudscribe.Pagination.Models;
-using JSE.Web.Data;
 using JSE.Web.Extensions.Filtro;
 using JSE.Web.Models;
-using JSE.Web.Repositories;
 using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
@@ -25,7 +21,6 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         public DepoimentoController(IWebHostEnvironment env, IDepoimentoRepository depoimentoRepository)
         {
-            //_context = context;
             _env = env;
             _depoimentoRepository = depoimentoRepository;
         }
@@ -60,10 +55,8 @@ namespace JSE.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _depoimentoRepository.AprovarDepoimento(depoimento);
-                return Redirect("~/Admin/Depoimento");
-                //return RedirectToAction(nameof(Index), "Contato", new { area = "Admin" });
+                return RedirectToAction(nameof(Index));
             }
-
             return View(depoimento);
         }
 
@@ -81,9 +74,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                     System.IO.File.Delete(arquivo);
                 }
             }
-            return Redirect("~/Admin/Depoimento");
-
-
+            return RedirectToAction(nameof(Index));
         }
 
     }

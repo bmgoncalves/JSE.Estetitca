@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Cadastrar</h2>
-
-<h4>Estabelecimento</h4>
-<hr />
-<div class="row">
+<div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Cadastrar Estabelecimento</h1>
+        <hr />
+    </div>
     <div class="col-md-9">
         <form enctype="multipart/form-data" asp-area="Admin" asp-controller="Estabelecimento" asp-action="AddOrEdit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

@@ -1,10 +1,8 @@
 ﻿using JSE.Web.Data;
 using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Repositories
 {

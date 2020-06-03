@@ -1,8 +1,6 @@
 ﻿using JSE.Web.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Repositories.Intefarces
 {
@@ -11,8 +9,9 @@ namespace JSE.Web.Repositories.Intefarces
         void Cadastrar(Estabelecimento estabelecimento);
         void Atualizar(Estabelecimento estabelecimento);
         void Excluir(int id);
-        Estabelecimento ObterEstabelecimento();
+        Estabelecimento ObterEstabelecimentoAtivo();
+        Estabelecimento ObterEstabelecimento(int id);
         IQueryable<Estabelecimento> ObterTodosEstabelecimentoPaginados(int excludeRecords, int pageNumber, int pageSize);
-        List<Estabelecimento> ObterTodasEstabelecimento();
+        List<Estabelecimento> ObterTodosEstabelecimentos();
     }
 }

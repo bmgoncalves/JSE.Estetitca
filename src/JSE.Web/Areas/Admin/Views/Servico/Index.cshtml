@@ -10,132 +10,131 @@
 
 
 <!-- Begin Page Content -->
-    <div class="container-fluid">
+<div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Serviços cadastrados</h1>
+        @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>*@
+        <hr />
+    </div>
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Serviços cadastrados</h1>
-            @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>*@
-            <hr />
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <p>
+            <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
+        </p>
+    </div>
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div class="form-group">
+            <label for="inputPesquisa" class="control-label">Pesquisar</label>
+            <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
         </div>
+    </div>
 
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <p>
-                <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
-            </p>
-        </div>
-
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <div class="form-group">
-                <label for="inputPesquisa" class="control-label">Pesquisar</label>
-                <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
+    <div class="row">
+        @if (TempData["MSG_S"] != null)
+        {
+            <div class="col-md-3">
+                <div class="form-group">
+                    <p class="alert alert-success">@TempData["MSG_S"]</p>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            @if (TempData["MSG_S"] != null)
-            {
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <p class="alert alert-success">@TempData["MSG_S"]</p>
-                    </div>
+        }
+        @if (TempData["MSG_E"] != null)
+        {
+            <div class="col-md-3">
+                <div class="form-group">
+                    <p class="alert alert-danger">@TempData["MSG_E"]</p>
                 </div>
-
-            }
-            @if (TempData["MSG_E"] != null)
-            {
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <p class="alert alert-danger">@TempData["MSG_E"]</p>
-                    </div>
-                </div>
-            }
-        </div>
+            </div>
+        }
+    </div>
 
 
-        <div class="row">
+    <div class="row">
 
-            @if (Model.Data.Count > 0)
-            {
-                <table class="table table-hover table-responsive">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayName("Servico")
-                            </th>
-                            <th>
-                                @Html.DisplayName("Categoria")
-                            </th>
-                            <th>
-                                @Html.DisplayName("Pagina inicial")
-                            </th>
+        @if (Model.Data.Count > 0)
+        {
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayName("Servico")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Categoria")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Pagina inicial")
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Data)
+                    {
+                        <tr class="servico">
+                            <td class="nomeServico">
+                                @Html.DisplayFor(modelItem => item.NomeServico)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoriaId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ExibeIndex)
+                            </td>
+                            <td>
+                                <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i> Editar</a> &nbsp; | &nbsp;
+                                <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i> Excluir</a>
+
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Data)
-                        {
-                            <tr class="servico">
-                                <td class="nomeServico">
-                                    @Html.DisplayFor(modelItem => item.NomeServico)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CategoriaId)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ExibeIndex)
-                                </td>
-                                <td>
-                                    <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i> Editar</a> &nbsp; | &nbsp;
-                                    <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i> Excluir</a>
+                    }
+                </tbody>
+            </table>
 
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-
-                <div>
-                    <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
-                </div>
-            }
-            else
-            {
-                <br />
-                <span>Nenhum registro cadastrado!</span>
-            }
+            <div>
+                <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+            </div>
+        }
+        else
+        {
+            <br />
+            <span>Nenhum registro cadastrado!</span>
+        }
 
 
-            <script>
-                var campoFiltro = document.querySelector("#inputPesquisa");
+        <script>
+            var campoFiltro = document.querySelector("#inputPesquisa");
 
-                campoFiltro.addEventListener("input", function () {
-                    var servicos = document.querySelectorAll(".servico");
-                    for (var i = 0; i < servicos.length; i++) {
-                        var servico = servicos[i];
+            campoFiltro.addEventListener("input", function () {
+                var servicos = document.querySelectorAll(".servico");
+                for (var i = 0; i < servicos.length; i++) {
+                    var servico = servicos[i];
 
-                        if (this.value.length > 0) {
-                            tdNomeServico = servico.querySelector(".nomeServico");
-                            nomeServico = tdNomeServico.textContent;
-                            var expressao = new RegExp(this.value, "i");
+                    if (this.value.length > 0) {
+                        tdNomeServico = servico.querySelector(".nomeServico");
+                        nomeServico = tdNomeServico.textContent;
+                        var expressao = new RegExp(this.value, "i");
 
-                            if (!expressao.test(nomeServico)) {
-                                servico.classList.add("invisivel");
-                            }
-                            else {
-                                servico.classList.remove("invisivel");
-                            }
+                        if (!expressao.test(nomeServico)) {
+                            servico.classList.add("invisivel");
                         }
                         else {
                             servico.classList.remove("invisivel");
                         }
-
                     }
-                });
-            </script>
+                    else {
+                        servico.classList.remove("invisivel");
+                    }
 
-        </div>
+                }
+            });
+        </script>
 
-        @*<div class="row">
+    </div>
+
+    @*<div class="row">
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
@@ -386,5 +385,5 @@
             </div>
         </div>*@
 
-    </div>
+</div>
 <!-- /.container-fluid -->

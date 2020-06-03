@@ -3,9 +3,12 @@
     ViewData["Title"] = "Cadastrar / Atualizar";
 }
 
-<h2>Cadastro de Usuário</h2>
+<div >
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Cadastro de Usuário</h1>
+        <hr />
+    </div>
 
-<div class="row">
     <div class="col-md-4">
         <form asp-action="AddOrEdit" method="post">
             <div class="form-group">
@@ -36,7 +39,7 @@
                     <input type="submit" value="Salvar" class="btn btn-primary btn-block btn-lg" />
                 </div>
                 <div class="form-group col-md-6">
-                    <a href="~/admin/Usuario" class="btn btn-secondary btn-block btn-lg">Voltar</a>
+                    <a asp-area="Admin" asp-controller="Usuario" asp-action="Index" class="btn btn-secondary btn-block btn-lg">Voltar</a>
                 </div>
             </div>
         </form>

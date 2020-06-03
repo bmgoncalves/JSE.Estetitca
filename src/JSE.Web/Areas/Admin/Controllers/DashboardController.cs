@@ -6,7 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
+    //TODO - Configurar paginas de erro
+    //TODO - configurar a pagina incial para iniciar no Dashboard, hoje esta iniciando na pagina de serviço
     [Area("Admin")]
+    //[UsuarioAutorizacao] - Validacao direto nas actions 
     [Route("{area:exists}/{controller=Dashboard}/{action=Index}/{id?}")]
     public class DashboardController : Controller
     {

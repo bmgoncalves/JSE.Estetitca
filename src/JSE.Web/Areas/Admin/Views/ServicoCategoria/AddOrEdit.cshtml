@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Cadastrar</h2>
-
-<h4>Categoria do Serviço</h4>
-<hr />
-<div class="row">
+<div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Cadastro de Categoria</h1>
+        <hr />
+    </div>
     <div class="col-md-4">
         <form asp-area="Admin" asp-controller="ServicoCategoria" asp-action="AddOrEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

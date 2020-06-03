@@ -6350,7 +6350,7 @@ var core_layouts = {
 		var verticalBoxWidth = (width - chartAreaWidth) / verticalBoxes.length;
 
 		// Step 3
-		// TODO re-limit horizontal axis height (this limit has affected only padding calculation since PR 1837)
+		// TODOoo re-limit horizontal axis height (this limit has affected only padding calculation since PR 1837)
 		// var horizontalBoxHeight = (height - chartAreaHeight) / horizontalBoxes.length;
 
 		// Step 4
@@ -8629,7 +8629,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 
 			scale.mergeTicksOptions();
 
-			// TODO(SB): I think we should be able to remove this custom case (options.scale)
+			// I think we should be able to remove this custom case (options.scale)
 			// and consider it as a regular scale part of the "scales"" map only! This would
 			// make the logic easier and remove some useless? custom code.
 			if (item.isDefault) {
@@ -10562,7 +10562,7 @@ var core_scale = core_element.extend({
 				var cosRotation = Math.cos(angleRadians);
 				var sinRotation = Math.sin(angleRadians);
 
-				// TODO - improve this calculation
+				// improve this calculation
 				var labelHeight = (sinRotation * largestTextWidth)
 					+ (tickFont.lineHeight * tallestLabelHeightInLines)
 					+ lineSpace; // padding
@@ -11730,7 +11730,7 @@ var defaultConfig$2 = {
 	}
 };
 
-// TODO(v3): change this to positiveOrDefault
+// change this to positiveOrDefault
 function nonNegativeOrDefault(value, defaultValue) {
 	return helpers$1.isFinite(value) && value >= 0 ? value : defaultValue;
 }

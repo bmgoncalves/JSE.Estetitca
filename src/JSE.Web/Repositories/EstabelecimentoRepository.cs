@@ -1,14 +1,12 @@
 ﻿using JSE.Web.Data;
 using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Repositories
 {
-    
+
     public class EstabelecimentoRepository : IEstabelecimentoRepository
     {
         private readonly JSEContext _context;
@@ -39,14 +37,7 @@ namespace JSE.Web.Repositories
             }
         }
 
-        public Estabelecimento ObterEstabelecimento()
-        {
-            return  _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault();
-
-        }
-
-
-        public List<Estabelecimento> ObterTodasEstabelecimento()
+        public List<Estabelecimento> ObterTodosEstabelecimentos()
         {
             return _context.Estabelecimentos.ToList();
         }
@@ -54,6 +45,16 @@ namespace JSE.Web.Repositories
         public IQueryable<Estabelecimento> ObterTodosEstabelecimentoPaginados(int excludeRecords, int pageNumber, int pageSize)
         {
             return _context.Estabelecimentos.Skip(excludeRecords).Take(pageSize);
+        }
+
+        public Estabelecimento ObterEstabelecimentoAtivo()
+        {
+            return _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault();
+        }
+
+        public Estabelecimento ObterEstabelecimento(int id)
+        {
+            return _context.Estabelecimentos.Where(e => e.Id == id).FirstOrDefault();
         }
     }
 }

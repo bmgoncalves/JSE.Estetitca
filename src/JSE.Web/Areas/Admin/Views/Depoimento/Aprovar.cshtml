@@ -9,12 +9,14 @@
     {
         imagem = Model.NomeArquivo;
     }
-
 }
 
-<h2>Depoimento</h2>
-<hr />
-<div class="row">
+<div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Depoimento</h1>
+        <hr />
+    </div>
     <div class="col-md-4">
         <div class="form-group">
             <div class="card">
@@ -22,23 +24,22 @@
                 <img class="card-img-top img-fluid img-responsive" src="~/images/uploads/Depoimentos/@imagem" alt="Card image">
                 <div class="card-body" style="width:800px">
                     <h3 class="card-title"><b>Cliente: </b> @Model.NomeCliente</h3>
-                    <p class="card-text">@Model.Descricao</p>
-
+                    <p class="card-text col-md-4">@Model.Descricao</p>
                 </div>
                 <div class="card-subtitle text-muted">
-                    <div>
+                    <div class="col-md-6">
                         <b>Data: </b>@Model.DataCriacao.Date.ToShortDateString()
                         <b>Hora: </b>@Model.DataCriacao.ToShortTimeString()
                     </div>
-                    <div><b>Telefone: </b>@Model.TelefoneCelular</div>
-                    <div><b>E-mail: </b>@Model.Email</div>
+                    <div class="col-md-6"><b>Telefone: </b>@Model.TelefoneCelular</div>
+                    <div class="col-md-10"><b>E-mail: </b>@Model.Email</div>
 
                 </div>
             </div>
         </div>
 
         <form asp-action="Aprovar" method="Post">
-            <div class="hidden">
+            <div hidden>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
@@ -108,9 +109,9 @@
 
 
         </form>
-      
+
     </div>
-    </div>
+</div>
 
     <script>
         function aprova(resultado) {

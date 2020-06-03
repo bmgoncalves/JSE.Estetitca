@@ -681,7 +681,7 @@
           // get first non-empty jQ object
           while ( !testElem || !testElem.length ) {
             styleObj = this.styleQueue[ i++ ];
-            // HACK: sometimes styleQueue[i] is undefined
+            // sometimes styleQueue[i] is undefined
             if ( !styleObj ) {
               return;
             }
