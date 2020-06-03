@@ -73,12 +73,9 @@ namespace JSE.Web.Areas.Admin.Controllers
             TempData["MSG_S"] = "Situacao atualizada com sucesso!";
             return RedirectToAction(nameof(Index));
         }
+               
 
-
-
-
-
-
+        //TODO - Criar validacao email unico, copiar da loja virtual
 
 
     }

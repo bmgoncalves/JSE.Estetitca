@@ -1,6 +1,7 @@
 ﻿using JSE.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
+using X.PagedList;
 
 namespace JSE.Web.Repositories.Intefarces
 {
@@ -11,7 +12,7 @@ namespace JSE.Web.Repositories.Intefarces
         void Atualizar(Galeria galeria);
         void Excluir(int id);
         Galeria ObterGaleria(int id);
-        IQueryable<Galeria> ObterTodosGaleriasPaginados(int excludeRecords, int pageNumber, int pageSize);
+        IPagedList<Galeria> ObterTodosGaleriasPaginados(int? pagina, string pesquisa);
         List<Galeria> ObterTodosGalerias();
     }
 }

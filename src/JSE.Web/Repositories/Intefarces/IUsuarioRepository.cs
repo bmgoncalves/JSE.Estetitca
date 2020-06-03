@@ -12,6 +12,7 @@ namespace JSE.Web.Repositories.Intefarces
         void Excluir(int id);
         void AtivarDesativar(int id);
         Usuario ObterUsuario(int id);
+        Usuario ObterUsuarioPorEmail(string email);
         IPagedList<Usuario> ObterTodosUsuarios(int? pagina, string pesquisa);
     }
 }

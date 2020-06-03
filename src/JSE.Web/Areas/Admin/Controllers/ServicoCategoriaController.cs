@@ -53,7 +53,6 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult AddOrEdit([FromForm] ServicoCategoria servicoCategoria)
         {
             if (ModelState.IsValid)

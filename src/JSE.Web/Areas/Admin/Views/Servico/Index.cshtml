@@ -5,29 +5,26 @@
     ViewData["Controller"] = "Admin";
     ViewData["Action"] = "Servico";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var nomeCategoria = "";
 }
 
 
-
-<!-- Begin Page Content -->
 <div>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Serviços cadastrados</h1>
-        @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>*@
         <hr />
     </div>
+    <p>
+        <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
+    </p>
 
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <p>
-            <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
-        </p>
-    </div>
-
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <div class="form-group">
-            <label for="inputPesquisa" class="control-label">Pesquisar</label>
-            <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputPesquisa" class="control-label">Pesquisar</label>
+                <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
+            </div>
         </div>
     </div>
 
@@ -68,27 +65,39 @@
                         <th>
                             @Html.DisplayName("Pagina inicial")
                         </th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.Data)
                     {
-                        <tr class="servico">
-                            <td class="nomeServico">
-                                @Html.DisplayFor(modelItem => item.NomeServico)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CategoriaId)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ExibeIndex)
-                            </td>
-                            <td>
-                                <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i> Editar</a> &nbsp; | &nbsp;
-                                <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i> Excluir</a>
+                    <tr class="servico">
+                        <td class="nomeServico">
+                            @Html.DisplayFor(modelItem => item.NomeServico)
+                        </td>
+                        <td>
 
-                            </td>
-                        </tr>
+                            @foreach (var categoria in ViewBag.categorias)
+                            {
+                                if (item.CategoriaId == categoria.CategoriaId)
+                                {
+                                    nomeCategoria = categoria.Categoria;
+                                    break;
+                                }
+                            }
+
+                            @nomeCategoria
+                            
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExibeIndex)
+                        </td>
+                        <td>
+                            <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i> Editar</a> &nbsp; | &nbsp;
+                            <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i> Excluir</a>
+
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

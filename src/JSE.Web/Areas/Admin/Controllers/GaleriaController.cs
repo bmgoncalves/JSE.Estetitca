@@ -1,6 +1,4 @@
-﻿using cloudscribe.Pagination.Models;
-using JSE.Web.Areas.Admin.ViewModel;
-using JSE.Web.Data;
+﻿using JSE.Web.Areas.Admin.ViewModel;
 using JSE.Web.Extensions;
 using JSE.Web.Extensions.Filtro;
 using JSE.Web.Extensions.Lang;
@@ -13,8 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using X.PagedList;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
@@ -36,13 +33,9 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         [Route("~/Admin/Galeria")]
-        public ViewResult Index(int pageNumber = 1, int pageSize = 10)
+        public IActionResult Index(int? pagina, string pesquisa)
         {
-
-            int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var galerias = _galeriaRepository.ObterTodosGaleriasPaginados(excludeRecords, pageNumber, pageSize);
-
-            var totalItems = _galeriaRepository.ObterTodosGalerias().Count();
+            var galerias = _galeriaRepository.ObterTodosGaleriasPaginados(pagina, pesquisa);
 
             IList<GaleriaViewModel> listaGaleriaViewModel = new List<GaleriaViewModel>();
 
@@ -60,18 +53,12 @@ namespace JSE.Web.Areas.Admin.Controllers
                 listaGaleriaViewModel.Add(galViewModel);
             }
 
-            var result = new PagedResult<GaleriaViewModel>
-            {
-                Data = listaGaleriaViewModel.OrderBy(g => g.GaleriaId).ThenBy(g => g.NomeServico).ThenBy(g => g.NomeCliente).ToList(),
-                TotalItems = totalItems,
-                PageNumber = pageNumber,
-                PageSize = pageSize
-            };
+            IPagedList<GaleriaViewModel> listaPaginada = listaGaleriaViewModel.ToPagedList(pagina ?? 1, 5);
 
-            return View(result);
+            return View(listaPaginada);
+
 
         }
-
         public IActionResult AddOrEdit(int id = 0)
         {
             ViewBag.Servicos = _servicoRepository.ObterTodosServicos();

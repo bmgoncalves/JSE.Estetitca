@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace JSE.Web.Extensions
@@ -15,6 +16,32 @@ namespace JSE.Web.Extensions
             {
                 result.Append(characters[random.Next(characters.Length)]);
             }
+            return result.ToString();
+        }
+
+
+        /// <summary>
+        /// Gerador de chaves
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static string GetUniqueKey(int size)
+        {
+            char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
+            byte[] data = new byte[size];
+
+            using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
+            {
+                crypto.GetBytes(data);
+            }
+
+            StringBuilder result = new StringBuilder(size);
+
+            foreach (var b in data)
+            {
+                result.Append(chars[b % (chars.Length)]);
+            }
+
             return result.ToString();
         }
     }
@@ -36,4 +63,6 @@ namespace JSE.Web.Extensions
             }
         }
     }
+
+   
 }

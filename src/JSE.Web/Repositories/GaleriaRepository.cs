@@ -3,6 +3,7 @@ using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
 using System.Collections.Generic;
 using System.Linq;
+using X.PagedList;
 
 namespace JSE.Web.Repositories
 {
@@ -44,10 +45,30 @@ namespace JSE.Web.Repositories
             return _context.Galerias.ToList();
         }
 
-        public IQueryable<Galeria> ObterTodosGaleriasPaginados(int excludeRecords, int pageNumber, int pageSize)
+        public IPagedList<Galeria> ObterTodosGaleriasPaginados(int? pagina, string pesquisa)
         {
-            var galeria = _context.Galerias.Skip(excludeRecords).Take(pageSize);
-            return galeria;
+            int numeroPagina = pagina ?? 1;
+            var bancoGaleria = _context.Galerias.AsQueryable();
+            List<Servico> listaServicos = _context.Servicos.ToList();
+
+            if (!string.IsNullOrEmpty(pesquisa))            
+            {
+                foreach (var servicos in listaServicos)
+                {
+                    if (servicos.NomeServico.Contains(pesquisa.Trim()))
+                    {
+                        bancoGaleria = bancoGaleria.Where(g => g.ServicoId == servicos.ServicoId);
+                    }
+                }
+
+                //bancoGaleria = bancoGaleria.Where(g => g.NomeCliente.Contains(pesquisa.Trim()));
+            }
+
+            return bancoGaleria.ToPagedList<Galeria>(numeroPagina, 5000);
         }
+
+
+
+
     }
 }

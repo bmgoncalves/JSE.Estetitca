@@ -65,5 +65,10 @@ namespace JSE.Web.Repositories
         {
             return _context.Usuarios.Find(id);
         }
+
+        public Usuario ObterUsuarioPorEmail(string email)
+        {
+            return _context.Usuarios.Where(u => u.Email == email).FirstOrDefault();
+        }
     }
 }

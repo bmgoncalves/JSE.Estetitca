@@ -1,8 +1,5 @@
-﻿using JSE.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel;
 
 namespace JSE.Web.Areas.Admin.ViewModel
 {
@@ -10,10 +7,13 @@ namespace JSE.Web.Areas.Admin.ViewModel
     {
         public int GaleriaId { get; set; }
         public int ServicoId { get; set; }
+        [DisplayName("Cliente")]
         public string NomeCliente { get; set; }
+        [DisplayName("Serviço")]
         public string NomeServico { get; set; }
-
+        [DisplayName("Data")]
         public DateTime DataCadastro { get; set; }
+        [DisplayName("Pagina inicial?")]
         public bool Exibir { get; set; }
     }
 }

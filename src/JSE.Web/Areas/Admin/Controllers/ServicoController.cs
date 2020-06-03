@@ -40,6 +40,8 @@ namespace JSE.Web.Areas.Admin.Controllers
             int excludeRecords = (pageNumber * pageSize) - pageSize;
             var servicos = _servicoRepository.ObterTodosServicosPaginados(excludeRecords, pageNumber, pageSize);
 
+            ViewBag.categorias = _servicoCategoriaRepository.ObterTodasServicoCategorias();
+
             var result = new PagedResult<Servico>
             {
                 Data = servicos.AsNoTracking().ToList(),
@@ -63,7 +65,6 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult AddOrEdit([FromForm] List<IFormFile> files, Servico servico)
         {
             if (ModelState.IsValid)
