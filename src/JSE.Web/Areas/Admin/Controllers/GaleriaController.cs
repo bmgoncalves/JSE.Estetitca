@@ -53,7 +53,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                 listaGaleriaViewModel.Add(galViewModel);
             }
 
-            IPagedList<GaleriaViewModel> listaPaginada = listaGaleriaViewModel.ToPagedList(pagina ?? 1, 5);
+            IPagedList<GaleriaViewModel> listaPaginada = listaGaleriaViewModel.ToPagedList(pagina ?? 1, 15);
 
             return View(listaPaginada);
 

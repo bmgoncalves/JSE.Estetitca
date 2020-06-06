@@ -41,6 +41,13 @@ using X.PagedList;
 #line hidden
 #nullable disable
 #nullable restore
+#line 5 "D:\Projetos\JSEEstetica\src\JSE.Web\Views\_ViewImports.cshtml"
+using JSE.Web.Extensions.Login;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "D:\Projetos\JSEEstetica\src\JSE.Web\Views\Home\Galerias.cshtml"
 using JSE.Web.Extensions;
 
@@ -48,7 +55,7 @@ using JSE.Web.Extensions;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"83128b78505abe419ebd8d5ef73dc92d4877696f", @"/Views/Home/Galerias.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a7d2d58c1713f4e4e42d94562edccc4bc5ca2ec1", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"726118c8ca468c288a6e63ab6c764041d621e3e1", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Galerias : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<JSE.Web.Models.Galeria>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("card-img-top img-fluid img-responsive"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -116,7 +123,7 @@ using JSE.Web.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral("            <div class=\"card\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "83128b78505abe419ebd8d5ef73dc92d4877696f5423", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "83128b78505abe419ebd8d5ef73dc92d4877696f5598", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

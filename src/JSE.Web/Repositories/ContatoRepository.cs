@@ -37,7 +37,9 @@ namespace JSE.Web.Repositories
 
         public IQueryable<Contato> ObterTodosContatosPaginados(int excludeRecords, int pageNumber, int pageSize)
         {
-            return _context.Contatos.Skip(excludeRecords).Take(pageSize); 
+            return _context.Contatos.Where(c => c.Pendente == true)
+                                    .Skip(excludeRecords)
+                                    .Take(pageSize); 
         }
 
         public List<Contato> ObterTodosContatos()

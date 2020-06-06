@@ -72,7 +72,7 @@
                         <td>@Html.DisplayFor(model => usuario.Email)</td>
                         <td>@Html.DisplayFor(model => usuario.Situacao)</td>
                         <td>
-                            <a asp-action="AddOrEdit" asp-route-id="@usuario.UsuarioId"><i class="far fa-edit" data-feather="edit-2"></i> Editar</a> |
+                            <a asp-action="AddOrEdit" asp-route-id="@usuario.UsuarioId"><i class="far fa-edit" data-feather="edit-2"></i> Editar</a> |                            
                             <a asp-action="Delete" asp-route-id="@usuario.UsuarioId" class="btn-excluir"><i class="far fa-trash-alt " data-feather="trash-2"></i> Excluir</a>  |
 
                             @if (usuario.Situacao == true)

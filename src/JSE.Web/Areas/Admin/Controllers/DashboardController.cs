@@ -16,17 +16,34 @@ namespace JSE.Web.Areas.Admin.Controllers
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly LoginUsuario _loginUsuario;
+        private readonly IContatoRepository _contatoRepository;
+        private readonly IDepoimentoRepository _depoimentoRepository;
 
-        public DashboardController(IUsuarioRepository usuarioRepository, LoginUsuario loginUsuario)
+        public DashboardController(IUsuarioRepository usuarioRepository, IContatoRepository contatoRepository, IDepoimentoRepository depoimentoRepository,LoginUsuario loginUsuario)
         {
             _usuarioRepository = usuarioRepository;
             _loginUsuario = loginUsuario;
+            _contatoRepository = contatoRepository;
+            _depoimentoRepository = depoimentoRepository;
         }
 
         [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
-        //[Route("~/Dashboard/Index")]
+        [Route("~/Admin/Dashboard/Index")]
         public IActionResult Index()
         {
+            var usuario = _loginUsuario.GetUsuario();
+            ViewBag.Contatos = _contatoRepository.ObterTodosContatosPaginados(0,1,5);
+            ViewBag.Depoimentos = _depoimentoRepository.GetDepoimentosPendente(0, 1, 5);
+
+            if (usuario != null)
+            {
+                ViewBag.Usuario = usuario.Nome;
+            }
+            else
+            {
+                ViewBag.Usuario = "Usuário não conectado";
+            }
+
             return View();
         }
 
@@ -57,7 +74,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             if (usuarioDB != null)
             {
                 _loginUsuario.Login(usuarioDB);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Dashboard");
             }
             ViewData["MSG_E"] = "Usuário não localizado";
             return View(usuario);

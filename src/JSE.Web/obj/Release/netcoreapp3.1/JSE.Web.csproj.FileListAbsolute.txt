@@ -193,15 +193,12 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\X.PagedList.Mvc.Co
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\X.PagedList.Web.Common.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.Extensions.Lang.Mensagem.resources
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.csproj.GenerateResource.cache
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Login---teste.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Login.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Login\Login.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Login\RecuperarSenha.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Usuario\AddOrEdit.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Usuario\Index.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin-primeira.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\wwwroot\js\_LayoutAdmin.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Index - Copy.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Home\Galerias.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Home\Index.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Home\Servicos.cshtml.g.cs
@@ -215,3 +212,16 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\_ViewImports.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\_ViewStart.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\RecuperaSenha.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Home\Galerias.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Home\Index.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Home\Servicos.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\Error.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_DepoimentoUsuario.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_Layout.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_LayoutAdmin.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_LayoutLogin.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_StatusMessages.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\_ViewImports.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\_ViewStart.cshtml.g.cs
