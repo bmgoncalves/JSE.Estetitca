@@ -44,7 +44,7 @@ namespace JSE.Web
              *  services.AddScoped<LoginUsuario>(); - Classe que trabalha com login do usuario
              */
 
-            services.AddDbContext<JSEContext>(options => options.UseSqlServer(
+            services.AddDbContext<JSEContext>(options => options.UseMySql(
             Configuration.GetConnectionString("DefaultConnection")));
 
 

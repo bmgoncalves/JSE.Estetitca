@@ -26,7 +26,7 @@ namespace JSE.Web.Controllers
         private readonly IEstabelecimentoRepository _estabelecimentoRepository;
         private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
         private readonly IDepoimentoRepository _depoimentoRepository;
-        private readonly IContatoRepository _contatoRepository;
+        //private readonly IContatoRepository _contatoRepository;
         private readonly IServicoRepository _servicoRepository;
         private readonly IGaleriaRepository _galeriaRepository;
         private readonly JSEContext _context;
@@ -36,12 +36,12 @@ namespace JSE.Web.Controllers
 
         public HomeController(IWebHostEnvironment env, IEstabelecimentoRepository estabelecimentoRepository, JSEContext context,
                               IDepoimentoRepository depoimentoRepository, IServicoCategoriaRepository servicoCategoriaRepository,
-                              IContatoRepository contatoRepository, IServicoRepository servicoRepository, IGaleriaRepository galeriaRepository)
+                               IServicoRepository servicoRepository, IGaleriaRepository galeriaRepository)
         {
             _estabelecimentoRepository = estabelecimentoRepository;
             _servicoCategoriaRepository = servicoCategoriaRepository;
             _depoimentoRepository = depoimentoRepository;
-            _contatoRepository = contatoRepository;
+            //_contatoRepository = contatoRepository;
             _servicoRepository = servicoRepository;
             _galeriaRepository = galeriaRepository;
             _context = context;

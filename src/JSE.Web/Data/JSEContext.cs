@@ -33,19 +33,16 @@ namespace JSE.Web.Data
         }
 
 
-        //public void ResourceDbContext(DbContextOptions<JSEContext> options)
+        //TODO - ENTENDER O IMPACTO DE COMENTAR ESSE CODIGO
+     
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-        //    //_connectionString = ((SqlServerOptionsExtension)options.Extensions.First()).ConnectionString;
+        //    IConfigurationRoot configuration = new ConfigurationBuilder()
+        //    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+        //    .AddJsonFile("appsettings.json")
+        //    .Build();
+        //    optionsBuilder.UseMySql(configuration.GetConnectionString("DefaultConnection"));
+
         //}
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-
-        }
     }
 }
