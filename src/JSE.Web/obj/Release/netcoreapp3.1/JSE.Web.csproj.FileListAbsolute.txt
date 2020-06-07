@@ -213,15 +213,3 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\_ViewImports.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\_ViewStart.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\RecuperaSenha.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Home\Galerias.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Home\Index.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Home\Servicos.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\Error.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_DepoimentoUsuario.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_Layout.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_LayoutAdmin.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_LayoutLogin.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_StatusMessages.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\_ViewImports.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\Views\_ViewStart.cshtml.g.cs
