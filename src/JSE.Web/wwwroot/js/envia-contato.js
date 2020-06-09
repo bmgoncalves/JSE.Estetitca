@@ -37,7 +37,7 @@ btnEnviar.addEventListener("click", function () {
     var url = "/" + $(target).data('controller') + "/" + $(target).data('action');
 
     $.ajax({
-        type: "post",
+        type: "get",
         url: url,
         data: contato,
         datatype: "json",
@@ -68,7 +68,13 @@ btnEnviar.addEventListener("click", function () {
 
 function ExibeAlertaContato(tipo, mensagens) {
 
-    var ul = document.getElementById("textoAlerta");
+    //var ul = document.getElementById("textoAlerta");
+    var ul = $("textoAlerta");
+
+    $.each(mensagens, function (key, value) {
+        console.log(key + ": " + value);
+    });
+
 
     mensagens.forEach(function (erro) {
         console.log(erro);
@@ -89,38 +95,32 @@ function ExibeAlertaContato(tipo, mensagens) {
 }
 
 function validaForm() {
-    var Nome = document.getElementById('nome').value;
-    var Email = document.getElementById('email').value;
-    var DDD = document.getElementById('DDD').value;
-    var Telefone = document.getElementById('telefone').value;
-    var Mensagem = document.getElementById('mensagem').value;
+    var Nome = document.getElementById('nome');
+    var Email = document.getElementById('email');
+    var DDD = document.getElementById('ddd');
+    var Telefone = document.getElementById('telefone');
+    var Mensagem = document.getElementById('mensagem');
     var padraoEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
-    var padraoTel = /\+\d{2}\s\(\d{2}\)\s\d{4,5}-?\d{4}/g;
-
 
     var errors = [];
-    if (Nome == "") {
+
+    if (Nome.value == "") {
         errors.push("Por favor, informe o nome.");
     }
 
-    if (Email == "" || !padraoEmail.test(Email)) {
+    if (Email.value == "" || !padraoEmail.test(Email.value)) {
         errors.push("Por favor, informe um e-mail válido.");
     }
 
-    //if (Telefone == "" || !padraoTel.test(Telefone)) {
-    //    errors.push("Por favor, informe Telefone válido. Ex. ()");
-    //}
-
-    if (DDD == "") {
+    if (DDD.value == "") {
         errors.push("Por favor, informe o DDD");
     }
 
-    //if (Telefone == "" || !isNaN(Telefone)) {
-    if (Telefone == "") {
+    if (Telefone.value == "") {
         errors.push("Por favor, informe Telefone válido. Ex. (11)9-1234-5678");
     }
 
-    if (Mensagem == "") {
+    if (Mensagem.value == "") {
         errors.push("Por favor, informe a mensagem que deseja nos enviar");
     }
 
