@@ -19,7 +19,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.CodeAnal
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Data.Sqlite.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
@@ -27,7 +26,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.EntityFr
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.Sqlite.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
@@ -40,7 +38,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Extensio
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Extensions.Options.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.Identity.Client.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
@@ -60,9 +57,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\System.Composition
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\System.Composition.Hosting.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\System.Composition.Runtime.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\System.Composition.TypedParts.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\System.Runtime.Caching.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\System.Text.Json.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
@@ -116,11 +110,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\ru\Microsoft.CodeA
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win-x64\native\sni.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\alpine-x64\native\libe_sqlite3.so
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\linux-arm\native\libe_sqlite3.so
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\linux-arm64\native\libe_sqlite3.so
@@ -133,9 +122,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win-arm\n
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.csprojAssemblyReference.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.csproj.CoreCompileInputs.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\JSE.Web.MvcApplicationPartsAssemblyInfo.cs
@@ -213,3 +199,8 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\_ViewImports.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Servico\Views\_ViewStart.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dashboard\RecuperaSenha.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.Design.dll
+D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\MySqlConnector.dll
+D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.Design.dll
+D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Pomelo.JsonObject.dll

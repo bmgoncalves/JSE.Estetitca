@@ -23,6 +23,12 @@ namespace JSE.Web.Controllers
     public class HomeController : Controller
     {
 
+        //TODO - Colocar mascara no campo de telefone do depoimento 
+        //TODO - Colocar mascara no campo de telefone de contato
+        //TODO - Depoimento não esta enviando os dados e a foto miniatura não é limpa 
+        //TODO - Rotina de enviar contato não esta funcionando, msg de alerta não aparece tambem
+
+
         private readonly IEstabelecimentoRepository _estabelecimentoRepository;
         private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
         private readonly IDepoimentoRepository _depoimentoRepository;

@@ -379,3 +379,5 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\Pomelo.EntityFramewo
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csproj.CoreCompileInputs.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csprojAssemblyReference.cache
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\wwwroot\lib\jquery\dist\js\_LayoutAdmin.cshtml.g.cs
