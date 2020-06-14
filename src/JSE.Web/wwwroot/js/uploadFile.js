@@ -82,38 +82,32 @@ function initImage() {
 
 function ExibeAlerta(tipo, mensagens) {
 
-    var ul = document.querySelector("#textoAlerta");
-    var $modal = $('#modalDepoimentoForm');
+    var erros = "";
+    var modal = $('#modalDepoimentoForm');
 
-    mensagens.forEach(function (erro) {
-        var li = document.createElement("li");
-        li.textContent = erro;
-        ul.appendChild(li);
-    });
-
-    var alertBox = document.querySelector('#alertaDiv');
-    alertBox.classList.add("invisivel");
-    alertBox.classList.remove("invisivel");
-    alertBox.classList.add(tipo);
-
-    setTimeout(function () {
-        alertBox.classList.add("invisivel");
-        ul.innerHTML = "";
-
-        if (tipo == "alert-success") {
-            //when hidden
-            $modal.on('hidden.bs.modal', function (e) {
-                return this.render(); //DOM destroyer
-            });
-            $modal.modal('hide'); //start hiding
+    $.each(mensagens, function (key, value) {
+        if (erros == "") {
+            erros = value;
         }
         else {
-            alertBox.classList.remove(tipo);
+            erros += "\n" + value;
         }
+    });
 
-    }, 3500);
+    if (erros != "") {
+        alert(erros);
+    }
+    else {
+        console.log('TESTE');
+        console.log('#inputFiles' + $('#inputFiles').value);
+        console.log('#NomeCliente' + $('#NomeCliente').value);
+        console.log('#TelefoneCelular' + $('#TelefoneCelular').value);
+        console.log('#Email' + $('#Email').value);
+        console.log('#Descricao' + $('#Descricao').value);
+        alert("Depoimento enviado com sucesso!");
+
+    }
 }
-
 
 input.addEventListener('change', function () {
     filename.textcontent = this.value;

@@ -326,6 +326,7 @@
                     <a href="#" class="btn btn-primary" onclick="initImage()" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>
                     <partial name="_DepoimentoUsuario" model="new Depoimento { }" />
                 </div>
+
             </section>
         </div>
     </section>
@@ -392,8 +393,8 @@
                                     <form asp-controller="Home" asp-action="RegistraContato" id="contatoForm">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <div class="col-lg-8 wow fadeInLeft delay-06s">
-                                            <input id="nome" asp-for="Contato.Nome" class="input-text input-contato" type="text" placeholder="Nome *" >
-                                            <input id="email" asp-for="Contato.Email" class="input-text input-contato" type="text" name="" placeholder="E-mail *" >
+                                            <input id="nome" asp-for="Contato.Nome" class="input-text input-contato" type="text" placeholder="Nome *">
+                                            <input id="email" asp-for="Contato.Email" class="input-text input-contato" type="text" name="" placeholder="E-mail *">
                                             <input id="telefone" asp-for="Contato.Telefone" class="input-text input-contato celphone" type="text" name="txttelefone" placeholder="Telefone *">
                                             <input id="contatoWhatsapp" asp-for="Contato.ContatoWhatsapp" class="custom-control-input" type="checkbox" checked>
                                             <label style="color:white" class="form-check-label" for="gridCheck1">Aceito Contato via Whatsapp </label>
