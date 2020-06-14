@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Models
 {
@@ -11,6 +8,7 @@ namespace JSE.Web.Models
     {
         [Key]
         public int ContatoId { get; set; }
+
         [Required(ErrorMessage ="Campo obrigatório")]
         [MaxLength(50)]
         public string Nome { get; set; }
@@ -26,9 +24,9 @@ namespace JSE.Web.Models
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail em formato inválido.")]
         public string Email { get; set; }
 
-        [MaxLength(2)]
-        [Required(ErrorMessage = "Informe o DDD")]
-        public string DDD { get; set; }
+        //[MaxLength(2)]
+        //[Required(ErrorMessage = "Informe o DDD")]
+        //public string DDD { get; set; }
 
         [MaxLength(15)]        
         [Required(ErrorMessage = "Informe o telefone")]
@@ -37,7 +35,6 @@ namespace JSE.Web.Models
         [DisplayName("Entrar em contato via Whatsapp")]
         public bool ContatoWhatsapp { get; set; }
 
-        [Required]
         public DateTime DataHora { get; set; } = DateTime.Now;
 
         public bool Pendente { get; set; } = true;

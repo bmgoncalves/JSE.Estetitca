@@ -1,126 +1,67 @@
-﻿var btnEnviar = document.getElementById("btnContato");
-var alertaErro = "alert-danger";
-var alertWarning = "alert-warning";
-var alertSuccess = "alert-success";
-
-
-btnEnviar.addEventListener("click", function () {
+﻿$('#btnContato').click(function () {
     event.preventDefault();
 
-    var retorno = validaForm();
-    var mensagens = [];
+    var telefone = $("#telefone").val().replace('-','');
+
+    var contato = {
+        ContatoId: null,
+        Nome: $("#nome").val(),
+        Mensagem: $("#mensagem").val(),
+        Email: $("#email").val(),
+        Telefone: telefone.replace("-",""),
+        ContatoWhatsapp: $("#contatoWhatsapp").val(),
+        DataHora: $.now,        
+        Pendente: true
+    }
+
+    var retorno = validaForm(contato);
 
     if (!retorno) {
         return;
     }
 
-    var form = document.getElementById("contatoForm");
-    var e = event;
-    target = e.target;
-    var nome = document.getElementById("nome").value;
-    var email = document.getElementById("email").value;
-    var telefone = document.getElementById("telefone").value;
-    var contatoWhatsapp = document.getElementById("contatoWhatsapp").value;
-    var mensagem = document.getElementById("mensagem").value;
-
-    var contato = {
-        Id: "0",
-        Nome: nome,
-        Mensagem: mensagem,
-        Email: email,
-        Telefone: telefone,
-        ContatoWhatsapp: contatoWhatsapp,
-        DataHora: Date.now(),
-        Pendente: true
-    }
-
-    var url = "/" + $(target).data('controller') + "/" + $(target).data('action');
 
     $.ajax({
         type: "get",
-        url: url,
+        url: "/Home/RegistraContato",        
         data: contato,
         datatype: "json",
         cache: false,
         success: function (data) {
-
             if (data == "OK") {
-                mensagens.push("Obrigado, em breve entraremos em contato :)");
-                ExibeAlertaContato(alertSuccess, mensagens);
-                form.reset();
-            }
-            else if (data == "ErroModelo") {
-                mensagens.push("Por favor, verifique se todos os campos do formulário foram preenchidos corretamente.");
-
-                ExibeAlertaContato(alertaErro, mensagens);
+                alert("Contato enviado com sucesso!");
+                
+                $("#contatoForm").each(function () {
+                    this.reset();
+                });
             }
             else {
-                mensagens.push("Houve um erro no registro do seu contato, por favor, tente novamente mais tarde");
-                ExibeAlertaContato(alertaErro, mensagens);
+                alert("Não foi possivel enviar o contato, tente novamente mais tarde.");
             }
-        },
-        error: function (xhr) {
-            ExibeAlertaContato(alertaErro, "");
         }
     });
+
 });
 
+function validaForm(contato) {
 
-function ExibeAlertaContato(tipo, mensagens) {
-
-    //var ul = document.getElementById("textoAlerta");
-    var ul = $("textoAlerta");
-
-    $.each(mensagens, function (key, value) {
-        console.log(key + ": " + value);
-    });
-
-
-    mensagens.forEach(function (erro) {
-        console.log(erro);
-        var li = document.createElement("li");
-        li.textContent = erro;
-        ul.appendChild(li);
-    });
-
-    var alertBox = document.getElementById('alertaDiv');
-    alertBox.classList.add("invisivel");
-    alertBox.classList.remove("invisivel");
-    alertBox.classList.add(tipo);
-
-    setTimeout(function () {
-        alertBox.classList.add("invisivel");
-        ul.innerHTML = "";
-    }, 5000);
-}
-
-function validaForm() {
-    var Nome = document.getElementById('nome');
-    var Email = document.getElementById('email');
-    var DDD = document.getElementById('ddd');
-    var Telefone = document.getElementById('telefone');
-    var Mensagem = document.getElementById('mensagem');
     var padraoEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
 
     var errors = [];
 
-    if (Nome.value == "") {
+    if (contato.Nome == "") {
         errors.push("Por favor, informe o nome.");
     }
 
-    if (Email.value == "" || !padraoEmail.test(Email.value)) {
+    if (contato.Email == "" || !padraoEmail.test(contato.Email)) {
         errors.push("Por favor, informe um e-mail válido.");
     }
 
-    if (DDD.value == "") {
-        errors.push("Por favor, informe o DDD");
-    }
-
-    if (Telefone.value == "") {
+    if (contato.Telefone == "") {
         errors.push("Por favor, informe Telefone válido. Ex. (11)9-1234-5678");
     }
 
-    if (Mensagem.value == "") {
+    if (contato.Mensagem == "") {
         errors.push("Por favor, informe a mensagem que deseja nos enviar");
     }
 
@@ -133,3 +74,25 @@ function validaForm() {
     }
 
 };
+
+
+function ExibeAlertaContato(tipo, mensagens) {
+
+    var erros = "";
+    
+    $.each(mensagens, function (key, value) {
+        if (erros == "") {
+            erros = value;
+        }
+        else {
+            erros += "\n" + value;
+        }
+    });
+
+    if (erros != "") {
+        alert(erros);
+    }
+    else {
+        alert("Contato enviado com sucesso!");
+    }
+}

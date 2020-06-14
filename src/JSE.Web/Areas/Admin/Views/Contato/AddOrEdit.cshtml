@@ -4,7 +4,7 @@
     ViewData["Title"] = "Contato";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     var data = Model.DataHora.ToShortDateString();
-    var telefone = "55" + Model.DDD + Model.Telefone;
+    var telefone = Model.Telefone;
 
     var whatsapp = "";
 
@@ -32,13 +32,13 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                @*<div class="col-md-3">
                     <div class="form-group">
                         <label asp-for="DDD" class="control-label"></label><br />
                         @Html.DisplayFor(modelItem => Model.DDD)
                     </div>
 
-                </div>
+                </div>*@
 
                 <div class="col-md-3">
                     <div class="form-group">

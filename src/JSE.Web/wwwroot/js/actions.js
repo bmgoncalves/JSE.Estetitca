@@ -10,7 +10,7 @@
     TriggerAlertClose();
 
     $('.dinheiro').mask('000.000.000.000.000,00', { reverse: true });
-    $('.celphone').mask('0-0000-0000', { reverse: true });
+    $('.celphone').mask('(00) 0-0000-0000', { reverse: true });
     $('.phone').mask('0000-0000', { reverse: true });
     $('.cep').mask('00000-000', { reverse: true });
     $('.cnpj').mask('99.999.999/9999-99');

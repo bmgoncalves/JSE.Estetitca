@@ -7,12 +7,6 @@ namespace JSE.Web.Data
 {
     public class JSEContext : DbContext
     {
-        //private string _connectionString;
-
-        public JSEContext()
-        {
-
-        }
         public JSEContext(DbContextOptions<JSEContext> options) : base(options)
         {
 

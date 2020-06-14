@@ -6,6 +6,7 @@ namespace JSE.Web.Repositories.Intefarces
 {
     public interface IContatoRepository
     {
+        void Cadastrar(Contato contato);
         void AprovarReprovar(Contato contato);
         void Excluir(int id);
         Contato ObterContato(int id);

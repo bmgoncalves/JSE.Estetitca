@@ -14,10 +14,16 @@ namespace JSE.Web.Repositories
         {
             _context = context;
         }
+        public void Cadastrar(Contato contato)
+        {
+            _context.Contatos.Add(contato);
+            _context.SaveChanges();
+        }
 
         public void AprovarReprovar(Contato contato)
         {
-            _context.Update(contato);
+            _context.Contatos.Update(contato);
+            _context.SaveChanges();
         }
 
         public void Excluir(int id)
@@ -58,5 +64,7 @@ namespace JSE.Web.Repositories
                                     .ThenBy(c => c.DataHora)
                                     .ToList();
         }
+
+       
     }
 }

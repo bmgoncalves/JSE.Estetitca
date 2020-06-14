@@ -383,51 +383,21 @@
                         </div>
                     </div>
                     <div class="col-lg-8 wow fadeInLeft delay-06s">
+
                         <div class="form">
 
-                            <div id="alertDiv">
-
-                            </div>
-
                             <div class="row">
-                                @*Info Contato*@
                                 <div class="col-md-12">
 
-                                    <form asp-action="RegistraContato" id="contatoForm" method="post">
-
-                                        <div id="alertaDiv" class="alert alert-dismissible invisivel" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <div>
-                                                <ul id="textoAlerta">
-                                                </ul>
-                                            </div>
-                                        </div>
-
+                                    <form asp-controller="Home" asp-action="RegistraContato" id="contatoForm">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <div class="col-lg-8 wow fadeInLeft delay-06s">
-                                            <input id="nome" asp-for="Contato.Nome" class="input-text input-contato" type="text" placeholder="Nome *">
-
-                                            <input id="email" asp-for="Contato.Email" class="input-text input-contato" type="text" name="" placeholder="E-mail *">
-                                            <span asp-validation-for="Contato.Email" class="text-danger"></span>
-
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <input id="ddd" asp-for="Contato.DDD" class="input-text input-contato" type="text" name="txttelefone" placeholder="Telefone *" value="11">
-                                                    <span asp-validation-for="Contato.DDD" class="text-danger"></span>
-                                                </div>
-
-                                                <div class="col-lg-9">
-                                                    <input id="telefone" asp-for="Contato.Telefone" class="input-text input-contato celphone" type="text" name="txttelefone" placeholder="Telefone *">
-                                                    <span asp-validation-for="Contato.Telefone" class="text-danger"></span>
-                                                </div>
-                                            </div>
-
+                                            <input id="nome" asp-for="Contato.Nome" class="input-text input-contato" type="text" placeholder="Nome *" >
+                                            <input id="email" asp-for="Contato.Email" class="input-text input-contato" type="text" name="" placeholder="E-mail *" >
+                                            <input id="telefone" asp-for="Contato.Telefone" class="input-text input-contato celphone" type="text" name="txttelefone" placeholder="Telefone *">
                                             <input id="contatoWhatsapp" asp-for="Contato.ContatoWhatsapp" class="custom-control-input" type="checkbox" checked>
                                             <label style="color:white" class="form-check-label" for="gridCheck1">Aceito Contato via Whatsapp </label>
-
                                             <textarea id="mensagem" asp-for="Contato.Mensagem" class="input-text  text-area input-contato" cols="0" rows="5" placeholder="Digite sua mensagem *"></textarea>
-                                            <span asp-validation-for="Contato.Mensagem" class="text-danger"></span>
-
                                             <div class="form-group">
                                                 <input id="btnContato"
                                                        data-controller="Home"
@@ -446,7 +416,7 @@
                 </div>
 
                 <div class="row">
-                    <iframe src="@Model.Estabel.Localizacao"  height="350" frameborder="0" style="border:0; width:100%" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <iframe src="@Model.Estabel.Localizacao" height="350" frameborder="0" style="border:0; width:100%" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </section>
         </div>

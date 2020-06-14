@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace JSE.Web.Controllers
 {
-    
+
 
     [Route("{controller=Home}/{action=Index}")]
     [Route("{controller=Home}/{action=Index}/{id?}")]
@@ -30,7 +30,7 @@ namespace JSE.Web.Controllers
         private readonly IEstabelecimentoRepository _estabelecimentoRepository;
         private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
         private readonly IDepoimentoRepository _depoimentoRepository;
-        //private readonly IContatoRepository _contatoRepository;
+        private readonly IContatoRepository _contatoRepository;
         private readonly IServicoRepository _servicoRepository;
         private readonly IGaleriaRepository _galeriaRepository;
         private readonly JSEContext _context;
@@ -40,12 +40,12 @@ namespace JSE.Web.Controllers
 
         public HomeController(IWebHostEnvironment env, IEstabelecimentoRepository estabelecimentoRepository, JSEContext context,
                               IDepoimentoRepository depoimentoRepository, IServicoCategoriaRepository servicoCategoriaRepository,
-                               IServicoRepository servicoRepository, IGaleriaRepository galeriaRepository)
+                               IServicoRepository servicoRepository, IContatoRepository contatoRepository, IGaleriaRepository galeriaRepository)
         {
             _estabelecimentoRepository = estabelecimentoRepository;
             _servicoCategoriaRepository = servicoCategoriaRepository;
             _depoimentoRepository = depoimentoRepository;
-            //_contatoRepository = contatoRepository;
+            _contatoRepository = contatoRepository;
             _servicoRepository = servicoRepository;
             _galeriaRepository = galeriaRepository;
             _context = context;
@@ -102,27 +102,40 @@ namespace JSE.Web.Controllers
         }
 
         //[HttpPost]
-        public IActionResult RegistraContato(Contato contato)
+        //public IActionResult RegistraContato(Contato contato)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Contatos.Add(contato);
+        //            _context.SaveChanges();
+        //            return Json("OK");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return Json(ex.Message);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return Json("Contato inválido, verifique as informações preenchidas");
+        //    }
+        //}
+
+        [HttpGet]
+        public JsonResult RegistraContato(Contato contato)
         {
-            if (contato != null)
+            try
             {
-                try
-                {
-                    _context.Contatos.Add(contato);
-                    _context.SaveChanges();
-                    return Json("OK");
-                }
-                catch (Exception ex)
-                {
-                    return Json(ex.Message);
-                }
+                _contatoRepository.Cadastrar(contato);
+                return Json("OK");
             }
-            else
+            catch (Exception ex)
             {
-                return Json("Contato inválido, verifique as informações preenchidas");
+                return Json(ex.Message);
             }
         }
-
         public IActionResult Estabelecimento(int id)
         {
             var estabelecimento = _estabelecimentoRepository.ObterEstabelecimento(id);
