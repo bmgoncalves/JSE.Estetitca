@@ -46,8 +46,7 @@
                 <div class="inner_section">
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
+                            <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                                     <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -60,9 +59,8 @@
                                     <li data-target="#myCarousel" data-slide-to="8"></li>
                                 </ol>
 
-                                <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
-                                    <div class="item img-estab active">
+                                    <div class="active item img-estab ">
                                         <img src="~/images/uploads/Estabelecimento/1.png" alt="">
                                     </div>
 
@@ -92,26 +90,14 @@
                                         <img src="~/images/uploads/Estabelecimento/9.png" alt="">
                                     </div>
                                 </div>
-
-                                <!-- Left and right controls -->
-                                @*<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                                    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>*@
-
-                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left">&lsaquo;</span>
-                                    <span class="sr-only">Anterior</span>
-                                </a>
-                                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right">&rsaquo;</span>
-                                    <span class="sr-only">Próximo</span>
-                                </a>
+                                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-            <!--/Title -->
         </div>
 
 
@@ -319,7 +305,7 @@
                     </div>
                 </section>
 
-               
+
                 <div class="text-center">
                     <button type="button" id="btnModal" class="btn btn-primary" data-toggle="modal" data-target="#modalDepoimentoForm">
                         Clique aqui e deixe seu depoimento
