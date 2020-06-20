@@ -117,12 +117,12 @@ namespace JSE.Web.Controllers
             return View(estabelecimento);
         }
 
-        public IActionResult Depoimento()
+        [HttpGet]
+        [Route("~/Home/Depoimento")]
+        public IActionResult Depoimento(string? args)
         {
             return PartialView();
         }
-
-
 
         [HttpPost]
         public IActionResult Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
@@ -152,70 +152,19 @@ namespace JSE.Web.Controllers
 
                     _depoimentoRepository.Cadastrar(depoimento);
                     return Redirect("~/Home/#experience");
-
-                    ///Home/Index/#Contato
-                    //return Json(new { status = "success", message = "Depoimento enviado com sucesso" });
                 }
                 catch (Exception)
                 {
-                    return PartialView();
+                    return Redirect("~/Home/#experience");
                 }
 
             }
             else
             {
-                return PartialView();
+                return Redirect("~/Home/#experience");
+
             }
         }
-
-
-
-        //public IActionResult Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        Random rand = new Random();
-        //        var fileName = Util.GenerateCoupon(10, rand);
-        //        var uploads = Path.Combine(_env.WebRootPath, "images\\uploads\\depoimentos\\");
-        //        var usuario = depoimento.NomeCliente;
-        //        try
-        //        {
-
-        //            foreach (var file in files)
-        //            {
-        //                if (file != null && file.Length > 0)
-        //                {
-        //                    fileName += Path.GetExtension(file.FileName);
-
-        //                    using var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
-        //                    file.CopyTo(s);
-        //                    depoimento.Imagem = uploads + fileName;
-        //                    depoimento.NomeArquivo = fileName;
-        //                }
-        //            }
-
-        //            _depoimentoRepository.Cadastrar(depoimento);
-
-        //            ///Home/Index/#Contato
-        //            return Json(new { status = "success", message = "Depoimento enviado com sucesso" });
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return Json(new { status = "error", message = ex.Message });
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        var list = new List<string>();
-        //        foreach (var modelStateVal in ViewData.ModelState.Values)
-        //        {
-        //            list.AddRange(modelStateVal.Errors.Select(error => error.ErrorMessage));
-        //        }
-        //        return Json(new { status = "error", errors = list });
-        //    }
-        //}
 
         public IActionResult Servicos()
         {

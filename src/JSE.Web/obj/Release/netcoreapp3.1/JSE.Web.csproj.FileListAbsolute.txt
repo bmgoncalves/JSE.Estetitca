@@ -204,3 +204,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\MySqlConnector.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.Design.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Release\netcoreapp3.1\Pomelo.JsonObject.dll
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Home\Depoimento.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\wwwroot\lib\jquery\dist\js\_LayoutAdmin.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\wwwroot\lixo\js\_LayoutAdmin.cshtml.g.cs

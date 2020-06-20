@@ -10,13 +10,13 @@ namespace JSE.Web.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Campo Obrigatório")]
-        [DisplayName("Depoimento")]
+        [DisplayName("Mensagem")]
         [DataType(DataType.MultilineText)]
         [MaxLength(2000)]
         public string Descricao { get; set; }
 
         [MaxLength(50)]
-        [DisplayName("Cliente")]
+        [DisplayName("Nome")]
         [Required(ErrorMessage = "Campo Obrigatório")]
         public string NomeCliente { get; set; }
 

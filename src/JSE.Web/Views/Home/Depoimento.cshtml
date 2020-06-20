@@ -4,11 +4,11 @@
     Layout = null;
 }
 
-<link href="~/css/styleimage.css" rel="stylesheet" />
+@*<link href="~/css/styleimage.css" rel="stylesheet" />*@
 
 <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Depoimento">
     <div class="modal-body">
-        <div class="modal-body mx-3">
+        <div class="modal-body ">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="md-form mb-5">
                 <label asp-for="NomeCliente" class="control-label"></label>
@@ -28,33 +28,40 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
-            <div class="md-form">
+            <div class="md-form  mb-5">
 
                 <label asp-for="Descricao" class="control-label"></label>
                 <textarea asp-for="Descricao" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
 
+            <div class="md-form  d-flex justify-content-center">
+                <label for="inputFiles" class="control-label">
+                    <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
+                    <img class="img-upload upload-button" src="~/img/click.png" id="blah" />
+                    <span id="file-name"></span>
+                </label>
+            </div>
+
 
         </div>
-        <div class="modal-footer d-flex justify-content-center">
-
+        @*<div class="modal-footer d-flex justify-content-center">
             <div class="md-form">
-
                 <div class="col-md-6">
                     <div class="col-md-3">
-                        <label class="lbl-upload" for="inputFiles">Adicionar foto </label>
                         <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
+                        <img class="img-upload upload-button" src="~/img/80x80.png" id="blah" />
                         <span id="file-name"></span>
                     </div>
                     <div class="col-md-3">
-                        <img class="img-upload" src="~/img/80x80.png" id="blah" />
+                        <br />
+                        <br />
                         <br />
                         <br />
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 
     <div class="modal-footer">
