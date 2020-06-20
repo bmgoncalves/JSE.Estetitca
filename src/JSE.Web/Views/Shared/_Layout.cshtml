@@ -90,6 +90,14 @@
 
     </div>
 
+    <footer>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <a href="https://wa.me/5511980655952?text=Olá!%20Gostaria%20de%20mais%20informações%20" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+            <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+        </a>
+    </footer>
+
     <script src="~/js/jquery-1.11.1.min.js"></script>
     <script src="~/js/bootstrap.js"></script>
     <script src="~/js/jquery-scrolltofixed.js"></script>
@@ -104,19 +112,19 @@
 
     <script>
 
-        (function () {
-            var options = {
-                whatsapp: "+5511980655952", // Número do WhatsApp
-                //company_logo_url: "~/img/logo-brand.png", // URL com o logo da empresa
-                greeting_message: "Olá! Entre em contato conosco!", // Texto principal
-                call_to_action: "Oi! entre em contato conosco via Whatsapp!", // Chamada para ação
-                position: "right", // Posição do widget na página 'right' ou 'left'
-            };
-            var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
-            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-        })();
+        //(function () {
+        //    var options = {
+        //        whatsapp: "+5511980655952", // Número do WhatsApp
+        //        //company_logo_url: "~/img/logo-brand.png", // URL com o logo da empresa
+        //        greeting_message: "Olá! Entre em contato conosco!", // Texto principal
+        //        call_to_action: "Oi! entre em contato conosco via Whatsapp!", // Chamada para ação
+        //        position: "right", // Posição do widget na página 'right' ou 'left'
+        //    };
+        //    var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+        //    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        //    s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        //    var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        //})();
 
     </script>
 
@@ -127,6 +135,9 @@
 
 
 </body>
+
+
+
 
 </html>
 

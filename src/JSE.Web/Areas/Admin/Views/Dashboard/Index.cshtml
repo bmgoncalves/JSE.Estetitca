@@ -121,8 +121,7 @@
                                     @foreach (var contato in ViewBag.Contatos)
                                     {
                                         var mensagem = "";
-                                        var telefone = "(" + contato.DDD + ")" + contato.Telefone;
-
+                                       
 
                                         if (contato.Mensagem.Length > 20)
                                         {
@@ -137,7 +136,7 @@
                                             <th scope="row"><a asp-area="Admin" asp-controller="Contato" asp-action="AddOrEdit" asp-route-id="@contato.ContatoId">@contato.Nome</a> </th>
                                             <td>@mensagem</td>
                                             <td>@contato.Email</td>
-                                            <td>@telefone</td>
+                                            <td>@contato.Telefone</td>
                                             <td>@contato.DataHora</td>
                                         </tr>
                                     }

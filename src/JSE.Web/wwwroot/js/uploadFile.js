@@ -10,50 +10,50 @@ var alertaErro = "alert-danger",
     alertWarning = "alert-warning",
     alertSuccess = "alert-success";
 
-$(function () {
+//$(function () {
 
-    $("#uploadBtn").click(function (evt) {
-        evt.preventDefault();
+//    $("#uploadBtn").click(function (evt) {
+//        evt.preventDefault();
 
-        var retorno = validateForm();
-        var mensagens = [];
+//        var retorno = validateForm();
+//        var mensagens = [];
 
-        if (!retorno) {
-            return;
-        }
+//        if (!retorno) {
+//            return;
+//        }
 
 
-        var fileupload = $("#inputFiles").get(0);
-        var files = fileupload.files;
-        var data = new FormData();
+//        var fileupload = $("#inputFiles").get(0);
+//        var files = fileupload.files;
+//        var data = new FormData();
 
-        for (var i = 0; i < files.length; i++) {
-            data.append("files", files[i]);
-        }
+//        for (var i = 0; i < files.length; i++) {
+//            data.append("files", files[i]);
+//        }
 
-        var other_data = $('#formUpload').serializeArray();
-        $.each(other_data, function (key, input) { //append other input value
-            data.append(input.name, input.value);
-        });
+//        var other_data = $('#formUpload').serializeArray();
+//        $.each(other_data, function (key, input) { //append other input value
+//            data.append(input.name, input.value);
+//        });
 
-        $.ajax({
-            type: "post",
-            url: "/Home/Depoimento",
-            contentType: false,
-            processData: false,
-            data: data,
-            success: function (retorno) {
-                mensagens.push(retorno.message);
-                ExibeAlerta(alertSuccess, mensagens);
+//        $.ajax({
+//            type: "post",
+//            url: "/Home/Depoimento",
+//            contentType: false,
+//            processData: false,
+//            data: data,
+//            success: function (retorno) {
+//                mensagens.push(retorno.message);
+//                ExibeAlerta(alertSuccess, mensagens);
 
-            },
-            error: function () {
-                mensagens.push("Erro ao tentar postar depoimento, por favor, tente novamente mais tarde.");
-                ExibeAlerta(alertSuccess, mensagens);
-            }
-        });
-    });
-});
+//            },
+//            error: function () {
+//                mensagens.push("Erro ao tentar postar depoimento, por favor, tente novamente mais tarde.");
+//                ExibeAlerta(alertSuccess, mensagens);
+//            }
+//        });
+//    });
+//});
 
 
 function initImage() {
@@ -80,34 +80,34 @@ function initImage() {
     //imgUpload.src = imgUpload.baseURI + "/img/80x80.png";
 }
 
-function ExibeAlerta(tipo, mensagens) {
+//function ExibeAlerta(tipo, mensagens) {
 
-    var erros = "";
-    var modal = $('#modalDepoimentoForm');
+//    var erros = "";
+//    var modal = $('#modalDepoimentoForm');
 
-    $.each(mensagens, function (key, value) {
-        if (erros == "") {
-            erros = value;
-        }
-        else {
-            erros += "\n" + value;
-        }
-    });
+//    $.each(mensagens, function (key, value) {
+//        if (erros == "") {
+//            erros = value;
+//        }
+//        else {
+//            erros += "\n" + value;
+//        }
+//    });
 
-    if (erros != "") {
-        alert(erros);
-    }
-    else {
-        console.log('TESTE');
-        console.log('#inputFiles' + $('#inputFiles').value);
-        console.log('#NomeCliente' + $('#NomeCliente').value);
-        console.log('#TelefoneCelular' + $('#TelefoneCelular').value);
-        console.log('#Email' + $('#Email').value);
-        console.log('#Descricao' + $('#Descricao').value);
-        alert("Depoimento enviado com sucesso!");
+//    if (erros != "") {
+//        alert(erros);
+//    }
+//    else {
+//        console.log('TESTE');
+//        console.log('#inputFiles' + $('#inputFiles').value);
+//        console.log('#NomeCliente' + $('#NomeCliente').value);
+//        console.log('#TelefoneCelular' + $('#TelefoneCelular').value);
+//        console.log('#Email' + $('#Email').value);
+//        console.log('#Descricao' + $('#Descricao').value);
+//        alert("Depoimento enviado com sucesso!");
 
-    }
-}
+//    }
+//}
 
 input.addEventListener('change', function () {
     filename.textcontent = this.value;
@@ -134,39 +134,39 @@ function readURL(input) {
 }
 
 
-function validateForm() {
+//function validateForm() {
 
-    var NomeCliente = document.getElementById('NomeCliente').value,
-        Telefone = document.getElementById('TelefoneCelular').value,
-        Email = document.getElementById('Email').value,
-        Mensagem = document.getElementById('Descricao').value;
+//    var NomeCliente = document.getElementById('NomeCliente').value,
+//        Telefone = document.getElementById('TelefoneCelular').value,
+//        Email = document.getElementById('Email').value,
+//        Mensagem = document.getElementById('Descricao').value;
 
-    var padraoEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+//    var padraoEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
 
-    var errors = [];
-    if (NomeCliente == "") {
-        errors.push("Por favor, informe o nome.");
-    }
+//    var errors = [];
+//    if (NomeCliente == "") {
+//        errors.push("Por favor, informe o nome.");
+//    }
 
-    if (Email == "" || !padraoEmail.test(Email)) {
-        errors.push("Por favor, informe um e-mail válido.");
-    }
+//    if (Email == "" || !padraoEmail.test(Email)) {
+//        errors.push("Por favor, informe um e-mail válido.");
+//    }
 
-    //if (Telefone == "" || !isNaN(Telefone)) {
-    if (Telefone == "") {
-        errors.push("Por favor, informe Telefone válido. Ex. (11)9-1234-5678");
-    }
+//    //if (Telefone == "" || !isNaN(Telefone)) {
+//    if (Telefone == "") {
+//        errors.push("Por favor, informe Telefone válido. Ex. (11)9-1234-5678");
+//    }
 
-    if (Mensagem == "") {
-        errors.push("Por favor, informe a mensagem que deseja nos enviar");
-    }
+//    if (Mensagem == "") {
+//        errors.push("Por favor, informe a mensagem que deseja nos enviar");
+//    }
 
-    if (errors.length) {
-        ExibeAlerta(alertaErro, errors);
-        return false;
-    }
-    else {
-        return true;
-    }
+//    if (errors.length) {
+//        ExibeAlerta(alertaErro, errors);
+//        return false;
+//    }
+//    else {
+//        return true;
+//    }
 
-};
+//};
