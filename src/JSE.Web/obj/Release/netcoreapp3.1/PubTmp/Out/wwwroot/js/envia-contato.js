@@ -20,10 +20,19 @@
         return;
     }
 
+    //TESTE URL
+    var url = "";
+    if (document.baseURI.endsWith("/")) {
+        url = document.baseURI + "Home/RegistraContato";
+    }
+    else {
+        url = document.baseURI + "/Home/RegistraContato";
+    }
+        
 
     $.ajax({
         type: "get",
-        url: "/Home/RegistraContato",        
+        url: url,        
         data: contato,
         datatype: "json",
         cache: false,
@@ -66,7 +75,7 @@ function validaForm(contato) {
     }
 
     if (errors.length) {
-        ExibeAlertaContato(alertaErro, errors);
+        ExibeAlertaContato(errors);
         return false;
     }
     else {
@@ -76,7 +85,7 @@ function validaForm(contato) {
 };
 
 
-function ExibeAlertaContato(tipo, mensagens) {
+function ExibeAlertaContato(mensagens) {
 
     var erros = "";
     

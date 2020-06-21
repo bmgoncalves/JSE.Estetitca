@@ -13,7 +13,7 @@ namespace JSE.Web.Controllers
     {
         [Route("Error/{statusCode}")]
         public IActionResult HttpStatusCodeHandler(int statusCode)
-        {
+        {   
             switch (statusCode)
             {
 

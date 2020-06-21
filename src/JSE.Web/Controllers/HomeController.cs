@@ -119,8 +119,9 @@ namespace JSE.Web.Controllers
 
         [HttpGet]
         [Route("~/Home/Depoimento")]
-        public IActionResult Depoimento(string? args)
+        public IActionResult Depoimento()
         {
+            //TODO - corrigir posicao da foto na pagina depoimento.cshtml
             return PartialView();
         }
 
@@ -133,7 +134,6 @@ namespace JSE.Web.Controllers
                 Random rand = new Random();
                 var fileName = Util.GenerateCoupon(10, rand);
                 var uploads = Path.Combine(_env.WebRootPath, "images\\uploads\\depoimentos\\");
-                var usuario = depoimento.NomeCliente;
                 try
                 {
 

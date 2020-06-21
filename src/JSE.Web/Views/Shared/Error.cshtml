@@ -3,15 +3,30 @@
     ViewData["Title"] = "Error";
     var erro = ViewBag.CodeError;
     var message = ViewBag.ErrorMessage;
+    Layout = null; ;
 }
 
-<title>Pagina não encontrada</title>
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr" class="csstransforms csstransforms3d csstransitions fancybox-margin fancybox-lock">
 
-<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+<head>
+    <title>Jay Soares | Estética de Resultado</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+    <title>Jay Soares | Pagina não encontrada</title>
+    <link href="~/img/favicon.png" type="image/png" rel="icon">
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="~/css/popper.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link href="~/css/style-error.css" rel="stylesheet" />
 
-<!-- Custom stlylesheet -->
-<link href="~/css/style-error.css" rel="stylesheet" />
+</head>
+
 
 <body>
     <div id="notfound">
@@ -20,22 +35,20 @@
                 <h1>@erro</h1>
             </div>
             <h2>@message</h2>
-            <h2>@*Oops, A página não foi encontrada!*@</h2>
             <br />
-            @*<form class="notfound-search">
-                <input type="text" placeholder="Search...">
-                <button type="button">Search</button>
-            </form>*@
-            <a href="~/Home" style="color:#BC2A87" ><span class="arrow" style="color:#BC2A87"></span>Voltar para página inicial</a>
+
+            <a href="~/Home" style="color:#BC2A87"><span class="arrow" style="color:#BC2A87"></span>Voltar para página inicial</a>
         </div>
     </div>
+    <div>
+        <footer class="footer_wrapper">
+            <div class="container">
+                <div class="footer_bottom"><span>Todos os Direitos © reservados - Jay Soares Estética de Resultado | <a href="https://www.linkedin.com/in/bmendesgonca/" target="_blank" title="Linkedin">Desenvolvido por Bruno M. Gonçalves</a> </span> </div>
+            </div>
+        </footer>
+    </div>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
-<div>
-    <footer class="footer_wrapper">
-        <div class="container">
-            <div class="footer_bottom"><span>Todos os Direitos © reservados - <a href="https://www.linkedin.com/in/bmendesgonca/" target="_blank" title="Linkedin">Desenvolvido por Bruno M. Gonçalves</a> </span> </div>
-        </div>
-    </footer>
-</div>
+
+</html>

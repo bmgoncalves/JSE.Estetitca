@@ -310,12 +310,9 @@
                     <button type="button" id="btnModal" class="btn btn-primary" data-toggle="modal" data-target="#modalDepoimentoForm">
                         Clique aqui e deixe seu depoimento
                     </button>
-                    @*<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>*@
-                    @*<a href="#" class="btn btn-primary" onclick="initImage()" data-toggle="modal" data-target="#modalDepoimentoForm">Clique aqui e deixe seu depoimento</a>*@
-
 
                     <div class="modal fade" id="modalDepoimentoForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog" role="dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <p style="font-weight:bold;font-size:x-large">Formulário de depoimento </p>
@@ -443,10 +440,11 @@
             trigger: 'hover'
         });
 
+        console.log('baseURI ' + document.baseURI);
 
         $('#btnModal').click(function () {
-            var url = "/Home/Depoimento";
-            $.get(url, function (data) {
+            //var url = "~/Home/Depoimento?args=a";
+            $.get('@Url.Content("~/Home/Depoimento")', function (data) {
                 $("#conteudoDepoimento").html(data);
             });
         });
@@ -454,19 +452,6 @@
 
     });
 
-    //(function () {
-    //    var options = {
-    //        whatsapp: "+5511980655952", // Número do WhatsApp
-    //        //company_logo_url: "~/img/logo-brand.png", // URL com o logo da empresa
-    //        greeting_message: "Olá! Entre em contato conosco!", // Texto principal
-    //        call_to_action: "Oi! entre em contato conosco via Whatsapp!", // Chamada para ação
-    //        position: "right", // Posição do widget na página 'right' ou 'left'
-    //    };
-    //    var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
-    //    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-    //    s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-    //    var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-    //})();
 </script>
 
 
