@@ -13,6 +13,7 @@
     <div class="col-md-9">
         <form enctype="multipart/form-data" asp-area="Admin" asp-controller="Estabelecimento" asp-action="AddOrEdit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Id" class="form-control" hidden readonly/>
             <div class="row">
                 <div class="col-md-12">
                     <label asp-for="NomeFantasia" class="control-label"></label>
@@ -175,22 +176,23 @@
 
             <hr />
             @*<h3>Fotos</h3>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label class="btn btn-primary" for="inputFiles">Adicionar foto </label>
-                    <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
-                    <span id="file-name"></span>
-                </div>
-                <div class="form-group col-md-3">
-                    <a href="#" class="btn btn-secondary">Limpar Fotos</a>
-                </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label class="btn btn-primary" for="inputFiles">Adicionar foto </label>
+                <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
+                <span id="file-name"></span>
             </div>
-            <hr />*@
+            <div class="form-group col-md-3">
+                <a href="#" class="btn btn-secondary">Limpar Fotos</a>
+            </div>
+        </div>
+        <hr />*@
 
 
             <div class="row">
                 <div class="form-group col-md-3">
-                    <input type="submit" value="Salvar" class="btn btn-primary btn-block btn-lg" />
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Salvar</button>
+                    @*<input type="submit" value="Salvar" class="btn btn-primary btn-block btn-lg" />*@
                 </div>
                 <div class="form-group col-md-3">
                     <a href="~/admin/estabelecimento" class="btn btn-secondary btn-block btn-lg">Voltar</a>
