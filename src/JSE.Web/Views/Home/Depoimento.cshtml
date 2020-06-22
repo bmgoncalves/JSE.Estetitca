@@ -35,39 +35,34 @@
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
 
-            <div class="md-form  d-flex justify-content-center">
-                <label for="inputFiles" class="control-label">
-                    <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
-                    <img class="img-upload upload-button" src="~/img/click.png" id="blah" />
-                    <span id="file-name"></span>
-                </label>
-            </div>
+            <div class="modal-footer d-flex justify-content-center">
 
-
-        </div>
-        @*<div class="modal-footer d-flex justify-content-center">
-            <div class="md-form">
-                <div class="col-md-6">
+                <div class="md-form">
                     <div class="col-md-3">
-                        <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
-                        <img class="img-upload upload-button" src="~/img/80x80.png" id="blah" />
-                        <span id="file-name"></span>
-                    </div>
-                    <div class="col-md-3">
-                        <br />
-                        <br />
-                        <br />
-                        <br />
+                        <div class="col-md-6">
+                            <label for="inputFiles" class="control-label" style="cursor:pointer">
+                                <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
+                                <img class="img-upload upload-button" src="~/img/avatar.png" id="blah" />
+                                <span id="file-name"></span>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputFiles" class="control-label" style="cursor:pointer">
+                                <i class="fa fa-plus-circle" style="color:#BC2A87"></i>
+                            </label>
+                        </div>
                     </div>
                 </div>
+                <br />
+                <br />
+                <br />
             </div>
-        </div>*@
-    </div>
+        </div>
 
-    <div class="modal-footer">
-        <button type="submit" class="btn btn-primary btn-block" id="uploadBtn2">Enviar</button>
-        <button type="button" class="btn btn-light btn-block" style="background-color:dimgray; color:white" data-dismiss="modal">Sair</button>
-    </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary btn-block" id="uploadBtn2">Enviar</button>
+            <button type="button" class="btn btn-light btn-block" style="background-color:dimgray; color:white" data-dismiss="modal">Sair</button>
+        </div>
 </form>
 
 <script src="~/js/uploadFile.js"></script>

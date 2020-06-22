@@ -3153,5 +3153,7 @@ input[type='file'] {
     // Needed because the carousel overrides the position property
 }
 
-
-/*Whatsapp*/
+.label > inputFiles {
+    cursor: -webkit-grab;
+    cursor: grab;
+}
