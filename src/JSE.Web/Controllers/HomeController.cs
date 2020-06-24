@@ -79,7 +79,7 @@ namespace JSE.Web.Controllers
                 g.NomeCategoria = _servicoCategoriaRepository.ObterNomeCategoria(servico.CategoriaId);
             }
 
-            idx.Estabel.FotosEspaco = FotosEstabel();
+            //idx.Estabel.FotosEspaco = FotosEstabel();
 
             return View(idx);
         }

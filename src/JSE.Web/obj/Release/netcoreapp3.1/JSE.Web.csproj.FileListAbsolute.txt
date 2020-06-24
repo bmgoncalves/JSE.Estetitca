@@ -149,7 +149,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Home\Servicos.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\_DepoimentoUsuario.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs

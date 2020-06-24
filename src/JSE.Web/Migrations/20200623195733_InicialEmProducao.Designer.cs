@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    [Migration("20200614195148_Inicial")]
-    partial class Inicial
+    [Migration("20200623195733_InicialEmProducao")]
+    partial class InicialEmProducao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
