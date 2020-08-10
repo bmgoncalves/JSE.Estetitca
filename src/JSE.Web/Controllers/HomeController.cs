@@ -20,10 +20,9 @@ namespace JSE.Web.Controllers
 
     [Route("{controller=Home}/{action=Index}")]
     [Route("{controller=Home}/{action=Index}/{id?}")]
-    public class HomeController : Controller
+    public class HomeController : Controller    
     {
 
-        //TODO - Depoimento não esta enviando os dados e a foto miniatura não é limpa 
         private readonly IEstabelecimentoRepository _estabelecimentoRepository;
         private readonly IServicoCategoriaRepository _servicoCategoriaRepository;
         private readonly IDepoimentoRepository _depoimentoRepository;
@@ -121,7 +120,7 @@ namespace JSE.Web.Controllers
         [Route("~/Home/Depoimento")]
         public IActionResult Depoimento()
         {
-            //TODO - corrigir posicao da foto na pagina depoimento.cshtml
+            
             return PartialView();
         }
 

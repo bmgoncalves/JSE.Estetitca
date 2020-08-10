@@ -8,4 +8,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>C:\inetpub\wwwroot\jaysoares</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=mysql8.hostingzone.com.br%3bPort=3306%3bDatabase=jseestetica%3bUid=jaybdjse%3bPwd=BD3st31C%40JSE2306%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
 </Project>

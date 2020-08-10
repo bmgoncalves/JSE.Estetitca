@@ -366,5 +366,5 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csproj.CopyC
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\staticwebassets\JSE.Web.StaticWebAssets.Manifest.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\staticwebassets\JSE.Web.StaticWebAssets.xml
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.genruntimeconfig.cache
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csprojAssemblyReference.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Depoimento.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csprojAssemblyReference.cache

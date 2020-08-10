@@ -333,7 +333,7 @@ namespace JSE.Web.Migrations
 
             modelBuilder.Entity("JSE.Web.Models.Galeria", b =>
                 {
-                    b.HasOne("JSE.Web.Models.Servico", null)
+                    b.HasOne("JSE.Web.Models.Servico", "Servico")
                         .WithMany("Galerias")
                         .HasForeignKey("ServicoId")
                         .OnDelete(DeleteBehavior.Cascade)

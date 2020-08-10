@@ -6,56 +6,57 @@
 
 @*<link href="~/css/styleimage.css" rel="stylesheet" />*@
 
-<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Depoimento">
-    <div class="modal-body">
-        <div class="modal-body ">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="md-form mb-5">
-                <label asp-for="NomeCliente" class="control-label"></label>
-                <input asp-for="NomeCliente" class="form-control" />
-                <span asp-validation-for="NomeCliente" class="text-danger"></span>
-            </div>
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Depoimento">
+        <div class="modal-body">
+            <div class="modal-body ">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="md-form mb-5">
+                    <label asp-for="NomeCliente" class="control-label"></label>
+                    <input asp-for="NomeCliente" class="form-control" />
+                    <span asp-validation-for="NomeCliente" class="text-danger"></span>
+                </div>
 
-            <div class="md-form mb-5">
-                <label asp-for="TelefoneCelular" class="control-label"></label>
-                <input asp-for="TelefoneCelular" class="form-control celphone" />
-                <span asp-validation-for="TelefoneCelular" class="text-danger"></span>
-            </div>
+                <div class="md-form mb-5">
+                    <label asp-for="TelefoneCelular" class="control-label"></label>
+                    <input asp-for="TelefoneCelular" class="form-control celphone" />
+                    <span asp-validation-for="TelefoneCelular" class="text-danger"></span>
+                </div>
 
-            <div class="md-form mb-5">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+                <div class="md-form mb-5">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
 
-            <div class="md-form  mb-5">
+                <div class="md-form  mb-5">
 
-                <label asp-for="Descricao" class="control-label"></label>
-                <textarea asp-for="Descricao" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
+                    <label asp-for="Descricao" class="control-label"></label>
+                    <textarea asp-for="Descricao" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
 
-            <div class="modal-footer d-flex justify-content-center">
+                <div class="modal-footer d-flex justify-content-center">
 
-                <div class="md-form">
-                    <div class="col-md-3">
-                        <div class="col-md-6">
-                            <label for="inputFiles" class="control-label" style="cursor:pointer">
-                                <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
-                                <img class="img-upload upload-button" src="~/img/avatar.png" id="blah" />
-                                <span id="file-name"></span>
-                            </label>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputFiles" class="control-label" style="cursor:pointer">
-                                <i class="fa fa-plus-circle" style="color:#BC2A87"></i>
-                            </label>
+                    <div class="md-form">
+                        <div class="col-md-3">
+                            <div class="col-md-6">
+                                <label for="inputFiles" class="control-label" style="cursor:pointer">
+                                    <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
+                                    <img class="img-upload upload-button" src="~/img/avatar.png" id="blah" alt="imgupload" />
+                                    <span id="file-name"></span>
+                                </label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputFiles" class="control-label" style="cursor:pointer">
+                                    <i class="fa fa-plus-circle" style="color:#BC2A87"></i>
+                                </label>
+                            </div>
                         </div>
                     </div>
+                    <br />
+                    <br />
+                    <br />
                 </div>
-                <br />
-                <br />
-                <br />
             </div>
         </div>
 
@@ -63,6 +64,6 @@
             <button type="submit" class="btn btn-primary btn-block" id="uploadBtn2">Enviar</button>
             <button type="button" class="btn btn-light btn-block" style="background-color:dimgray; color:white" data-dismiss="modal">Sair</button>
         </div>
-</form>
+    </form>
 
 <script src="~/js/uploadFile.js"></script>

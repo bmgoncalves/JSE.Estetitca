@@ -104,7 +104,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                         galeria.NomeArquivo = fileName;
                     }
 
-                    if (galeria.ServicoId == 0)
+                    if (galeria.GaleriaId == 0)
                     {
                         _galeriaRepository.Cadastrar(galeria);
                     }

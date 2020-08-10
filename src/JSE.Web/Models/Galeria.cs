@@ -37,5 +37,7 @@ namespace JSE.Web.Models
 
         [DisplayName("Pagina inicial")]
         public bool Exibir { get; set; } = false;
+
+        public virtual Servico Servico { get; set; }
     }
 }

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JSE.Web.Migrations
 {
     [DbContext(typeof(JSEContext))]
-    [Migration("20200623195733_InicialEmProducao")]
-    partial class InicialEmProducao
+    [Migration("20200628163913_InicialSite")]
+    partial class InicialSite
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -335,7 +335,7 @@ namespace JSE.Web.Migrations
 
             modelBuilder.Entity("JSE.Web.Models.Galeria", b =>
                 {
-                    b.HasOne("JSE.Web.Models.Servico", null)
+                    b.HasOne("JSE.Web.Models.Servico", "Servico")
                         .WithMany("Galerias")
                         .HasForeignKey("ServicoId")
                         .OnDelete(DeleteBehavior.Cascade)
