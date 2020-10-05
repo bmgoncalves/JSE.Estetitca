@@ -197,7 +197,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Vi
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Estabelecimento\Index.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\AddOrEdit.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Galeria\Index.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Login\Login.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Login\RecuperarSenha.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ServicoCategoria\AddOrEdit.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ServicoCategoria\Index.cshtml.g.cs
@@ -368,3 +367,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\staticwebassets\JSE.
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.genruntimeconfig.cache
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Depoimento.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.csprojAssemblyReference.cache
+D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\web_backup.config
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Login\Login_old.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Login\Login.cshtml.g.cs

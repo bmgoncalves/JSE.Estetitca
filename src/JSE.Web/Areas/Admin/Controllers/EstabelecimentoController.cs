@@ -9,8 +9,6 @@ namespace JSE.Web.Areas.Admin.Controllers
     [UsuarioAutorizacao]
     [Route("{area:exists}/{controller=Estabelecimento}/{action=Index}")]
     [Route("{area:exists}/{controller=Estabelecimento}/{action=Index}/{id?}")]
-
-    //TODO - Verificar o update do ADDOREDIT
     public class EstabelecimentoController : Controller
     {
         private readonly IEstabelecimentoRepository _estabelecimentoRepository;

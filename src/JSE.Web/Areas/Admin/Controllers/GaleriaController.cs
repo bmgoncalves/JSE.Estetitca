@@ -19,6 +19,9 @@ namespace JSE.Web.Areas.Admin.Controllers
     [UsuarioAutorizacao]
     [Route("{area:exists}/{controller=Galeria}/{action=Index}")]
     [Route("{area:exists}/{controller=Galeria}/{action=Index}/{id?}")]
+
+    //TODO - Corrigir tamanho das fotos exibidas e procurar um layout melhor para exibir 
+    //TODO - Exibir miniatura da imagem na tela inicial / Corrigir exibição da imagem ao escolher antes de cadastrar
     public class GaleriaController : Controller
     {
         private readonly IWebHostEnvironment _env;
@@ -47,6 +50,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                     ServicoId = item.ServicoId,
                     NomeCliente = item.NomeCliente,
                     DataCadastro = item.DataCadastro,
+                    NomeArquivo = item.NomeArquivo,
                     Exibir = item.Exibir,
                     NomeServico = _servicoRepository.ObterNomeServico(item.ServicoId)
                 };

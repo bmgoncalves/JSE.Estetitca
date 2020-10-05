@@ -23,12 +23,12 @@
 
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/admin/dashboard/index">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
                 <div class="sidebar-brand-text mx-3">JSE - Administração</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
-                <a class="nav-link" href="~/admin/dashboard/index">
+                <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Inicio</span>
                 </a>
@@ -47,11 +47,11 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="~/admin/contato">
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Contato" asp-action="Index">
                             <i class="fas fa-fw fa-phone"></i>
                             <span>Contatos</span>
                         </a>
-                        <a class="collapse-item" href="~/admin/depoimento">
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Depoimento" asp-action="Index">
                             <i class="fas fa-fw fa-file-alt"></i>
                             <span>Depoimentos</span>
                         </a>
@@ -72,22 +72,22 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="~/admin/estabelecimento">
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Estabelecimento" asp-action="Index">
                             <i class="fas fa-fw fa-industry"></i>
                             <span>Estabelecimento</span>
                         </a>
 
-                        <a class="collapse-item" href="~/admin/servico">
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Servico" asp-action="Index">
                             <i class="fas fa-fw fa-cog"></i>
                             <span>Serviços</span>
                         </a>
 
-                        <a class="collapse-item" href="~/admin/servicocategoria">
+                        <a class="collapse-item" asp-area="Admin" asp-controller="ServicoCategoria" asp-action="Index">
                             <i class="fas fa-fw fa-bars"></i>
                             <span>Categorias (serviços)</span>
                         </a>
 
-                        <a class="collapse-item" href="~/admin/galeria">
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Galeria" asp-action="Index">
                             <i class="fas fa-fw fa-images"></i>
                             <span>Galeria</span>
                         </a>
@@ -102,7 +102,7 @@
                 </a>
                 <div id="collapseSecurity" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="~/admin/usuario">
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Usuario" asp-action="Index">
                             <i class="fas fa-fw fa-users"></i>
                             <span>Usuários</span>
                         </a>
@@ -137,7 +137,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="~/admin/dashboard/logout" data-toggle="modal" data-target="#logoutModal">
+                <a class="nav-link" asp-area="Admin" asp-controller="Login" asp-action="Logout" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Sair</span>
                 </a>
@@ -199,7 +199,7 @@
                                 <img class="img-profile rounded-circle" src="~/img/logo-user.png" alt="logousuario">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="~/admin/dashboard/logout" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Login" asp-action="Logout" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
                                 </a>
@@ -240,7 +240,7 @@
                 <div class="modal-body">Clique em Sim para sair do sistema.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="~/admin/dashboard/logout">Sim</a>
+                    <a class="btn btn-primary" asp-area="Admin" asp-controller="Login" asp-action="Logout">Sim</a>
                 </div>
             </div>
         </div>

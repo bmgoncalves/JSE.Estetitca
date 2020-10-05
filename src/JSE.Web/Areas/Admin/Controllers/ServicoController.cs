@@ -17,9 +17,8 @@ using System.Linq;
 namespace JSE.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [UsuarioAutorizacao] //Verificar se usuario esta logado para acessar o controller
+    [UsuarioAutorizacao]
     [Route("{area:exists}/{controller=Servico}/{action=Index}")]
-    [Route("{area:exists}/{controller=Servico}/{action=Index}/{id?}")]
     public class ServicoController : Controller
     {
         private readonly IWebHostEnvironment _env;
@@ -34,9 +33,8 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         }
 
-
         
-        //[Route("~/Admin/Servico/Index")]
+        [Route("~/Admin/Servico/Index")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
 

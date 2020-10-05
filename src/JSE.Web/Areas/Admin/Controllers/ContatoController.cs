@@ -13,6 +13,9 @@ namespace JSE.Web.Areas.Admin.Controllers
     [UsuarioAutorizacao]
     [Route("{area:exists}/{controller=Contato}/{action=Index}")]
     [Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
+
+    //TODO - Melhorar tela inicial dos contatos
+    //TODO - Melhorar tela inicial dos depoimentos
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _contatoRepository;

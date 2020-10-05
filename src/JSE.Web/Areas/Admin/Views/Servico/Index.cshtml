@@ -2,8 +2,8 @@
 
 @{
     ViewData["Title"] = "Index";
-    ViewData["Controller"] = "Admin";
-    ViewData["Action"] = "Servico";
+    ViewData["Controller"] = "Servico";
+    ViewData["Action"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     var nomeCategoria = "";
 }
@@ -50,68 +50,69 @@
 
 
     <div class="row">
+        <div class="col-md-12">
+            @if (Model.Data.Count > 0)
+            {
+                <table class="table table-hover table-responsive table-responsive">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Servico")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Categoria")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Pagina inicial")
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Data)
+                        {
+                            <tr class="servico">
+                                <td class="nomeServico">
+                                    @Html.DisplayFor(modelItem => item.NomeServico)
+                                </td>
+                                <td>
 
-        @if (Model.Data.Count > 0)
-        {
-            <table class="table table-hover table-responsive">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayName("Servico")
-                        </th>
-                        <th>
-                            @Html.DisplayName("Categoria")
-                        </th>
-                        <th>
-                            @Html.DisplayName("Pagina inicial")
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Data)
-                    {
-                    <tr class="servico">
-                        <td class="nomeServico">
-                            @Html.DisplayFor(modelItem => item.NomeServico)
-                        </td>
-                        <td>
+                                    @foreach (var categoria in ViewBag.categorias)
+                                    {
+                                        if (item.CategoriaId == categoria.CategoriaId)
+                                        {
+                                            nomeCategoria = categoria.Categoria;
+                                            break;
+                                        }
+                                    }
 
-                            @foreach (var categoria in ViewBag.categorias)
-                            {
-                                if (item.CategoriaId == categoria.CategoriaId)
-                                {
-                                    nomeCategoria = categoria.Categoria;
-                                    break;
-                                }
-                            }
+                                    @nomeCategoria
 
-                            @nomeCategoria
-                            
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ExibeIndex)
-                        </td>
-                        <td>
-                            <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i> Editar</a> &nbsp; | &nbsp;
-                            <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i> Excluir</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ExibeIndex)
+                                </td>
+                                <td>
+                                    <a asp-action="AddOrEdit" asp-route-id="@item.ServicoId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i> Editar</a> &nbsp; | &nbsp;
+                                    <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i> Excluir</a>
 
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
 
-            <div>
-                <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
-            </div>
-        }
-        else
-        {
-            <br />
-            <span>Nenhum registro cadastrado!</span>
-        }
+                <div>
 
+                    <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+                </div>
+            }
+            else
+            {
+                <br />
+                <span>Nenhum registro cadastrado!</span>
+            }
+        </div>
 
         <script>
             var campoFiltro = document.querySelector("#inputPesquisa");

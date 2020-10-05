@@ -11,6 +11,7 @@ namespace JSE.Web.Models
     {
         [Key]
         public int ServicoId { get; set; }
+
         [DisplayName("Serviço")]
         [MaxLength(50)]
         [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]

@@ -39,9 +39,8 @@
                 <span asp-validation-for="ServicoId" class="text-danger"></span>
             </div>
 
-            <div class="form-group" hidden>
-                <input asp-for="ServicoId" id="servicoId" class="form-control" readonly />
-            </div>
+            <input asp-for="ServicoId" id="servicoId" class="form-control" readonly hidden />
+            <input asp-for="GaleriaId" id="GaleriaId" class="form-control" readonly hidden />
             <div class="form-group">
                 <label asp-for="NomeCliente" class="control-label"></label>
                 <input asp-for="NomeCliente" class="form-control" />

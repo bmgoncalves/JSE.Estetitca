@@ -11,6 +11,9 @@ namespace JSE.Web.Areas.Admin.ViewModel
         public string NomeCliente { get; set; }
         [DisplayName("Serviço")]
         public string NomeServico { get; set; }
+        [DisplayName("Foto")]
+        public string NomeArquivo { get; set; }
+
         [DisplayName("Data")]
         public DateTime DataCadastro { get; set; }
         [DisplayName("Pagina inicial?")]

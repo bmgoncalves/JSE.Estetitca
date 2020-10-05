@@ -28,7 +28,7 @@ namespace JSE.Web.Extensions.Filtro
             Usuario usuario = _loginUsuario.GetUsuario();
             if (usuario == null)
             {
-                context.Result = new RedirectToActionResult("Login", "Dashboard", null);
+                context.Result = new RedirectToActionResult("Login", "Login", new { area = "Admin" });
             }
         }
     }

@@ -20,6 +20,11 @@ namespace JSE.Web.Controllers
 
     [Route("{controller=Home}/{action=Index}")]
     [Route("{controller=Home}/{action=Index}/{id?}")]
+
+    //TODO - Melhorar funcionalidade do menu / verificar possibilidade de torna-lo responsivo /web component
+    //TODO - Fazer limpeza dos css não atualizados 
+    //TODO - Melhorar formularia de depoimento 
+
     public class HomeController : Controller    
     {
 

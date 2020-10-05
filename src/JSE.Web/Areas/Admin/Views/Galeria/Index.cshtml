@@ -8,102 +8,111 @@
     var pesquisa = Context.Request.Query["pesquisa"];
 }
 
-    <div>
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Galerias (Antes / Depois)</h1>
-            <hr />
-        </div>
-        <p>
-            <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
-        </p>
+<div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Galerias (Antes / Depois)</h1>
+        <hr />
+    </div>
+    <p>
+        <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
+    </p>
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="inputPesquisa" class="control-label">Pesquisar</label>
-                    <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
-                </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputPesquisa" class="control-label">Pesquisar</label>
+                <input id="inputPesquisa" class="form-control" placeholder="Digite o nome do serviço" />
             </div>
         </div>
-
-        <div class="row">
-            @if (TempData["MSG_S"] != null)
-            {
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <p class="alert alert-success">@TempData["MSG_S"]</p>
-                    </div>
-                </div>
-
-            }
-            @if (TempData["MSG_E"] != null)
-            {
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <p class="alert alert-danger">@TempData["MSG_E"]</p>
-                    </div>
-                </div>
-            }
-        </div>
-
-        @if (Model.Count > 0)
-        {
-
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.First().NomeCliente)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.First().NomeServico)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.First().DataCadastro)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.First().Exibir)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-
-                        <tr class="galeria">
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NomeCliente)
-                            </td>
-                            <td class="nomeServico">
-                                @Html.DisplayFor(modelItem => item.NomeServico)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataCadastro)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Exibir)
-                            </td>
-                            <td>
-                                <a asp-area="Admin" asp-action="AddOrEdit" asp-route-id="@item.GaleriaId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i>Editar</a> &nbsp; | &nbsp;
-                                <a asp-area="Admin" asp-action="Delete" asp-route-id="@item.GaleriaId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i>Excluir</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-        }
-        else
-        {
-            <br />
-            <span>Nenhum registro cadastrado!</span>
-        }
-
-        @Html.PagedListPager((IPagedList)Model, pagina => Url.Action("Index", new { pagina, pesquisa = pesquisa }))
-
     </div>
+
+    <div class="row">
+        @if (TempData["MSG_S"] != null)
+        {
+            <div class="col-md-6">
+                <div class="form-group">
+                    <p class="alert alert-success">@TempData["MSG_S"]</p>
+                </div>
+            </div>
+
+        }
+        @if (TempData["MSG_E"] != null)
+        {
+            <div class="col-md-6">
+                <div class="form-group">
+                    <p class="alert alert-danger">@TempData["MSG_E"]</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (Model.Count > 0)
+    {
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().GaleriaId)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.First().NomeArquivo)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().NomeServico)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().DataCadastro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Exibir)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="galeria">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GaleriaId)
+                        </td>
+                        @*<td>
+                            <div class="col-lg-2">
+                                <div class="thumbnail">
+                                    <img class="img img-responsive" src="~/images/uploads/Galeria/@item.NomeArquivo" alt="">
+                                </div>
+                            </div>
+                        </td>*@
+                        <td class="nomeServico">
+                            @Html.DisplayFor(modelItem => item.NomeServico)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataCadastro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Exibir)
+                        </td>
+                        <td>
+                            <a asp-area="Admin" asp-action="AddOrEdit" asp-route-id="@item.GaleriaId"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i>Editar</a> &nbsp; | &nbsp;
+                            <a asp-area="Admin" asp-action="Delete" asp-route-id="@item.GaleriaId" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i>Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <br />
+        <span>Nenhum registro cadastrado!</span>
+    }
+
+    @Html.PagedListPager((IPagedList)Model, pagina => Url.Action("Index", new { pagina, pesquisa = pesquisa }))
+
+</div>
 
 @section Scripts{
     <script>

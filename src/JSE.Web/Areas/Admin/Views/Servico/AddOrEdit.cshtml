@@ -4,16 +4,17 @@
     ViewData["Title"] = "AddOrEdit";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<link href="~/admin/css/img-style.css" rel="stylesheet" />
 <h2>Cadastrar</h2>
 
 <h4>Serviço</h4>
 <hr />
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-9">
         <form enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="ServicoId" class="form-control" readonly hidden />
             <div class="form-group">
                 <label asp-for="NomeServico" class="control-label"></label>
                 <input asp-for="NomeServico" class="form-control" />
@@ -42,7 +43,7 @@
 
             <div class="form-group">
                 <label asp-for="Descricao" class="control-label"></label>
-                <textarea asp-for="Descricao" class="form-control" rows="12"></textarea>
+                <textarea asp-for="Descricao" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -59,10 +60,30 @@
             </div>
 
             <div class="form-group">
-                <label class="lbl-upload" for="inputFiles">Adicionar foto </label>
-                <input class="input-file" id="inputFiles" type="file" name="files" accept="image/*" />
-                <span id="file-name"></span>
+                <div class="col-md-4 Imagens">
+
+                    @if (Model.Imagem != null)
+                    {
+                        <input type="file" class="input-file" name="files" />
+                        <div class="container-img-thumbnail">
+                            <span class="helper"></span><img src="~/images/uploads/Servicos/@Model.NomeArquivo" class="img-thumbnail img-upload2" />
+                        </div>                        
+                        <input type="text" name="imagem" value="@Model.Imagem" />
+                    }
+                    else
+                    {
+                        <input type="file" class="input-file" />
+                        <div class="container-img-thumbnail">
+                            <span class="helper"></span><img src="~/img/imagem-padrao.png" class="img-thumbnail img-upload2" />
+                        </div>
+                        <input type="text" name="imagem" />
+                    }
+                    
+                </div>
             </div>
+            <br />
+            <br />
+            <hr />
 
             <div class="row">
                 <div class="form-group col-md-6">
@@ -78,59 +99,7 @@
 </div>
 
 @section Scripts {
-    <script>
-
-        var input = document.querySelector("#inputFiles");
-        var filename = document.querySelector("#file-name");
-        //var inputCategoriaId = $("#categoriaId");
-        //var valCategoriaId = "";
-
-        //$(document).ready(function () {
-        //    valCategoriaId = inputCategoriaId.val();
-        //    $.ajax({
-        //        type: "GET",
-        //        url: "/Admin/Servico/ListaCategorias",
-        //        data: { userId: Id },
-        //        contentType: "application/json;charset=utf-8",
-        //        dataType: "json",
-        //        success: function (dados) {
-        //            var html_code = '<option value = "0"> Selecione a categoria</option>';
-        //            $(dados).each(function (i) {
-        //                html_code += '<option value="' + dados[i].categoriaId + '">' + dados[i].categoria + '</option>';
-        //            });
-
-        //            $('#categoriaCB').html(html_code);
-        //            setSelectBoxById();
-        //        },
-        //        error: function (response) {
-        //            alert('error');
-        //        }
-        //    });
-        //});
-
-        input.addEventListener('change', function () {
-            filename.textcontent = this.value;
-        });
-
-
-        //function setSelectBoxById() {
-        //    var i;
-        //    var ddl = document.getElementById('categoriaCB');
-
-        //    if (inputCategoriaId.val() == 0) {
-        //        return;
-        //    }
-
-        //    for (i = 0; i < ddl.options.length; i++) {
-        //        if (ddl.options[i].value == valCategoriaId) {
-        //            ddl.selectedIndex = ddl.options[i].index;
-        //        }
-        //    }
-        //}
-
-        //$(document).on('change', '#categoriaCB', function () {
-        //    inputCategoriaId.val($(this).children("option:selected").val());
-        //});
-    </script>
+    
+<script src="~/admin/js/image.js"></script>
 }
 
