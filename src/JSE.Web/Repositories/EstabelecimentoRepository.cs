@@ -56,5 +56,11 @@ namespace JSE.Web.Repositories
         {
             return _context.Estabelecimentos.Where(e => e.Id == id).FirstOrDefault();
         }
+
+        public Estabelecimento ObterEstabelecimento()
+        {
+            return _context.Estabelecimentos.First();
+
+        }
     }
 }

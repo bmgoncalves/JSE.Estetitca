@@ -11,6 +11,7 @@ namespace JSE.Web.Repositories.Intefarces
         void Excluir(int id);
         Estabelecimento ObterEstabelecimentoAtivo();
         Estabelecimento ObterEstabelecimento(int id);
+        Estabelecimento ObterEstabelecimento();
         IQueryable<Estabelecimento> ObterTodosEstabelecimentoPaginados(int excludeRecords, int pageNumber, int pageSize);
         List<Estabelecimento> ObterTodosEstabelecimentos();
     }

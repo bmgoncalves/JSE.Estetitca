@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\js\**" />
+    <Compile Remove="wwwroot\lib\**" />
+    <Content Remove="wwwroot\js\**" />
+    <Content Remove="wwwroot\lib\**" />
+    <EmbeddedResource Remove="wwwroot\js\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
+    <None Remove="wwwroot\js\**" />
+    <None Remove="wwwroot\lib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Files\Download\" />
@@ -14,8 +25,6 @@
     <Folder Include="wwwroot\images\uploads\Galeria\" />
     <Folder Include="wwwroot\images\uploads\Estabelecimento\" />
     <Folder Include="wwwroot\images\uploads\Servicos\" />
-    <Folder Include="wwwroot\js\charts\" />
-    <Folder Include="wwwroot\lib\jquery\dist\js\charts\" />
   </ItemGroup>
 
   <ItemGroup>
