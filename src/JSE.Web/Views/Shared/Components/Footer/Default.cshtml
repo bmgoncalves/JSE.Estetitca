@@ -1,0 +1,42 @@
+﻿@model Estabelecimento
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 footer-contact">
+                    <h3>Endereço</h3>
+                    <p>
+                        @Model.Endereco
+                        @Model.Bairro <br>
+                        @Model.Cidade, @Model.UF<br>
+                        Brasil <br><br>
+                        <strong>Telefone:</strong> @Model.TelefoneCelular<br>
+                        <strong>E-mail:</strong> @Model.Email<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Links úteis</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Index">Inicio</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Servicos" href="#">Serviços</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Galerias" href="#">Galeria</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+        <div class="mr-md-auto text-center text-md-left">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Jay Soares Estética de Resultado</span></strong>. Todos os direitos reservados - @DateTime.Now.Year
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        </div>
+    </div>
