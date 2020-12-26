@@ -61,7 +61,7 @@ namespace JSE.Web.Controllers
                 Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault(),
                 Servicos = _context.Servicos.Where(s => s.ExibeIndex == true)
                                             .OrderBy(s => s.NomeServico)
-                                            .Take(4)
+                                            .Take(6)
                                             .ToList(),
                 Depoimentos = _context.Depoimentos.Where(d => d.Aprovado == true)
                                                   .OrderBy(d => d.DataCriacao)

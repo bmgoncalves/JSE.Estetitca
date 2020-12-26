@@ -1736,3 +1736,18 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+
+@media (max-width: 450px) {
+    .logo-img {
+        width:350px;
+        height:180px
+    }
+}
+
+@media (max-width: 320px) {
+    .logo-img {
+        width: 300px;
+        height: 160px
+    }
+}

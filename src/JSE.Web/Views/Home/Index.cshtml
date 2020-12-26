@@ -1,4 +1,4 @@
-﻿@model JSE.Web.ViewModel.IndexViewModel
+﻿@model IndexViewModel
 @{
     ViewData["Title"] = "Home";
     string email = Model.Estabel.Email;
@@ -6,6 +6,11 @@
     ///var iterations = 0;
 }
 
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+<link href="~/client/css/photo-upload.css" rel="stylesheet" />
 <section id="why-us" class="why-us">
     <div class="container">
 
@@ -122,55 +127,29 @@
 
         <div class="section-title">
             <h2>Serviços</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>Abaixo alguns dos serviços que prestamos, clique e saiba mais.</p>
         </div>
 
+
         <div class="row">
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                <div class="icon-box">
-                    <div class="icon"><i class="icofont-heart-beat"></i></div>
-                    <h4><a href="">Lorem Ipsum</a></h4>
-                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                </div>
-            </div>
+            @if (Model.Servicos != null && Model.Servicos.Count > 0)
+            {
+                foreach (Servico servico in Model.Servicos)
+                {
+                    string descServico = servico.Descricao.Substring(0, 200) + "...";
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="icon-box">
+                            <div class="icon"><i class="icofont-heart-beat"></i></div>
+                            <h4><a asp-controller="Home" asp-action="Servicos">@servico.NomeServico</a></h4>
+                            <p>@descServico</p>
+                        </div>
+                    </div>
+                }
+            }
 
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                <div class="icon-box">
-                    <div class="icon"><i class="icofont-drug"></i></div>
-                    <h4><a href="">Sed ut perspiciatis</a></h4>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-                <div class="icon-box">
-                    <div class="icon"><i class="icofont-dna-alt-2"></i></div>
-                    <h4><a href="">Magni Dolores</a></h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                <div class="icon-box">
-                    <div class="icon"><i class="icofont-heartbeat"></i></div>
-                    <h4><a href="">Nemo Enim</a></h4>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                <div class="icon-box">
-                    <div class="icon"><i class="icofont-disabled"></i></div>
-                    <h4><a href="">Dele cardo</a></h4>
-                    <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                <div class="icon-box">
-                    <div class="icon"><i class="icofont-autism"></i></div>
-                    <h4><a href="">Divera don</a></h4>
-                    <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <a asp-controller="Home" asp-action="Servicos" class="btn-primary appointment-btn scrollto"> Saiba mais</a>
                 </div>
             </div>
 
@@ -182,60 +161,46 @@
     <div class="container">
 
         <div class="section-title">
-            <h2>Make an Appointment</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <h2>Deixe seu Depoimento</h2>
+            <p>Conte-nos como foi sua experiência! </p>
         </div>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+        <form asp-controller="Home" asp-action="Depoimentos" method="post" role="form" class="php-email-form">
             <div class="form-row">
                 <div class="col-md-4 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Nome" data-rule="minlen:4" data-msg="Por favor informe um nome com mais de 4 caracteres">
                     <div class="validate"></div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" data-rule="email" data-msg="Por favor, informe um e-mail válido">
                     <div class="validate"></div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <input type="tel" class="form-control" name="phone" id="phone" placeholder="Celular / Whatsapp" data-rule="minlen:4" data-msg="Informe um telefone válido">
                     <div class="validate"></div>
                 </div>
             </div>
+
             <div class="form-row">
-                <div class="col-md-4 form-group">
-                    <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validate"></div>
-                </div>
-                <div class="col-md-4 form-group">
-                    <select name="department" id="department" class="form-control">
-                        <option value="">Select Department</option>
-                        <option value="Department 1">Department 1</option>
-                        <option value="Department 2">Department 2</option>
-                        <option value="Department 3">Department 3</option>
-                    </select>
-                    <div class="validate"></div>
-                </div>
-                <div class="col-md-4 form-group">
-                    <select name="doctor" id="doctor" class="form-control">
-                        <option value="">Select Doctor</option>
-                        <option value="Doctor 1">Doctor 1</option>
-                        <option value="Doctor 2">Doctor 2</option>
-                        <option value="Doctor 3">Doctor 3</option>
-                    </select>
-                    <div class="validate"></div>
+                <div class="avatar-wrapper">
+                    <img class="profile-pic" src="~/client/img/photo.png" />
+                    <div class="upload-button">
+                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                    </div>
+                    <input class="file-upload" type="file" accept="image/*" />
                 </div>
             </div>
 
             <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+                <textarea class="form-control" name="message" rows="5" placeholder="Escreva aqui seu depoimento" data-rule="minlen:15" data-msg="Descreva melhor sua experiência"></textarea>
                 <div class="validate"></div>
             </div>
             <div class="mb-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+                <div class="sent-message">Seu depoimento foi enviado com sucesso! Obrigado! :)</div>
             </div>
-            <div class="text-center"><button type="submit">Make an Appointment</button></div>
+            <div class="text-center"><button type="submit">Enviar Depoimento</button></div>
         </form>
 
     </div>
@@ -711,3 +676,35 @@
                 frameborder="0" allowfullscreen></iframe>
     </div>
 </section>
+
+
+
+
+@section Scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var readURL = function (input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.profile-pic').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(".file-upload").on('change', function () {
+                readURL(this);
+            });
+
+            $(".upload-button").on('click', function () {
+                $(".file-upload").click();
+            });
+        });
+    </script>
+
+}

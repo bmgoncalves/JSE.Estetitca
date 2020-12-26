@@ -33,17 +33,17 @@
 <body>
     @await Component.InvokeAsync("Menu")
 
-    
+
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
-            <h1 class="logo"><a asp-controller="Home" asp-action="Index"><img src="~/client/img/md-logo.png" alt="md-logo"></a></h1>
+            <h1 class="logo"><a asp-controller="Home" asp-action="Index"><img class="logo-img" src="~/client/img/md-logo.png" alt="md-logo"></a></h1>
             <!--<h2>Jay Soares Estética de Resultado</h2>-->
         </div>
     </section><!-- End Hero -->
 
     <main id="main">
-        @RenderBody()       
+        @RenderBody()
     </main>
 
     <footer id="footer">
@@ -67,6 +67,8 @@
 
     <!-- Template Main JS File -->
     <script src="~/client/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+
 
 </body>
 
