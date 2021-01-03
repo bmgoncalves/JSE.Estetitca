@@ -18,11 +18,13 @@ namespace JSE.Web.Data
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<ServicoCategoria> ServicoCategorias { get; set; }
         public DbSet<Galeria> Galerias { get; set; }
+        public DbSet<Faqs> Faqs { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Depoimento>().Ignore(d => d.ArquivoUpload);
             base.OnModelCreating(modelBuilder);
         }
 

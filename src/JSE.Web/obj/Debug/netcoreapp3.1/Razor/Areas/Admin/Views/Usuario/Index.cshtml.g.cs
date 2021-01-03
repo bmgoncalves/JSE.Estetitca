@@ -40,8 +40,15 @@ using X.PagedList;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "D:\Projetos\JSEEstetica\src\JSE.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using cloudscribe.Pagination.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7b06208668d89a0083a0eabf996b26598f9b2b9b", @"/Areas/Admin/Views/Usuario/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a7d2d58c1713f4e4e42d94562edccc4bc5ca2ec1", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"26a86ccdd58d5bee8e664f608fd174d4235d588a", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Usuario_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IPagedList<Usuario>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -87,7 +94,7 @@ using X.PagedList;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n<div>\r\n    <!-- Page Heading -->\r\n    <div class=\"d-sm-flex align-items-center justify-content-between mb-4\">\r\n        <h1 class=\"h3 mb-0 text-gray-800\">Usuários Cadastrados</h1>\r\n        <hr />\r\n    </div>\r\n    <p>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b6473", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b6665", async() => {
                 WriteLiteral("<i class=\"far fa-plus-square\" data-feather=\"plus-circle\"></i> &nbsp; Cadastrar");
             }
             );
@@ -104,7 +111,7 @@ using X.PagedList;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n    </p>\r\n\r\n    <div class=\"row\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b7838", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b8030", async() => {
                 WriteLiteral("\r\n            <div class=\"col-md-12\">\r\n                <div class=\"form-group\">\r\n                    <label for=\"pesquisa\"></label>\r\n                    <input type=\"text\" name=\"pesquisa\"");
                 BeginWriteAttribute("value", " value=\"", 755, "\"", 772, 1);
 #nullable restore
@@ -272,7 +279,7 @@ WriteAttributeValue("", 763, pesquisa, 763, 9, false);
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                        <td>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b15459", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b15651", async() => {
                 WriteLiteral("<i class=\"far fa-edit\" data-feather=\"edit-2\"></i> Editar");
             }
             );
@@ -303,7 +310,7 @@ WriteAttributeValue("", 763, pesquisa, 763, 9, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(" |                            \r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b17743", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b17935", async() => {
                 WriteLiteral("<i class=\"far fa-trash-alt \" data-feather=\"trash-2\"></i> Excluir");
             }
             );
@@ -344,7 +351,7 @@ WriteAttributeValue("", 763, pesquisa, 763, 9, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b20374", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b20566", async() => {
                 WriteLiteral(" Desativar");
             }
             );
@@ -386,7 +393,7 @@ WriteAttributeValue("", 763, pesquisa, 763, 9, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b22958", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b06208668d89a0083a0eabf996b26598f9b2b9b23150", async() => {
                 WriteLiteral(" Ativar");
             }
             );

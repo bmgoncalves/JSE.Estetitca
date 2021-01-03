@@ -21,11 +21,11 @@ namespace JSE.Web.Controllers
     [Route("{controller=Home}/{action=Index}")]
     [Route("{controller=Home}/{action=Index}/{id?}")]
 
-    //TODO - Melhorar funcionalidade do menu / verificar possibilidade de torna-lo responsivo /web component
-    //TODO - Fazer limpeza dos css não atualizados 
-    //TODO - Melhorar formularia de depoimento 
+    //TODO - Upload foto depoimentos 
+    
+    
 
-    public class HomeController : Controller    
+    public class HomeController : Controller
     {
 
         private readonly IEstabelecimentoRepository _estabelecimentoRepository;
@@ -34,13 +34,14 @@ namespace JSE.Web.Controllers
         private readonly IContatoRepository _contatoRepository;
         private readonly IServicoRepository _servicoRepository;
         private readonly IGaleriaRepository _galeriaRepository;
+        private readonly IFaqsRepository _faqsRepository;
         private readonly JSEContext _context;
 
         private readonly IWebHostEnvironment _env;
 
 
         public HomeController(IWebHostEnvironment env, IEstabelecimentoRepository estabelecimentoRepository, JSEContext context,
-                              IDepoimentoRepository depoimentoRepository, IServicoCategoriaRepository servicoCategoriaRepository,
+                              IDepoimentoRepository depoimentoRepository, IServicoCategoriaRepository servicoCategoriaRepository, IFaqsRepository faqsRepository,
                                IServicoRepository servicoRepository, IContatoRepository contatoRepository, IGaleriaRepository galeriaRepository)
         {
             _estabelecimentoRepository = estabelecimentoRepository;
@@ -49,13 +50,13 @@ namespace JSE.Web.Controllers
             _contatoRepository = contatoRepository;
             _servicoRepository = servicoRepository;
             _galeriaRepository = galeriaRepository;
+            _faqsRepository = faqsRepository;
             _context = context;
             _env = env;
         }
 
         public IActionResult Index()
         {
-
             IndexViewModel idx = new IndexViewModel()
             {
                 Estabel = _context.Estabelecimentos.Where(e => e.Ativo == true).FirstOrDefault(),
@@ -71,8 +72,11 @@ namespace JSE.Web.Controllers
                 Galerias = _context.Galerias.Where(g => g.Exibir == true)
                                             .OrderBy(g => g.GaleriaId)
                                             .ThenBy(g => g.ServicoId)
+                                            .Take(8)
                                             .ToList(),
-                Categorias = _context.ServicoCategorias.OrderBy(c => c.CategoriaId).ToList()
+                Categorias = _context.ServicoCategorias.OrderBy(c => c.CategoriaId).ToList(),
+
+                Faqs = _faqsRepository.ObterTodasFaqs()
             };
 
             //Buscar o nome do serviço 
@@ -102,35 +106,40 @@ namespace JSE.Web.Controllers
             //return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpGet]
-        public JsonResult RegistraContato(Contato contato)
+        public IActionResult Contato(Contato contato)
         {
-            try
+
+            if (ModelState.IsValid)
             {
-                _contatoRepository.Cadastrar(contato);
-                return Json("OK");
+                try
+                {
+                    _contatoRepository.Cadastrar(contato);
+                    return Ok("OK");
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Falha ao tentar enviar Contato, tente novamente mais tarde!");
+                }
             }
-            catch (Exception ex)
-            {
-                return Json(ex.Message);
-            }
+            return BadRequest("Verifique os campos preenchidos e tente novamente.");
         }
+
         public IActionResult Estabelecimento(int id)
         {
             var estabelecimento = _estabelecimentoRepository.ObterEstabelecimento(id);
             return View(estabelecimento);
         }
 
-        [HttpGet]
-        [Route("~/Home/Depoimento")]
-        public IActionResult Depoimento()
-        {
-            
-            return PartialView();
-        }
+        //[HttpGet]
+        //[Route("~/Home/Depoimento")]
+        //public IActionResult Depoimento()
+        //{
 
-        [HttpPost]
-        public IActionResult Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
+        //    return PartialView();
+        //}
+
+        //public IActionResult Depoimento([FromForm]Depoimento depoimento, IEnumerable<IFormFile> files)
+        public IActionResult Depoimento([FromForm] Depoimento d)
         {
 
             if (ModelState.IsValid)
@@ -141,34 +150,86 @@ namespace JSE.Web.Controllers
                 try
                 {
 
-                    foreach (var file in files)
+                    if (d.ArquivoUpload != null)
                     {
-                        if (file != null && file.Length > 0)
+                        if (d.ArquivoUpload != null && d.ArquivoUpload.Length > 0)
                         {
-                            fileName += Path.GetExtension(file.FileName);
-
+                            fileName += Path.GetExtension(d.ArquivoUpload.FileName);
                             using var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
-                            file.CopyTo(s);
-                            depoimento.Imagem = uploads + fileName;
-                            depoimento.NomeArquivo = fileName;
+                            d.ArquivoUpload.CopyTo(s);
+                            d.Imagem = uploads + fileName;
+                            d.NomeArquivo = fileName;
                         }
                     }
 
-                    _depoimentoRepository.Cadastrar(depoimento);
-                    return Redirect("~/Home/#experience");
+                    //if (d.ArquivoUpload != null && d.ArquivoUpload.Count > 0)
+                    //{
+                    //    foreach (var file in d.ArquivoUpload)
+                    //    {
+                    //        if (file != null && file.Length > 0)
+                    //        {
+                    //            fileName += Path.GetExtension(file.FileName);
+
+                    //            using var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
+                    //            file.CopyTo(s);
+                    //            d.Imagem = uploads + fileName;
+                    //            d.NomeArquivo = fileName;
+                    //        }
+                    //    }
+                    //}
+
+                    _depoimentoRepository.Cadastrar(d);
+                    return Ok("OK");
                 }
                 catch (Exception)
                 {
-                    return Redirect("~/Home/#experience");
+                    return BadRequest("Erro ao tentar enviar depoimento, favor tentar novamente mais tarde.");
                 }
 
             }
-            else
-            {
-                return Redirect("~/Home/#experience");
+            return BadRequest("Erro ao tentar enviar depoimento, favor tentar novamente mais tarde.");
 
-            }
         }
+
+        //public IActionResult Depoimento(Depoimento depoimento, IEnumerable<IFormFile> files)
+        //{
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        Random rand = new Random();
+        //        var fileName = Util.GenerateCoupon(10, rand);
+        //        var uploads = Path.Combine(_env.WebRootPath, "images\\uploads\\depoimentos\\");
+        //        try
+        //        {
+
+        //            foreach (var file in files)
+        //            {
+        //                if (file != null && file.Length > 0)
+        //                {
+        //                    fileName += Path.GetExtension(file.FileName);
+
+        //                    using var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
+        //                    file.CopyTo(s);
+        //                    depoimento.Imagem = uploads + fileName;
+        //                    depoimento.NomeArquivo = fileName;
+        //                }
+        //            }
+
+        //            _depoimentoRepository.Cadastrar(depoimento);
+        //            return Redirect("~/Home/#experience");
+        //        }
+        //        catch (Exception)
+        //        {
+        //            return Redirect("~/Home/#experience");
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        return Redirect("~/Home/#experience");
+
+        //    }
+        //}
 
         public IActionResult Servicos()
         {

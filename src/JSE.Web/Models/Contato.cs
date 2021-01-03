@@ -13,6 +13,10 @@ namespace JSE.Web.Models
         [MaxLength(50)]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [MaxLength(20)]
+        public string Assunto { get; set; }
+
         [MaxLength(2000)]
         [DataType(DataType.MultilineText)]
         [Required]
@@ -20,8 +24,6 @@ namespace JSE.Web.Models
 
         [MaxLength(70)]
         [DisplayName("E-mail")]
-        [Required]
-        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail em formato inválido.")]
         public string Email { get; set; }
 
         //[MaxLength(2)]

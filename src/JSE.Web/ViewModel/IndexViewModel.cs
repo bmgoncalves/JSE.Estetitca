@@ -14,5 +14,6 @@ namespace JSE.Web.ViewModel
         public IList<Servico> Servicos { get; set; }
         public IList<Galeria> Galerias { get; set; }
         public IList<ServicoCategoria> Categorias { get; set; }
+        public IList<Faqs> Faqs { get; set; }
     }
 }

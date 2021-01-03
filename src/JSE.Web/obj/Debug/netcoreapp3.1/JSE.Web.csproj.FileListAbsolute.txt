@@ -222,7 +222,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.RazorTargetA
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.RazorTargetAssemblyInfo.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.dll
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\JSE.Web.pdb
-D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\JSE.Web.exe
 D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\JSE.Web.deps.json
@@ -373,3 +372,5 @@ D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\wwwroot\old\js
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\wwwroot\old\lib\jquery\dist\js\_LayoutAdmin.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Menu\Default.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Footer\Default.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Faqs\AddOrEdit.cshtml.g.cs
+D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Faqs\Index.cshtml.g.cs

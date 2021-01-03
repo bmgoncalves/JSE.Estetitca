@@ -23,6 +23,11 @@ namespace JSE.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Assunto")
+                        .IsRequired()
+                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4")
+                        .HasMaxLength(20);
+
                     b.Property<bool>("ContatoWhatsapp")
                         .HasColumnType("tinyint(1)");
 
@@ -30,7 +35,6 @@ namespace JSE.Web.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("varchar(70) CHARACTER SET utf8mb4")
                         .HasMaxLength(70);
 
@@ -206,6 +210,23 @@ namespace JSE.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Estabelecimentos");
+                });
+
+            modelBuilder.Entity("JSE.Web.Models.Faqs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Pergunta")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Resposta")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Faqs");
                 });
 
             modelBuilder.Entity("JSE.Web.Models.Galeria", b =>

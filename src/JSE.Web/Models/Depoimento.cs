@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -6,7 +8,7 @@ namespace JSE.Web.Models
 {
     public class Depoimento
     {
-        [Key]
+        [Key] 
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Campo Obrigatório")]
@@ -40,6 +42,8 @@ namespace JSE.Web.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         public DateTime DataCriacao { get; set; } = DateTime.Now;
         public bool Aprovado { get; set; } = false;
+
+        public virtual IFormFile ArquivoUpload { get; set; }
 
     }
 }

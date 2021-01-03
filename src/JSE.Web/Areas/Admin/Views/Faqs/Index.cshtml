@@ -1,0 +1,93 @@
+﻿@model PagedResult<Faqs>
+
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "Admin";
+    ViewData["Action"] = "Faqs";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Categorias Cadastradas</h1>
+        <hr />
+    </div>
+    <p>
+        <a class="btn btn-primary" asp-action="AddOrEdit"><i class="far fa-plus-square" data-feather="plus-circle"></i> &nbsp; Cadastrar</a>
+    </p>
+
+    <div class="row">
+        @if (TempData["MSG_S"] != null)
+        {
+            <div class="col-md-3">
+                <div class="form-group">
+                    <p class="alert alert-success">@TempData["MSG_S"]</p>
+                </div>
+            </div>
+
+        }
+        @if (TempData["MSG_E"] != null)
+        {
+            <div class="col-md-3">
+                <div class="form-group">
+                    <p class="alert alert-danger">@TempData["MSG_E"]</p>
+                </div>
+            </div>
+        }
+    </div>
+
+
+    @if (Model.Data.Count > 0)
+    {
+
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Id")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Pergunta")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Resposta")
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Data)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pergunta)
+                    </td>
+                    <td style="width:70%">
+                        @Html.DisplayFor(modelItem => item.Resposta)
+                    </td>
+                    <td>
+                        <a asp-action="AddOrEdit" asp-route-id="@item.Id"><i class="fa fa-marker fa-lg" data-feather="edit-2"></i>Editar</a> &nbsp; | &nbsp;
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-excluir"><i class="far fa-trash-alt" data-feather="trash-2"></i>Excluir</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <br />
+        <span>Nenhum registro cadastrado!</span>
+    }
+
+
+    <div>
+        <partial name="~/Areas/Admin/Views/_PaginationPartial.cshtml" view="ViewData" model="Model" />
+    </div>
+</div>

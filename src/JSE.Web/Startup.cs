@@ -52,6 +52,7 @@ namespace JSE.Web
             services.AddScoped<IContatoRepository, ContatoRepository>();
             services.AddScoped<IGaleriaRepository, GaleriaRepository>();
             services.AddScoped<IServicoRepository, ServicoRepository>();
+            services.AddScoped<IFaqsRepository, FaqsRepository>();
             services.AddScoped<IServicoCategoriaRepository, ServicoCategoriaRepository>();
             services.AddScoped<IEstabelecimentoRepository, EstabelecimentoRepository>();
             services.AddScoped<IDepoimentoRepository, DepoimentoRepository>();

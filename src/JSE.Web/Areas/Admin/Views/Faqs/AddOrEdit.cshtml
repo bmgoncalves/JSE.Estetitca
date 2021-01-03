@@ -1,0 +1,39 @@
+﻿@model Faqs
+
+@{
+    ViewData["Title"] = "Cadastro de Perguntas Frequentes";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Cadastro de Categoria</h1>
+        <hr />
+    </div>
+    <div class="col-md-4">
+        <form asp-area="Admin" asp-controller="Faqs" asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Id" class="form-control" hidden />
+            <div class="form-group">
+                <label asp-for="Pergunta" class="control-label"></label>
+                <input asp-for="Pergunta" class="form-control" />
+                <span asp-validation-for="Pergunta" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Resposta" class="control-label"></label>
+                <textarea asp-for="Resposta" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="Resposta" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Salvar" class="btn btn-primary btn-block btn-lg" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block btn-lg">Voltar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
