@@ -124,159 +124,6 @@
     </div>
 </section>
 
-<section id="testimonials" class="testimonials">
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Depoimentos</h2>
-        </div>
-
-
-        @if (Model.Depoimentos != null && Model.Depoimentos.Count > 0)
-        {
-            <div class="owl-carousel testimonials-carousel">
-
-                @foreach (Depoimento d in Model.Depoimentos)
-                {
-                    <div class="testimonial-wrap">
-                        <div class="testimonial-item">
-                            @*<img src="~/client/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">*@
-                            <img src="~/images/user-avatar.jpg" class="testimonial-img" alt="" />
-                            <h3>@d.NomeCliente</h3>
-                            <h4>Cliente</h4>
-                            <div class="card-body">
-                                <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>@Html.Raw(d.Descricao.Trim())<i class="bx bxs-quote-alt-right quote-icon-right"></i></p>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        }
-
-    </div>
-</section>
-
-
-
-<section id="appointment" class="appointment ">
-    <div class="container">
-
-        <div class="section-title">
-            <strong>Conte-nos como foi sua experiência! </strong>
-        </div>
-
-        <form action="home/depoimento" enctype="application/x-www-form-urlencoded" method="post" role="form" class="php-email-form p-0">
-            <div class="form-row">
-                <div class="col-md-4 form-group">
-                    <input type="text" name="NomeCliente" class="form-control" id="name" placeholder="Nome" data-rule="minlen:4" data-msg="Por favor informe um nome com mais de 4 caracteres">
-                    <div class="validate"></div>
-                </div>
-                <div class="col-md-5 form-group">
-                    <input type="email" class="form-control" name="Email" id="email" placeholder="E-mail" data-rule="email" data-msg="Por favor, informe um e-mail válido">
-                    <div class="validate"></div>
-                </div>
-                <div class="col-md-3 form-group">
-                    <input type="tel" class="form-control celphone" name="TelefoneCelular" id="phone" placeholder="Celular / Whatsapp" data-rule="minlen:4" data-msg="Informe um telefone válido">
-                    <div class="validate"></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <textarea class="form-control" name="Descricao" rows="5" placeholder="Escreva aqui seu depoimento" data-rule="minlen:15" data-msg="Descreva melhor sua experiência"></textarea>
-                <div class="validate"></div>
-            </div>
-
-            <div class="form-row p-0">
-                <div class="avatar-wrapper">
-                    <img class="profile-pic" src="~/client/img/photo.png" />
-                    <div class="upload-button">
-                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                    </div>
-                    <input class="file-upload" name="ArquivoUpload" type="file" accept="image/*" />
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="alert alert-success alert-dismissible fade show sent-message" role="alert">
-                    <strong>Sucesso!</strong> Seu depoimento foi enviado! Obrigado! :)
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-
-
-            @Html.AntiForgeryToken()
-
-            <div class="text-center"><button type="submit">Enviar Depoimento</button></div>
-        </form>
-
-    </div>
-</section>
-
-<section id="faq" class="faq section-bg">
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Perguntas Frequentes</h2>
-        </div>
-
-        @if (Model.Faqs != null && Model.Faqs.Count > 0)
-        {
-            int delay = 0;
-            int id = 0;
-
-
-            <div class="faq-list">
-                <ul>
-
-                    @foreach (Faqs faqItem in Model.Faqs)
-                    {
-                        delay += 100;
-                        id++;
-
-                        if (id == 1)
-                        {
-                            delay += 0;
-                        }
-
-                        @if (id == 1)
-                        {
-                            <li data-aos="fade-up">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-@id"> @faqItem.Pergunta? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="faq-list-@id" class="collapse show" data-parent=".faq-list">
-                                    <p>
-                                        @faqItem.Resposta
-                                    </p>
-                                </div>
-                            </li>
-                        }
-                        else
-                        {
-
-                            <li data-aos="fade-up" data-aos-delay="@delay">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-@id" class="collapsed">@faqItem.Pergunta? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="faq-list-@id" class="collapse" data-parent=".faq-list">
-                                    <p>
-                                        @faqItem.Resposta
-                                    </p>
-                                </div>
-                            </li>
-                        }
-                    }
-
-
-                </ul>
-            </div>
-
-        }
-
-    </div>
-</section>
-
-
 <section id="gallery" class="gallery">
     <div class="container">
 
@@ -384,7 +231,167 @@
         </div>
     </div>
 </section>
-<section id="contact" class="contact section-bg">
+
+<section id="testimonials" class="testimonials section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Depoimentos</h2>
+        </div>
+
+
+        @if (Model.Depoimentos != null && Model.Depoimentos.Count > 0)
+        {
+            <div class="owl-carousel testimonials-carousel">
+
+                @foreach (Depoimento d in Model.Depoimentos)
+                {
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            @*<img src="~/client/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">*@
+                            <img src="~/images/user-avatar.jpg" class="testimonial-img" alt="" />
+                            <h3>@d.NomeCliente</h3>
+                            <h4>Cliente</h4>
+                            <div class="card-body">
+                                <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>@Html.Raw(d.Descricao.Trim())<i class="bx bxs-quote-alt-right quote-icon-right"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+</section>
+
+
+
+
+
+<section id="appointment" class="appointment">
+    <div class="container">
+
+        <div class="section-title">
+            <strong>Conte-nos como foi sua experiência! </strong>
+        </div>
+
+        <form action="home/depoimento" enctype="application/x-www-form-urlencoded" method="post" role="form" class="php-email-form p-0">
+            <div class="form-row">
+                <div class="col-md-4 form-group">
+                    <input type="text" name="NomeCliente" class="form-control" id="name" placeholder="Nome" data-rule="minlen:4" data-msg="Por favor informe um nome com mais de 4 caracteres">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-5 form-group">
+                    <input type="email" class="form-control" name="Email" id="email" placeholder="E-mail" data-rule="email" data-msg="Por favor, informe um e-mail válido">
+                    <div class="validate"></div>
+                </div>
+                <div class="col-md-3 form-group">
+                    <input type="tel" class="form-control celphone" name="TelefoneCelular" id="phone" placeholder="Celular / Whatsapp" data-rule="minlen:4" data-msg="Informe um telefone válido">
+                    <div class="validate"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control" name="Descricao" rows="5" placeholder="Escreva aqui seu depoimento" data-rule="minlen:15" data-msg="Descreva melhor sua experiência"></textarea>
+                <div class="validate"></div>
+            </div>
+
+            <div class="form-row p-0">
+                <div class="avatar-wrapper">
+                    <img class="profile-pic" src="~/client/img/photo.png" />
+                    <div class="upload-button">
+                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                    </div>
+                    <input class="file-upload" name="ArquivoUpload" type="file" accept="image/*" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="alert alert-success alert-dismissible fade show sent-message" role="alert">
+                    <strong>Sucesso!</strong> Seu depoimento foi enviado! Obrigado! :)
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
+
+            @Html.AntiForgeryToken()
+
+            <div class="text-center"><button type="submit">Enviar Depoimento</button></div>
+        </form>
+
+    </div>
+</section>
+
+
+
+
+
+<section id="faq" class="faq section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Perguntas Frequentes</h2>
+        </div>
+
+        @if (Model.Faqs != null && Model.Faqs.Count > 0)
+        {
+            int delay = 0;
+            int id = 0;
+
+
+            <div class="faq-list">
+                <ul>
+
+                    @foreach (Faqs faqItem in Model.Faqs)
+                    {
+                        delay += 100;
+                        id++;
+
+                        if (id == 1)
+                        {
+                            delay += 0;
+                        }
+
+                        @if (id == 1)
+                        {
+                            <li data-aos="fade-up">
+                                <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-@id"> @faqItem.Pergunta <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <div id="faq-list-@id" class="collapse show" data-parent=".faq-list">
+                                    <p>
+                                        @faqItem.Resposta
+                                    </p>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li data-aos="fade-up" data-aos-delay="@delay">
+                                <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-@id" class="collapsed">@faqItem.Pergunta <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <div id="faq-list-@id" class="collapse" data-parent=".faq-list">
+                                    <p>
+                                        @faqItem.Resposta
+                                    </p>
+                                </div>
+                            </li>
+                        }
+                    }
+
+
+                </ul>
+            </div>
+
+        }
+
+    </div>
+</section>
+
+
+<section id="contact" class="contact">
     <div class="container">
 
         <div class="section-title">
