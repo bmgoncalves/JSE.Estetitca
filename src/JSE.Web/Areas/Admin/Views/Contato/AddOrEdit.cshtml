@@ -24,34 +24,29 @@
                 <input asp-for="ContatoId" class="form-control" readonly />
             </div>
 
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Nome" class="col-form-label"></label>
+                    <input asp-for="Nome" type="text" class="form-control " readonly>
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="Nome" class="control-label"></label><br />
-                        @Html.DisplayFor(modelItem => Model.Nome)
+                        <label asp-for="Telefone" class="col-form-label"></label>
+                        <input asp-for="Telefone" type="text" class="form-control " readonly>
+                        <span asp-validation-for="Telefone" class="text-danger"></span>
                     </div>
-                </div>
-
-                @*<div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="DDD" class="control-label"></label><br />
-                        @Html.DisplayFor(modelItem => Model.DDD)
-                    </div>
-
-                </div>*@
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="Telefone" class="control-label"></label><br />
-                        @Html.DisplayFor(modelItem => Model.Telefone)
-                    </div>
-
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="DataHora" class="control-label"></label><br />
-                        @data
+                        <label asp-for="DataHora" class="col-form-label"></label>
+                        <input asp-for="DataHora" type="text" class="form-control " readonly>
+                        <span asp-validation-for="DataHora" class="text-danger"></span>
                     </div>
 
                 </div>
@@ -61,16 +56,18 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label><br />
-                        @Html.DisplayFor(modelItem => Model.Email)
+                        <label asp-for="Email" class="col-form-label"></label>
+                        <input asp-for="Email" type="text" class="form-control " readonly>
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="form-group">
-                            <label asp-for="ContatoWhatsapp" class="control-label"></label><br />
-                            @whatsapp
+                            <label asp-for="ContatoWhatsapp" class="col-form-label"></label>
+                            <input asp-for="ContatoWhatsapp" type="text" class="form-control " readonly>
+                            <span asp-validation-for="ContatoWhatsapp" class="text-danger"></span>
                         </div>
                     </div>
                 </div>

@@ -5,19 +5,19 @@
     ViewData["Title"] = "Servicos";
 }
 
-    <div class="text-center">
-        <!--sobreNos-->
-        <section id="sobreNos" class="content">
-            <div class="container portfolio_title">
-                <div class="section-title">
-                    <br />
-                    <h2>Serviços</h2>
-                    <h4></h4>
-                </div>
 
+<section id="services" class="services section-bg">
+    <div class="row my-5">
+        <div class="container col-md-9 my-5 p-5">
+            <div class="section-title my-2 p-0">
+                <h2>Serviços</h2>
+                <strong>Abaixo nossa lista de serviços.</strong>
+            </div>
+
+            <div class="row mx-3">
                 @foreach (var row in Model.ToArray().Split(4))
                 {
-                    <div class="card-group">
+                    <div class="card-group p-2">
                         @foreach (var servico in row)
                         {
                             string descricao;
@@ -33,59 +33,62 @@
 
                             descricao += "...";
 
-                            <div class="card">
+                            <div class="card mx-1">
                                 <img class="card-img-top img-fluid img-responsive" src="~/images/uploads/Servicos/@servico.NomeArquivo" alt="@servico.NomeServico">
                                 <div class="card-body">
-                                    <h3 class="card-title">@servico.NomeServico</h3>
+                                    <h4 class="card-title">@servico.NomeServico</h4>
                                     <p class="card-text">@descricao</p>
                                 </div>
                                 <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
-                                    <a href="#" class="btn btn-primary"
-                                       data-titulo="@servico.NomeServico"
-                                       data-action="@servico.NomeServico"
-                                       data-toggle="modal"
-                                       data-target="#leiameModal"
-                                       data-body-message="@servico.Descricao" onclick="btnLeiaMais(this)">Leia mais</a>                                    
+                                    <div class="col-lg-12 col-md-4">
+                                        <div class="text-center">
+
+                                            <a href="#" class="btn-primary saiba-mais-btn scrollto"
+                                               data-titulo="@servico.NomeServico"
+                                               data-action="@servico.NomeServico"
+                                               data-toggle="modal"
+                                               data-target="#leiameModal"
+                                               data-body-message="@servico.Descricao" onclick="btnLeiaMais(this)">Leia mais</a>
+                                        </div>
+                                    </div>
+
+
+
+
                                 </div>
                             </div>
 
                         }
                     </div>
                 }
-
             </div>
 
-        </section>
 
-        <div class="modal fade" id="leiameModal" tabindex="-1" role="dialog" aria-labelledby="leiameModalTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="leiameModalTitle" style="font-weight:bold">Modal title</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" style="font-size:xx-large">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p id="modalTextBody" style="text-align:left;font-size:large"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
+
         </div>
-
-
-
     </div>
-<div>
-    <footer class="footer_wrapper">
-        <div class="container">
-            <div class="footer_bottom"><span>Todos os Direitos © reservados - Jay Soares Estética de Resultado | <a href="https://www.linkedin.com/in/bmendesgonca/" target="_blank" title="Linkedin">Desenvolvido por Bruno M. Gonçalves</a> </span> </div>
+</section>
+
+
+<div class="modal fade" id="leiameModal" tabindex="-1" role="dialog" aria-labelledby="leiameModalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="leiameModalTitle" style="font-weight:bold">Modal title</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="font-size:xx-large">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalTextBody" style="text-align:left;font-size:large"></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn-primary saiba-mais-btn scrollto" data-dismiss="modal">Fechar</a>
+            </div>
         </div>
-    </footer>
+    </div>
 </div>
+
 
 <script>
     var items = document.querySelectorAll(".liAtv");

@@ -40,8 +40,15 @@ using X.PagedList;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "D:\Projetos\JSEEstetica\src\JSE.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using cloudscribe.Pagination.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f4270c7e3fe67f569f3d1b9805385bc6f48801bd", @"/Areas/Admin/Views/Dashboard/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a7d2d58c1713f4e4e42d94562edccc4bc5ca2ec1", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"26a86ccdd58d5bee8e664f608fd174d4235d588a", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Dashboard_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-area", "Admin", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -229,7 +236,7 @@ using X.PagedList;
 #line hidden
 #nullable disable
             WriteLiteral("                                        <tr>\r\n\r\n                                            <th scope=\"row\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4270c7e3fe67f569f3d1b9805385bc6f48801bd12226", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4270c7e3fe67f569f3d1b9805385bc6f48801bd12418", async() => {
 #nullable restore
 #line 136 "D:\Projetos\JSEEstetica\src\JSE.Web\Areas\Admin\Views\Dashboard\Index.cshtml"
                                                                                                                                                              Write(contato.Nome);
@@ -374,7 +381,7 @@ using X.PagedList;
 #line hidden
 #nullable disable
             WriteLiteral("                                        <tr>\r\n                                            <th scope=\"row\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4270c7e3fe67f569f3d1b9805385bc6f48801bd19328", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4270c7e3fe67f569f3d1b9805385bc6f48801bd19520", async() => {
 #nullable restore
 #line 184 "D:\Projetos\JSEEstetica\src\JSE.Web\Areas\Admin\Views\Dashboard\Index.cshtml"
                                                                                                                                                             Write(depoimento.NomeCliente);

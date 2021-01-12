@@ -16,15 +16,9 @@ using System.Linq;
 
 namespace JSE.Web.Controllers
 {
-
-
     [Route("{controller=Home}/{action=Index}")]
     [Route("{controller=Home}/{action=Index}/{id?}")]
-
     //TODO - Upload foto depoimentos 
-    
-    
-
     public class HomeController : Controller
     {
 

@@ -40,8 +40,15 @@ using X.PagedList;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "D:\Projetos\JSEEstetica\src\JSE.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using cloudscribe.Pagination.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"812cd291f89533f26ebb6a9c5be0b9fb52f0f842", @"/Areas/Admin/Views/Dashboard/RecuperaSenha.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a7d2d58c1713f4e4e42d94562edccc4bc5ca2ec1", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"26a86ccdd58d5bee8e664f608fd174d4235d588a", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Dashboard_RecuperaSenha : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Usuario>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/img-02.png"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -93,7 +100,7 @@ using X.PagedList;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"limiter\">\r\n    <div class=\"container-login200\">\r\n        <div class=\"wrap-login100\">\r\n            <div class=\"login100-pic js-tilt\" data-tilt>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "812cd291f89533f26ebb6a9c5be0b9fb52f0f8428016", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "812cd291f89533f26ebb6a9c5be0b9fb52f0f8428208", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -108,7 +115,7 @@ using X.PagedList;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </div>\r\n\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "812cd291f89533f26ebb6a9c5be0b9fb52f0f8429167", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "812cd291f89533f26ebb6a9c5be0b9fb52f0f8429359", async() => {
                 WriteLiteral("\r\n                <span class=\"login100-form-title\">\r\n                    Recuperar senha - Login\r\n                </span>\r\n\r\n                <div class=\"row\">\r\n");
 #nullable restore
 #line 21 "D:\Projetos\JSEEstetica\src\JSE.Web\Areas\Admin\Views\Dashboard\RecuperaSenha.cshtml"
@@ -160,7 +167,7 @@ using X.PagedList;
 #line hidden
 #nullable disable
                 WriteLiteral("                </div>\r\n\r\n                <div class=\"wrap-input100 validate-input\" data-validate=\"E-mail inválido\">\r\n                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "812cd291f89533f26ebb6a9c5be0b9fb52f0f84211795", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "812cd291f89533f26ebb6a9c5be0b9fb52f0f84211987", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();

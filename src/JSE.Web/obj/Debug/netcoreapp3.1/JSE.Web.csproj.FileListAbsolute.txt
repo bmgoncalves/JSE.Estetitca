@@ -367,9 +367,6 @@ D:\Projetos\JSEEstetica\src\JSE.Web\bin\Debug\netcoreapp3.1\web_backup.config
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Login\Login_old.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Login\Login.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\scopedcss\bundle\JSE.Web.styles.css
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout___old.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\wwwroot\old\js\_LayoutAdmin.cshtml.g.cs
-D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\wwwroot\old\lib\jquery\dist\js\_LayoutAdmin.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Menu\Default.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Footer\Default.cshtml.g.cs
 D:\Projetos\JSEEstetica\src\JSE.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Faqs\AddOrEdit.cshtml.g.cs

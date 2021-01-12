@@ -496,6 +496,16 @@ mark,
   height: auto;
 }
 
+.img-thumbnail2 {
+    padding: 0.25rem;
+    /*background-color: #fff;*/
+    /*border: 1px solid #dddfeb;*/
+    border-radius: 0.35rem;
+    max-width: 10px;
+    height: 10px;
+}
+
+
 .figure {
   display: inline-block;
 }
