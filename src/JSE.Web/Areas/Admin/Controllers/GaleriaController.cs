@@ -69,7 +69,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             if (id == 0)
             {
                 return View(new Galeria());
-            }            
+            }
             return View(_galeriaRepository.ObterGaleria(id));
         }
 

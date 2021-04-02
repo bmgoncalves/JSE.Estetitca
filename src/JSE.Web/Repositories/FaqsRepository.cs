@@ -10,7 +10,7 @@ namespace JSE.Web.Repositories
     {
         private readonly JSEContext _context;
 
-        public FaqsRepository(JSEContext context )
+        public FaqsRepository(JSEContext context)
         {
             _context = context;
         }

@@ -1,18 +1,18 @@
 ﻿using cloudscribe.Pagination.Models;
-using JSE.Web.Data;
 using JSE.Web.Extensions.Filtro;
 using JSE.Web.Models;
 using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+// ReSharper disable All
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(areaName: "Admin")]
     [UsuarioAutorizacao]
-    [Route("{area:exists}/{controller=Contato}/{action=Index}")]
-    [Route("{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
+    [Route(template: @"{area:exists}/{controller=Contato}/{action=Index}")]
+    [Route(template: "{area:exists}/{controller=Contato}/{action=Index}/{id?}")]
 
     //TODO - Melhorar tela inicial dos contatos
     //TODO - Melhorar tela inicial dos depoimentos
@@ -24,11 +24,13 @@ namespace JSE.Web.Areas.Admin.Controllers
             _contatoRepository = contatoRepository;
         }
 
-        [Route("~/Admin/Contato")]
+        // ReSharper disable once StringLiteralTypo
+        [Route(template: "~/Admin/Contato")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
-            var contatos = _contatoRepository.ObterTodosContatosPaginados(excludeRecords, pageNumber, pageSize);
+            var contatos = _contatoRepository.ObterTodosContatosPaginados(excludeRecords: excludeRecords,
+                pageNumber: pageNumber, pageSize: pageSize);
 
             var result = new PagedResult<Contato>
             {
@@ -37,7 +39,7 @@ namespace JSE.Web.Areas.Admin.Controllers
                 PageNumber = pageNumber,
                 PageSize = pageSize
             };
-            return View(result);
+            return View(model: result);
         }
 
         // GET: Admin/Contato/Create
@@ -45,9 +47,9 @@ namespace JSE.Web.Areas.Admin.Controllers
         {
             if (id == 0)
             {
-                return View(new Contato());
+                return View(model: new Contato());
             }
-            return View(_contatoRepository.ObterContato(id));
+            return View(model: _contatoRepository.ObterContato(id: id));
         }
 
         [HttpPost]
@@ -55,18 +57,18 @@ namespace JSE.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _contatoRepository.AprovarReprovar(contato);
-                return RedirectToAction(nameof(Index));
+                _contatoRepository.AprovarReprovar(contato: contato);
+                return RedirectToAction(actionName: nameof(Index));
             }
-            return View(contato);
+            return View(model: contato);
         }
 
 
         [ValidateHttpReferer]
         public IActionResult Delete(int id)
         {
-            _contatoRepository.Excluir(id);
-            return RedirectToAction(nameof(Index));
+            _contatoRepository.Excluir(id: id);
+            return RedirectToAction(actionName: nameof(Index));
         }
     }
 }

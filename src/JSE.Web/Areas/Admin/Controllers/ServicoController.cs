@@ -33,7 +33,7 @@ namespace JSE.Web.Areas.Admin.Controllers
 
         }
 
-        
+
         [Route("~/Admin/Servico/Index")]
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
@@ -157,6 +157,6 @@ namespace JSE.Web.Areas.Admin.Controllers
             return Json(lista);
         }
 
-       
+
     }
 }

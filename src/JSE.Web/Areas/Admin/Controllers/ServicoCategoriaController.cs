@@ -1,5 +1,4 @@
 ﻿using cloudscribe.Pagination.Models;
-using JSE.Web.Data;
 using JSE.Web.Extensions.Filtro;
 using JSE.Web.Extensions.Lang;
 using JSE.Web.Models;
@@ -7,7 +6,6 @@ using JSE.Web.Repositories.Intefarces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace JSE.Web.Areas.Admin.Controllers
 {
@@ -29,7 +27,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         public ViewResult Index(int pageNumber = 1, int pageSize = 10)
         {
             int excludeRecords = (pageNumber * pageSize) - pageSize;
-            IQueryable<ServicoCategoria> categorias = _servicoCategoriaRepository.ObterTodosServicoCategoriasPaginados(excludeRecords,pageNumber,pageSize);
+            IQueryable<ServicoCategoria> categorias = _servicoCategoriaRepository.ObterTodosServicoCategoriasPaginados(excludeRecords, pageNumber, pageSize);
 
             var result = new PagedResult<ServicoCategoria>
             {
@@ -42,7 +40,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(result);
         }
 
-        public IActionResult AddOrEdit(int id=0)
+        public IActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)
             {
@@ -51,7 +49,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             return View(_servicoCategoriaRepository.ObterServicoCategoria(id));
         }
 
-        
+
         [HttpPost]
         public IActionResult AddOrEdit([FromForm] ServicoCategoria servicoCategoria)
         {

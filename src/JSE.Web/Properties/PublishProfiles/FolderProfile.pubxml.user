@@ -6,7 +6,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\inetpub\wwwroot\jaysoares</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\deploy</_PublishTargetUrl>
+    <History>True|2021-04-02T21:21:38.5049597Z;True|2021-04-02T16:36:31.5648710-03:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="DefaultConnection">

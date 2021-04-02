@@ -10,7 +10,7 @@ namespace JSE.Web.Areas.Admin.ViewModel
         [EmailAddress(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E004")]
         public string LoginName { get; set; }
 
-        [Required(ErrorMessage ="Informe a senha")]
+        [Required(ErrorMessage = "Informe a senha")]
         [DisplayName("Senha")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

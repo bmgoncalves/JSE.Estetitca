@@ -33,7 +33,7 @@ namespace JSE.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddOrEdit([FromForm]Estabelecimento estabelecimento)
+        public IActionResult AddOrEdit([FromForm] Estabelecimento estabelecimento)
         {
             if (ModelState.IsValid)
             {

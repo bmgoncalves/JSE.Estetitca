@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace JSE.Web.Models
 {
@@ -10,7 +6,7 @@ namespace JSE.Web.Models
     {
         [Key]
         public int ProdutoId { get; set; }
-        [Required(ErrorMessage ="Campo obrigatório")]
+        [Required(ErrorMessage = "Campo obrigatório")]
         [MaxLength(20)]
         public string NomeProduto { get; set; }
 

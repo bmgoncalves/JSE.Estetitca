@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -87,7 +86,7 @@ namespace JSE.Web.Models
 
         [DisplayName("Localização (GoogleMaps)")]
         [MaxLength(1000)]
-        [Required(ErrorMessage ="Informe a localização da empresa")]
+        [Required(ErrorMessage = "Informe a localização da empresa")]
         public string Localizacao { get; set; }
 
         public bool Ativo { get; set; }

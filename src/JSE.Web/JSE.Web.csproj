@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <NoWin32Manifest>true</NoWin32Manifest>
+    <UserSecretsId>10cb2cca-0292-4d56-b7a0-1f5dab4be237</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

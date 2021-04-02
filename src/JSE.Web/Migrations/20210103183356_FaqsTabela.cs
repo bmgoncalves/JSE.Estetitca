@@ -27,7 +27,7 @@ namespace JSE.Web.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Faqs");
-            
+
         }
     }
 }

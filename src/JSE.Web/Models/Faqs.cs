@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace JSE.Web.Models
+﻿namespace JSE.Web.Models
 {
     public class Faqs
     {

@@ -62,7 +62,7 @@ namespace JSE.Web
             //Sessao Configuracao
             services.AddMemoryCache(); //guardar dados da sessao em memoria
             services.AddSession();
-            services.AddScoped<Sessao>();      
+            services.AddScoped<Sessao>();
             services.AddScoped<LoginUsuario>();
 
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
@@ -110,7 +110,7 @@ namespace JSE.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
 
-                
+
 
 
             });

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mA3rJsGGBaioFj412L5ibk8RGLa2n/9gxaJdICCp4krSEiKZRlu62sYYTTAIE5nfe85eUn+9zCBoeuanqZToSg==",
+  "dgSpecHash": "jqOo4/EeKAoAB2UgVGio0hCLX2Lm8z85/grbTmyB+zbnoTTN2dQSMQQY4hVBXoXM7mMBQJ+FwnETv+JEAlcSpw==",
   "success": true,
-  "projectFilePath": "D:\\Projetos\\JSEEstetica\\src\\JSE.Web\\JSE.Web.csproj",
+  "projectFilePath": "C:\\Projetos\\JSE.Estetitca\\src\\JSE.Web\\JSE.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruno\\.nuget\\packages\\cloudscribe.pagination.models\\1.0.5\\cloudscribe.pagination.models.1.0.5.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\cloudscribe.web.pagination\\3.0.0\\cloudscribe.web.pagination.3.0.0.nupkg.sha512",

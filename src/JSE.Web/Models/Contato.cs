@@ -9,7 +9,7 @@ namespace JSE.Web.Models
         [Key]
         public int ContatoId { get; set; }
 
-        [Required(ErrorMessage ="Campo obrigatório")]
+        [Required(ErrorMessage = "Campo obrigatório")]
         [MaxLength(50)]
         public string Nome { get; set; }
 
@@ -30,7 +30,7 @@ namespace JSE.Web.Models
         //[Required(ErrorMessage = "Informe o DDD")]
         //public string DDD { get; set; }
 
-        [MaxLength(15)]        
+        [MaxLength(15)]
         [Required(ErrorMessage = "Informe o telefone")]
         public string Telefone { get; set; }
 

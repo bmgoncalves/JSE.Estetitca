@@ -1,5 +1,3 @@
-using System;
-
 namespace JSE.Web.Models
 {
     public class ErrorViewModel

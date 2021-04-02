@@ -1,7 +1,5 @@
 ﻿using JSE.Web.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
 
 namespace JSE.Web.Data
 {
@@ -30,7 +28,7 @@ namespace JSE.Web.Data
 
 
         //TODO - ENTENDER O IMPACTO DE COMENTAR ESSE CODIGO
-     
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    IConfigurationRoot configuration = new ConfigurationBuilder()

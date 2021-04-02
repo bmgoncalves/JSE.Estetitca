@@ -13,7 +13,7 @@ namespace JSE.Web.Repositories
 
         public EstabelecimentoRepository(JSEContext context)
         {
-            _context =context;
+            _context = context;
         }
         public void Atualizar(Estabelecimento estabelecimento)
         {

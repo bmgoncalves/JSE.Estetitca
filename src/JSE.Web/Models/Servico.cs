@@ -32,11 +32,11 @@ namespace JSE.Web.Models
         public string Descricao { get; set; }
 
         [DisplayName("Tempo Duração (Opcional)")]
-        [MaxLength(8)]        
+        [MaxLength(8)]
         public string Duracao { get; set; }
 
         [DisplayName("Imagem")]
-        [MaxLength(400)]        
+        [MaxLength(400)]
         public string Imagem { get; set; }
 
         [DisplayName("Nome Arquivo")]

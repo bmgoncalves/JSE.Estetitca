@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace JSE.Web.Extensions.Component
 {
-    public class MenuViewComponent:ViewComponent
+    public class MenuViewComponent : ViewComponent
     {
         private readonly IEstabelecimentoRepository _repo;
         public MenuViewComponent(IEstabelecimentoRepository repository)

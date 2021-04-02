@@ -51,7 +51,7 @@ namespace JSE.Web.Repositories
             var bancoGaleria = _context.Galerias.AsQueryable();
             List<Servico> listaServicos = _context.Servicos.ToList();
 
-            if (!string.IsNullOrEmpty(pesquisa))            
+            if (!string.IsNullOrEmpty(pesquisa))
             {
                 foreach (var servicos in listaServicos)
                 {

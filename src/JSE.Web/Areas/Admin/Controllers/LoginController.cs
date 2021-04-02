@@ -43,7 +43,7 @@ namespace JSE.Web.Areas.Admin.Controllers
             ViewData["MSG_E"] = "Usuário não localizado";
             return View(usuario);
         }
-        
+
         public IActionResult Logout()
         {
             _loginUsuario.Logout();

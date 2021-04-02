@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,10 +7,10 @@ namespace JSE.Web.Models
 {
     public class Depoimento
     {
-        [Key] 
+        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Campo Obrigatório")]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [DisplayName("Mensagem")]
         [DataType(DataType.MultilineText)]
         [MaxLength(2000)]

@@ -45,7 +45,7 @@ namespace JSE.Web.Repositories
         {
             return _context.Contatos.Where(c => c.Pendente == true)
                                     .Skip(excludeRecords)
-                                    .Take(pageSize); 
+                                    .Take(pageSize);
         }
 
         public List<Contato> ObterTodosContatos()
@@ -65,6 +65,6 @@ namespace JSE.Web.Repositories
                                     .ToList();
         }
 
-       
+
     }
 }

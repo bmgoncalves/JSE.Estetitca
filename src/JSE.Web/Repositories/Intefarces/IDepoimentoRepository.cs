@@ -15,6 +15,6 @@ namespace JSE.Web.Repositories.Intefarces
         Depoimento GetDepoimento(int id);
         IQueryable<Depoimento> GetDepoimentosPendente(int excludeRecords, int pageNumber, int pageSize);
 
-        
+
     }
 }
