@@ -1,22 +1,16 @@
 # 💫 About this project:
 
-It's a project that I created to my wife's company. Using 
+It's complete application that I created to my wife's company. The struture is:
 <ul>
 <li>
-  .NetCore
+  Main Page
 </li>
 
 <li>
-  Jquery
+  Form's to contact and list of services
 </li>
 <li>
-  Bootstrap
-</li>
-<li>
-  Materialize
-</li>
-<li>
-  MySQL
+  A panel control to give to the user, all of control the application.
 </li>
 </ul>
 
