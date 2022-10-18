@@ -15,7 +15,9 @@ It's a project that I created to my wife's company. Using
 <li>
   Materialize
 </li>
-
+<li>
+  MySQL
+</li>
 </ul>
 
 
