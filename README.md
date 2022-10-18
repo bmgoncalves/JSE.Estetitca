@@ -1,6 +1,6 @@
 # 💫 About this project:
 
-It's complete application that I created to my wife's company. The struture is:
+It's complete application that I created for my wife's company:
 <ul>
 <li>
   Main Page
