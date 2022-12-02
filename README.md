@@ -1,6 +1,6 @@
 # 💫 About this project:
 
-It's complete application that I created for my wife's company:
+It's complete application that I created for a beauty company:
 <ul>
 <li>
   Main Page
